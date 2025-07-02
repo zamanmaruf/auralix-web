@@ -4,6 +4,9 @@ import Link from "next/link";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <title>AURALIX AI</title>
+      </head>
       <body className="bg-[#0a0a0a] text-[#ededed] font-sans">
         <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] bg-opacity-95 border-b border-[#1a1a1a] shadow-lg">
           <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
@@ -15,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex-1 flex justify-end gap-10 text-lg items-center">
               <a href="/automate-with-ai" className="hover:text-cyan-400 transition-colors">Automate with <span className="text-cyan-400">AI</span></a>
               <a href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</a>
+              <a href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</a>
               <a href="#contact" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Get Started</a>
             </div>
           </nav>
@@ -26,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex gap-6 text-sm text-cyan-200">
               <a href="/automate-with-ai" className="hover:text-cyan-400">Automate with AI</a>
               <a href="/pricing" className="hover:text-cyan-400">Pricing</a>
+              <a href="/about-us" className="hover:text-cyan-400">About Us</a>
               <a href="#contact" className="hover:text-cyan-400">Get Started</a>
             </div>
           </div>

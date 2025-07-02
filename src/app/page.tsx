@@ -1,11 +1,41 @@
+'use client';
 import Image from "next/image";
 import { FaRegWindowMaximize } from "react-icons/fa6";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { PiRobotLight } from "react-icons/pi";
 import { TbSettingsAutomation } from "react-icons/tb";
 import { MdOutlineDashboard } from "react-icons/md";
+import { useState } from "react";
 
 export default function HomePage() {
+  const [messageSent, setMessageSent] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const requiredFields = ["name", "email", "phone", "business", "service", "message"];
+    for (const field of requiredFields) {
+      if (!data.get(field) || String(data.get(field)).trim() === "") {
+        setError("Please fill in all fields.");
+        return;
+      }
+    }
+    const res = await fetch("https://formspree.io/f/mnnvrdoy", {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    if (res.ok) {
+      setMessageSent(true);
+      form.reset();
+    }
+  };
+
   return (
     <div className="relative min-h-screen flex flex-col justify-between">
       {/* Hero Section */}
@@ -95,7 +125,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-teal-500 to-blue-500 py-16 text-center" id="cta">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Build the Future of Your Business</h2>
-        <a href="#contact" className="px-10 py-4 bg-black hover:bg-[#222] text-teal-300 font-bold rounded-full text-lg shadow-lg transition-all duration-200">
+        <a href="/automate-with-ai" className="px-10 py-4 bg-black hover:bg-[#222] text-teal-300 font-bold rounded-full text-lg shadow-lg transition-all duration-200">
           Book a Demo
         </a>
       </section>
@@ -105,17 +135,23 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[url('/hero-ai-bg.jpg')] bg-cover bg-center opacity-20 pointer-events-none" />
         <div className="relative max-w-xl mx-auto bg-[#181818] bg-opacity-90 rounded-xl p-10 shadow-2xl z-10">
           <h2 className="text-3xl font-bold text-center mb-8 text-teal-400">Contact Us</h2>
-          <form className="flex flex-col gap-4">
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Name" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Email" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Phone" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Business Name" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Service Needed" />
-            <textarea className="p-3 rounded bg-[#222] text-white" placeholder="Message" rows={4} />
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input name="name" className="p-3 rounded bg-[#222] text-white" placeholder="Name" />
+            <input name="email" className="p-3 rounded bg-[#222] text-white" placeholder="Email" />
+            <input name="phone" className="p-3 rounded bg-[#222] text-white" placeholder="Phone" />
+            <input name="business" className="p-3 rounded bg-[#222] text-white" placeholder="Business Name" />
+            <input name="service" className="p-3 rounded bg-[#222] text-white" placeholder="Service Needed" />
+            <textarea name="message" className="p-3 rounded bg-[#222] text-white" placeholder="Message" rows={4} />
             <button type="submit" className="mt-4 px-8 py-3 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
               Send Message
             </button>
           </form>
+          {error && (
+            <div className="mt-4 text-red-400 font-semibold text-center">{error}</div>
+          )}
+          {messageSent && (
+            <div className="mt-4 text-green-400 font-semibold text-center">Message sent!</div>
+          )}
         </div>
       </section>
     </div>
