@@ -1,5 +1,6 @@
 import { FaRegClock, FaRobot, FaChartBar, FaSearch, FaCalendarCheck } from "react-icons/fa";
 import { MdRestaurant, MdLocalHospital, MdContentCut, MdStore } from "react-icons/md";
+import Link from "next/link";
 
 export default function AutomateWithAIPage() {
   return (
@@ -91,9 +92,9 @@ export default function AutomateWithAIPage() {
       {/* CTA Section */}
       <section className="py-16 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">Ready to Automate Your Business?</h2>
-        <a href="/#contact" className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4">
+        <Link href="/#contact" className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4">
           Book a Free Automation Strategy Call
-        </a>
+        </Link>
       </section>
     </div>
   );

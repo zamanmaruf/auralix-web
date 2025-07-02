@@ -10,10 +10,10 @@ export default function AboutUsPage() {
       </p>
       <h2 className="text-2xl font-bold mt-10 mb-4 text-cyan-300">Our Founders</h2>
       <p className="mb-4">
-        <strong>Md Maruf Uzzaman</strong> is our AI & Automation Innovator. With a solid computer science background and deep experience in data science, NLP, Python, LangChain, OpenAI, and workflow automation, he's driven by a desire to solve real–world problems with practical AI. At Auralix AI, he leads model development, system integrations, and ensures everything scales for real use.
+        <strong>Md Maruf Uzzaman</strong> is our AI & Automation Innovator. With a solid computer science background and deep experience in data science, NLP, Python, LangChain, OpenAI, and workflow automation, he's driven by a desire to solve real–world problems with practical AI. At Auralix AI, he leads model development, system integrations, and ensures everything scales for real use.
       </p>
       <p className="mb-6">
-        <strong>Fardeenul Islam</strong> brings a strong software and data engineering background to the team. He excels at translating technical wizardry into client-ready solutions—whether that's crafting user-friendly chatbots, automating business workflows, or designing analytics dashboards that small teams can actually use.
+        <strong>Fardeenul Islam</strong> brings a strong software and data engineering background to the team. He excels at translating technical wizardry into client-ready solutions—whether that's crafting user-friendly chatbots, automating business workflows, or designing analytics dashboards that small teams can actually use.
       </p>
       <p className="mb-6">
         Together, we combine rigorous tech skills with a heart for the community. We're here to deliver results that matter—without jargon, without fluff. Every tool we build is designed to make life easier for business owners, not add complexity.
