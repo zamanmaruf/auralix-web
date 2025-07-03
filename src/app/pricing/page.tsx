@@ -6,7 +6,7 @@ export default function PricingPage() {
       {/* Hero Section */}
       <section className="max-w-3xl mx-auto text-center py-16 px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Affordable AI-Powered Solutions for Small Businesses</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">We make automation, websites, SEO, chatbots, and analytics accessible and cost-effective — built for Nova Scotia's local businesses. Choose a package that fits your growth stage.</p>
+        <p className="text-xl md:text-2xl text-cyan-100 mb-8">We make automation, websites, SEO, chatbots, and analytics accessible and cost-effective — built for Nova Scotia&apos;s local businesses. Choose a package that fits your growth stage.</p>
       </section>
 
       {/* Service-Based Pricing Cards */}
@@ -111,7 +111,7 @@ export default function PricingPage() {
       <section className="py-16 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">Ready to Automate & Scale Your Business?</h2>
         <a href="/automate-with-ai" className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
-          Let's Talk AI &rarr;
+          Let&apos;s Talk AI &rarr;
         </a>
       </section>
     </div>

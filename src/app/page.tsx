@@ -124,7 +124,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-teal-500 to-blue-500 py-16 text-center" id="cta">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let's Build the Future of Your Business</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let&apos;s Build the Future of Your Business</h2>
         <a href="/automate-with-ai" className="px-10 py-4 bg-black hover:bg-[#222] text-teal-300 font-bold rounded-full text-lg shadow-lg transition-all duration-200">
           Book a Demo
         </a>
