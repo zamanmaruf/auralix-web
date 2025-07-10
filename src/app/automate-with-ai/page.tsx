@@ -1,6 +1,6 @@
 import { FaRegClock, FaRobot, FaChartBar, FaSearch, FaCalendarCheck } from "react-icons/fa";
 import { MdRestaurant, MdLocalHospital, MdContentCut, MdStore } from "react-icons/md";
-import Link from "next/link";
+import Image from "next/image";
 
 export default function AutomateWithAIPage() {
   return (
@@ -56,7 +56,7 @@ export default function AutomateWithAIPage() {
           </div>
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
             <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center">
-              <img src="/dashboard.jpg" alt="Analytics Dashboard Demo" className="rounded-lg object-cover w-full h-32" style={{ maxHeight: '8rem' }} />
+              <Image src="/dashboard.jpg" alt="Analytics Dashboard Demo" width={288} height={128} className="rounded-lg object-cover w-full h-32" style={{ maxHeight: '8rem' }} />
             </div>
             <div className="font-semibold mb-1">Analytics Dashboard</div>
             <p className="text-cyan-100 text-sm">Visualize your business growth with smart dashboards.</p>
@@ -94,10 +94,11 @@ export default function AutomateWithAIPage() {
       {/* CTA Section */}
       <section className="py-16 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">Ready to Automate Your Business?</h2>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <button
           onClick={() => {
             if (typeof window !== 'undefined' && (window as any).Calendly) {
-              (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/yourname/strategy-call' });
+              (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/auralixai/strategy-call' });
             }
           }}
           className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4"
