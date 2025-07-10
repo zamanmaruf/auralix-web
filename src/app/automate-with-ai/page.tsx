@@ -1,14 +1,18 @@
 import { FaRegClock, FaRobot, FaChartBar, FaSearch, FaCalendarCheck } from "react-icons/fa";
 import { MdRestaurant, MdLocalHospital, MdContentCut, MdStore } from "react-icons/md";
-import Link from "next/link";
+import Image from "next/image";
 
 export default function AutomateWithAIPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white pb-20">
       {/* Intro Section */}
       <section className="max-w-4xl mx-auto text-center py-20 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Simplify, Scale, and Save With AI</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Discover how we help local businesses reduce costs, improve efficiency, and grow with AI automation.</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">
+          Simplify, Scale, and Save With AI
+        </h1>
+        <p className="text-xl md:text-2xl text-cyan-100 mb-8">
+          Discover how we help local businesses reduce costs, improve efficiency, and grow with AI automation.
+        </p>
       </section>
 
       {/* Benefits Section */}
@@ -40,22 +44,35 @@ export default function AutomateWithAIPage() {
         </div>
       </section>
 
-      {/* Live Demos Section (Placeholder GIFs/Animations) */}
+      {/* Live Demos Section */}
       <section className="max-w-5xl mx-auto py-16 px-4 text-center">
         <h2 className="text-2xl font-bold text-cyan-200 mb-8">See AI in Action</h2>
         <div className="flex flex-wrap justify-center gap-8">
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
-            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300">[Chatbot Demo GIF]</div>
+            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300 text-lg font-semibold">
+              Coming soon
+            </div>
             <div className="font-semibold mb-1">AI Chatbot</div>
             <p className="text-cyan-100 text-sm">See how our chatbot handles real customer questions.</p>
           </div>
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
-            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300">[Booking Demo GIF]</div>
+            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300 text-lg font-semibold">
+              Coming soon
+            </div>
             <div className="font-semibold mb-1">AI Booking System</div>
             <p className="text-cyan-100 text-sm">Experience seamless, automated appointment scheduling.</p>
           </div>
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
-            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300">[Dashboard Demo GIF]</div>
+            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center">
+              <Image
+                src="/dashboard.jpg"
+                alt="Analytics Dashboard Demo"
+                width={288}
+                height={128}
+                className="rounded-lg object-cover w-full h-32"
+                style={{ maxHeight: '8rem' }}
+              />
+            </div>
             <div className="font-semibold mb-1">Analytics Dashboard</div>
             <p className="text-cyan-100 text-sm">Visualize your business growth with smart dashboards.</p>
           </div>
@@ -91,11 +108,23 @@ export default function AutomateWithAIPage() {
 
       {/* CTA Section */}
       <section className="py-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">Ready to Automate Your Business?</h2>
-        <Link href="/#contact" className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">
+          Ready to Automate Your Business?
+        </h2>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <button
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).Calendly) {
+              (window as any).Calendly.initPopupWidget({
+                url: 'https://calendly.com/auralixai/strategy-call',
+              });
+            }
+          }}
+          className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4"
+        >
           Book a Free Automation Strategy Call
-        </Link>
+        </button>
       </section>
     </div>
   );
-} 
+}
