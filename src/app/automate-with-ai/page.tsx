@@ -45,17 +45,19 @@ export default function AutomateWithAIPage() {
         <h2 className="text-2xl font-bold text-cyan-200 mb-8">See AI in Action</h2>
         <div className="flex flex-wrap justify-center gap-8">
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
-            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300">[Chatbot Demo GIF]</div>
+            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300 text-lg font-semibold">Coming soon</div>
             <div className="font-semibold mb-1">AI Chatbot</div>
             <p className="text-cyan-100 text-sm">See how our chatbot handles real customer questions.</p>
           </div>
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
-            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300">[Booking Demo GIF]</div>
+            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300 text-lg font-semibold">Coming soon</div>
             <div className="font-semibold mb-1">AI Booking System</div>
             <p className="text-cyan-100 text-sm">Experience seamless, automated appointment scheduling.</p>
           </div>
           <div className="bg-[#181f2a] rounded-xl p-6 w-72 shadow-lg flex flex-col items-center">
-            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center text-cyan-300">[Dashboard Demo GIF]</div>
+            <div className="bg-cyan-900 rounded-lg w-full h-32 mb-4 flex items-center justify-center">
+              <img src="/dashboard.jpg" alt="Analytics Dashboard Demo" className="rounded-lg object-cover w-full h-32" style={{ maxHeight: '8rem' }} />
+            </div>
             <div className="font-semibold mb-1">Analytics Dashboard</div>
             <p className="text-cyan-100 text-sm">Visualize your business growth with smart dashboards.</p>
           </div>
