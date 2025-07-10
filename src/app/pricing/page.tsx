@@ -11,29 +11,6 @@ export default function PricingPage() {
 
       {/* Service-Based Pricing Cards */}
       <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mb-20">
-        {/* AI-Powered Websites */}
-        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
-          <FaGlobe className="text-4xl text-cyan-400 mb-4" />
-          <div className="font-bold text-lg mb-2">AI-Powered Websites</div>
-          <div className="text-cyan-200 font-semibold mb-2">$1,500 – $3,000 <span className="text-xs">(one-time)</span></div>
-          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
-            <li>5–10 pages, booking system or e-commerce</li>
-            <li>Mobile-optimized</li>
-            <li>Optional: Monthly Maintenance ($50–$200)</li>
-          </ul>
-          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
-        </div>
-        {/* Local SEO */}
-        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
-          <FaSearchDollar className="text-4xl text-cyan-400 mb-4" />
-          <div className="font-bold text-lg mb-2">Local SEO</div>
-          <div className="text-cyan-200 font-semibold mb-2">$500 – $2,500 <span className="text-xs">/month</span></div>
-          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
-            <li>On-page SEO, local citations, Google ranking boost</li>
-            <li>Optional: SEO Audit ($500–$2,000 one-time)</li>
-          </ul>
-          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
-        </div>
         {/* Business Process Automation */}
         <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
           <FaCogs className="text-4xl text-cyan-400 mb-4" />
@@ -67,6 +44,76 @@ export default function PricingPage() {
           </ul>
           <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
         </div>
+        {/* AI Readiness & Strategy Assessment */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaChartBar className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">AI Readiness & Strategy Assessment</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>Evaluate business needs and identify high-value AI opportunities</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
+        {/* AI Technology Consulting */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaCogs className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">AI Technology Consulting</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>Recommend and help select the right AI tools and platforms</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
+        {/* Website & SEO Auditing */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaSearchDollar className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">Website & SEO Auditing</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>AI-powered audits for SEO, speed, and optimization with actionable plans</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
+        {/* Data Engineering & Preparation */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaCogs className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">Data Engineering & Preparation</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>Help businesses organize and prepare their data for AI projects</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
+        {/* Staff Training & Change Management */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaGlobe className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">Staff Training & Change Management</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>Train teams on new AI tools and best practices</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
+        {/* Ongoing Optimization & Support */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaGift className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">Ongoing Optimization & Support</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>Regularly review and fine-tune AI systems to ensure continued value</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
+        {/* AI Content Generation */}
+        <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
+          <FaRobot className="text-4xl text-cyan-400 mb-4" />
+          <div className="font-bold text-lg mb-2">AI Content Generation</div>
+          <div className="text-cyan-200 font-semibold mb-2">Contact for quote</div>
+          <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
+            <li>Copywriting, blog post creation, and marketing content using AI tools</li>
+          </ul>
+          <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+        </div>
       </section>
 
       {/* Package Deal */}
@@ -75,14 +122,18 @@ export default function PricingPage() {
           <div className="flex flex-col items-center mb-4">
             <FaGift className="text-5xl text-yellow-300 mb-2" />
             <h2 className="text-2xl font-bold text-yellow-200 mb-2">Launch & Grow Package</h2>
-            <div className="text-lg text-cyan-100 mb-2">$4,400 one-time + $600/month</div>
+            <div className="text-lg text-cyan-100 mb-2">Contact for quote</div>
           </div>
           <ul className="text-cyan-100 text-base mb-4 list-disc list-inside text-left max-w-md mx-auto">
-            <li>AI Website</li>
-            <li>SEO Setup</li>
-            <li>Chatbot Integration</li>
-            <li>Analytics Dashboard</li>
-            <li>Monthly Support Plan</li>
+            <li>AI Readiness & Strategy Assessment</li>
+            <li>AI Technology Consulting</li>
+            <li>Business Process Automation</li>
+            <li>Chatbot & Virtual Assistant Integration</li>
+            <li>Analytics Dashboard Setup</li>
+            <li>Website & SEO Auditing</li>
+            <li>Staff Training & Change Management</li>
+            <li>Ongoing Optimization & Support</li>
+            <li>AI Content Generation</li>
           </ul>
           <a href="#contact" className="px-8 py-3 bg-yellow-300 hover:bg-yellow-200 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">Book a Free Consultation</a>
         </div>
