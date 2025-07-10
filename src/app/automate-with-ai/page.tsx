@@ -3,14 +3,6 @@
 import { FaRegClock, FaRobot, FaChartBar, FaSearch, FaCalendarCheck } from "react-icons/fa";
 import { MdRestaurant, MdLocalHospital, MdContentCut, MdStore } from "react-icons/md";
 import Image from "next/image";
-import Script from "next/script";
-
-// TypeScript interfaces for Calendly
-interface CalendlyWindow extends Window {
-  Calendly?: {
-    initPopupWidget: (options: { url: string }) => void;
-  };
-}
 
 export default function AutomateWithAIPage() {
   return (
@@ -121,12 +113,18 @@ export default function AutomateWithAIPage() {
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">
           Ready to Automate Your Business?
         </h2>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <button
           onClick={() => {
-            if (typeof window !== 'undefined' && (window as any).Calendly) {
-              (window as any).Calendly.initPopupWidget({
-                url: 'https://calendly.com/auralixai/strategy-call',
+            if (
+              typeof window !== "undefined" &&
+              (window as Window & {
+                Calendly?: { initPopupWidget: (options: { url: string }) => void };
+              }).Calendly
+            ) {
+              (window as Window & {
+                Calendly: { initPopupWidget: (options: { url: string }) => void };
+              }).Calendly.initPopupWidget({
+                url: "https://calendly.com/auralixai/strategy-call",
               });
             }
           }}
