@@ -122,6 +122,22 @@ export default function AutomateWithAIPage() {
           Book a Free Automation Strategy Call
         </a>
       </section>
+
+      {/* Contact Us Section for anchor scroll */}
+      <section id="contact" className="py-16 text-center bg-[#181818] rounded-xl max-w-lg mx-auto mt-10">
+        <h2 className="text-3xl font-bold text-cyan-400 mb-8">Contact Us</h2>
+        <form className="flex flex-col gap-4">
+          <input className="p-3 rounded bg-[#222] text-white" placeholder="Name" />
+          <input className="p-3 rounded bg-[#222] text-white" placeholder="Email" />
+          <input className="p-3 rounded bg-[#222] text-white" placeholder="Phone" />
+          <input className="p-3 rounded bg-[#222] text-white" placeholder="Business Name" />
+          <input className="p-3 rounded bg-[#222] text-white" placeholder="Service Needed" />
+          <textarea className="p-3 rounded bg-[#222] text-white" placeholder="Message" rows={4} />
+          <button type="submit" className="mt-4 px-8 py-3 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
+            Send Message
+          </button>
+        </form>
+      </section>
     </div>
   );
 }
