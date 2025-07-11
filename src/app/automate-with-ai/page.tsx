@@ -113,25 +113,14 @@ export default function AutomateWithAIPage() {
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-6">
           Ready to Automate Your Business?
         </h2>
-        <button
-          onClick={() => {
-            if (
-              typeof window !== "undefined" &&
-              (window as Window & {
-                Calendly?: { initPopupWidget: (options: { url: string }) => void };
-              }).Calendly
-            ) {
-              (window as unknown as Window & {
-                Calendly: { initPopupWidget: (options: { url: string }) => void };
-              }).Calendly.initPopupWidget({
-                url: "https://calendly.com/auralixai/strategy-call",
-              });
-            }
-          }}
-          className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4"
+        <a
+          href="https://calendly.com/auralixai/strategy-call"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4 inline-block text-center"
         >
           Book a Free Automation Strategy Call
-        </button>
+        </a>
       </section>
     </div>
   );
