@@ -121,7 +121,7 @@ export default function AutomateWithAIPage() {
                 Calendly?: { initPopupWidget: (options: { url: string }) => void };
               }).Calendly
             ) {
-              (window as Window & {
+              (window as unknown as Window & {
                 Calendly: { initPopupWidget: (options: { url: string }) => void };
               }).Calendly.initPopupWidget({
                 url: "https://calendly.com/auralixai/strategy-call",
