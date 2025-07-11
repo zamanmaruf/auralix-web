@@ -6,6 +6,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <title>AURALIX AI</title>
+        <meta name="description" content="Affordable AI automation, chatbots, dashboards, and analytics for local businesses. Get a free quote today!" />
+        <meta property="og:title" content="Auralix AI - AI Automation for Small Business" />
+        <meta property="og:description" content="Affordable AI automation, chatbots, dashboards, and analytics for local businesses." />
+        <meta property="og:image" content="/hero-ai-bg.jpg" />
+        <meta property="og:url" content="https://yourdomain.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Auralix AI - AI Automation for Small Business" />
+        <meta name="twitter:description" content="Affordable AI automation, chatbots, dashboards, and analytics for local businesses." />
+        <meta name="twitter:image" content="/hero-ai-bg.jpg" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Auralix AI",
+          "url": "https://yourdomain.com",
+          "logo": "https://yourdomain.com/logo.png",
+          "description": "Affordable AI automation, chatbots, dashboards, and analytics for local businesses.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nova Scotia",
+            "addressCountry": "Canada"
+          }
+        }` }} />
         <script
           type="text/javascript"
           src="https://assets.calendly.com/assets/external/widget.js"
