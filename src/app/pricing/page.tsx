@@ -26,7 +26,7 @@ export default function PricingPage() {
               <li>Zapier/Make workflows, email automation, CRM triggers</li>
               <li>Maintenance: $100–$500/month</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* Chatbots & Virtual Assistants */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -37,7 +37,7 @@ export default function PricingPage() {
               <li>Rule-based chatbot, basic AI FAQ automation</li>
               <li>Hosting/updates: $50–$200/month</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* Analytics Dashboards */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -48,7 +48,7 @@ export default function PricingPage() {
               <li>Sales/traffic dashboards, up to 3 data sources</li>
               <li>Support: $100–$300/month</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* AI Readiness & Strategy Assessment */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -58,7 +58,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>Evaluate business needs and identify high-value AI opportunities</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* AI Technology Consulting */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -68,7 +68,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>Recommend and help select the right AI tools and platforms</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* Website & SEO Auditing */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -78,7 +78,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>AI-powered audits for SEO, speed, and optimization with actionable plans</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* Data Engineering & Preparation */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -88,7 +88,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>Help businesses organize and prepare their data for AI projects</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* Staff Training & Change Management */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -98,7 +98,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>Train teams on new AI tools and best practices</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* Ongoing Optimization & Support */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -108,7 +108,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>Regularly review and fine-tune AI systems to ensure continued value</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
           {/* AI Content Generation */}
           <div className="bg-[#11202a] rounded-2xl p-8 flex flex-col items-center shadow-xl border border-cyan-700">
@@ -118,7 +118,7 @@ export default function PricingPage() {
             <ul className="text-cyan-100 text-sm mb-4 list-disc list-inside">
               <li>Copywriting, blog post creation, and marketing content using AI tools</li>
             </ul>
-            <a href="#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
+            <a href="/#contact" className="px-6 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-md shadow-lg transition-all duration-200">Get Quote</a>
           </div>
         </section>
 
@@ -141,7 +141,7 @@ export default function PricingPage() {
               <li>Ongoing Optimization & Support</li>
               <li>AI Content Generation</li>
             </ul>
-            <a href="#contact" className="px-8 py-3 bg-yellow-300 hover:bg-yellow-200 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">Book a Free Consultation</a>
+            <a href="/#contact" className="px-8 py-3 bg-yellow-300 hover:bg-yellow-200 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">Book a Free Consultation</a>
           </div>
         </section>
 
