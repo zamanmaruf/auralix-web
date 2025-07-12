@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <footer className="w-full bg-[#0a0a0a] border-t border-[#222] py-6 mt-10">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-4">
-            <div className="text-lg font-bold tracking-widest text-teal-400">AURALIX AI</div>
+            <div className="text-2xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-glow select-none">AURALIX AI</div>
             <div className="flex gap-6 text-sm text-cyan-200">
               <Link href="/automate-with-ai" className="hover:text-cyan-400">Automate with AI</Link>
               <Link href="/pricing" className="hover:text-cyan-400">Pricing</Link>
