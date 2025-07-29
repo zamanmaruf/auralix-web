@@ -8,6 +8,41 @@ import Chatbot from "../components/Chatbot";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [subscriptionMessage, setSubscriptionMessage] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+
+    setSubscriptionStatus('loading');
+    setSubscriptionMessage('');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubscriptionStatus('success');
+        setSubscriptionMessage(data.message);
+        setEmail('');
+      } else {
+        setSubscriptionStatus('error');
+        setSubscriptionMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubscriptionStatus('error');
+      setSubscriptionMessage('Something went wrong. Please try again.');
+    }
+  };
   return (
     <html lang="en">
       <head>
@@ -171,17 +206,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <h3 className="text-lg font-semibold text-white mb-2">Stay Updated</h3>
                   <p className="text-sm text-gray-300">Get the latest AI automation insights and industry updates.</p>
                 </div>
-                <div className="flex gap-2 w-full md:w-auto">
+                <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
                   <input 
                     type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email" 
                     className="flex-1 md:w-64 px-4 py-2 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    disabled={subscriptionStatus === 'loading'}
                   />
-                  <button className="px-6 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors">
-                    Subscribe
+                  <button 
+                    type="submit"
+                    disabled={subscriptionStatus === 'loading' || !email.trim()}
+                    className="px-6 py-2 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold rounded-lg transition-colors"
+                  >
+                    {subscriptionStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
                   </button>
-                </div>
+                </form>
               </div>
+              {subscriptionMessage && (
+                <div className={`mt-3 text-sm ${subscriptionStatus === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                  {subscriptionMessage}
+                </div>
+              )}
             </div>
 
             {/* Bottom Footer */}

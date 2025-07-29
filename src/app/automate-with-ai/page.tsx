@@ -4,8 +4,61 @@ import { FaRegClock, FaRobot, FaChartBar, FaSearch, FaCalendarCheck } from "reac
 import { MdRestaurant, MdLocalHospital, MdContentCut, MdStore } from "react-icons/md";
 import Image from "next/image";
 import Head from "next/head";
+import { useState } from "react";
 
 export default function AutomateWithAIPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    businessName: '',
+    serviceNeeded: '',
+    message: ''
+  });
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [submissionMessage, setSubmissionMessage] = useState('');
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmissionStatus('loading');
+    setSubmissionMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmissionStatus('success');
+        setSubmissionMessage(data.message);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          businessName: '',
+          serviceNeeded: '',
+          message: ''
+        });
+      } else {
+        setSubmissionStatus('error');
+        setSubmissionMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmissionStatus('error');
+      setSubmissionMessage('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <>
       <Head>
@@ -132,16 +185,62 @@ export default function AutomateWithAIPage() {
         {/* Contact Us Section for anchor scroll */}
         <section id="contact" className="py-16 text-center bg-[#181818] rounded-xl max-w-lg mx-auto mt-10">
           <h2 className="text-3xl font-bold text-cyan-400 mb-8">Contact Us</h2>
-          <form className="flex flex-col gap-4">
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Name" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Email" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Phone" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Business Name" />
-            <input className="p-3 rounded bg-[#222] text-white" placeholder="Service Needed" />
-            <textarea className="p-3 rounded bg-[#222] text-white" placeholder="Message" rows={4} />
-            <button type="submit" className="mt-4 px-8 py-3 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
-              Send Message
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Name"
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              className="p-3 rounded bg-[#222] text-white"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              className="p-3 rounded bg-[#222] text-white"
+            />
+            <input
+              type="tel"
+              placeholder="Phone"
+              value={formData.phone}
+              onChange={(e) => handleInputChange('phone', e.target.value)}
+              className="p-3 rounded bg-[#222] text-white"
+            />
+            <input
+              type="text"
+              placeholder="Business Name"
+              value={formData.businessName}
+              onChange={(e) => handleInputChange('businessName', e.target.value)}
+              className="p-3 rounded bg-[#222] text-white"
+            />
+            <input
+              type="text"
+              placeholder="Service Needed"
+              value={formData.serviceNeeded}
+              onChange={(e) => handleInputChange('serviceNeeded', e.target.value)}
+              className="p-3 rounded bg-[#222] text-white"
+            />
+            <textarea
+              placeholder="Message"
+              value={formData.message}
+              onChange={(e) => handleInputChange('message', e.target.value)}
+              rows={4}
+              className="p-3 rounded bg-[#222] text-white"
+            />
+            <button
+              type="submit"
+              className="mt-4 px-8 py-3 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200"
+              disabled={submissionStatus === 'loading'}
+            >
+              {submissionStatus === 'loading' ? 'Sending...' : 'Send Message'}
             </button>
+            {submissionStatus === 'success' && (
+              <p className="text-green-400 text-center mt-4">{submissionMessage}</p>
+            )}
+            {submissionStatus === 'error' && (
+              <p className="text-red-400 text-center mt-4">{submissionMessage}</p>
+            )}
           </form>
         </section>
       </div>

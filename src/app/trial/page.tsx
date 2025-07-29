@@ -12,6 +12,8 @@ export default function TrialPage() {
     useCase: '',
     painPoints: ''
   });
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [submissionMessage, setSubmissionMessage] = useState('');
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -23,6 +25,34 @@ export default function TrialPage() {
 
   const prevStep = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
+  };
+
+  const handleTrialSubmission = async () => {
+    setSubmissionStatus('loading');
+    setSubmissionMessage('');
+
+    try {
+      const response = await fetch('/api/trial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmissionStatus('success');
+        setSubmissionMessage(data.message);
+      } else {
+        setSubmissionStatus('error');
+        setSubmissionMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmissionStatus('error');
+      setSubmissionMessage('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -235,12 +265,48 @@ export default function TrialPage() {
             </div>
             
             <div className="text-center">
-              <button className="px-12 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-lg">
-                Start Your Free Trial
-              </button>
-              <p className="text-sm text-gray-400 mt-4">
-                By starting your trial, you agree to our Terms of Service and Privacy Policy
-              </p>
+              {submissionStatus === 'success' ? (
+                <div className="text-center">
+                  <div className="text-green-400 text-6xl mb-4">✓</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Trial Request Submitted!</h3>
+                  <p className="text-gray-300 mb-4">{submissionMessage}</p>
+                  <button
+                    onClick={() => {
+                      setCurrentStep(1);
+                      setFormData({
+                        businessName: '',
+                        industry: '',
+                        teamSize: '',
+                        useCase: '',
+                        painPoints: ''
+                      });
+                      setSubmissionStatus('idle');
+                      setSubmissionMessage('');
+                    }}
+                    className="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200"
+                  >
+                    Start Another Trial
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <button 
+                    onClick={handleTrialSubmission}
+                    disabled={submissionStatus === 'loading'}
+                    className="px-12 py-4 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-lg"
+                  >
+                    {submissionStatus === 'loading' ? 'Submitting...' : 'Start Your Free Trial'}
+                  </button>
+                  {submissionMessage && (
+                    <div className={`mt-4 text-sm ${submissionStatus === 'error' ? 'text-red-400' : 'text-gray-400'}`}>
+                      {submissionMessage}
+                    </div>
+                  )}
+                  <p className="text-sm text-gray-400 mt-4">
+                    By starting your trial, you agree to our Terms of Service and Privacy Policy
+                  </p>
+                </>
+              )}
             </div>
           </div>
         )}

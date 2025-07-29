@@ -4,6 +4,41 @@ import { FaSearch, FaTag, FaUser, FaCalendar, FaClock, FaArrowRight } from "reac
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [subscriptionMessage, setSubscriptionMessage] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+
+    setSubscriptionStatus('loading');
+    setSubscriptionMessage('');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubscriptionStatus('success');
+        setSubscriptionMessage(data.message);
+        setEmail('');
+      } else {
+        setSubscriptionStatus('error');
+        setSubscriptionMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubscriptionStatus('error');
+      setSubscriptionMessage('Something went wrong. Please try again.');
+    }
+  };
 
   const categories = [
     { id: 'all', name: 'All Posts', count: 12 },
@@ -310,16 +345,28 @@ export default function BlogPage() {
           <p className="text-lg text-gray-300 mb-8">
             Get the latest AI automation trends, industry insights, and practical tips delivered to your inbox.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              disabled={subscriptionStatus === 'loading'}
             />
-            <button className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200">
-              Subscribe
+            <button 
+              type="submit"
+              disabled={subscriptionStatus === 'loading' || !email.trim()}
+              className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-bold rounded-lg transition-all duration-200"
+            >
+              {subscriptionStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
-          </div>
+          </form>
+          {subscriptionMessage && (
+            <div className={`mt-4 text-sm ${subscriptionStatus === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+              {subscriptionMessage}
+            </div>
+          )}
           <p className="text-sm text-gray-400 mt-4">
             No spam, unsubscribe at any time. We respect your privacy.
           </p>
