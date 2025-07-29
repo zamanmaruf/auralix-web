@@ -53,7 +53,7 @@ export default function AutomateWithAIPage() {
         setSubmissionStatus('error');
         setSubmissionMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmissionStatus('error');
       setSubmissionMessage('Something went wrong. Please try again.');
     }

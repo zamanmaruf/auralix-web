@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { FaUpload, FaFileAlt, FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaCheckCircle } from 'react-icons/fa';
+import { FaUpload, FaFileAlt, FaEnvelope, FaCheckCircle } from 'react-icons/fa';
 
 export default function SendResumePage() {
   const [formData, setFormData] = useState({

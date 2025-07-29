@@ -18,7 +18,7 @@ export default function CareersPage() {
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
             <FaRocket className="text-5xl mb-4 text-cyan-400" />
             <h3 className="text-xl font-bold text-white mb-4">Innovation First</h3>
-            <p className="text-gray-300">Work on cutting-edge AI technology that's transforming how businesses operate and grow.</p>
+            <p className="text-gray-300">Work on cutting-edge AI technology that&apos;s transforming how businesses operate and grow.</p>
           </div>
           
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
@@ -165,7 +165,7 @@ export default function CareersPage() {
 
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">Business Development Manager</h3>
-            <p className="text-gray-300 mb-4">Help us grow our client base and expand our reach across Nova Scotia's business community.</p>
+            <p className="text-gray-300 mb-4">Help us grow our client base and expand our reach across Nova Scotia&apos;s business community.</p>
             <div className="flex flex-wrap gap-2 mb-4">
               <span className="px-3 py-1 bg-cyan-500 text-black text-sm rounded-full">Full-time</span>
               <span className="px-3 py-1 bg-cyan-500 text-black text-sm rounded-full">Hybrid</span>
@@ -227,7 +227,7 @@ export default function CareersPage() {
             <div className="text-center">
               <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center text-black font-bold text-xl mx-auto mb-4">4</div>
               <h3 className="text-lg font-bold text-white mb-2">Join</h3>
-              <p className="text-gray-300 text-sm">Welcome to the Auralix AI team! Let's build the future together.</p>
+              <p className="text-gray-300 text-sm">Welcome to the Auralix AI team! Let&apos;s build the future together.</p>
             </div>
           </div>
         </div>

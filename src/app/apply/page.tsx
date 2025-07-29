@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { FaUser, FaEnvelope, FaPhone, FaGraduationCap, FaBriefcase, FaFileAlt, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function ApplyPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -71,7 +70,7 @@ export default function ApplyPage() {
         setSubmissionStatus('error');
         setSubmissionMessage(result.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmissionStatus('error');
       setSubmissionMessage('Network error. Please check your connection and try again.');
     }

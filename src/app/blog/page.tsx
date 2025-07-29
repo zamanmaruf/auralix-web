@@ -34,7 +34,7 @@ export default function BlogPage() {
         setSubscriptionStatus('error');
         setSubscriptionMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubscriptionStatus('error');
       setSubscriptionMessage('Something went wrong. Please try again.');
     }

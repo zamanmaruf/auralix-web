@@ -1,5 +1,4 @@
 'use client';
-import { FaCookieBite, FaShieldAlt, FaEye, FaCog } from 'react-icons/fa';
 
 export default function CookiesPage() {
   return (

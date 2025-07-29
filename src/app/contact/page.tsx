@@ -49,7 +49,7 @@ export default function ContactPage() {
         setSubmissionStatus('error');
         setSubmissionMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmissionStatus('error');
       setSubmissionMessage('Something went wrong. Please try again.');
     }
@@ -60,7 +60,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto text-center py-16 px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Get in Touch</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Ready to transform your business with AI automation? Let's start a conversation.</p>
+        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Ready to transform your business with AI automation? Let&apos;s start a conversation.</p>
       </section>
 
       {/* Contact Information */}
