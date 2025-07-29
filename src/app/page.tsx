@@ -55,11 +55,11 @@ export default function HomePage() {
           <p className="text-lg sm:text-xl md:text-2xl text-teal-200 mb-6 px-4">
             From Startup to Enterprise — Revolutionizing Business Operations
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-8 w-full max-w-md sm:max-w-none">
-            <a href="/trial" className="px-6 sm:px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center items-center">
+            <a href="/trial" className="px-6 sm:px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]">
               For Small Businesses
             </a>
-            <a href="/solutions" className="px-6 sm:px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center">
+            <a href="/solutions" className="px-6 sm:px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]">
               For Enterprises
             </a>
           </div>
