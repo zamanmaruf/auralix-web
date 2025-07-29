@@ -1,7 +1,7 @@
 'use client';
-import { FaArrowLeft, FaCheck, FaRocket, FaHeadset, FaShieldAlt, FaUsers } from "react-icons/fa";
-import { useState } from "react";
-import Link from "next/link";
+import { FaArrowLeft, FaCheck, FaRocket, FaHeadset, FaShieldAlt, FaUsers } from 'react-icons/fa';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function TrialPage() {
   const [currentStep, setCurrentStep] = useState(1);

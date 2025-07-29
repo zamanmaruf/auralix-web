@@ -239,7 +239,7 @@ export default function ApplyPage() {
               <h2 className="text-2xl font-bold text-white mb-6">Professional Information</h2>
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Position You're Applying For *</label>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Position You&apos;re Applying For *</label>
                   <select
                     value={formData.position}
                     onChange={(e) => handleInputChange('position', e.target.value)}
@@ -340,7 +340,7 @@ export default function ApplyPage() {
                   <textarea
                     value={formData.coverLetter}
                     onChange={(e) => handleInputChange('coverLetter', e.target.value)}
-                    placeholder="Tell us why you're interested in this position and what makes you a great fit for Auralix AI..."
+                    placeholder="Tell us why you&apos;re interested in this position and what makes you a great fit for Auralix AI..."
                     rows={6}
                     className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     required

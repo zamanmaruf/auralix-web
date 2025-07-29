@@ -15,7 +15,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Auralix AI Assistant. I can help you with:\n\n• AI automation solutions\n• Pricing and packages\n• Industry-specific recommendations\n• Case studies and ROI\n• Getting started with a free consultation\n\nWhat would you like to know?",
+      text: "Hi! I&apos;m Auralix AI Assistant. I can help you with:\n\n• AI automation solutions\n• Pricing and packages\n• Industry-specific recommendations\n• Case studies and ROI\n• Getting started with a free consultation\n\nWhat would you like to know?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -78,7 +78,7 @@ export default function Chatbot() {
       console.error('Chat error:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: "I'm sorry, I'm having trouble connecting right now. Please try again or contact us directly at auralixai@gmail.com",
+        text: "I&apos;m sorry, I&apos;m having trouble connecting right now. Please try again or contact us directly at auralixai@gmail.com",
         sender: 'bot',
         timestamp: new Date()
       };

@@ -1,5 +1,4 @@
 'use client';
-import { FaFileContract, FaUserCheck, FaShieldAlt, FaGavel } from 'react-icons/fa';
 
 export default function TermsPage() {
   return (

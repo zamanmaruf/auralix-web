@@ -185,7 +185,7 @@ export default function SendResumePage() {
 
             {/* Position */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Position You're Interested In</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Position You&apos;re Interested In</label>
               <select
                 value={formData.position}
                 onChange={(e) => handleInputChange('position', e.target.value)}
@@ -238,7 +238,7 @@ export default function SendResumePage() {
               <textarea
                 value={formData.message}
                 onChange={(e) => handleInputChange('message', e.target.value)}
-                placeholder="Tell us why you're interested in joining Auralix AI, or any additional information you'd like to share..."
+                placeholder="Tell us why you&apos;re interested in joining Auralix AI, or any additional information you&apos;d like to share..."
                 rows={4}
                 className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
               />
@@ -302,7 +302,7 @@ export default function SendResumePage() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white mb-2">Open Positions</h3>
-                <p className="text-gray-300">We're always looking for talented individuals to join our growing team.</p>
+                <p className="text-gray-300">We&apos;re always looking for talented individuals to join our growing team.</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">

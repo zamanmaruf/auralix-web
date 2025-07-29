@@ -1,5 +1,5 @@
 'use client';
-import { FaRocket, FaUsers, FaChartLine, FaHeadset, FaShieldAlt, FaClock, FaCogs, FaDatabase } from 'react-icons/fa';
+import { FaRocket, FaUsers, FaChartLine, FaHeadset, FaCogs, FaDatabase } from 'react-icons/fa';
 
 export default function MidMarketPage() {
   return (
