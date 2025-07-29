@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { useState } from "react";
 import { FaLinkedin, FaTwitter, FaYoutube, FaShieldAlt, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import Chatbot from "../components/Chatbot";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -198,6 +199,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        
+        {/* AI Chatbot */}
+        <Chatbot />
       </body>
     </html>
   );
