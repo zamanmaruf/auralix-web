@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
             <h2 className="text-2xl font-bold text-white mb-6">Introduction</h2>
             <p className="text-gray-300 mb-4">
-              Auralix AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI automation services.
+              Auralix AI (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI automation services.
             </p>
             <p className="text-gray-300">
               By using our services, you agree to the collection and use of information in accordance with this policy.

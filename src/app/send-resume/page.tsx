@@ -103,7 +103,7 @@ export default function SendResumePage() {
       <section className="max-w-4xl mx-auto text-center py-16 px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Send Your Resume</h1>
         <p className="text-xl md:text-2xl text-cyan-100 mb-8">Quick and easy application process</p>
-        <p className="text-gray-300">Upload your resume and we'll get back to you within 48 hours</p>
+        <p className="text-gray-300">Upload your resume and we&apos;ll get back to you within 48 hours</p>
       </section>
 
       {/* Resume Upload Form */}

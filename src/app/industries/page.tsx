@@ -240,17 +240,17 @@ export default function IndustriesPage() {
           <div className="space-y-8">
             <div className="border-l-4 border-cyan-400 pl-6">
               <h3 className="text-xl font-bold text-white mb-2">Nova Scotia Restaurant Chain</h3>
-              <p className="text-gray-300 mb-2">"Auralix AI helped us automate our order management system, reducing manual errors by 85% and improving customer satisfaction significantly."</p>
+              <p className="text-gray-300 mb-2">&quot;Auralix AI helped us automate our order management system, reducing manual errors by 85% and improving customer satisfaction significantly.&quot;</p>
               <p className="text-cyan-400 font-semibold">- Sarah Johnson, Operations Manager</p>
             </div>
             <div className="border-l-4 border-cyan-400 pl-6">
               <h3 className="text-xl font-bold text-white mb-2">Halifax Medical Clinic</h3>
-              <p className="text-gray-300 mb-2">"The automated appointment system has streamlined our scheduling process and reduced no-shows by 40%. Our staff can focus more on patient care."</p>
+              <p className="text-gray-300 mb-2">&quot;The automated appointment system has streamlined our scheduling process and reduced no-shows by 40%. Our staff can focus more on patient care.&quot;</p>
               <p className="text-cyan-400 font-semibold">- Dr. Michael Chen, Clinic Director</p>
             </div>
             <div className="border-l-4 border-cyan-400 pl-6">
               <h3 className="text-xl font-bold text-white mb-2">Dartmouth Retail Store</h3>
-              <p className="text-gray-300 mb-2">"Our inventory management automation has saved us countless hours and helped us reduce stockouts by 60%. Sales have increased by 25%."</p>
+              <p className="text-gray-300 mb-2">&quot;Our inventory management automation has saved us countless hours and helped us reduce stockouts by 60%. Sales have increased by 25%.&quot;</p>
               <p className="text-cyan-400 font-semibold">- Lisa Thompson, Store Owner</p>
             </div>
           </div>

@@ -161,7 +161,7 @@ export default function CookiesPage() {
               
               <div>
                 <h3 className="text-xl font-bold text-cyan-400 mb-3">Cookie Consent</h3>
-                <p className="text-gray-300">When you first visit our website, you'll see a cookie consent banner that allows you to accept or decline non-essential cookies. You can change your preferences at any time.</p>
+                <p className="text-gray-300">When you first visit our website, you&apos;ll see a cookie consent banner that allows you to accept or decline non-essential cookies. You can change your preferences at any time.</p>
               </div>
               
               <div>
@@ -197,7 +197,7 @@ export default function CookiesPage() {
               We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.
             </p>
             <p className="text-gray-300">
-              We will notify you of any material changes by posting the updated policy on our website and updating the "Last updated" date.
+              We will notify you of any material changes by posting the updated policy on our website and updating the &quot;Last updated&quot; date.
             </p>
           </div>
 

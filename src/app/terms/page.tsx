@@ -17,7 +17,7 @@ export default function TermsPage() {
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
             <h2 className="text-2xl font-bold text-white mb-6">Agreement to Terms</h2>
             <p className="text-gray-300 mb-4">
-              By accessing and using Auralix AI's services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+              By accessing and using Auralix AI&apos;s services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
             </p>
             <p className="text-gray-300">
               These Terms of Service (&quot;Terms&quot;) govern your use of our AI automation services, including our website, mobile applications, and any related services (collectively, the &quot;Service&quot;).
@@ -189,7 +189,7 @@ export default function TermsPage() {
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
             <h2 className="text-2xl font-bold text-white mb-6">Changes to Terms</h2>
             <p className="text-gray-300 mb-4">
-              We reserve the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on this page and updating the "Last updated" date.
+              We reserve the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on this page and updating the &quot;Last updated&quot; date.
             </p>
             <p className="text-gray-300">
               Your continued use of the Service after any changes constitutes acceptance of the new Terms. If you do not agree to the new Terms, you should discontinue use of the Service.

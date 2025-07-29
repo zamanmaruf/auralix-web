@@ -199,7 +199,7 @@ export default function EnterprisePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-bold text-cyan-400 mb-4">What's Included</h3>
+              <h3 className="text-xl font-bold text-cyan-400 mb-4">What&apos;s Included</h3>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
