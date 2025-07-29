@@ -238,14 +238,17 @@ export default function BlogPage() {
                     <FaArrowRight />
                   </a>
                 </div>
-                <div className="relative h-full min-h-[300px] flex items-center justify-center overflow-hidden">
-                  <img
-                    src="/future-trend-bg.jpeg"
-                    alt="AI Technology Future of Automation"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                  <div className="relative z-10 text-center text-white">
+                <div 
+                  className="relative h-full min-h-[300px] flex items-center justify-center overflow-hidden"
+                  style={{
+                    backgroundImage: 'url(/future-trend-bg.jpeg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-20" style={{ zIndex: 1 }}></div>
+                  <div className="relative z-10 text-center text-white" style={{ zIndex: 2 }}>
                     <div className="text-lg font-semibold mb-2">AI Technology</div>
                     <div className="text-sm opacity-80">Future of Automation</div>
                   </div>
