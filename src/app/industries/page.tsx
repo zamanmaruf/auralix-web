@@ -1,6 +1,6 @@
 'use client';
-import { MdRestaurant, MdLocalHospital, MdStore, MdContentCut, FaIndustry, FaGraduationCap, FaChartBar, FaUsers } from 'react-icons/md';
-import { FaBuilding, FaCar, FaHome } from 'react-icons/fa';
+import { MdRestaurant, MdLocalHospital, MdStore, MdContentCut } from 'react-icons/md';
+import { FaIndustry, FaGraduationCap, FaChartBar, FaUsers, FaBuilding, FaCar, FaHome } from 'react-icons/fa';
 
 export default function IndustriesPage() {
   return (
