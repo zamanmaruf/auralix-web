@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaLinkedin, FaTwitter, FaYoutube, FaShieldAlt, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import Chatbot from "../components/Chatbot";
+import Logo from "../components/Logo";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -84,8 +85,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] bg-opacity-95 border-b border-[#1a1a1a] shadow-lg backdrop-blur-sm">
           <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4 relative">
             <div className="flex-1 flex items-center">
-              <Link href="/" className="text-xl md:text-2xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-glow select-none">
-                AURALIX AI
+              <Link href="/" className="flex items-center">
+                <Logo width={180} height={60} className="drop-shadow-glow" />
               </Link>
             </div>
             {/* Desktop Nav */}
@@ -160,8 +161,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
               {/* Company Info */}
               <div className="col-span-1 md:col-span-2">
-                <div className="text-xl md:text-2xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
-                  AURALIX AI
+                <div className="mb-4">
+                  <Logo width={160} height={50} className="drop-shadow-glow" />
                 </div>
                 <p className="text-gray-300 mb-6 max-w-md text-sm md:text-base">
                   Enterprise-grade AI automation solutions that scale with your business. 
