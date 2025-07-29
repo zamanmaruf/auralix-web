@@ -119,7 +119,7 @@ export default function Chatbot() {
       {/* Chat Window */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-end p-4">
-          <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)} />
+          <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
           <div className="relative bg-[#0a0a0a] border border-[#333] rounded-2xl shadow-2xl w-full max-w-md h-[600px] flex flex-col">
             {/* Header */}
             <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-t-2xl">
