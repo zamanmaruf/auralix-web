@@ -31,8 +31,14 @@ export async function POST(request: NextRequest) {
       'coverLetter', 'workAuthorization'
     ];
 
+    const formData = {
+      firstName, lastName, email, phone, location,
+      position, experience, education, skills,
+      coverLetter, workAuthorization
+    };
+
     for (const field of requiredFields) {
-      if (!request.body[field] || request.body[field].trim() === '') {
+      if (!formData[field as keyof typeof formData] || String(formData[field as keyof typeof formData]).trim() === '') {
         return NextResponse.json(
           { error: `${field.charAt(0).toUpperCase() + field.slice(1)} is required` },
           { status: 400 }
