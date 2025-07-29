@@ -95,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
               <Link href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</Link>
               <Link href="/blog" className="hover:text-cyan-400 transition-colors">Blog</Link>
-              <a href="/trial" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Get Started</a>
+              <a href="https://calendly.com/auralixai/30min" target="_blank" rel="noopener noreferrer" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Book Consultation</a>
             </div>
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -142,11 +142,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   Blog
                 </Link>
                 <a 
-                  href="/trial" 
+                  href="https://calendly.com/auralixai/30min" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="block px-6 py-4 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold text-center mt-6"
                   onClick={closeMobileMenu}
                 >
-                  Get Started
+                  Book Consultation
                 </a>
               </div>
             </div>

@@ -56,11 +56,11 @@ export default function HomePage() {
             From Startup to Enterprise — Revolutionizing Business Operations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center items-center">
-            <a href="/trial" className="px-6 sm:px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]">
-              For Small Businesses
+            <a href="https://calendly.com/auralixai/30min" target="_blank" rel="noopener noreferrer" className="px-6 sm:px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]">
+              Book Free Consultation
             </a>
             <a href="/solutions" className="px-6 sm:px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]">
-              For Enterprises
+              View Solutions
             </a>
           </div>
           
@@ -314,12 +314,22 @@ export default function HomePage() {
                   ></textarea>
                 </div>
                 {error && <p className="text-red-400 text-sm">{error}</p>}
-                <button
-                  type="submit"
-                  className="w-full px-6 sm:px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-base"
-                >
-                  Get Free Consultation
-                </button>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <button
+                    type="submit"
+                    className="w-full px-6 sm:px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-base"
+                  >
+                    Send Message
+                  </button>
+                  <a 
+                    href="https://calendly.com/auralixai/30min" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full px-6 sm:px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-base text-center flex items-center justify-center"
+                  >
+                    Book 30-Min Call
+                  </a>
+                </div>
               </form>
             )}
           </div>
