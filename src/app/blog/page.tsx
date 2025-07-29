@@ -300,8 +300,19 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
               <article key={post.id} className="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200">
-                <div className="h-48 bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                  <div className="text-center text-white">
+                <div 
+                  className="h-48 flex items-center justify-center overflow-hidden relative"
+                  style={{
+                    backgroundImage: 'url(/future-trend-bg.jpeg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+                  <div className="relative z-10 text-center text-white">
+                    <div className="text-lg font-semibold mb-2">AI Technology</div>
+                    <div className="text-sm opacity-80">Future of Automation</div>
                   </div>
                 </div>
                 <div className="p-6">

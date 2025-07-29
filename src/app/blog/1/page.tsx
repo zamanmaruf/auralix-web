@@ -5,6 +5,23 @@ import Link from "next/link";
 export default function BlogPost1() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
+      {/* Hero Section with Background Image */}
+      <div 
+        className="relative h-64 md:h-80 flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: 'url(/future-trend-bg.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="relative z-10 text-center text-white px-4">
+          <div className="text-2xl md:text-4xl font-bold mb-2">AI Technology</div>
+          <div className="text-lg md:text-xl opacity-90">Future of Automation</div>
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Link
           href="/blog"
