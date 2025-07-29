@@ -1,5 +1,5 @@
 'use client';
-import { FaRocket, FaUsers, FaChartLine, FaHeadset, FaShieldAlt, FaClock, FaCogs, FaDatabase, FaServer, FaGlobe } from 'react-icons/fa';
+import { FaRocket, FaUsers, FaChartLine, FaShieldAlt, FaCogs, FaServer } from 'react-icons/fa';
 
 export default function EnterprisePage() {
   return (

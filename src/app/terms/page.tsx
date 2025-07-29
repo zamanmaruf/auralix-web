@@ -20,7 +20,7 @@ export default function TermsPage() {
               By accessing and using Auralix AI's services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
             </p>
             <p className="text-gray-300">
-              These Terms of Service ("Terms") govern your use of our AI automation services, including our website, mobile applications, and any related services (collectively, the "Service").
+              These Terms of Service (&quot;Terms&quot;) govern your use of our AI automation services, including our website, mobile applications, and any related services (collectively, the &quot;Service&quot;).
             </p>
           </div>
 
