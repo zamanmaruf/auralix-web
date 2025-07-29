@@ -1,5 +1,5 @@
 'use client';
-import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark, FaTag } from "react-icons/fa";
+import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark } from "react-icons/fa";
 import Link from "next/link";
 
 export default function BlogPost4() {

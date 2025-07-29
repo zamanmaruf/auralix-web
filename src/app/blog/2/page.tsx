@@ -1,5 +1,5 @@
 'use client';
-import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark, FaTag } from "react-icons/fa";
+import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark } from "react-icons/fa";
 import Link from "next/link";
 
 export default function BlogPost2() {
@@ -67,12 +67,12 @@ export default function BlogPost2() {
             {/* Article Content */}
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-gray-300 mb-6">
-                In the competitive restaurant industry of Nova Scotia, local establishments are discovering that AI automation isn't just for big chains—it's a game-changer for independent restaurants too. This real-world case study shows how three local restaurants increased their bookings by 40% and reduced administrative time by 60% using AI automation.
+                In the competitive restaurant industry of Nova Scotia, local establishments are discovering that AI automation isn&apos;t just for big chains—it&apos;s a game-changer for independent restaurants too. This real-world case study shows how three local restaurants increased their bookings by 40% and reduced administrative time by 60% using AI automation.
               </p>
               
               <h2 className="text-2xl font-bold text-white mb-4">The Challenge: Seasonal Tourism and Manual Operations</h2>
               <p className="text-gray-300 mb-6">
-                Nova Scotia's restaurant scene faces unique challenges: seasonal tourism fluctuations, labor shortages, and the need to maintain personal service while competing with larger chains. Three local restaurants—The Maritime Bistro, Halifax Harbor Grill, and Cape Breton Seafood—were struggling with these issues when they decided to implement AI automation.
+                Nova Scotia&apos;s restaurant scene faces unique challenges: seasonal tourism fluctuations, labor shortages, and the need to maintain personal service while competing with larger chains. Three local restaurants—The Maritime Grill, Ocean Breeze Seafood, and Halifax Heritage Pub—faced these exact challenges.
               </p>
               
               <h2 className="text-2xl font-bold text-white mb-4">The Solution: Comprehensive AI Integration</h2>
@@ -134,7 +134,7 @@ export default function BlogPost2() {
               
               <h3 className="text-xl font-semibold text-white mb-3">Local Market Understanding</h3>
               <p className="text-gray-300 mb-6">
-                The AI solutions were customized to understand Nova Scotia's unique market dynamics, including seasonal tourism patterns and local customer preferences.
+                The AI solutions were customized to understand Nova Scotia&apos;s unique market dynamics, including seasonal tourism patterns and local customer preferences.
               </p>
               
               <h3 className="text-xl font-semibold text-white mb-3">Staff Training and Buy-in</h3>
@@ -154,7 +154,7 @@ export default function BlogPost2() {
               
               <h2 className="text-2xl font-bold text-white mb-4">Conclusion</h2>
               <p className="text-gray-300 mb-6">
-                The Nova Scotia restaurant case study proves that AI automation isn't just for large chains—it's a powerful tool for independent restaurants looking to compete and thrive in today's market. By embracing technology while maintaining their unique character and service quality, these restaurants have positioned themselves for long-term success.
+                The Nova Scotia restaurant case study proves that AI automation isn&apos;t just for large chains—it&apos;s a powerful tool for independent restaurants looking to compete and thrive in today&apos;s market. By embracing technology while maintaining their unique character and service quality, these restaurants have positioned themselves for long-term success.
               </p>
               
               <div className="bg-[#0a2a3a] rounded-lg p-6 mt-8">

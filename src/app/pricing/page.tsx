@@ -1,5 +1,5 @@
 'use client';
-import { FaGlobe, FaSearchDollar, FaRobot, FaChartBar, FaCogs, FaGift, FaShieldAlt, FaUsers, FaLock, FaHeadset, FaDownload } from "react-icons/fa";
+import { FaGlobe, FaRobot, FaChartBar, FaCogs, FaShieldAlt, FaUsers, FaLock, FaHeadset, FaDownload } from "react-icons/fa";
 import { useState } from "react";
 
 export default function PricingPage() {
@@ -280,7 +280,7 @@ export default function PricingPage() {
             <p className="text-gray-300">No setup fees for standard plans. Enterprise custom solutions may have one-time implementation costs.</p>
           </div>
           <div className="bg-[#1a1a1a] rounded-xl p-6">
-            <h3 className="text-xl font-bold text-white mb-3">What's included in the free trial?</h3>
+            <h3 className="text-xl font-bold text-white mb-3">What&apos;s included in the free trial?</h3>
             <p className="text-gray-300">14-day free trial includes all features of the Small Business plan with full support and no credit card required.</p>
           </div>
           <div className="bg-[#1a1a1a] rounded-xl p-6">

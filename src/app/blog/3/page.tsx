@@ -1,5 +1,5 @@
 'use client';
-import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark, FaTag } from "react-icons/fa";
+import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark } from "react-icons/fa";
 import Link from "next/link";
 
 export default function BlogPost3() {
@@ -72,7 +72,7 @@ export default function BlogPost3() {
               
               <h2 className="text-2xl font-bold text-white mb-4">Strategy 1: Start with High-Impact, Low-Complexity Processes</h2>
               <p className="text-gray-300 mb-6">
-                The most successful automation initiatives begin with processes that have clear, measurable outcomes and relatively simple workflows. These "quick wins" build momentum and demonstrate value to stakeholders while providing valuable learning opportunities.
+                The most successful automation initiatives begin with processes that have clear, measurable outcomes and relatively simple workflows. These &quot;quick wins&quot; build momentum and demonstrate value to stakeholders while providing valuable learning opportunities.
               </p>
               
               <h3 className="text-xl font-semibold text-white mb-3">Identifying the Right Starting Points</h3>
@@ -120,7 +120,7 @@ export default function BlogPost3() {
               
               <h2 className="text-2xl font-bold text-white mb-4">Strategy 4: Implement Predictive Analytics for Decision Making</h2>
               <p className="text-gray-300 mb-6">
-                Workflow automation isn't just about efficiency—it's about making better decisions faster. Predictive analytics can identify patterns, forecast outcomes, and trigger automated actions based on predicted scenarios.
+                Workflow automation isn&apos;t just about efficiency—it&apos;s about making better decisions faster. Predictive analytics can identify patterns, forecast outcomes, and trigger automated actions based on predicted scenarios.
               </p>
               
               <h3 className="text-xl font-semibold text-white mb-3">Inventory Management</h3>

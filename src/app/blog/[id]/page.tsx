@@ -1,5 +1,4 @@
 'use client';
-import { FaCalendar, FaUser, FaClock, FaArrowLeft, FaShare, FaBookmark, FaTag } from "react-icons/fa";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -8,7 +7,7 @@ export default function BlogPostPage() {
   const postId = params.id;
 
   // This would typically come from a CMS or database
-  // For now, we'll return a placeholder that shows the post ID
+  // For now, we&apos;ll return a placeholder that shows the post ID
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -16,7 +15,6 @@ export default function BlogPostPage() {
           href="/blog" 
           className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8"
         >
-          <FaArrowLeft />
           Back to Blog
         </Link>
         

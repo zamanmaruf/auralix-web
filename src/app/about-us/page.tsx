@@ -44,12 +44,12 @@ export default function AboutUsPage() {
               </p>
               <p className="text-lg text-gray-300 mb-6">
                 We prioritize practical deployment, measurable outcomes, and scalable architecture 
-                tailored to each business's stage and size.
+                tailored to each business&apos;s stage and size.
               </p>
               <div className="bg-[#1a1a1a] rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-white mb-3">Our Core Belief</h3>
                 <p className="text-gray-300">
-                  The future of AI is not just smart—it's accessible, actionable, and accountable.
+                  The future of AI is not just smart—it&apos;s accessible, actionable, and accountable.
                 </p>
               </div>
             </div>
@@ -57,7 +57,7 @@ export default function AboutUsPage() {
               <h2 className="text-3xl font-bold text-blue-400 mb-6">Our Vision</h2>
               <p className="text-lg text-gray-300 mb-6">
                 We are building the most trusted AI automation partner for modern businesses—whether 
-                you're running a single storefront or scaling operations across regions.
+                you&apos;re running a single storefront or scaling operations across regions.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -114,7 +114,7 @@ export default function AboutUsPage() {
               </p>
               <div className="bg-[#0a2a3a] rounded-lg p-4">
                 <p className="text-sm text-cyan-300 font-semibold">
-                  "We believe every business deserves access to intelligent automation, regardless of size."
+                  &quot;We believe every business deserves access to intelligent automation, regardless of size.&quot;
                 </p>
               </div>
             </div>
