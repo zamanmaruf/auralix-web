@@ -1,7 +1,6 @@
 'use client';
-import { FaCalendar, FaUser, FaClock, FaArrowRight, FaSearch, FaTag } from "react-icons/fa";
 import { useState } from "react";
-import Image from "next/image";
+import { FaSearch, FaTag, FaUser, FaCalendar, FaClock, FaArrowRight } from "react-icons/fa";
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -240,12 +239,10 @@ export default function BlogPage() {
                   </a>
                 </div>
                 <div className="relative h-full min-h-[300px] flex items-center justify-center overflow-hidden">
-                  <Image
+                  <img
                     src="/future-trend-bg.jpeg"
                     alt="AI Technology Future of Automation"
-                    fill
-                    className="object-cover"
-                    priority
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                   <div className="relative z-10 text-center text-white">
