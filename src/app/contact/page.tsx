@@ -159,7 +159,7 @@ export default function ContactPage() {
                   ></textarea>
                 </div>
                 {submissionMessage && (
-                  <div className={`text-sm ${submissionStatus === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                  <div className={`text-sm ${submissionStatus === 'success' ? 'text-green-400' : submissionStatus === 'error' ? 'text-red-400' : 'text-gray-400'}`}>
                     {submissionMessage}
                   </div>
                 )}
