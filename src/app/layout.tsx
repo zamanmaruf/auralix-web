@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4 relative">
             <div className="flex-1 flex items-center">
               <Link href="/" className="flex items-center">
-                <Logo width={90} height={30} className="drop-shadow-glow" />
+                <Logo width={70} height={25} className="drop-shadow-glow" />
               </Link>
             </div>
             {/* Desktop Nav */}
