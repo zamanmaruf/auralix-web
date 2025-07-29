@@ -43,6 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       setSubscriptionMessage('Something went wrong. Please try again.');
     }
   };
+
+  const closeMobileMenu = () => setMenuOpen(false);
+
   return (
     <html lang="en">
       <head>
@@ -57,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="twitter:title" content="Auralix AI - Enterprise AI Automation Solutions" />
         <meta name="twitter:description" content="AI Automation That Scales With You — From Startup to Enterprise." />
         <meta name="twitter:image" content="/hero-ai-bg.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
@@ -80,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] bg-opacity-95 border-b border-[#1a1a1a] shadow-lg backdrop-blur-sm">
           <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4 relative">
             <div className="flex-1 flex items-center">
-              <Link href="/" className="text-2xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-glow select-none">
+              <Link href="/" className="text-xl md:text-2xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-glow select-none">
                 AURALIX AI
               </Link>
             </div>
@@ -96,7 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="md:hidden">
               <button 
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="text-white hover:text-cyan-400 p-2"
+                className="text-white hover:text-cyan-400 p-3 rounded-lg hover:bg-[#1a1a1a] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                aria-label="Toggle mobile menu"
               >
                 {menuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
               </button>
@@ -106,40 +111,70 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Mobile Menu */}
           {menuOpen && (
             <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-[#1a1a1a] shadow-lg">
-              <div className="px-4 py-6 space-y-4">
-                <Link href="/solutions" className="block text-lg hover:text-cyan-400 transition-colors">Solutions</Link>
-                <Link href="/pricing" className="block text-lg hover:text-cyan-400 transition-colors">Pricing</Link>
-                <Link href="/about-us" className="block text-lg hover:text-cyan-400 transition-colors">About Us</Link>
-                <Link href="/blog" className="block text-lg hover:text-cyan-400 transition-colors">Blog</Link>
-                <a href="/trial" className="block px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold text-center">Get Started</a>
+              <div className="px-6 py-8 space-y-6">
+                <Link 
+                  href="/solutions" 
+                  className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                  onClick={closeMobileMenu}
+                >
+                  Solutions
+                </Link>
+                <Link 
+                  href="/pricing" 
+                  className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                  onClick={closeMobileMenu}
+                >
+                  Pricing
+                </Link>
+                <Link 
+                  href="/about-us" 
+                  className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                  onClick={closeMobileMenu}
+                >
+                  About Us
+                </Link>
+                <Link 
+                  href="/blog" 
+                  className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                  onClick={closeMobileMenu}
+                >
+                  Blog
+                </Link>
+                <a 
+                  href="/trial" 
+                  className="block px-6 py-4 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold text-center mt-6"
+                  onClick={closeMobileMenu}
+                >
+                  Get Started
+                </a>
               </div>
             </div>
           )}
         </header>
-        <main>{children}</main>
+        <main className="min-h-screen">{children}</main>
         
         {/* Professional Footer */}
         <footer className="w-full bg-[#0a0a0a] border-t border-[#222] py-12 mt-10">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
             {/* Main Footer Content */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
               {/* Company Info */}
               <div className="col-span-1 md:col-span-2">
-                <div className="text-2xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+                <div className="text-xl md:text-2xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
                   AURALIX AI
                 </div>
-                <p className="text-gray-300 mb-4 max-w-md">
+                <p className="text-gray-300 mb-6 max-w-md text-sm md:text-base">
                   Enterprise-grade AI automation solutions that scale with your business. 
                   From startup to enterprise, we deliver intelligent automation that drives results.
                 </p>
                 <div className="flex gap-4">
-                  <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaLinkedin className="text-xl" />
                   </a>
-                  <a href="https://twitter.com/auralix_ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href="https://twitter.com/auralix_ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaTwitter className="text-xl" />
                   </a>
-                  <a href="https://youtube.com/@auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href="https://youtube.com/@auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaYoutube className="text-xl" />
                   </a>
                 </div>
@@ -148,22 +183,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* Quick Links */}
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">Solutions</h3>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li><Link href="/solutions/small-business" className="hover:text-cyan-400 transition-colors">Small Business</Link></li>
-                  <li><Link href="/solutions/mid-market" className="hover:text-cyan-400 transition-colors">Mid-Market</Link></li>
-                  <li><Link href="/solutions/enterprise" className="hover:text-cyan-400 transition-colors">Enterprise</Link></li>
-                  <li><Link href="/industries" className="hover:text-cyan-400 transition-colors">Industries</Link></li>
+                <ul className="space-y-3 text-sm text-gray-300">
+                  <li><Link href="/solutions/small-business" className="hover:text-cyan-400 transition-colors block py-1">Small Business</Link></li>
+                  <li><Link href="/solutions/mid-market" className="hover:text-cyan-400 transition-colors block py-1">Mid-Market</Link></li>
+                  <li><Link href="/solutions/enterprise" className="hover:text-cyan-400 transition-colors block py-1">Enterprise</Link></li>
+                  <li><Link href="/industries" className="hover:text-cyan-400 transition-colors block py-1">Industries</Link></li>
                 </ul>
               </div>
 
               {/* Company */}
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li><Link href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</Link></li>
-                  <li><Link href="/blog" className="hover:text-cyan-400 transition-colors">Blog</Link></li>
-                  <li><Link href="/careers" className="hover:text-cyan-400 transition-colors">Careers</Link></li>
-                  <li><Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link></li>
+                <ul className="space-y-3 text-sm text-gray-300">
+                  <li><Link href="/about-us" className="hover:text-cyan-400 transition-colors block py-1">About Us</Link></li>
+                  <li><Link href="/blog" className="hover:text-cyan-400 transition-colors block py-1">Blog</Link></li>
+                  <li><Link href="/careers" className="hover:text-cyan-400 transition-colors block py-1">Careers</Link></li>
+                  <li><Link href="/contact" className="hover:text-cyan-400 transition-colors block py-1">Contact</Link></li>
                 </ul>
               </div>
             </div>
@@ -172,10 +207,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pt-8 border-t border-[#333]">
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
-                <div className="space-y-2 text-sm text-gray-300">
-                  <div className="flex items-center gap-2">
-                    <FaEnvelope className="text-cyan-400" />
-                    <span>auralixai@gmail.com</span>
+                <div className="space-y-3 text-sm text-gray-300">
+                  <div className="flex items-center gap-3">
+                    <FaEnvelope className="text-cyan-400 flex-shrink-0" />
+                    <span className="break-all">auralixai@gmail.com</span>
                   </div>
                   <div className="text-gray-400">
                     Halifax, Nova Scotia, Canada
@@ -186,13 +221,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
                 <div className="flex gap-4">
-                  <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaLinkedin className="text-xl" />
                   </a>
-                  <a href="https://twitter.com/auralix_ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href="https://twitter.com/auralix_ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaTwitter className="text-xl" />
                   </a>
-                  <a href="https://youtube.com/@auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href="https://youtube.com/@auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaYoutube className="text-xl" />
                   </a>
                 </div>
@@ -201,24 +236,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Newsletter Signup */}
             <div className="bg-[#1a1a1a] rounded-lg p-6 mb-8">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div>
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="w-full md:w-auto">
                   <h3 className="text-lg font-semibold text-white mb-2">Stay Updated</h3>
                   <p className="text-sm text-gray-300">Get the latest AI automation insights and industry updates.</p>
                 </div>
-                <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                   <input 
                     type="email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email" 
-                    className="flex-1 md:w-64 px-4 py-2 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    className="flex-1 px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 text-base"
                     disabled={subscriptionStatus === 'loading'}
                   />
                   <button 
                     type="submit"
                     disabled={subscriptionStatus === 'loading' || !email.trim()}
-                    className="px-6 py-2 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold rounded-lg transition-colors"
+                    className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold rounded-lg transition-colors text-base"
                   >
                     {subscriptionStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
                   </button>
@@ -233,11 +268,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Bottom Footer */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-[#333] text-sm text-gray-400">
-              <div className="flex flex-wrap gap-6">
-                <Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link>
-                <Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms of Service</Link>
-                <Link href="/cookies" className="hover:text-cyan-400 transition-colors">Cookie Policy</Link>
-                <Link href="/security" className="hover:text-cyan-400 transition-colors">Security</Link>
+              <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start">
+                <Link href="/privacy" className="hover:text-cyan-400 transition-colors py-1">Privacy Policy</Link>
+                <Link href="/terms" className="hover:text-cyan-400 transition-colors py-1">Terms of Service</Link>
+                <Link href="/cookies" className="hover:text-cyan-400 transition-colors py-1">Cookie Policy</Link>
+                <Link href="/security" className="hover:text-cyan-400 transition-colors py-1">Security</Link>
               </div>
               <div className="flex items-center gap-2">
                 <FaShieldAlt className="text-green-400" />

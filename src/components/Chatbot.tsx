@@ -110,52 +110,53 @@ export default function Chatbot() {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-cyan-400"
         aria-label="Open chat"
       >
-        <FaRobot className="text-2xl" />
+        <FaRobot className="text-xl sm:text-2xl" />
       </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-end p-4">
+        <div className="fixed inset-0 z-50 flex items-end justify-end p-2 sm:p-4">
           <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
-          <div className="relative bg-[#0a0a0a] border border-[#333] rounded-2xl shadow-2xl w-full max-w-md h-[600px] flex flex-col">
+          <div className="relative bg-[#0a0a0a] border border-[#333] rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md h-[500px] sm:h-[600px] flex flex-col">
             {/* Header */}
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-t-2xl">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 sm:p-4 rounded-t-2xl">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <FaRobot className="text-2xl text-white" />
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <FaRobot className="text-xl sm:text-2xl text-white" />
                   <div>
-                    <h3 className="text-white font-bold">Auralix AI Assistant</h3>
-                    <p className="text-cyan-100 text-sm">Powered by AI</p>
+                    <h3 className="text-white font-bold text-sm sm:text-base">Auralix AI Assistant</h3>
+                    <p className="text-cyan-100 text-xs sm:text-sm">Powered by AI</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:text-gray-200 transition-colors"
+                  className="text-white hover:text-gray-200 transition-colors p-1 sm:p-2 rounded-lg hover:bg-white hover:bg-opacity-10"
+                  aria-label="Close chat"
                 >
-                  <FaTimes className="text-xl" />
+                  <FaTimes className="text-lg sm:text-xl" />
                 </button>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
               {messages.map((message) => (
                 <div
                   key={message.id}
                   className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                    className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2 sm:py-3 ${
                       message.sender === 'user'
                         ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white'
                         : 'bg-[#1a1a1a] text-gray-200 border border-[#333]'
                     }`}
                   >
-                    <div className="whitespace-pre-wrap">{message.text}</div>
-                    <div className={`text-xs mt-2 ${message.sender === 'user' ? 'text-cyan-100' : 'text-gray-400'}`}>
+                    <div className="whitespace-pre-wrap text-sm sm:text-base">{message.text}</div>
+                    <div className={`text-xs mt-1 sm:mt-2 ${message.sender === 'user' ? 'text-cyan-100' : 'text-gray-400'}`}>
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
                   </div>
@@ -164,10 +165,10 @@ export default function Chatbot() {
               
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-[#1a1a1a] border border-[#333] rounded-2xl px-4 py-3">
+                  <div className="bg-[#1a1a1a] border border-[#333] rounded-2xl px-3 sm:px-4 py-2 sm:py-3">
                     <div className="flex items-center gap-2">
-                      <FaSpinner className="animate-spin text-cyan-400" />
-                      <span className="text-gray-300">AI is thinking...</span>
+                      <FaSpinner className="animate-spin text-cyan-400 text-sm sm:text-base" />
+                      <span className="text-gray-300 text-sm sm:text-base">AI is thinking...</span>
                     </div>
                   </div>
                 </div>
@@ -178,13 +179,13 @@ export default function Chatbot() {
 
             {/* Quick Replies */}
             {messages.length === 1 && (
-              <div className="px-4 pb-4">
+              <div className="px-3 sm:px-4 pb-3 sm:pb-4">
                 <div className="flex flex-wrap gap-2">
                   {quickReplies.map((reply, index) => (
                     <button
                       key={index}
                       onClick={() => handleQuickReply(reply)}
-                      className="bg-[#1a1a1a] hover:bg-[#333] text-gray-300 text-sm px-3 py-2 rounded-full border border-[#333] transition-colors"
+                      className="bg-[#1a1a1a] hover:bg-[#333] text-gray-300 text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-full border border-[#333] transition-colors"
                     >
                       {reply}
                     </button>
@@ -194,7 +195,7 @@ export default function Chatbot() {
             )}
 
             {/* Input */}
-            <form onSubmit={handleSubmit} id="chat-form" className="p-4 border-t border-[#333]">
+            <form onSubmit={handleSubmit} id="chat-form" className="p-3 sm:p-4 border-t border-[#333]">
               <div className="flex gap-2">
                 <input
                   ref={inputRef}
@@ -202,15 +203,16 @@ export default function Chatbot() {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   placeholder="Type your message..."
-                  className="flex-1 bg-[#1a1a1a] border border-[#333] rounded-full px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  className="flex-1 bg-[#1a1a1a] border border-[#333] rounded-full px-3 sm:px-4 py-2 sm:py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-sm sm:text-base"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={!inputText.trim() || isLoading}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-full transition-all duration-200"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:opacity-50 disabled:cursor-not-allowed text-white p-2 sm:p-3 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  aria-label="Send message"
                 >
-                  <FaPaperPlane className="text-lg" />
+                  <FaPaperPlane className="text-base sm:text-lg" />
                 </button>
               </div>
             </form>
