@@ -65,7 +65,7 @@ export default function BlogPost5() {
           <h2 className="text-3xl font-bold text-white mb-6">Case Study: Halifax Restaurant Chain</h2>
           <p className="text-gray-300 mb-6">
             A local restaurant chain with 5 locations implemented AI automation for their ordering and 
-            scheduling systems. Here's what they achieved:
+            scheduling systems. Here&apos;s what they achieved:
           </p>
 
           <div className="bg-[#1a1a1a] rounded-2xl p-8 mb-8">

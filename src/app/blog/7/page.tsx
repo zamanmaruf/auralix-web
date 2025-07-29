@@ -40,7 +40,7 @@ export default function BlogPost7() {
             <p className="text-gray-300 mb-6">
               Healthcare providers in Nova Scotia face increasing demands with limited resources. 
               AI automation offers a solution that improves efficiency while maintaining the 
-              human touch that's essential in healthcare.
+              human touch that&apos;s essential in healthcare.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">

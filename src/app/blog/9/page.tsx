@@ -38,7 +38,7 @@ export default function BlogPost9() {
           <div className="bg-[#1a1a1a] rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-bold text-white mb-4">The Manufacturing Revolution</h2>
             <p className="text-gray-300 mb-6">
-              Nova Scotia's manufacturing sector is embracing AI automation to compete globally, 
+              Nova Scotia&apos;s manufacturing sector is embracing AI automation to compete globally, 
               reduce costs, and improve product quality. The results are transforming the industry.
             </p>
             

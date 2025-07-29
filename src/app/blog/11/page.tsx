@@ -55,7 +55,7 @@ export default function BlogPost11() {
           {/* Article Content */}
           <div className="prose prose-invert max-w-none">
             <p className="text-gray-300 mb-6">
-              In today's rapidly evolving business landscape, organizations face a critical challenge: 
+              In today&apos;s rapidly evolving business landscape, organizations face a critical challenge: 
               how to leverage the efficiency and scalability of automation while preserving the 
               irreplaceable value of human connection. The key to success lies not in choosing 
               between automation and human touch, but in finding the perfect balance that maximizes 
@@ -75,9 +75,9 @@ export default function BlogPost11() {
             </p>
 
             <p className="text-gray-300 mb-6">
-              "The most successful organizations understand that automation and human touch aren't 
-              mutually exclusive," explains our customer experience expert, Jennifer Martinez. 
-              "They're complementary forces that, when properly balanced, create superior customer experiences."
+              &quot;The most successful organizations understand that automation and human touch aren&apos;t 
+              mutually exclusive,&quot; explains our customer experience expert, Jennifer Martinez. 
+              &quot;They&apos;re complementary forces that, when properly balanced, create superior customer experiences.&quot;
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-4 mt-8">
@@ -154,10 +154,10 @@ export default function BlogPost11() {
             </p>
 
             <p className="text-gray-300 mb-6">
-              "The key is giving customers choice," notes our customer research director, 
-              Sarah Johnson. "Some customers want quick, automated solutions, while others 
+              &quot;The key is giving customers choice,&quot; notes our customer research director, 
+              Sarah Johnson. &quot;Some customers want quick, automated solutions, while others 
               prefer the personal touch. Successful businesses provide both options and 
-              let customers choose their preferred interaction style."
+              let customers choose their preferred interaction style.&quot;
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-4 mt-8">
@@ -205,10 +205,10 @@ export default function BlogPost11() {
             </p>
 
             <p className="text-gray-300 mb-6">
-              "Automation should free humans to focus on what they do best," emphasizes 
-              our organizational development expert, Dr. Robert Chen. "This means handling 
+              &quot;Automation should free humans to focus on what they do best,&quot; emphasizes 
+              our organizational development expert, Dr. Robert Chen. &quot;This means handling 
               complex problems, building relationships, and providing creative solutions 
-              that require human insight and empathy."
+              that require human insight and empathy.&quot;
             </p>
 
             <h2 className="text-2xl font-bold text-white mb-4 mt-8">
@@ -257,10 +257,10 @@ export default function BlogPost11() {
             </p>
 
             <p className="text-gray-300 mb-6">
-              "The companies that will thrive in the future are those that can harness the 
-              efficiency of automation while preserving the warmth of human connection," 
-              concludes our strategy director, Michael Rodriguez. "This balance is not just 
-              a nice-to-have—it's a strategic imperative."
+              &quot;The companies that will thrive in the future are those that can harness the 
+              efficiency of automation while preserving the warmth of human connection,&quot; 
+              concludes our strategy director, Michael Rodriguez. &quot;This balance is not just 
+              a nice-to-have—it&apos;s a strategic imperative.&quot;
             </p>
 
             <div className="bg-[#0a2a3a] rounded-lg p-6 mt-8">
