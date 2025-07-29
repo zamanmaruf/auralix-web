@@ -1,6 +1,7 @@
 'use client';
 import { FaCalendar, FaUser, FaClock, FaArrowRight, FaSearch, FaTag } from "react-icons/fa";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -238,9 +239,18 @@ export default function BlogPage() {
                     <FaArrowRight />
                   </a>
                 </div>
-                <div className="bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-lg font-semibold">Featured Content</div>
+                <div className="relative h-full min-h-[300px] flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/future-trend-bg.jpeg"
+                    alt="AI Technology Future of Automation"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  <div className="relative z-10 text-center text-white">
+                    <div className="text-lg font-semibold mb-2">AI Technology</div>
+                    <div className="text-sm opacity-80">Future of Automation</div>
                   </div>
                 </div>
               </div>
