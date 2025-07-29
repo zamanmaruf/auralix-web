@@ -1,39 +1,84 @@
+'use client';
+
 import "./globals.css";
 import Link from "next/link";
-import { FaLinkedin, FaTwitter, FaYoutube, FaShieldAlt, FaEnvelope, FaPhone } from "react-icons/fa";
+import { useState } from "react";
+import { FaLinkedin, FaTwitter, FaYoutube, FaShieldAlt, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <html lang="en">
       <head>
         <title>Auralix AI - Enterprise AI Automation Solutions</title>
         <meta name="description" content="AI Automation That Scales With You — From Startup to Enterprise. Revolutionizing business operations with enterprise-grade AI solutions." />
         <meta name="keywords" content="AI automation, enterprise solutions, business intelligence, workflow automation, Nova Scotia, Halifax" />
+        <meta property="og:title" content="Auralix AI - Enterprise AI Automation Solutions" />
+        <meta property="og:description" content="AI Automation That Scales With You — From Startup to Enterprise." />
+        <meta property="og:image" content="/hero-ai-bg.jpg" />
+        <meta property="og:url" content="https://yourdomain.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Auralix AI - Enterprise AI Automation Solutions" />
+        <meta name="twitter:description" content="AI Automation That Scales With You — From Startup to Enterprise." />
+        <meta name="twitter:image" content="/hero-ai-bg.jpg" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Auralix AI",
+          "url": "https://yourdomain.com",
+          "logo": "https://yourdomain.com/logo.png",
+          "description": "AI Automation That Scales With You — From Startup to Enterprise.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nova Scotia",
+            "addressCountry": "Canada"
+          }
+        }` }} />
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
       </head>
       <body className="bg-[#0a0a0a] text-[#ededed] font-sans">
         <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] bg-opacity-95 border-b border-[#1a1a1a] shadow-lg backdrop-blur-sm">
-          <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
+          <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4 relative">
             <div className="flex-1 flex items-center">
               <Link href="/" className="text-2xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-glow select-none">
                 AURALIX AI
               </Link>
             </div>
-            <div className="hidden md:flex flex-1 justify-end gap-8 text-lg items-center">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex flex-1 justify-end gap-10 text-lg items-center">
               <Link href="/solutions" className="hover:text-cyan-400 transition-colors">Solutions</Link>
               <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
               <Link href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</Link>
               <Link href="/blog" className="hover:text-cyan-400 transition-colors">Blog</Link>
-              <a href="#contact" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Get Started</a>
+              <a href="/trial" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Get Started</a>
             </div>
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button className="text-white hover:text-cyan-400">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+              <button 
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-white hover:text-cyan-400 p-2"
+              >
+                {menuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
               </button>
             </div>
           </nav>
+          
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-[#1a1a1a] shadow-lg">
+              <div className="px-4 py-6 space-y-4">
+                <Link href="/solutions" className="block text-lg hover:text-cyan-400 transition-colors">Solutions</Link>
+                <Link href="/pricing" className="block text-lg hover:text-cyan-400 transition-colors">Pricing</Link>
+                <Link href="/about-us" className="block text-lg hover:text-cyan-400 transition-colors">About Us</Link>
+                <Link href="/blog" className="block text-lg hover:text-cyan-400 transition-colors">Blog</Link>
+                <a href="/trial" className="block px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold text-center">Get Started</a>
+              </div>
+            </div>
+          )}
         </header>
         <main>{children}</main>
         
@@ -48,18 +93,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   AURALIX AI
                 </div>
                 <p className="text-gray-300 mb-4 max-w-md">
-                  Empowering service businesses with AI tools once reserved for tech giants. 
-                  From startup to enterprise, we scale with you.
+                  Enterprise-grade AI automation solutions that scale with your business. 
+                  From startup to enterprise, we deliver intelligent automation that drives results.
                 </p>
-                <div className="flex items-center gap-4 text-sm text-gray-400">
-                  <div className="flex items-center gap-2">
-                    <FaShieldAlt className="text-green-400" />
-                    <span>SOC 2 Ready</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaShieldAlt className="text-blue-400" />
-                    <span>GDPR Compliant</span>
-                  </div>
+                <div className="flex gap-4">
+                  <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                    <FaLinkedin className="text-xl" />
+                  </a>
+                  <a href="https://twitter.com/auralix_ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                    <FaTwitter className="text-xl" />
+                  </a>
+                  <a href="https://youtube.com/@auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                    <FaYoutube className="text-xl" />
+                  </a>
                 </div>
               </div>
 

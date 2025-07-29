@@ -7,6 +7,7 @@ import { TbSettingsAutomation } from "react-icons/tb";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FaShieldAlt, FaUsers, FaChartLine, FaLock } from "react-icons/fa";
 import { useState } from "react";
+import Head from "next/head";
 
 export default function HomePage() {
   const [messageSent, setMessageSent] = useState(false);
@@ -57,10 +58,10 @@ export default function HomePage() {
             From Startup to Enterprise — Revolutionizing Business Operations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="#contact" className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
+            <a href="/trial" className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
               For Small Businesses
             </a>
-            <a href="#enterprise" className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-lg shadow-lg transition-all duration-200">
+            <a href="/solutions" className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-lg shadow-lg transition-all duration-200">
               For Enterprises
             </a>
           </div>
@@ -98,159 +99,232 @@ export default function HomePage() {
             <p className="text-sm text-gray-300 text-center">Enterprise-grade responsive design with advanced analytics</p>
           </div>
           <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-8 shadow-xl hover:scale-105 transition-transform">
+            <PiRobotLight className="text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
+            <div className="font-bold text-lg text-cyan-200 mb-2 text-center">Intelligent Chatbots</div>
+            <p className="text-sm text-gray-300 text-center">Multi-language AI chatbots with human-like responses</p>
+          </div>
+          <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-8 shadow-xl hover:scale-105 transition-transform">
             <MdOutlineAnalytics className="text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
-            <div className="font-bold text-lg text-cyan-200 mb-2 text-center">Advanced Analytics</div>
-            <p className="text-sm text-gray-300 text-center">Real-time business intelligence and performance tracking</p>
+            <div className="font-bold text-lg text-cyan-200 mb-2 text-center">Business Intelligence</div>
+            <p className="text-sm text-gray-300 text-center">Real-time analytics and predictive insights</p>
           </div>
           <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-8 shadow-xl hover:scale-105 transition-transform">
             <TbSettingsAutomation className="text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
             <div className="font-bold text-lg text-cyan-200 mb-2 text-center">Workflow Automation</div>
-            <p className="text-sm text-gray-300 text-center">Custom automation for complex business processes</p>
-          </div>
-          <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-8 shadow-xl hover:scale-105 transition-transform">
-            <PiRobotLight className="text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
-            <div className="font-bold text-lg text-cyan-200 mb-2 text-center">AI Chatbots</div>
-            <p className="text-sm text-gray-300 text-center">Intelligent customer service and lead qualification</p>
+            <p className="text-sm text-gray-300 text-center">End-to-end process automation and optimization</p>
           </div>
         </div>
       </section>
 
       {/* Case Study Section */}
-      <section className="bg-[#111] py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-orange-400">Success Story</h2>
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold mb-4 text-white">4-Location Salon Chain Transformation</h3>
-            <p className="text-lg text-gray-300 mb-6">
-              "A Nova Scotia salon chain used Auralix AI to automate booking and customer management, 
-              resulting in a 22% increase in monthly revenue and 60% reduction in administrative overhead."
-            </p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <div className="text-green-400">✓ 22% Revenue Increase</div>
-              <div className="text-blue-400">✓ 60% Admin Reduction</div>
-              <div className="text-purple-400">✓ 95% Customer Satisfaction</div>
+      <section className="py-20 px-4 bg-[#111]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Success Story: Nova Scotia Restaurant Chain</h2>
+            <p className="text-lg text-gray-300">How we transformed a local restaurant chain into an AI-powered operation</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-green-400 mb-2">40%</div>
+              <div className="text-gray-300">Increase in Bookings</div>
+            </div>
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-blue-400 mb-2">60%</div>
+              <div className="text-gray-300">Reduction in Admin Time</div>
+            </div>
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-purple-400 mb-2">25%</div>
+              <div className="text-gray-300">Increase in Revenue</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Industries We Serve - Enhanced */}
-      <section className="bg-[#0a0a0a] py-20 px-4" id="industries">
-        <h2 className="text-3xl font-bold text-center mb-10 text-orange-400">Industries We Serve</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Restaurants</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Cafes</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Law Firms</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Salons</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Clinics</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Auto Shops</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Real Estate</div>
-          <div className="bg-[#222] rounded-xl px-6 py-4 text-white hover:bg-[#333] transition-colors cursor-pointer">Manufacturing</div>
-        </div>
-      </section>
-
       {/* Enterprise Features Section */}
-      <section className="max-w-6xl mx-auto py-20 px-4" id="enterprise">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-400">Enterprise Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg text-center">
-            <FaShieldAlt className="text-4xl mx-auto mb-4 text-green-400" />
-            <h3 className="text-xl font-semibold mb-2 text-white">Enterprise Security</h3>
-            <p className="text-gray-300">SOC 2, GDPR, and CASL compliance with end-to-end encryption</p>
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Enterprise-Grade Features</h2>
+            <p className="text-lg text-gray-300">Built for scale, security, and compliance</p>
           </div>
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg text-center">
-            <FaUsers className="text-4xl mx-auto mb-4 text-blue-400" />
-            <h3 className="text-xl font-semibold mb-2 text-white">Dedicated Support</h3>
-            <p className="text-gray-300">24/7 technical support with dedicated account managers</p>
-          </div>
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg text-center">
-            <FaChartLine className="text-4xl mx-auto mb-4 text-purple-400" />
-            <h3 className="text-xl font-semibold mb-2 text-white">Advanced Analytics</h3>
-            <p className="text-gray-300">Real-time dashboards and predictive insights</p>
-          </div>
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg text-center">
-            <FaLock className="text-4xl mx-auto mb-4 text-orange-400" />
-            <h3 className="text-xl font-semibold mb-2 text-white">API Integration</h3>
-            <p className="text-gray-300">Seamless integration with existing ERP and CRM systems</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Auralix - Enhanced */}
-      <section className="max-w-5xl mx-auto py-20 px-4" id="why-auralix">
-        <h2 className="text-3xl font-bold text-center mb-10 text-blue-400">Why Auralix?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2 text-teal-300">Speed & Simplicity</h3>
-            <p className="text-gray-300">Launch fast with enterprise-grade AI tools designed for scale.</p>
-          </div>
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2 text-orange-300">ROI Focused</h3>
-            <p className="text-gray-300">Proven results with measurable business impact and rapid ROI.</p>
-          </div>
-          <div className="bg-[#181818] rounded-xl p-8 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2 text-blue-300">Future-Ready</h3>
-            <p className="text-gray-300">Scalable architecture that grows with your business needs.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <FaLock className="text-4xl text-green-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">SOC 2 Ready</h3>
+              <p className="text-gray-300 text-sm">Enterprise-grade security and compliance</p>
+            </div>
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <FaUsers className="text-4xl text-blue-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Multi-Tenant</h3>
+              <p className="text-gray-300 text-sm">Scalable architecture for growing businesses</p>
+            </div>
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <FaChartLine className="text-4xl text-purple-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Analytics</h3>
+              <p className="text-gray-300 text-sm">Advanced reporting and insights</p>
+            </div>
+            <div className="bg-[#1a1a1a] rounded-xl p-6 text-center">
+              <FaShieldAlt className="text-4xl text-cyan-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">GDPR Compliant</h3>
+              <p className="text-gray-300 text-sm">Data protection and privacy compliance</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Compliance & Security Section */}
-      <section className="bg-gradient-to-r from-[#0a1a2a] to-[#0a2a3a] py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-white">Trust & Compliance</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-green-400 mb-2">100% Encrypted</div>
-              <p className="text-gray-300">End-to-end data encryption at rest and in transit</p>
+      <section className="py-20 px-4 bg-[#111]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Compliance & Security</h2>
+            <p className="text-lg text-gray-300">Enterprise-grade security for peace of mind</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-[#1a1a1a] rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Security Standards</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>End-to-end encryption</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>SOC 2 Type II compliance</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>GDPR and CCPA compliant</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>Regular security audits</span>
+                </li>
+              </ul>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400 mb-2">Enterprise Infrastructure</div>
-              <p className="text-gray-300">Built on AWS with 99.9% uptime SLA</p>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400 mb-2">Compliance Ready</div>
-              <p className="text-gray-300">SOC 2, GDPR, and CASL compliance roadmap</p>
+            <div className="bg-[#1a1a1a] rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Data Protection</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Data residency controls</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Automated backup systems</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Role-based access control</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>24/7 monitoring</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Enhanced */}
-      <section className="bg-gradient-to-r from-teal-500 to-blue-500 py-16 text-center" id="cta">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Let&apos;s Build the Future of Your Business</h2>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/automate-with-ai" className="px-10 py-4 bg-black hover:bg-[#222] text-teal-300 font-bold rounded-full text-lg shadow-lg transition-all duration-200">
-            Book a Demo
-          </a>
-          <a href="#contact" className="px-10 py-4 bg-white hover:bg-gray-100 text-blue-600 font-bold rounded-full text-lg shadow-lg transition-all duration-200">
-            Get Free Consultation
-          </a>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="relative py-20 px-4 bg-[#0a0a0a]" id="contact">
-        <div className="absolute inset-0 bg-[url('/hero-ai-bg.jpg')] bg-cover bg-center opacity-20 pointer-events-none" />
-        <div className="relative max-w-xl mx-auto bg-[#181818] bg-opacity-90 rounded-xl p-10 shadow-2xl z-10">
-          <h2 className="text-3xl font-bold text-center mb-8 text-teal-400">Contact Us</h2>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input name="name" className="p-3 rounded bg-[#222] text-white" placeholder="Name" />
-            <input name="email" className="p-3 rounded bg-[#222] text-white" placeholder="Email" />
-            <input name="phone" className="p-3 rounded bg-[#222] text-white" placeholder="Phone" />
-            <input name="business" className="p-3 rounded bg-[#222] text-white" placeholder="Business Name" />
-            <input name="service" className="p-3 rounded bg-[#222] text-white" placeholder="Service Needed" />
-            <textarea name="message" className="p-3 rounded bg-[#222] text-white" placeholder="Message" rows={4} />
-            <button type="submit" className="mt-4 px-8 py-3 bg-teal-500 hover:bg-teal-400 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200">
-              Send Message
-            </button>
-          </form>
-          {error && (
-            <div className="mt-4 text-red-400 font-semibold text-center">{error}</div>
-          )}
-          {messageSent && (
-            <div className="mt-4 text-green-400 font-semibold text-center">Message sent!</div>
-          )}
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 bg-gradient-to-b from-[#0a2a3a] to-[#0a0a0a]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
+            <p className="text-lg text-gray-300">Get started with AI automation today</p>
+          </div>
+          
+          <div className="bg-[#1a1a1a] rounded-2xl p-8">
+            {messageSent ? (
+              <div className="text-center">
+                <div className="text-green-400 text-6xl mb-4">✓</div>
+                <h3 className="text-2xl font-bold text-white mb-2">Message Sent Successfully!</h3>
+                <p className="text-gray-300">We'll get back to you within 24 hours.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Phone *</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Business Type *</label>
+                    <select
+                      name="business"
+                      required
+                      className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    >
+                      <option value="">Select Business Type</option>
+                      <option value="restaurant">Restaurant</option>
+                      <option value="retail">Retail</option>
+                      <option value="healthcare">Healthcare</option>
+                      <option value="professional-services">Professional Services</option>
+                      <option value="manufacturing">Manufacturing</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-white font-semibold mb-2">Service Interest *</label>
+                  <select
+                    name="service"
+                    required
+                    className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  >
+                    <option value="">Select Service</option>
+                    <option value="website-design">Website Design</option>
+                    <option value="chatbots">AI Chatbots</option>
+                    <option value="analytics">Business Intelligence</option>
+                    <option value="automation">Workflow Automation</option>
+                    <option value="consultation">Consultation</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-white font-semibold mb-2">Message *</label>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    required
+                    className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    placeholder="Tell us about your business needs..."
+                  ></textarea>
+                </div>
+                {error && <p className="text-red-400 text-sm">{error}</p>}
+                <button
+                  type="submit"
+                  className="w-full px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg"
+                >
+                  Get Free Consultation
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </section>
     </div>
