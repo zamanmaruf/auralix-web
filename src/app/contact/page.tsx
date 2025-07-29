@@ -55,6 +55,12 @@ export default function ContactPage() {
     }
   };
 
+  const getMessageColor = () => {
+    if (submissionStatus === 'success') return 'text-green-400';
+    if (submissionStatus === 'error') return 'text-red-400';
+    return 'text-gray-400';
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white">
       {/* Hero Section */}
@@ -159,7 +165,7 @@ export default function ContactPage() {
                   ></textarea>
                 </div>
                 {submissionMessage && (
-                  <div className={`text-sm ${submissionStatus === 'success' ? 'text-green-400' : submissionStatus === 'error' ? 'text-red-400' : 'text-gray-400'}`}>
+                  <div className={`text-sm ${getMessageColor()}`}>
                     {submissionMessage}
                   </div>
                 )}
