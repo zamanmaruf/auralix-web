@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FaArrowLeft, FaChartLine, FaDollarSign, FaClock, FaUsers } from 'react-icons/fa';
+import { FaArrowLeft, FaDollarSign, FaClock, FaUsers } from 'react-icons/fa';
 
 export default function BlogPost5() {
   return (
