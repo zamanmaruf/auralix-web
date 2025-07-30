@@ -45,7 +45,7 @@ export default function HomePage() {
           alt="AI transformation background"
           fill
           style={{ objectFit: "cover" }}
-          className="opacity-70"
+          className="opacity-90"
           priority
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4">
@@ -77,12 +77,14 @@ export default function HomePage() {
       {/* Social Proof Section */}
       <section className="bg-[#0a0a0a] py-8 sm:py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">Trusted by businesses across Nova Scotia</p>
+          <p className="text-center text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">Serving Nova Scotia businesses with AI automation</p>
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 opacity-60">
-            <div className="text-white text-sm sm:text-lg font-semibold">Nova Scotia Health</div>
-            <div className="text-white text-sm sm:text-lg font-semibold">Dalhousie University</div>
-            <div className="text-white text-sm sm:text-lg font-semibold">Halifax Chamber</div>
-            <div className="text-white text-sm sm:text-lg font-semibold">Tech Nova Scotia</div>
+            <div className="text-white text-sm sm:text-lg font-semibold">Garments Industry</div>
+            <div className="text-white text-sm sm:text-lg font-semibold">Media Companies</div>
+            <div className="text-white text-sm sm:text-lg font-semibold">Insurance Companies</div>
+            <div className="text-white text-sm sm:text-lg font-semibold">Healthcare Clinics</div>
+            <div className="text-white text-sm sm:text-lg font-semibold">Retail Stores</div>
+            <div className="text-white text-sm sm:text-lg font-semibold">Professional Services</div>
           </div>
         </div>
       </section>

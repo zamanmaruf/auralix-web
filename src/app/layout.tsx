@@ -95,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
               <Link href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</Link>
               <Link href="/blog" className="hover:text-cyan-400 transition-colors">Blog</Link>
+              <Link href="/dashboard" className="hover:text-cyan-400 transition-colors">Dashboard</Link>
               <a href="https://calendly.com/auralixai/30min" target="_blank" rel="noopener noreferrer" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Book Consultation</a>
             </div>
             {/* Mobile menu button */}
@@ -140,6 +141,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   onClick={closeMobileMenu}
                 >
                   Blog
+                </Link>
+                <Link 
+                  href="/dashboard" 
+                  className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                  onClick={closeMobileMenu}
+                >
+                  Dashboard
                 </Link>
                 <a 
                   href="https://calendly.com/auralixai/30min" 
