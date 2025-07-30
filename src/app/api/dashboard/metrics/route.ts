@@ -44,7 +44,40 @@ async function readData() {
 }
 
 // Write data
-async function writeData(data: any) {
+async function writeData(data: {
+  metrics: {
+    totalUsers: number;
+    aiAutomations: number;
+    timeSaved: number;
+    costSavings: number;
+  };
+  activities: Array<{
+    id: number;
+    action: string;
+    user: string;
+    time: string;
+    type: string;
+  }>;
+  users: Array<{
+    name: string;
+    automations: number;
+    timeSaved: number;
+    joinedAt: string;
+  }>;
+  automations: Array<{
+    type: string;
+    userId: string;
+    createdAt: string;
+  }>;
+  systemHealth: {
+    uptime: number;
+    responseTime: number;
+    errorRate: number;
+    activeUsers: number;
+    apiCalls: number;
+  };
+  lastUpdated: string;
+}) {
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
 }
 

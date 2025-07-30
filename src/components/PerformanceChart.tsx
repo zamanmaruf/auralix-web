@@ -7,20 +7,18 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  BarElement,
   Title,
   Tooltip,
   Legend,
   Filler,
 } from 'chart.js';
-import { Line, Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  BarElement,
   Title,
   Tooltip,
   Legend,
@@ -35,9 +33,24 @@ interface PerformanceChartProps {
       timeSaved: number;
       costSavings: number;
     };
-    activities: any[];
-    users: any[];
-    automations: any[];
+    activities: Array<{
+      id: number;
+      action: string;
+      user: string;
+      time: string;
+      type: string;
+    }>;
+    users: Array<{
+      name: string;
+      automations: number;
+      timeSaved: number;
+      joinedAt: string;
+    }>;
+    automations: Array<{
+      type: string;
+      userId: string;
+      createdAt: string;
+    }>;
     systemHealth: {
       uptime: number;
       responseTime: number;
@@ -67,7 +80,6 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ data }) => {
     const baseUsers = Math.max(0, data.metrics.totalUsers - 50);
     const baseAutomations = Math.max(0, data.metrics.aiAutomations - 30);
     const baseTimeSaved = Math.max(0, data.metrics.timeSaved - 20);
-    const baseCostSavings = Math.max(0, data.metrics.costSavings - 1000);
 
     return {
       labels,

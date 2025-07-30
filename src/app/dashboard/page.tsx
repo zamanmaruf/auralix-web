@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  FaChartLine, 
   FaUsers, 
   FaRobot, 
   FaClock, 
@@ -57,7 +56,11 @@ interface DashboardData {
   };
   activities: Activity[];
   users: User[];
-  automations: any[];
+  automations: Array<{
+    type: string;
+    userId: string;
+    createdAt: string;
+  }>;
   systemHealth: SystemHealth;
   lastUpdated: string;
 }
@@ -66,7 +69,6 @@ const Dashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState('30d');
   const [isLoading, setIsLoading] = useState(true);
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
-  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
 
   // Fetch real-time data
   const fetchDashboardData = async () => {
@@ -78,7 +80,6 @@ const Dashboard = () => {
       }
       const data = await response.json();
       setDashboardData(data);
-      setLastRefresh(new Date());
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
     } finally {
