@@ -1,5 +1,5 @@
 'use client';
-import { FaRobot, FaChartBar, FaCogs, FaCheck } from "react-icons/fa";
+import { FaRobot, FaChartBar, FaCogs, FaCheck, FaShieldAlt } from "react-icons/fa";
 import { useState } from "react";
 
 export default function SolutionsPage() {
@@ -11,6 +11,18 @@ export default function SolutionsPage() {
       <section className="max-w-4xl mx-auto text-center py-16 px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise AI Solutions</h1>
         <p className="text-xl md:text-2xl text-cyan-100 mb-8">Tailored AI automation solutions for businesses of every size and industry</p>
+        
+        {/* Demo CTA */}
+        <div className="bg-gradient-to-r from-purple-900 to-purple-800 rounded-2xl p-8 mb-8 border border-purple-400">
+          <h2 className="text-2xl font-bold text-white mb-4">🎯 See Our Claims Automation in Action</h2>
+          <p className="text-purple-200 mb-6">Experience our AI-powered claims processing system with a live interactive demo</p>
+          <a 
+            href="/solutions/claims-automation/demo" 
+            className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold text-lg transition-all duration-200 shadow-lg"
+          >
+            🚀 Launch Interactive Demo
+          </a>
+        </div>
       </section>
 
       {/* Business Size Tabs */}
@@ -253,6 +265,32 @@ export default function SolutionsPage() {
                     <span>Legacy system support</span>
                   </li>
                 </ul>
+              </div>
+              
+              <div className="bg-[#11202a] rounded-xl p-6">
+                <FaShieldAlt className="text-4xl text-purple-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-3">Claims Automation</h3>
+                <p className="text-gray-300 mb-4">AI-powered claims processing with real-time document verification</p>
+                <ul className="space-y-2 text-sm text-gray-300 mb-4">
+                  <li className="flex items-center gap-2">
+                    <FaCheck className="text-purple-400" />
+                    <span>Real-time document processing</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <FaCheck className="text-purple-400" />
+                    <span>AI fraud detection</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <FaCheck className="text-purple-400" />
+                    <span>Enterprise compliance</span>
+                  </li>
+                </ul>
+                <a 
+                  href="/solutions/claims-automation/demo" 
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold transition-all duration-200 text-sm"
+                >
+                  🚀 View Live Demo
+                </a>
               </div>
             </div>
           </div>
