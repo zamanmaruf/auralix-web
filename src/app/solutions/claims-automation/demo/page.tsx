@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { FaFileUpload, FaShieldAlt, FaChartLine, FaCogs, FaClock, FaCheckCircle, FaExclamationTriangle, FaEye, FaDownload, FaTrash, FaArrowRight, FaUser, FaRobot, FaGavel, FaPlay, FaUpload, FaFilePdf, FaFileImage, FaFileAlt, FaMoneyBillWave, FaMapMarkerAlt } from 'react-icons/fa';
-import { MdAnalytics, MdSecurity, MdSpeed, MdVerified, MdTimeline, MdDocumentScanner } from 'react-icons/md';
+import { useState } from 'react';
+import { FaShieldAlt, FaChartLine, FaClock, FaCheckCircle, FaExclamationTriangle, FaEye, FaDownload, FaArrowRight, FaUser, FaGavel, FaPlay, FaUpload, FaFilePdf, FaFileImage, FaFileAlt, FaMoneyBillWave, FaMapMarkerAlt } from 'react-icons/fa';
+import { MdAnalytics } from 'react-icons/md';
 import { TbRobot } from 'react-icons/tb';
 import Link from 'next/link';
 
@@ -49,7 +49,6 @@ interface ProcessStep {
 
 export default function ClaimsDemoPage() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentActivity, setCurrentActivity] = useState(0);
   const [showDemo, setShowDemo] = useState(false);
   const [uploadedDocuments, setUploadedDocuments] = useState<Document[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -1500,30 +1499,7 @@ export default function ClaimsDemoPage() {
       return newSteps;
     });
 
-    let feedbackInterval: NodeJS.Timeout;
-    let progressInterval: NodeJS.Timeout;
-    let activityTimeout: NodeJS.Timeout;
-
-    // Add a timeout to prevent infinite processing
-    activityTimeout = setTimeout(() => {
-      console.log(`Activity ${activityIndex} timed out, forcing completion`);
-      clearInterval(feedbackInterval);
-      clearInterval(progressInterval);
-      setProcessSteps(prev => {
-        const newSteps = [...prev];
-        if (newSteps[stepIndex] && newSteps[stepIndex].activities[activityIndex]) {
-          newSteps[stepIndex].activities[activityIndex].status = 'completed';
-          newSteps[stepIndex].activities[activityIndex].progress = 100;
-        }
-        return newSteps;
-      });
-      setTimeout(() => {
-        runActivity(stepIndex, activityIndex + 1);
-      }, 800);
-    }, 25000); // 25 second timeout for comprehensive demo
-
-    // Simulate activity processing with visual feedback
-    feedbackInterval = setInterval(() => {
+    const feedbackInterval: NodeJS.Timeout = setInterval(() => {
       setCurrentFeedbackIndex(prev => {
         if (prev < currentActivity.visualFeedback.length - 1) {
           return prev + 1;
@@ -1534,7 +1510,7 @@ export default function ClaimsDemoPage() {
       });
     }, 500); // Slower feedback updates for comprehensive demo
 
-    progressInterval = setInterval(() => {
+    const progressInterval: NodeJS.Timeout = setInterval(() => {
       setProcessSteps(prev => {
         const newSteps = [...prev];
         if (newSteps[stepIndex] && newSteps[stepIndex].activities[activityIndex]) {
@@ -1556,6 +1532,24 @@ export default function ClaimsDemoPage() {
         return newSteps;
       });
     }, 600); // Slower interval for comprehensive demo
+
+    // Add a timeout to prevent infinite processing
+    const activityTimeout: NodeJS.Timeout = setTimeout(() => {
+      console.log(`Activity ${activityIndex} timed out, forcing completion`);
+      clearInterval(feedbackInterval);
+      clearInterval(progressInterval);
+      setProcessSteps(prev => {
+        const newSteps = [...prev];
+        if (newSteps[stepIndex] && newSteps[stepIndex].activities[activityIndex]) {
+          newSteps[stepIndex].activities[activityIndex].status = 'completed';
+          newSteps[stepIndex].activities[activityIndex].progress = 100;
+        }
+        return newSteps;
+      });
+      setTimeout(() => {
+        runActivity(stepIndex, activityIndex + 1);
+      }, 800);
+    }, 25000); // 25 second timeout for comprehensive demo
   };
 
   const runProcessStep = (step: number) => {
@@ -1579,7 +1573,6 @@ export default function ClaimsDemoPage() {
     
     setProcessSteps(updatedSteps);
     setCurrentStep(step);
-    setCurrentActivity(0);
 
     console.log(`Step ${step} initialized, starting first activity`);
     
@@ -2178,7 +2171,6 @@ export default function ClaimsDemoPage() {
                     setShowDemo(false);
                     setProcessSteps([]);
                     setCurrentStep(0);
-                    setCurrentActivity(0);
                     setCurrentVisualFeedback([]);
                     setCurrentFeedbackIndex(0);
                   }}
