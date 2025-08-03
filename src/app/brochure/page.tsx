@@ -224,7 +224,7 @@ const BrochurePage = () => {
               AURALIX AI
             </div>
             <div className="text-xl text-cyan-300 font-light tracking-wider">
-              NOVA SCOTIA'S AI INNOVATION HUB
+              NOVA SCOTIA&apos;S AI INNOVATION HUB
             </div>
             <div className="absolute -top-4 -left-4 w-8 h-8 bg-cyan-400 rounded-full opacity-50 animate-ping"></div>
             <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-purple-400 rounded-full opacity-50 animate-ping" style={{animationDelay: '0.5s'}}></div>
@@ -747,7 +747,7 @@ const BrochurePage = () => {
         <div className="flex items-center gap-6">
           <span className="font-bold text-cyan-400">AURALIX AI</span>
           <span>•</span>
-          <span>Nova Scotia's AI Innovation Hub</span>
+          <span>Nova Scotia&apos;s AI Innovation Hub</span>
           <span>•</span>
           <span>auralixai@gmail.com</span>
         </div>
