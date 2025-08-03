@@ -1757,7 +1757,7 @@ export default function ClaimsDemoPage() {
           {/* Process Steps */}
           {processSteps.length > 0 && (
             <div className="space-y-6">
-              {processSteps.map((step, index) => (
+              {processSteps.map((step) => (
                 <div key={step.id} className={`bg-[#1a1a1a] rounded-2xl p-6 transition-all duration-500 ${
                   step.status === 'active' ? 'ring-2 ring-cyan-400 bg-[#0a2a3a]' : ''
                 }`}>
@@ -1808,7 +1808,7 @@ export default function ClaimsDemoPage() {
                       {/* Current Activity Details */}
                       <div className="mt-4">
                         <h4 className="font-semibold text-cyan-300 mb-2">🔍 Current Activity Details:</h4>
-                        {step.activities && step.activities.map((activity, idx) => (
+                        {step.activities && step.activities.map((activity) => (
                           <div key={activity.id} className={`mb-3 p-3 rounded-lg ${
                             activity.status === 'active' ? 'bg-cyan-900 bg-opacity-30 border border-cyan-400' :
                             activity.status === 'completed' ? 'bg-green-900 bg-opacity-30 border border-green-400' :
