@@ -231,25 +231,25 @@ const BrochurePage = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 md:mb-8 leading-tight">
             <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
               AI AUTOMATION
             </span>
-            <span className="block text-4xl md:text-6xl font-bold text-white mt-4">
+            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mt-2 md:mt-4">
               THAT SCALES WITH YOU
             </span>
           </h1>
           
-          <h2 className="text-2xl md:text-3xl text-cyan-300 mb-8 font-light">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 mb-6 md:mb-8 font-light">
             From Local Business to Enterprise
           </h2>
           
-          <p className="text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-12 md:mb-16 max-w-4xl mx-auto leading-relaxed px-4">
             Nova Scotia&apos;s First Full-Service AI Automation & Digital Transformation Company
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16 px-4">
             {[
               { number: '99.9%', label: 'Uptime' },
               { number: '60%', label: 'Cost Reduction' },
@@ -257,53 +257,53 @@ const BrochurePage = () => {
               { number: '24/7', label: 'AI Support' }
             ].map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-400 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                   {stat.number}
                 </div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+                <div className="text-gray-400 text-xs sm:text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 px-4">
             <button 
               onClick={handleBookAudit}
-              className="group relative px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:scale-105 border border-cyan-400/30 cursor-pointer"
+              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border border-cyan-400/30 cursor-pointer touch-manipulation"
             >
               <span className="relative z-10">Book Free AI Audit</span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
             <button 
               onClick={handleScheduleDemo}
-              className="px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer"
+              className="w-full sm:w-auto px-8 sm:px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-base sm:text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer touch-manipulation"
             >
               Schedule Demo
             </button>
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col md:flex-row gap-8 text-lg justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 text-base sm:text-lg justify-center px-4">
             <button 
               onClick={handleEmailClick}
-              className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
             >
-              <MdEmail className="text-cyan-400" />
-              <span>auralixai@gmail.com</span>
+              <MdEmail className="text-cyan-400 text-lg sm:text-xl" />
+              <span className="text-sm sm:text-base">auralixai@gmail.com</span>
             </button>
             <button 
               onClick={handlePhoneClick}
-              className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
             >
-              <MdPhone className="text-cyan-400" />
-              <span>7828820525</span>
+              <MdPhone className="text-cyan-400 text-lg sm:text-xl" />
+              <span className="text-sm sm:text-base">7828820525</span>
             </button>
             <button 
               onClick={handleWebsiteClick}
-              className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
             >
-              <MdLanguage className="text-cyan-400" />
-              <span>www.auralixai.ca</span>
+              <MdLanguage className="text-cyan-400 text-lg sm:text-xl" />
+              <span className="text-sm sm:text-base">www.auralixai.ca</span>
             </button>
           </div>
         </div>
@@ -314,35 +314,35 @@ const BrochurePage = () => {
   const renderServicesPage = () => (
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             WHAT WE DO
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Auralix AI transforms Nova Scotia businesses through cutting-edge AI automation, 
             helping them compete in the digital age with enterprise-grade solutions 
             that scale from startup to enterprise.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4">
           {services.map((service, index) => (
-            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 hover:border-cyan-400/40 transition-all duration-500 hover:scale-105">
+            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-6 md:p-8 hover:border-cyan-400/40 transition-all duration-500 hover:scale-105 active:scale-95">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                   <div className="group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white">{service.title}</h3>
                 </div>
-                <p className="text-gray-300 mb-6">{service.description}</p>
+                <p className="text-gray-300 mb-4 md:mb-6 text-sm md:text-base">{service.description}</p>
                 
                 <div className="space-y-2">
                   {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-cyan-300">
-                      <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <div key={idx} className="flex items-center gap-2 text-xs md:text-sm text-cyan-300">
+                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full"></div>
                       {feature}
                     </div>
                   ))}
@@ -406,11 +406,11 @@ const BrochurePage = () => {
   const renderBenefitsPage = () => (
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             WHY IT WORKS
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Our AI solutions deliver measurable results through intelligent automation, 
             data-driven insights, and enterprise-grade reliability.
           </p>
@@ -496,55 +496,55 @@ const BrochurePage = () => {
   const renderLocalPage = () => (
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             LOCAL ADVANTAGE & ROI
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             We focus on Nova Scotia businesses first, understanding local challenges and 
             delivering solutions that drive real growth in our community.
           </p>
         </div>
 
         {/* ROI Stats */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="text-center bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-10 rounded-2xl border border-cyan-400/30">
-            <div className="text-5xl font-black mb-3">60%</div>
-            <div className="text-xl font-semibold mb-4">Task Automation</div>
-            <p className="text-cyan-200">Reduce manual work by up to 60%</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4">
+          <div className="text-center bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 md:p-10 rounded-2xl border border-cyan-400/30">
+            <div className="text-3xl md:text-5xl font-black mb-2 md:mb-3">60%</div>
+            <div className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Task Automation</div>
+            <p className="text-cyan-200 text-sm md:text-base">Reduce manual work by up to 60%</p>
           </div>
-          <div className="text-center bg-gradient-to-br from-purple-500 to-purple-600 text-white p-10 rounded-2xl border border-purple-400/30">
-            <div className="text-5xl font-black mb-3">40%</div>
-            <div className="text-xl font-semibold mb-4">Conversion Increase</div>
-            <p className="text-purple-200">Boost customer conversions by 20-40%</p>
+          <div className="text-center bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 md:p-10 rounded-2xl border border-purple-400/30">
+            <div className="text-3xl md:text-5xl font-black mb-2 md:mb-3">40%</div>
+            <div className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Conversion Increase</div>
+            <p className="text-purple-200 text-sm md:text-base">Boost customer conversions by 20-40%</p>
           </div>
-          <div className="text-center bg-gradient-to-br from-blue-500 to-blue-600 text-white p-10 rounded-2xl border border-blue-400/30">
-            <div className="text-5xl font-black mb-3">Months</div>
-            <div className="text-xl font-semibold mb-4">Payback Period</div>
-            <p className="text-blue-200">See ROI within months, not years</p>
+          <div className="text-center bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 md:p-10 rounded-2xl border border-blue-400/30 sm:col-span-2 lg:col-span-1">
+            <div className="text-3xl md:text-5xl font-black mb-2 md:mb-3">Months</div>
+            <div className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Payback Period</div>
+            <p className="text-blue-200 text-sm md:text-base">See ROI within months, not years</p>
           </div>
         </div>
 
         {/* Local Focus */}
-        <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 backdrop-blur-sm rounded-3xl p-12 border border-cyan-500/20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 backdrop-blur-sm rounded-3xl p-6 md:p-12 border border-cyan-500/20 mx-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-white mb-6">Built for Nova Scotia</h3>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                            We understand local business challenges and regulations. Our solutions are 
-            designed specifically for Nova Scotia&apos;s unique market needs while maintaining 
-            enterprise-grade capabilities.
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Built for Nova Scotia</h3>
+              <p className="text-gray-300 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
+                We understand local business challenges and regulations. Our solutions are 
+                designed specifically for Nova Scotia&apos;s unique market needs while maintaining 
+                enterprise-grade capabilities.
               </p>
-              <div className="flex gap-4 text-sm">
-                <div className="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full border border-cyan-500/30">Local Support</div>
-                <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full border border-purple-500/30">Nova Scotia Focus</div>
-                <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full border border-blue-500/30">Community Growth</div>
+              <div className="flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm">
+                <div className="bg-cyan-500/20 text-cyan-300 px-3 md:px-4 py-2 rounded-full border border-cyan-500/30">Local Support</div>
+                <div className="bg-purple-500/20 text-purple-300 px-3 md:px-4 py-2 rounded-full border border-purple-500/30">Nova Scotia Focus</div>
+                <div className="bg-blue-500/20 text-blue-300 px-3 md:px-4 py-2 rounded-full border border-blue-500/30">Community Growth</div>
               </div>
             </div>
             <div className="text-center">
-              <MdLocationOn className="text-8xl mx-auto mb-6 text-cyan-400" />
-              <h4 className="text-2xl font-bold text-white mb-3">Halifax, Nova Scotia</h4>
-              <p className="text-cyan-300">Your local AI partner</p>
+              <MdLocationOn className="text-6xl md:text-8xl mx-auto mb-4 md:mb-6 text-cyan-400" />
+              <h4 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Halifax, Nova Scotia</h4>
+              <p className="text-cyan-300 text-sm md:text-base">Your local AI partner</p>
             </div>
           </div>
         </div>
@@ -575,11 +575,11 @@ const BrochurePage = () => {
   const renderTestimonialsPage = () => (
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             BEYOND BASIC AI & TESTIMONIALS
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Industry-specific solutions that understand your business and deliver 
             measurable results that drive growth.
           </p>
@@ -603,26 +603,26 @@ const BrochurePage = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 hover:border-cyan-400/40 transition-all duration-500">
+            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-6 md:p-8 hover:border-cyan-400/40 transition-all duration-500 active:scale-95">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               <div className="relative z-10">
-                <div className="flex items-center gap-1 mb-6">
+                <div className="flex items-center gap-1 mb-4 md:mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-xl">★</span>
+                    <span key={i} className="text-yellow-400 text-lg md:text-xl">★</span>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6 italic leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
-                <div className="border-t border-gray-700 pt-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                <p className="text-gray-300 mb-4 md:mb-6 italic leading-relaxed text-sm md:text-base">&ldquo;{testimonial.quote}&rdquo;</p>
+                <div className="border-t border-gray-700 pt-4 md:pt-6">
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <div className="font-semibold text-white">{testimonial.name}</div>
-                      <div className="text-sm text-gray-400">{testimonial.business}</div>
+                      <div className="font-semibold text-white text-sm md:text-base">{testimonial.name}</div>
+                      <div className="text-xs md:text-sm text-gray-400">{testimonial.business}</div>
                     </div>
                   </div>
                 </div>
@@ -632,51 +632,51 @@ const BrochurePage = () => {
         </div>
 
         {/* Final CTA */}
-        <div className="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 backdrop-blur-sm rounded-3xl p-12 border border-cyan-500/20 text-center">
-          <h3 className="text-4xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 backdrop-blur-sm rounded-3xl p-6 md:p-12 border border-cyan-500/20 text-center mx-4">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             YOUR COMPETITORS ARE ADOPTING AI. ARE YOU?
           </h3>
-          <p className="text-xl mb-10 text-gray-300 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10 text-gray-300 leading-relaxed">
             Don&apos;t get left behind. Join the AI revolution and transform your business today.
           </p>
           
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-6 md:mb-8">
             <button 
               onClick={handleRequestQuote}
-              className="group relative px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:scale-105 border border-cyan-400/30 cursor-pointer"
+              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border border-cyan-400/30 cursor-pointer touch-manipulation"
             >
               <span className="relative z-10">Request Quote</span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
             <button 
               onClick={handleViewCaseStudies}
-              className="px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer"
+              className="w-full sm:w-auto px-8 sm:px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-base sm:text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer touch-manipulation"
             >
               View Case Studies
             </button>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 text-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 text-sm md:text-lg">
             <button 
               onClick={handleEmailClick}
-              className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
             >
-              <MdEmail className="text-cyan-400" />
-              <span>auralixai@gmail.com</span>
+              <MdEmail className="text-cyan-400 text-lg md:text-xl" />
+              <span className="text-xs md:text-base">auralixai@gmail.com</span>
             </button>
             <button 
               onClick={handlePhoneClick}
-              className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
             >
-              <MdPhone className="text-cyan-400" />
-              <span>7828820525</span>
+              <MdPhone className="text-cyan-400 text-lg md:text-xl" />
+              <span className="text-xs md:text-base">7828820525</span>
             </button>
             <button 
               onClick={handleWebsiteClick}
-              className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation sm:col-span-2 lg:col-span-1"
             >
-              <MdLanguage className="text-cyan-400" />
-              <span>www.auralixai.ca</span>
+              <MdLanguage className="text-cyan-400 text-lg md:text-xl" />
+              <span className="text-xs md:text-base">www.auralixai.ca</span>
             </button>
           </div>
         </div>
@@ -704,13 +704,13 @@ const BrochurePage = () => {
   return (
     <div className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {/* Navigation */}
-      <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-sm rounded-full px-8 py-3 border border-cyan-500/30">
-        <div className="flex gap-3">
+      <div className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 border border-cyan-500/30">
+        <div className="flex gap-2 sm:gap-3">
           {[0, 1, 2, 3, 4].map((index) => (
             <button
               key={index}
               onClick={() => setCurrentPage(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 touch-manipulation ${
                 currentPage === index ? 'bg-cyan-400 scale-125' : 'bg-gray-600 hover:bg-gray-500'
               }`}
             />
@@ -726,30 +726,30 @@ const BrochurePage = () => {
       {/* Navigation Arrows */}
       <button
         onClick={() => setCurrentPage((prev) => (prev > 0 ? prev - 1 : 4))}
-        className="fixed left-6 top-1/2 transform -translate-y-1/2 z-40 bg-black/80 backdrop-blur-sm rounded-full p-4 border border-cyan-500/30 hover:bg-black/90 transition-all duration-300"
+        className="fixed left-4 sm:left-6 top-1/2 transform -translate-y-1/2 z-40 bg-black/80 backdrop-blur-sm rounded-full p-3 sm:p-4 border border-cyan-500/30 hover:bg-black/90 transition-all duration-300 touch-manipulation"
       >
-        <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
       <button
         onClick={() => setCurrentPage((prev) => (prev < 4 ? prev + 1 : 0))}
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 bg-black/80 backdrop-blur-sm rounded-full p-4 border border-cyan-500/30 hover:bg-black/90 transition-all duration-300"
+        className="fixed right-4 sm:right-6 top-1/2 transform -translate-y-1/2 z-40 bg-black/80 backdrop-blur-sm rounded-full p-3 sm:p-4 border border-cyan-500/30 hover:bg-black/90 transition-all duration-300 touch-manipulation"
       >
-        <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       {/* Footer */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-sm rounded-full px-8 py-3 border border-cyan-500/30 text-sm text-gray-300">
-        <div className="flex items-center gap-6">
+      <div className="fixed bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 border border-cyan-500/30 text-xs sm:text-sm text-gray-300">
+        <div className="flex items-center gap-2 sm:gap-4 md:gap-6 flex-wrap justify-center">
           <span className="font-bold text-cyan-400">AURALIX AI</span>
-          <span>•</span>
-          <span>Nova Scotia&apos;s AI Innovation Hub</span>
-          <span>•</span>
-          <span>auralixai@gmail.com</span>
+          <span className="hidden sm:inline">•</span>
+          <span className="hidden md:inline">Nova Scotia&apos;s AI Innovation Hub</span>
+          <span className="hidden lg:inline">•</span>
+          <span className="hidden lg:inline">auralixai@gmail.com</span>
         </div>
       </div>
     </div>
