@@ -2,23 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  MdChat, MdAutoAwesome, MdWeb, MdTrendingUp, 
-  MdBusiness, MdSpeed, MdAnalytics, MdSecurity,
-  MdLocationOn, MdPhone, MdEmail, MdLanguage,
-  MdRocket, MdStars, MdVerified, MdTimeline
+  MdWeb, MdTrendingUp, 
+  MdBusiness, MdLocationOn, MdPhone, MdEmail, MdLanguage,
+  MdRocket, MdStars, MdVerified
 } from 'react-icons/md';
 import { 
-  FaRobot, FaChartLine, FaShieldAlt, FaUsers,
-  FaHome, FaUtensils, FaShoppingCart, FaCalculator,
-  FaBrain, FaCogs, FaGlobe, FaLightbulb
+  FaRobot, FaHome, FaUtensils, FaShoppingCart, FaCalculator,
+  FaBrain
 } from 'react-icons/fa';
-import { TbSettingsAutomation, TbWorld, TbTarget } from 'react-icons/tb';
-import { BiBrain, BiTrendingUp } from 'react-icons/bi';
+import { TbSettingsAutomation } from 'react-icons/tb';
+import { BiTrendingUp } from 'react-icons/bi';
 
 const BrochurePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // CTA Handler Functions
   const handleEmailClick = () => {
@@ -75,20 +72,13 @@ const BrochurePage = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const testimonials = [
     {
       name: "Sarah Mitchell",
       business: "The Coastal Kitchen",
-      quote: "Our AI chatbot handles 80% of customer inquiries automatically. We've seen a 35% increase in online orders since implementing Auralix's solution.",
+              quote: "Our AI chatbot handles 80% of customer inquiries automatically. We&apos;ve seen a 35% increase in online orders since implementing Auralix&apos;s solution.",
       rating: 5,
       avatar: "SK"
     },
@@ -102,7 +92,7 @@ const BrochurePage = () => {
     {
       name: "Maria Rodriguez",
       business: "Atlantic Accounting Services",
-      quote: "Auralix's workflow automation saved us 15 hours per week on repetitive tasks. The ROI was immediate and the support team is exceptional.",
+              quote: "Auralix&apos;s workflow automation saved us 15 hours per week on repetitive tasks. The ROI was immediate and the support team is exceptional.",
       rating: 5,
       avatar: "MR"
     }
@@ -255,7 +245,7 @@ const BrochurePage = () => {
           </h2>
           
           <p className="text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
-            Nova Scotia's First Full-Service AI Automation & Digital Transformation Company
+            Nova Scotia&apos;s First Full-Service AI Automation & Digital Transformation Company
           </p>
 
           {/* Stats */}
@@ -541,9 +531,9 @@ const BrochurePage = () => {
             <div>
               <h3 className="text-3xl font-bold text-white mb-6">Built for Nova Scotia</h3>
               <p className="text-gray-300 mb-8 leading-relaxed">
-                We understand local business challenges and regulations. Our solutions are 
-                designed specifically for Nova Scotia's unique market needs while maintaining 
-                enterprise-grade capabilities.
+                            We understand local business challenges and regulations. Our solutions are 
+            designed specifically for Nova Scotia&apos;s unique market needs while maintaining 
+            enterprise-grade capabilities.
               </p>
               <div className="flex gap-4 text-sm">
                 <div className="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full border border-cyan-500/30">Local Support</div>
@@ -561,7 +551,7 @@ const BrochurePage = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <h3 className="text-3xl font-bold text-white mb-6">Join Nova Scotia's AI Revolution</h3>
+                      <h3 className="text-3xl font-bold text-white mb-6">Join Nova Scotia&apos;s AI Revolution</h3>
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <button 
               onClick={handleStartJourney}
@@ -624,7 +614,7 @@ const BrochurePage = () => {
                     <span key={i} className="text-yellow-400 text-xl">★</span>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6 italic leading-relaxed">"{testimonial.quote}"</p>
+                <p className="text-gray-300 mb-6 italic leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
                 <div className="border-t border-gray-700 pt-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
@@ -647,7 +637,7 @@ const BrochurePage = () => {
             YOUR COMPETITORS ARE ADOPTING AI. ARE YOU?
           </h3>
           <p className="text-xl mb-10 text-gray-300 leading-relaxed">
-            Don't get left behind. Join the AI revolution and transform your business today.
+            Don&apos;t get left behind. Join the AI revolution and transform your business today.
           </p>
           
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
