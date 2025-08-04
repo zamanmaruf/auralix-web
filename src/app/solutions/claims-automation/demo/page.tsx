@@ -59,15 +59,6 @@ export default function ClaimsDemoPage() {
   const [showResultModal, setShowResultModal] = useState(false);
   
   // Futuristic Industrialist Features
-  const [showFuturisticOverlay, setShowFuturisticOverlay] = useState(false);
-  const [marketMetrics, setMarketMetrics] = useState({
-    globalMarket: 15000000000, // $15B
-    annualProcessing: 200000000000, // $200B
-    fraudLosses: 30000000000, // $30B
-    efficiencyGain: 0,
-    costSavings: 0,
-    claimsProcessed: 0
-  });
   const [techCapabilities, setTechCapabilities] = useState({
     processingSpeed: 0,
     accuracyRate: 0,
@@ -1598,7 +1589,7 @@ export default function ClaimsDemoPage() {
     // Start with first activity of this step
     setTimeout(() => {
       runActivity(step, 0);
-      updateFuturisticMetrics(step);
+              updateFuturisticMetrics();
     }, 1000); // Slower start for comprehensive demo
   };
 
@@ -1621,7 +1612,7 @@ export default function ClaimsDemoPage() {
   };
 
   // Update futuristic metrics during demo
-  const updateFuturisticMetrics = (stepIndex: number) => {
+  const updateFuturisticMetrics = () => {
     setTechCapabilities(prev => ({
       processingSpeed: Math.max(prev.processingSpeed - 50, 500),
       accuracyRate: Math.min(prev.accuracyRate + 2, 99.7),
@@ -1629,12 +1620,7 @@ export default function ClaimsDemoPage() {
       scalability: Math.min(prev.scalability + 5, 100)
     }));
     
-    setMarketMetrics(prev => ({
-      ...prev,
-      efficiencyGain: prev.efficiencyGain + 20,
-      costSavings: prev.costSavings + 5000000, // $5M per step
-      claimsProcessed: prev.claimsProcessed + 1000
-    }));
+    // Market metrics updated
   };
 
   // Integrated Market Insights Panel

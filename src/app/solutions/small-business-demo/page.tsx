@@ -1,8 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image';
-import LeadCaptureForm from '@/components/LeadCaptureForm';
+import React, { useState, useMemo } from 'react';
 
 interface ChatMessage {
   id: string;
@@ -23,59 +21,25 @@ interface LeadData {
 export default function SmallBusinessDemo() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [currentStep, setCurrentStep] = useState<'welcome' | 'intent' | 'service' | 'details' | 'success'>('welcome');
-  const [leadData, setLeadData] = useState<LeadData>({ name: '', phone: '', email: '', intent: '' });
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [showMetrics, setShowMetrics] = useState(false);
+  const [currentStep, setCurrentStep] = useState<'welcome' | 'intent' | 'details' | 'success'>('welcome');
+  const [leadData, setLeadData] = useState<LeadData>({ name: '', phone: '', email: '', intent: '', service: '' });
   const [showForm, setShowForm] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const [automatedFlow, setAutomatedFlow] = useState(false);
-  const [flowStep, setFlowStep] = useState(0);
-  const [showFuturisticMetrics, setShowFuturisticMetrics] = useState(false);
-  
-  const initialMetrics = useMemo(() => ({
-    visitors: 1247,
-    leads: 89,
-    responseTime: 23,
-    conversionRate: 7.1
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Executive metrics for the demo
+  const executiveMetrics = useMemo(() => ({
+    totalRevenue: '$2.1M',
+    roi: '340%',
+    costSavings: '$180K',
+    leadConversion: '7.2%',
+    responseTime: '23s',
+    dailyLeads: '12'
   }), []);
 
-  const [metrics, setMetrics] = useState(initialMetrics);
-  
-  const [futuristicMetrics, setFuturisticMetrics] = useState({
-    marketSize: '$2.1B',
-    conversionRate: '7.2%',
-    responseTime: '23s',
-    leadsPerDay: '12',
-    revenueImpact: '+$45K/month'
-  });
-  
-  const [executiveMetrics, setExecutiveMetrics] = useState({
-    totalRevenue: '$540K',
-    costSavings: '$180K',
-    headcountReduction: '3 FTEs',
-    roi: '300%',
-    timeToValue: '30 days'
-  });
-
-  useEffect(() => {
-    // Auto-open chat after 2 seconds for faster demo (only if not in automated flow)
-    if (!automatedFlow) {
-      const timer = setTimeout(() => {
-        // Double-check that automated flow hasn't started while timer was running
-        if (!automatedFlow) {
-          setIsChatOpen(true);
-          addBotMessage("Hi! 👋 Want today's special, price list, or to book? Choose an option:", [
-            "💎 Today's Specials",
-            "💰 Price List", 
-            "📅 Book Now"
-          ]);
-        }
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [automatedFlow]);
-
+  // Add bot message with optional options
   const addBotMessage = (content: string, options?: string[]) => {
     const newMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -87,6 +51,7 @@ export default function SmallBusinessDemo() {
     setMessages(prev => [...prev, newMessage]);
   };
 
+  // Add user message
   const addUserMessage = (content: string) => {
     const newMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -97,6 +62,7 @@ export default function SmallBusinessDemo() {
     setMessages(prev => [...prev, newMessage]);
   };
 
+  // Handle option clicks
   const handleOptionClick = (option: string) => {
     addUserMessage(option);
     
@@ -104,67 +70,53 @@ export default function SmallBusinessDemo() {
       setLeadData(prev => ({ ...prev, intent: option }));
       setCurrentStep('intent');
       
-      if (option.includes('Book')) {
-        setTimeout(() => {
-          addBotMessage("Great! What service are you interested in?", [
-            "🦷 Teeth Cleaning - $129",
-            "✨ Whitening - $299",
-            "🔧 Full Checkup - $199"
-          ]);
-        }, 500);
-      } else {
-        setTimeout(() => {
-          addBotMessage("Perfect! Let me get your details to send you the information:", [
-            "📱 Continue"
-          ]);
-        }, 500);
-      }
+      setTimeout(() => {
+        addBotMessage("Great! What service are you interested in?", [
+          "🦷 Teeth Cleaning - $129",
+          "✨ Whitening - $299",
+          "🔧 Full Checkup - $199"
+        ]);
+      }, 1000);
     } else if (currentStep === 'intent') {
       setLeadData(prev => ({ ...prev, service: option }));
       setCurrentStep('details');
       
       setTimeout(() => {
         addBotMessage("Excellent choice! Just a few quick details to get you set up:");
-      }, 500);
+      }, 1000);
       
       setTimeout(() => {
-        addBotMessage("📝 Please provide your details:", [
-          "Fill Form"
-        ]);
+        addBotMessage("📝 Please provide your details:", ["Fill Form"]);
         setShowForm(true);
-      }, 1000);
+      }, 3000);
     }
   };
 
+  // Automated demo flow
   const startAutomatedFlow = () => {
     setAutomatedFlow(true);
-    setFlowStep(0);
     
     // Clear any existing messages and reset state
     setMessages([]);
     setCurrentStep('welcome');
     setLeadData({ name: '', phone: '', email: '', intent: '', service: '' });
     setShowForm(false);
-    setShowMetrics(false);
-    setShowFuturisticMetrics(false);
     setIsProcessing(false);
     
     // Simple step-by-step flow
     setTimeout(() => {
       setIsChatOpen(true);
-      addBotMessage("Hi! 👋 Want today's special, price list, or to book? Choose an option:", [
-        "💎 Today's Specials",
+      addBotMessage("Hi! 👋 Want today&apos;s special, price list, or to book? Choose an option:", [
+        "💎 Today&apos;s Specials",
         "💰 Price List", 
         "📅 Book Now"
       ]);
-      setFlowStep(1);
     }, 1000);
     
     setTimeout(() => {
       addUserMessage("📅 Book Now");
       setLeadData(prev => ({ ...prev, intent: "📅 Book Now" }));
       setCurrentStep('intent');
-      setFlowStep(2);
     }, 3000);
     
     setTimeout(() => {
@@ -173,45 +125,37 @@ export default function SmallBusinessDemo() {
         "✨ Whitening - $299",
         "🔧 Full Checkup - $199"
       ]);
-      setFlowStep(3);
     }, 5000);
     
     setTimeout(() => {
       addUserMessage("🦷 Teeth Cleaning - $129");
       setLeadData(prev => ({ ...prev, service: "🦷 Teeth Cleaning - $129" }));
       setCurrentStep('details');
-      setFlowStep(4);
     }, 7000);
     
     setTimeout(() => {
       addBotMessage("Excellent choice! Just a few quick details to get you set up:");
-      setFlowStep(5);
     }, 9000);
     
     setTimeout(() => {
       addBotMessage("📝 Please provide your details:", ["Fill Form"]);
       setShowForm(true);
-      setFlowStep(6);
     }, 11000);
     
     setTimeout(() => {
       addUserMessage("Fill Form");
-      setFlowStep(6.5);
     }, 13000);
     
     setTimeout(() => {
       setLeadData(prev => ({ ...prev, name: "Sarah Johnson" }));
-      setFlowStep(6.6);
     }, 14000);
     
     setTimeout(() => {
       setLeadData(prev => ({ ...prev, phone: "(555) 123-4567" }));
-      setFlowStep(6.7);
     }, 15000);
     
     setTimeout(() => {
       setLeadData(prev => ({ ...prev, email: "sarah.j@email.com" }));
-      setFlowStep(6.8);
     }, 16000);
     
     setTimeout(() => {
@@ -225,24 +169,12 @@ export default function SmallBusinessDemo() {
       setLeadData(mockFormData);
       setIsProcessing(true);
       setShowForm(false);
-      setFlowStep(7);
     }, 18000);
     
     setTimeout(() => {
       setIsProcessing(false);
       setCurrentStep('success');
-      addBotMessage("🎉 You're all set! We'll confirm within 5-10 minutes by SMS. Questions? Just reply here.");
-      
-      // Update metrics
-      setMetrics(prev => ({
-        ...prev,
-        leads: prev.leads + 1,
-        conversionRate: ((prev.leads + 1) / prev.visitors * 100)
-      }));
-      
-      setShowMetrics(true);
-      setShowFuturisticMetrics(true);
-      setFlowStep(8);
+      addBotMessage("🎉 You&apos;re all set! We&apos;ll confirm within 5-10 minutes by SMS. Questions? Just reply here.");
     }, 20000);
     
     setTimeout(() => {
@@ -259,16 +191,43 @@ export default function SmallBusinessDemo() {
       setIsProcessing(false);
       setCurrentStep('success');
       addBotMessage("🎉 You're all set! We'll confirm within 5-10 minutes by SMS. Questions? Just reply here.");
-      
-      // Update metrics
-      setMetrics(prev => ({
-        ...prev,
-        leads: prev.leads + 1,
-        conversionRate: ((prev.leads + 1) / prev.visitors * 100)
-      }));
-      
-      setShowMetrics(true);
     }, 1000);
+  };
+
+  // Handle Get Started Today button
+  const handleGetStarted = () => {
+    setIsLoading(true);
+    // Simulate a brief loading state for better UX
+    setTimeout(() => {
+      setIsLoading(false);
+      // Open chat and start the demo flow
+      setIsChatOpen(true);
+      addBotMessage("Hi! 👋 Want today&apos;s special, price list, or to book? Choose an option:", [
+        "💎 Today&apos;s Specials",
+        "💰 Price List", 
+        "📅 Book Now"
+      ]);
+      setCurrentStep('welcome');
+      
+      // Scroll to chat section after a brief delay
+      setTimeout(() => {
+        const chatSection = document.querySelector('.bg-gradient-to-br.from-gray-800.to-gray-900');
+        if (chatSection) {
+          chatSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 1000);
+    }, 500);
+  };
+
+  // Handle Watch Demo button
+  const handleWatchDemo = () => {
+    setIsLoading(true);
+    // Simulate a brief loading state for better UX
+    setTimeout(() => {
+      setIsLoading(false);
+      // Start the automated demo flow
+      startAutomatedFlow();
+    }, 500);
   };
 
   return (
@@ -336,131 +295,168 @@ export default function SmallBusinessDemo() {
                   <span className="text-white text-sm font-bold">$180K Savings</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg px-4 py-2 border border-purple-400 shadow-lg">
-                  <span className="text-white text-sm font-bold">30 Days TTV</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Website Mock */}
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-white font-bold text-xl">DentalCare Pro</h3>
-                  <div className="flex items-center space-x-4">
-                    <span className="text-blue-100">📞 (555) 123-4567</span>
-                    <button className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold">
-                      Book Now
-                    </button>
-                  </div>
+                  <span className="text-white text-sm font-bold">7.2% Conversion</span>
                 </div>
               </div>
               
-              <div className="p-8">
-                              <div className="text-center mb-8">
-                <h4 className="text-2xl font-bold text-gray-900 mb-4">Professional Dental Care</h4>
-                <p className="text-gray-700 font-medium">Experience the future of dental care with our AI-powered scheduling</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={handleGetStarted}
+                  disabled={isLoading}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-2xl transform hover:scale-105 disabled:opacity-50"
+                >
+                  {isLoading ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span>Getting Started...</span>
+                    </div>
+                  ) : (
+                    "Get Started Today"
+                  )}
+                </button>
+                <button 
+                  onClick={handleWatchDemo}
+                  disabled={isLoading}
+                  className="border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-400 hover:text-white transition-all duration-200 disabled:opacity-50"
+                >
+                  {isLoading ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
+                      <span>Watching Demo...</span>
+                    </div>
+                  ) : (
+                    "Watch Demo"
+                  )}
+                </button>
               </div>
-                
-                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-xl text-center border border-blue-300 shadow-lg">
-                    <div className="text-3xl mb-2">🦷</div>
-                    <h5 className="font-semibold text-blue-900">Teeth Cleaning</h5>
-                    <p className="text-green-700 font-bold">$129</p>
-                  </div>
-                  <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-xl text-center border border-purple-300 shadow-lg">
-                    <div className="text-3xl mb-2">✨</div>
-                    <h5 className="font-semibold text-purple-900">Whitening</h5>
-                    <p className="text-green-700 font-bold">$299</p>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-xl text-center border border-green-300 shadow-lg">
-                    <div className="text-3xl mb-2">🔧</div>
-                    <h5 className="font-semibold text-green-900">Full Checkup</h5>
-                    <p className="text-green-700 font-bold">$199</p>
-                  </div>
-                </div>
+            </div>
+            
+            {/* Service Cards */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-2xl border border-blue-400">
+                <div className="text-3xl mb-4">🦷</div>
+                <h3 className="text-xl font-bold mb-2">Teeth Cleaning</h3>
+                <p className="text-blue-100 font-medium">Professional cleaning and checkup</p>
+                <div className="text-2xl font-bold mt-4">$129</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white shadow-2xl border border-purple-400">
+                <div className="text-3xl mb-4">✨</div>
+                <h3 className="text-xl font-bold mb-2">Whitening</h3>
+                <p className="text-purple-100 font-medium">Professional teeth whitening</p>
+                <div className="text-2xl font-bold mt-4">$299</div>
+              </div>
+              <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-2xl border border-green-400">
+                <div className="text-3xl mb-4">🔧</div>
+                <h3 className="text-xl font-bold mb-2">Full Checkup</h3>
+                <p className="text-green-100 font-medium">Comprehensive dental examination</p>
+                <div className="text-2xl font-bold mt-4">$199</div>
               </div>
             </div>
           </div>
-
-                       {/* Right Side - Chat Interface */}
-             <div className="space-y-6">
-               {showForm && (
-                 <LeadCaptureForm 
-                   onSubmit={handleFormSubmit}
-                   isVisible={showForm}
-                 />
-               )}
-               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              <div className="bg-gradient-to-r from-green-500 to-blue-500 p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-white font-semibold">AI Assistant</span>
+          
+          {/* Right Side - Chat Interface */}
+          <div className="space-y-6">
+            {/* Chat Container */}
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700 h-96 overflow-y-auto">
+              {messages.map((message) => (
+                <div key={message.id} className={`mb-4 ${message.type === 'user' ? 'text-right' : 'text-left'}`}>
+                  <div className={`inline-block max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
+                    message.type === 'user' 
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
+                      : 'bg-gradient-to-r from-gray-700 to-gray-800 text-white'
+                  }`}>
+                    <p className="text-sm">{message.content}</p>
                   </div>
-                  <div className="text-white text-sm">Live • 24/7</div>
+                  {message.options && (
+                    <div className="mt-3 space-y-2">
+                      {message.options.map((option, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleOptionClick(option)}
+                          className="block w-full text-left bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-lg hover:from-gray-500 hover:to-gray-600 transition-all duration-200 text-sm"
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
+              ))}
               
-              <div className="h-96 overflow-y-auto p-4 space-y-4">
-                {messages.map((message) => (
-                  <div key={message.id} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
-                      message.type === 'user' 
-                        ? 'bg-blue-500 text-white' 
-                        : 'bg-gray-100 text-gray-900'
-                    }`}>
-                      <p className="text-sm font-medium">{message.content}</p>
-                      {message.options && (
-                        <div className="mt-3 space-y-2">
-                          {message.options.map((option, index) => (
-                            <button
-                              key={index}
-                              onClick={() => handleOptionClick(option)}
-                              className="block w-full text-left px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors"
-                            >
-                              {option}
-                            </button>
-                          ))}
-                        </div>
-                      )}
+              {isProcessing && (
+                <div className="text-center">
+                  <div className="inline-block bg-gradient-to-r from-gray-700 to-gray-800 text-white px-4 py-2 rounded-2xl">
+                    <div className="flex items-center space-x-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span className="text-sm">Processing...</span>
                     </div>
                   </div>
-                ))}
-                
-                {isProcessing && (
-                  <div className="flex justify-start">
-                                         <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-2xl">
-                       <div className="flex items-center space-x-2">
-                         <div className="flex space-x-1">
-                           <div className="w-2 h-2 bg-gray-600 rounded-full animate-bounce"></div>
-                           <div className="w-2 h-2 bg-gray-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                           <div className="w-2 h-2 bg-gray-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                         </div>
-                         <span className="text-sm font-medium">Processing...</span>
-                       </div>
-                     </div>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
 
-            {/* Success Metrics */}
-            {showMetrics && (
-              <div className="bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">🎯 Lead Captured Successfully!</h3>
-                <div className="grid grid-cols-2 gap-4">
+            {/* Lead Form */}
+            {showForm && (
+              <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-2xl border border-emerald-400">
+                <h3 className="text-xl font-bold mb-4">📝 Contact Information</h3>
+                <div className="space-y-4">
                   <div>
+                    <label className="block text-sm font-medium mb-2">Name</label>
+                    <input
+                      type="text"
+                      value={leadData.name}
+                      onChange={(e) => setLeadData(prev => ({ ...prev, name: e.target.value }))}
+                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Phone</label>
+                    <input
+                      type="tel"
+                      value={leadData.phone}
+                      onChange={(e) => setLeadData(prev => ({ ...prev, phone: e.target.value }))}
+                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Email (Optional)</label>
+                    <input
+                      type="email"
+                      value={leadData.email}
+                      onChange={(e) => setLeadData(prev => ({ ...prev, email: e.target.value }))}
+                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <button
+                    onClick={() => handleFormSubmit(leadData)}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 py-3 rounded-lg font-bold hover:from-emerald-700 hover:to-teal-800 transition-all duration-200 shadow-lg"
+                  >
+                    Submit & Get Confirmation
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Success State */}
+            {currentStep === 'success' && (
+              <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-2xl border border-green-400">
+                <h3 className="text-xl font-bold mb-4">✅ Lead Captured Successfully!</h3>
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="text-center">
                     <div className="text-2xl font-bold">{leadData.name}</div>
                     <div className="text-sm opacity-90">Name</div>
                   </div>
-                  <div>
+                  <div className="text-center">
                     <div className="text-2xl font-bold">{leadData.phone}</div>
                     <div className="text-sm opacity-90">Phone</div>
                   </div>
                 </div>
                 <div className="mt-4 p-4 bg-green-400 bg-opacity-30 rounded-lg border border-green-300">
                   <div className="text-sm text-white font-medium">
-                    <strong className="text-green-200">SMS Sent:</strong> "Hi {leadData.name}, thanks for reaching out to DentalCare Pro. We'll confirm shortly. Reply STOP to opt-out."
+                    <strong className="text-green-200">SMS Sent:</strong> &quot;Hi {leadData.name}, thanks for reaching out to DentalCare Pro. We&apos;ll confirm shortly. Reply STOP to opt-out.&quot;
                   </div>
                 </div>
               </div>
@@ -471,7 +467,7 @@ export default function SmallBusinessDemo() {
               <h3 className="text-xl font-bold mb-4">📱 Instant SMS Follow-up</h3>
               <div className="mt-4 p-4 bg-emerald-400 bg-opacity-30 rounded-lg border border-emerald-300">
                 <div className="text-sm text-white font-medium">
-                  <strong className="text-emerald-200">Sample SMS:</strong> "Hi Sarah, thanks for reaching out to DentalCare Pro! We've received your booking request for Teeth Cleaning. We'll confirm your appointment within 5-10 minutes. Reply STOP to opt-out."
+                  <strong className="text-emerald-200">Sample SMS:</strong> &quot;Hi Sarah, thanks for reaching out to DentalCare Pro! We&apos;ve received your booking request for Teeth Cleaning. We&apos;ll confirm your appointment within 5-10 minutes. Reply STOP to opt-out.&quot;
                 </div>
               </div>
             </div>
