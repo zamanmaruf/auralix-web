@@ -8,29 +8,42 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white pb-20">
       {/* Hero Section */}
-      <section className="max-w-4xl mx-auto text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise AI Solutions</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Tailored AI automation solutions for businesses of every size and industry</p>
+      <section className="max-w-4xl mx-auto text-center py-12 sm:py-16 px-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise AI Solutions</h1>
+        <p className="text-lg sm:text-xl md:text-2xl text-cyan-100 mb-6 sm:mb-8">Tailored AI automation solutions for businesses of every size and industry</p>
         
-        {/* Demo CTA */}
-        <div className="bg-gradient-to-r from-purple-900 to-purple-800 rounded-2xl p-8 mb-8 border border-purple-400">
-          <h2 className="text-2xl font-bold text-white mb-4">🎯 See Our Claims Automation in Action</h2>
-          <p className="text-purple-200 mb-6">Experience our AI-powered claims processing system with a live interactive demo</p>
-          <a 
-            href="/solutions/claims-automation/demo" 
-            className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold text-lg transition-all duration-200 shadow-lg"
-          >
-            🚀 Launch Interactive Demo
-          </a>
+        {/* Demo CTAs */}
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="bg-gradient-to-r from-purple-900 to-purple-800 rounded-2xl p-6 sm:p-8 border border-purple-400">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">🎯 Claims Automation Demo</h2>
+            <p className="text-purple-200 mb-4 sm:mb-6 text-sm sm:text-base">Experience our AI-powered claims processing system</p>
+            <a 
+              href="/solutions/claims-automation/demo" 
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold text-base sm:text-lg transition-all duration-200 shadow-lg"
+            >
+              🚀 Launch Demo
+            </a>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-6 sm:p-8 border border-blue-400">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">💬 Lead Capture Demo</h2>
+            <p className="text-blue-200 mb-4 sm:mb-6 text-sm sm:text-base">See how AI turns visitors into leads in 60 seconds</p>
+            <a 
+              href="/solutions/small-business-demo" 
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-base sm:text-lg transition-all duration-200 shadow-lg"
+            >
+              🚀 Launch Demo
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Business Size Tabs */}
-      <section className="max-w-6xl mx-auto mb-16 px-4">
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+      <section className="max-w-6xl mx-auto mb-12 sm:mb-16 px-4">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
           <button 
             onClick={() => setSelectedCategory('small')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all ${
               selectedCategory === 'small' 
                 ? 'bg-cyan-500 text-black' 
                 : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'
@@ -40,7 +53,7 @@ export default function SolutionsPage() {
           </button>
           <button 
             onClick={() => setSelectedCategory('mid')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all ${
               selectedCategory === 'mid' 
                 ? 'bg-cyan-500 text-black' 
                 : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'
@@ -50,7 +63,7 @@ export default function SolutionsPage() {
           </button>
           <button 
             onClick={() => setSelectedCategory('enterprise')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all ${
               selectedCategory === 'enterprise' 
                 ? 'bg-cyan-500 text-black' 
                 : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'

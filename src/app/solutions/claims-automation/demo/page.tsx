@@ -57,6 +57,25 @@ export default function ClaimsDemoPage() {
   const [currentFeedbackIndex, setCurrentFeedbackIndex] = useState(0);
   const [demoCompleted, setDemoCompleted] = useState(false);
   const [showResultModal, setShowResultModal] = useState(false);
+  
+  // Futuristic Industrialist Features
+  const [showFuturisticOverlay, setShowFuturisticOverlay] = useState(false);
+  const [marketMetrics, setMarketMetrics] = useState({
+    globalMarket: 15000000000, // $15B
+    annualProcessing: 200000000000, // $200B
+    fraudLosses: 30000000000, // $30B
+    efficiencyGain: 0,
+    costSavings: 0,
+    claimsProcessed: 0
+  });
+  const [techCapabilities, setTechCapabilities] = useState({
+    processingSpeed: 0,
+    accuracyRate: 0,
+    fraudDetection: 0,
+    scalability: 0
+  });
+  
+
 
   const mockDocuments: Document[] = [
     {
@@ -1579,6 +1598,7 @@ export default function ClaimsDemoPage() {
     // Start with first activity of this step
     setTimeout(() => {
       runActivity(step, 0);
+      updateFuturisticMetrics(step);
     }, 1000); // Slower start for comprehensive demo
   };
 
@@ -1600,17 +1620,99 @@ export default function ClaimsDemoPage() {
     }
   };
 
+  // Update futuristic metrics during demo
+  const updateFuturisticMetrics = (stepIndex: number) => {
+    setTechCapabilities(prev => ({
+      processingSpeed: Math.max(prev.processingSpeed - 50, 500),
+      accuracyRate: Math.min(prev.accuracyRate + 2, 99.7),
+      fraudDetection: Math.min(prev.fraudDetection + 3, 95),
+      scalability: Math.min(prev.scalability + 5, 100)
+    }));
+    
+    setMarketMetrics(prev => ({
+      ...prev,
+      efficiencyGain: prev.efficiencyGain + 20,
+      costSavings: prev.costSavings + 5000000, // $5M per step
+      claimsProcessed: prev.claimsProcessed + 1000
+    }));
+  };
+
+  // Integrated Market Insights Panel
+  const MarketInsightsPanel = () => (
+    <div className="bg-gradient-to-r from-purple-900/20 via-cyan-900/20 to-purple-900/20 rounded-2xl p-4 sm:p-6 border border-purple-400/30 mb-6 sm:mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+        <h3 className="text-lg sm:text-xl font-bold text-purple-300">🌍 Market Intelligence</h3>
+        <div className="flex gap-2">
+          <span className="px-2 sm:px-3 py-1 bg-purple-800/50 rounded-full text-xs text-purple-200 border border-purple-400/50">
+            Live Data
+          </span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        {/* Market Size */}
+        <div className="bg-purple-800/30 rounded-lg p-3 sm:p-4 border border-purple-400/50">
+          <div className="text-lg sm:text-2xl font-bold text-purple-300">$15B</div>
+          <div className="text-purple-200 text-xs sm:text-sm">Global Market 2025</div>
+        </div>
+
+        {/* Industry Pain Points */}
+        <div className="bg-red-800/30 rounded-lg p-3 sm:p-4 border border-red-400/50">
+          <div className="text-lg sm:text-2xl font-bold text-red-300">$30B</div>
+          <div className="text-red-200 text-xs sm:text-sm">Annual Fraud Losses</div>
+        </div>
+
+        {/* Technology Capabilities */}
+        <div className="bg-cyan-800/30 rounded-lg p-3 sm:p-4 border border-cyan-400/50">
+          <div className="text-lg sm:text-2xl font-bold text-cyan-300">10,000+</div>
+          <div className="text-cyan-200 text-xs sm:text-sm">Claims/Day Capacity</div>
+        </div>
+
+        {/* Competitive Advantage */}
+        <div className="bg-green-800/30 rounded-lg p-3 sm:p-4 border border-green-400/50">
+          <div className="text-lg sm:text-2xl font-bold text-green-300">10x Faster</div>
+          <div className="text-green-200 text-xs sm:text-sm">Than Traditional</div>
+        </div>
+      </div>
+
+      {/* Real-time Performance Metrics */}
+      <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+        <div className="bg-indigo-800/30 rounded-lg p-3 sm:p-4 border border-indigo-400/50">
+          <div className="text-xs sm:text-sm text-indigo-300 mb-2">Live Performance:</div>
+          <div className="text-xs space-y-1 text-indigo-200">
+            <div>• Processing Speed: {techCapabilities.processingSpeed}ms</div>
+            <div>• Accuracy Rate: {techCapabilities.accuracyRate}%</div>
+            <div>• Fraud Detection: {techCapabilities.fraudDetection}%</div>
+            <div>• Scalability: {techCapabilities.scalability}%</div>
+          </div>
+        </div>
+
+        <div className="bg-orange-800/30 rounded-lg p-3 sm:p-4 border border-orange-400/50">
+          <div className="text-xs sm:text-sm text-orange-300 mb-2">Industry Transformation:</div>
+          <div className="text-xs space-y-1 text-orange-200">
+            <div>• 70% of claims automated by 2025</div>
+            <div>• 90% reduction in processing time</div>
+            <div>• 95% fraud detection accuracy</div>
+            <div>• 24/7 automated operations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white">
       {/* Header */}
       <div className="bg-[#1a1a1a] border-b border-[#333]">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/solutions/claims-automation" className="text-cyan-400 hover:text-cyan-300">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <Link href="/solutions/claims-automation" className="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base">
               ← Back to Claims Automation
             </Link>
-            <h1 className="text-2xl font-bold text-white">Claims Processing Demo</h1>
-            <div className="text-sm text-gray-400">For Top Insurance Companies</div>
+            <h1 className="text-xl sm:text-2xl font-bold text-white">Claims Processing Demo</h1>
+            <div className="text-xs sm:text-sm text-gray-400">For Top Insurance Companies</div>
           </div>
         </div>
       </div>
@@ -1633,6 +1735,22 @@ export default function ClaimsDemoPage() {
               <span className="flex items-center gap-2">🔒 Enterprise Security</span>
               <span className="flex items-center gap-2">📊 Advanced Analytics</span>
               <span className="flex items-center gap-2">🤖 AI-Powered Decisions</span>
+            </div>
+            
+            {/* Futuristic Market Stats */}
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-gradient-to-r from-purple-900/20 to-cyan-900/20 rounded-2xl p-6 border border-purple-400/30">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-300">$15B</div>
+                <div className="text-sm text-purple-200">Global Market 2025</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-red-300">$30B</div>
+                <div className="text-sm text-red-200">Annual Fraud Losses</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-300">70%</div>
+                <div className="text-sm text-green-200">Claims Automated by 2025</div>
+              </div>
             </div>
           </div>
 
@@ -1686,7 +1804,7 @@ export default function ClaimsDemoPage() {
                 <div className="text-sm text-gray-400">Processing Time</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-cyan-400">৳85K</div>
+                <div className="text-3xl font-bold text-cyan-400">Variable</div>
                 <div className="text-sm text-gray-400">Claim Amount</div>
               </div>
             </div>
@@ -1695,24 +1813,27 @@ export default function ClaimsDemoPage() {
       ) : (
         // Interactive Demo
         <div className="max-w-7xl mx-auto px-4 py-8">
+          {/* Market Intelligence Panel */}
+          {showDemo && <MarketInsightsPanel />}
+          
           {/* Demo Header */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="bg-[#1a1a1a] rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               <div>
-                <h4 className="text-cyan-400 font-semibold">Claim Number</h4>
-                <p className="text-white text-lg">CLM-2024-DEMO-001</p>
+                <h4 className="text-cyan-400 font-semibold text-sm sm:text-base">Claim Number</h4>
+                <p className="text-white text-sm sm:text-lg">CLM-2024-DEMO-001</p>
               </div>
               <div>
-                <h4 className="text-cyan-400 font-semibold">Customer</h4>
-                <p className="text-white text-lg">Ahmed Rahman</p>
+                <h4 className="text-cyan-400 font-semibold text-sm sm:text-base">Customer</h4>
+                <p className="text-white text-sm sm:text-lg">Ahmed Rahman</p>
               </div>
               <div>
-                <h4 className="text-cyan-400 font-semibold">Claim Type</h4>
-                <p className="text-white text-lg capitalize">Auto Insurance</p>
+                <h4 className="text-cyan-400 font-semibold text-sm sm:text-base">Claim Type</h4>
+                <p className="text-white text-sm sm:text-lg capitalize">Auto Insurance</p>
               </div>
               <div>
-                <h4 className="text-cyan-400 font-semibold">Amount</h4>
-                <p className="text-white text-lg">৳85,000</p>
+                <h4 className="text-cyan-400 font-semibold text-sm sm:text-base">Amount</h4>
+                <p className="text-white text-sm sm:text-lg">Variable</p>
               </div>
             </div>
           </div>
@@ -1758,12 +1879,12 @@ export default function ClaimsDemoPage() {
           {processSteps.length > 0 && (
             <div className="space-y-6">
               {processSteps.map((step) => (
-                <div key={step.id} className={`bg-[#1a1a1a] rounded-2xl p-6 transition-all duration-500 ${
+                <div key={step.id} className={`bg-[#1a1a1a] rounded-2xl p-4 sm:p-6 transition-all duration-500 ${
                   step.status === 'active' ? 'ring-2 ring-cyan-400 bg-[#0a2a3a]' : ''
                 }`}>
-                  <div className="flex items-start gap-6">
+                  <div className="flex items-start gap-4 sm:gap-6">
                     {/* Step Number */}
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold ${
+                    <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-lg sm:text-xl font-bold ${
                       step.status === 'completed' ? 'bg-green-500 text-black' :
                       step.status === 'active' ? 'bg-cyan-500 text-black animate-pulse' :
                       'bg-gray-600 text-white'
@@ -1773,17 +1894,17 @@ export default function ClaimsDemoPage() {
 
                     {/* Step Content */}
                     <div className="flex-1">
-                      <div className="flex items-center gap-4 mb-3">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
                         <div className="text-cyan-400">
                           {step.icon}
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-xl font-bold text-white">{step.title}</h3>
-                          <p className="text-gray-300">{step.description}</p>
+                          <h3 className="text-lg sm:text-xl font-bold text-white">{step.title}</h3>
+                          <p className="text-gray-300 text-sm sm:text-base">{step.description}</p>
                         </div>
                         <div className="flex items-center gap-2">
                           {getStatusIcon(step.status)}
-                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(step.status)}`}>
+                          <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(step.status)}`}>
                             {step.status.toUpperCase()}
                           </span>
                         </div>
@@ -1802,6 +1923,7 @@ export default function ClaimsDemoPage() {
                               style={{ width: `${step.progress}%` }}
                             ></div>
                           </div>
+
                         </div>
                       )}
 
@@ -2107,6 +2229,33 @@ export default function ClaimsDemoPage() {
                       <li>• Real-time analytics dashboard</li>
                       <li>• Regulatory compliance (Bangladesh Bank)</li>
                     </ul>
+                  </div>
+                </div>
+
+                {/* Futuristic Market Impact */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-cyan-900/20 rounded-lg p-6 mt-6 border border-purple-400/30">
+                  <h4 className="text-purple-400 font-semibold mb-4">🌍 Global Market Impact & Industry Transformation:</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div>
+                      <h5 className="text-purple-300 font-semibold mb-2">Market Opportunity:</h5>
+                      <ul className="space-y-1 text-gray-300 text-xs">
+                        <li>• Global claims automation market: $15B by 2025</li>
+                        <li>• Insurance industry spends $200B annually on claims</li>
+                        <li>• 70% of claims will be automated by 2025</li>
+                        <li>• First-mover advantage in AI claims automation</li>
+                        <li>• Patent-pending technology ready for global scale</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="text-purple-300 font-semibold mb-2">Industry Disruption:</h5>
+                      <ul className="space-y-1 text-gray-300 text-xs">
+                        <li>• Replace 50 claims adjusters with 5 AI supervisors</li>
+                        <li>• Process 10x more claims with 90% fewer errors</li>
+                        <li>• Reduce claims processing costs by 70%</li>
+                        <li>• 24/7 automated operations worldwide</li>
+                        <li>• Real-time fraud detection saves $30B annually</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>

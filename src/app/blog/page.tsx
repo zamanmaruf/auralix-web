@@ -193,12 +193,12 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-gradient-to-b from-[#0a2a3a] to-[#0a0a0a]">
+      <section className="relative py-16 sm:py-20 px-4 bg-gradient-to-b from-[#0a2a3a] to-[#0a0a0a]">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-4 sm:mb-6">
             AI Insights & Industry Trends
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto">
             Stay ahead of the curve with expert insights on AI automation, business intelligence, 
             and digital transformation strategies for modern businesses.
           </p>
@@ -209,23 +209,23 @@ export default function BlogPage() {
               <input
                 type="text"
                 placeholder="Search articles..."
-                className="w-full px-4 py-3 pl-12 bg-[#1a1a1a] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 pl-10 sm:pl-12 bg-[#1a1a1a] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 text-sm sm:text-base"
               />
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <FaSearch className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Categories Filter */}
-      <section className="py-8 px-4 border-b border-[#333]">
+      <section className="py-6 sm:py-8 px-4 border-b border-[#333]">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   selectedCategory === category.id
                     ? 'bg-cyan-500 text-black'
                     : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'

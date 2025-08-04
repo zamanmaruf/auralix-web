@@ -168,16 +168,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="w-full bg-[#0a0a0a] border-t border-[#222] py-12 mt-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             {/* Main Footer Content */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
               {/* Company Info */}
-              <div className="col-span-1 md:col-span-2">
-                <div className="mb-4">
-                  <Logo width={160} height={50} className="drop-shadow-glow" />
-                </div>
-                <p className="text-gray-300 mb-6 max-w-md text-sm md:text-base">
-                  Enterprise-grade AI automation solutions that scale with your business. 
-                  From startup to enterprise, we deliver intelligent automation that drives results.
-                </p>
+                              <div className="col-span-1 sm:col-span-2">
+                  <div className="mb-6">
+                    <div className="w-56 h-20 sm:w-64 sm:h-24">
+                      <Logo width={256} height={96} className="drop-shadow-glow w-full h-full object-contain" />
+                    </div>
+                  </div>
+                  <p className="text-gray-300 mb-6 max-w-md text-xs sm:text-sm md:text-base">
+                    Enterprise-grade AI automation solutions that scale with your business. 
+                    From startup to enterprise, we deliver intelligent automation that drives results.
+                  </p>
                 <div className="flex gap-4">
                   <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                     <FaLinkedin className="text-xl" />

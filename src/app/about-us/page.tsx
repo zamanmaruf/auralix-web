@@ -5,16 +5,16 @@ export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-gradient-to-b from-[#0a2a3a] to-[#0a0a0a]">
+      <section className="relative py-16 sm:py-20 px-4 bg-gradient-to-b from-[#0a2a3a] to-[#0a0a0a]">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-4 sm:mb-6">
             Building the Future of Intelligent Business Systems
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto">
             From the neighborhood to the enterprise, we empower companies to unlock real-time efficiency, 
             customer intelligence, and operational transformation using modular, secure, and practical AI automation.
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
             <div className="flex items-center gap-2">
               <FaShieldAlt className="text-green-400" />
               <span>SOC 2 Ready</span>
@@ -32,23 +32,23 @@ export default function AboutUsPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 px-4">
+      <section className="py-16 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-cyan-300 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-300 mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 sm:mb-6">Our Mission</h2>
+              <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6">
                 We democratize enterprise-grade AI by designing intelligent systems that help businesses 
                 of all sizes—from independent cafes to multi-location operations—automate workflows, 
                 serve customers smarter, and make better decisions powered by real-time insights.
               </p>
-              <p className="text-lg text-gray-300 mb-6">
+              <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6">
                 We prioritize practical deployment, measurable outcomes, and scalable architecture 
                 tailored to each business&apos;s stage and size.
               </p>
-              <div className="bg-[#1a1a1a] rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-white mb-3">Our Core Belief</h3>
-                <p className="text-gray-300">
+              <div className="bg-[#1a1a1a] rounded-xl p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">Our Core Belief</h3>
+                <p className="text-gray-300 text-sm sm:text-base">
                   The future of AI is not just smart—it&apos;s accessible, actionable, and accountable.
                 </p>
               </div>

@@ -18,23 +18,23 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white pb-20">
       {/* Hero Section */}
-      <section className="max-w-4xl mx-auto text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise-Grade AI Solutions</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">From startup to enterprise, we provide scalable AI automation solutions with transparent pricing that grows with your business.</p>
+      <section className="max-w-4xl mx-auto text-center py-12 sm:py-16 px-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise-Grade AI Solutions</h1>
+        <p className="text-lg sm:text-xl md:text-2xl text-cyan-100 mb-6 sm:mb-8">From startup to enterprise, we provide scalable AI automation solutions with transparent pricing that grows with your business.</p>
       </section>
 
       {/* Pricing Toggle */}
-      <section className="max-w-2xl mx-auto text-center mb-12">
+      <section className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
         <div className="bg-[#1a1a1a] rounded-full p-2 inline-flex">
           <button 
             onClick={() => setSelectedPlan('monthly')}
-            className={`px-6 py-2 rounded-full transition-all ${selectedPlan === 'monthly' ? 'bg-cyan-500 text-black font-bold' : 'text-gray-300'}`}
+            className={`px-4 sm:px-6 py-2 rounded-full transition-all text-sm sm:text-base ${selectedPlan === 'monthly' ? 'bg-cyan-500 text-black font-bold' : 'text-gray-300'}`}
           >
             Monthly
           </button>
           <button 
             onClick={() => setSelectedPlan('yearly')}
-            className={`px-6 py-2 rounded-full transition-all ${selectedPlan === 'yearly' ? 'bg-cyan-500 text-black font-bold' : 'text-gray-300'}`}
+            className={`px-4 sm:px-6 py-2 rounded-full transition-all text-sm sm:text-base ${selectedPlan === 'yearly' ? 'bg-cyan-500 text-black font-bold' : 'text-gray-300'}`}
           >
             Yearly (Save 20%)
           </button>
@@ -42,10 +42,10 @@ export default function PricingPage() {
       </section>
 
       {/* Dynamic Pricing Calculator */}
-      <section className="max-w-4xl mx-auto mb-16 px-4">
-        <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-          <h2 className="text-2xl font-bold text-center mb-8 text-white">Customize Your Plan</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
+        <div className="bg-[#1a1a1a] rounded-2xl p-6 sm:p-8 shadow-xl">
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-white">Customize Your Plan</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div>
               <label className="block text-sm font-semibold text-gray-300 mb-2">Team Size</label>
               <input 
@@ -75,7 +75,7 @@ export default function PricingPage() {
       </section>
 
       {/* Tiered Pricing Cards */}
-      <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4 mb-20">
+      <section className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4 mb-16 sm:mb-20">
         {/* Small Business */}
         <div className="bg-[#11202a] rounded-2xl p-8 shadow-xl border border-teal-700 relative">
           <div className="text-center mb-6">
