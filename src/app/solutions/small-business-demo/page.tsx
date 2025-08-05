@@ -1,552 +1,173 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React from 'react';
+import Link from 'next/link';
 
-interface ChatMessage {
+interface DemoCard {
   id: string;
-  type: 'bot' | 'user';
-  content: string;
-  timestamp: Date;
-  options?: string[];
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: string;
+  color: string;
+  status: string;
+  href: string;
 }
 
-interface LeadData {
-  name: string;
-  phone: string;
-  email: string;
-  intent: string;
-  service?: string;
-}
-
-export default function SmallBusinessDemo() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [currentStep, setCurrentStep] = useState<'welcome' | 'intent' | 'details' | 'success'>('welcome');
-  const [leadData, setLeadData] = useState<LeadData>({ name: '', phone: '', email: '', intent: '', service: '' });
-  const [showForm, setShowForm] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
-
-  const [automatedFlow, setAutomatedFlow] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Executive metrics for the demo
-  const executiveMetrics = useMemo(() => ({
-    totalRevenue: '$2.1M',
-    roi: '340%',
-    costSavings: '$180K',
-    leadConversion: '7.2%',
-    responseTime: '23s',
-    dailyLeads: '12'
-  }), []);
-
-  // Add bot message with optional options
-  const addBotMessage = (content: string, options?: string[]) => {
-    const newMessage: ChatMessage = {
-      id: Date.now().toString(),
-      type: 'bot',
-      content,
-      timestamp: new Date(),
-      options
-    };
-    setMessages(prev => [...prev, newMessage]);
-  };
-
-  // Add user message
-  const addUserMessage = (content: string) => {
-    const newMessage: ChatMessage = {
-      id: Date.now().toString(),
-      type: 'user',
-      content,
-      timestamp: new Date()
-    };
-    setMessages(prev => [...prev, newMessage]);
-  };
-
-  // Handle option clicks
-  const handleOptionClick = (option: string) => {
-    addUserMessage(option);
-    
-    if (currentStep === 'welcome') {
-      setLeadData(prev => ({ ...prev, intent: option }));
-      setCurrentStep('intent');
-      
-      setTimeout(() => {
-        addBotMessage("Great! What service are you interested in?", [
-          "🦷 Teeth Cleaning - $129",
-          "✨ Whitening - $299",
-          "🔧 Full Checkup - $199"
-        ]);
-      }, 1000);
-    } else if (currentStep === 'intent') {
-      setLeadData(prev => ({ ...prev, service: option }));
-      setCurrentStep('details');
-      
-      setTimeout(() => {
-        addBotMessage("Excellent choice! Just a few quick details to get you set up:");
-      }, 1000);
-      
-      setTimeout(() => {
-        addBotMessage("📝 Please provide your details:", ["Fill Form"]);
-        setShowForm(true);
-      }, 3000);
+export default function SmallBusinessDemoHub() {
+  const demos: DemoCard[] = [
+    {
+      id: 'leads',
+      title: 'AI Lead Capture',
+      subtitle: 'Turn visitors into booked leads in 60 seconds',
+      description: 'Automated chatbot that captures leads 24/7 with instant SMS/email follow-up. Converts anonymous visitors into qualified leads.',
+      icon: '💬',
+      color: 'from-blue-500 to-purple-600',
+      status: '✅ Live',
+      href: '/solutions/small-business-demo/lead-capture'
+    },
+    {
+      id: 'reviews',
+      title: 'Google Reviews Autopilot',
+      subtitle: 'Add 30-100 reviews with smart sentiment routing',
+      description: 'Automatically request reviews from happy customers while routing unhappy ones to private feedback. Protect and amplify your reputation.',
+      icon: '⭐',
+      color: 'from-yellow-500 to-orange-600',
+      status: '✅ Live',
+      href: '/solutions/small-business-demo/reviews-autopilot'
+    },
+    {
+      id: 'booking',
+      title: 'AI Appointment Booking',
+      subtitle: '24/7 calendar-aware booking with auto-confirm',
+      description: 'Let customers book appointments anytime with intelligent slot suggestions and automatic confirmation. Reduce no-shows with smart reminders.',
+      icon: '📅',
+      color: 'from-green-500 to-teal-600',
+      status: '✅ Live',
+      href: '/solutions/small-business-demo/appointment-booking'
+    },
+    {
+      id: 'ordering',
+      title: 'AI Menu & Ordering',
+      subtitle: 'Smart suggestions and upsell automation',
+      description: 'AI-powered menu assistant that suggests items based on preferences and dietary needs. Increase order value with intelligent upselling.',
+      icon: '🍔',
+      color: 'from-red-500 to-pink-600',
+      status: '✅ Live',
+      href: '/solutions/small-business-demo/menu-ordering'
+    },
+    {
+      id: 'faq',
+      title: 'AI FAQ & Customer Service',
+      subtitle: 'Cut repetitive calls with smart escalation',
+      description: 'Answer common questions instantly while capturing leads when answers don\'t suffice. Reduce support calls by 70%.',
+      icon: '❓',
+      color: 'from-indigo-500 to-purple-600',
+      status: '✅ Live',
+      href: '/solutions/small-business-demo/faq-customer-service'
     }
-  };
-
-  // Automated demo flow
-  const startAutomatedFlow = () => {
-    setAutomatedFlow(true);
-    
-    // Clear any existing messages and reset state
-    setMessages([]);
-    setCurrentStep('welcome');
-    setLeadData({ name: '', phone: '', email: '', intent: '', service: '' });
-    setShowForm(false);
-    setIsProcessing(false);
-    
-    // Simple step-by-step flow
-    setTimeout(() => {
-      setIsChatOpen(true);
-      addBotMessage("Hi! 👋 Want today&apos;s special, price list, or to book? Choose an option:", [
-        "💎 Today&apos;s Specials",
-        "💰 Price List", 
-        "📅 Book Now"
-      ]);
-    }, 1000);
-    
-    setTimeout(() => {
-      addUserMessage("📅 Book Now");
-      setLeadData(prev => ({ ...prev, intent: "📅 Book Now" }));
-      setCurrentStep('intent');
-    }, 3000);
-    
-    setTimeout(() => {
-      addBotMessage("Great! What service are you interested in?", [
-        "🦷 Teeth Cleaning - $129",
-        "✨ Whitening - $299",
-        "🔧 Full Checkup - $199"
-      ]);
-    }, 5000);
-    
-    setTimeout(() => {
-      addUserMessage("🦷 Teeth Cleaning - $129");
-      setLeadData(prev => ({ ...prev, service: "🦷 Teeth Cleaning - $129" }));
-      setCurrentStep('details');
-    }, 7000);
-    
-    setTimeout(() => {
-      addBotMessage("Excellent choice! Just a few quick details to get you set up:");
-    }, 9000);
-    
-    setTimeout(() => {
-      addBotMessage("📝 Please provide your details:", ["Fill Form"]);
-      setShowForm(true);
-    }, 11000);
-    
-    setTimeout(() => {
-      addUserMessage("Fill Form");
-    }, 13000);
-    
-    setTimeout(() => {
-      setLeadData(prev => ({ ...prev, name: "Sarah Johnson" }));
-    }, 14000);
-    
-    setTimeout(() => {
-      setLeadData(prev => ({ ...prev, phone: "(555) 123-4567" }));
-    }, 15000);
-    
-    setTimeout(() => {
-      setLeadData(prev => ({ ...prev, email: "sarah.j@email.com" }));
-    }, 16000);
-    
-    setTimeout(() => {
-      const mockFormData = {
-        name: "Sarah Johnson",
-        phone: "(555) 123-4567",
-        email: "sarah.j@email.com",
-        intent: "📅 Book Now",
-        service: "🦷 Teeth Cleaning - $129"
-      };
-      setLeadData(mockFormData);
-      setIsProcessing(true);
-      setShowForm(false);
-    }, 18000);
-    
-    setTimeout(() => {
-      setIsProcessing(false);
-      setCurrentStep('success');
-      addBotMessage("🎉 You&apos;re all set! We&apos;ll confirm within 5-10 minutes by SMS. Questions? Just reply here.");
-    }, 20000);
-    
-    setTimeout(() => {
-      setAutomatedFlow(false);
-    }, 23000);
-  };
-
-  const handleFormSubmit = (formData: LeadData) => {
-    setLeadData(formData);
-    setIsProcessing(true);
-    setShowForm(false);
-    
-    setTimeout(() => {
-      setIsProcessing(false);
-      setCurrentStep('success');
-      addBotMessage("🎉 You're all set! We'll confirm within 5-10 minutes by SMS. Questions? Just reply here.");
-    }, 1000);
-  };
-
-  // Handle Get Started Today button
-  const handleGetStarted = () => {
-    setIsLoading(true);
-    // Simulate a brief loading state for better UX
-    setTimeout(() => {
-      setIsLoading(false);
-      // Open chat and start the demo flow
-      setIsChatOpen(true);
-      addBotMessage("Hi! 👋 Want today&apos;s special, price list, or to book? Choose an option:", [
-        "💎 Today&apos;s Specials",
-        "💰 Price List", 
-        "📅 Book Now"
-      ]);
-      setCurrentStep('welcome');
-      
-      // Scroll to chat section after a brief delay
-      setTimeout(() => {
-        const chatSection = document.querySelector('.bg-gradient-to-br.from-gray-800.to-gray-900');
-        if (chatSection) {
-          chatSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }, 1000);
-    }, 500);
-  };
-
-  // Handle Watch Demo button
-  const handleWatchDemo = () => {
-    setIsLoading(true);
-    // Simulate a brief loading state for better UX
-    setTimeout(() => {
-      setIsLoading(false);
-      // Start the automated demo flow
-      startAutomatedFlow();
-    }, 500);
-  };
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-blue-900/50"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
+              🚀 Small Business AI Demo Hub
+            </h1>
+            <p className="text-xl sm:text-2xl text-purple-200 mb-8 max-w-4xl mx-auto">
+              Explore 5 enterprise-grade AI solutions designed specifically for small businesses
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm sm:text-base">
+              <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                <span className="font-semibold">⚡</span> Instant Setup
               </div>
-              <div>
-                <h1 className="text-2xl font-bold text-white">Auralix AI</h1>
-                <p className="text-blue-200 text-sm">Enterprise Lead Capture Demo</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                <span className="font-semibold">💰</span> ROI Guaranteed
               </div>
-            </div>
-            
-            {/* Executive Metrics */}
-            <div className="hidden lg:flex items-center space-x-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-green-400">{executiveMetrics.totalRevenue}</div>
-                <div className="text-xs text-gray-300 font-medium">Annual Revenue</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-400">{executiveMetrics.roi}</div>
-                <div className="text-xs text-gray-300 font-medium">ROI</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">{executiveMetrics.costSavings}</div>
-                <div className="text-xs text-gray-300 font-medium">Cost Savings</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                <span className="font-semibold">🎯</span> Business Focused
               </div>
             </div>
-            
-            {/* Automated Flow Button */}
-            <button
-              onClick={startAutomatedFlow}
-              disabled={automatedFlow}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 disabled:opacity-50 shadow-lg"
+          </div>
+        </div>
+      </div>
+
+      {/* Demo Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {demos.map((demo) => (
+            <Link
+              key={demo.id}
+              href={demo.href}
+              className="group block"
             >
-              {automatedFlow ? '🤖 Auto-Demo Running...' : '🚀 Start Auto-Demo'}
-            </button>
-          </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl sm:text-5xl">{demo.icon}</div>
+                  <div className="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+                    {demo.status}
+                  </div>
+                </div>
+                
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                  {demo.title}
+                </h3>
+                
+                <p className="text-purple-200 font-semibold mb-3 text-sm sm:text-base">
+                  {demo.subtitle}
+                </p>
+                
+                <p className="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed">
+                  {demo.description}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${demo.color}`}></div>
+                    <span className="text-xs text-gray-400">Click to explore</span>
+                  </div>
+                  <div className="text-purple-300 group-hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Side - Website Mock */}
-          <div className="space-y-8">
-            <div className="text-center lg:text-left">
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                Enterprise AI Lead Generation
-              </h2>
-              <p className="text-xl text-blue-200 mb-4">
-                Transform your business with AI-powered lead capture that scales
-              </p>
-              <div className="flex flex-wrap gap-4 mb-6">
-                <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg px-4 py-2 border border-green-400 shadow-lg">
-                  <span className="text-white text-sm font-bold">300% ROI</span>
-                </div>
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg px-4 py-2 border border-blue-400 shadow-lg">
-                  <span className="text-white text-sm font-bold">$180K Savings</span>
-                </div>
-                <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg px-4 py-2 border border-purple-400 shadow-lg">
-                  <span className="text-white text-sm font-bold">7.2% Conversion</span>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={handleGetStarted}
-                  disabled={isLoading}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-2xl transform hover:scale-105 disabled:opacity-50"
-                >
-                  {isLoading ? (
-                    <div className="flex items-center space-x-2">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                      <span>Getting Started...</span>
-                    </div>
-                  ) : (
-                    "Get Started Today"
-                  )}
-                </button>
-                <button 
-                  onClick={handleWatchDemo}
-                  disabled={isLoading}
-                  className="border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-400 hover:text-white transition-all duration-200 disabled:opacity-50"
-                >
-                  {isLoading ? (
-                    <div className="flex items-center space-x-2">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
-                      <span>Watching Demo...</span>
-                    </div>
-                  ) : (
-                    "Watch Demo"
-                  )}
-                </button>
-              </div>
-            </div>
-            
-            {/* Service Cards */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-2xl border border-blue-400">
-                <div className="text-3xl mb-4">🦷</div>
-                <h3 className="text-xl font-bold mb-2">Teeth Cleaning</h3>
-                <p className="text-blue-100 font-medium">Professional cleaning and checkup</p>
-                <div className="text-2xl font-bold mt-4">$129</div>
-              </div>
-              <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white shadow-2xl border border-purple-400">
-                <div className="text-3xl mb-4">✨</div>
-                <h3 className="text-xl font-bold mb-2">Whitening</h3>
-                <p className="text-purple-100 font-medium">Professional teeth whitening</p>
-                <div className="text-2xl font-bold mt-4">$299</div>
-              </div>
-              <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-2xl border border-green-400">
-                <div className="text-3xl mb-4">🔧</div>
-                <h3 className="text-xl font-bold mb-2">Full Checkup</h3>
-                <p className="text-green-100 font-medium">Comprehensive dental examination</p>
-                <div className="text-2xl font-bold mt-4">$199</div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Side - Chat Interface */}
-          <div className="space-y-6">
-            {/* Chat Container */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700 h-96 overflow-y-auto">
-              {messages.map((message) => (
-                <div key={message.id} className={`mb-4 ${message.type === 'user' ? 'text-right' : 'text-left'}`}>
-                  <div className={`inline-block max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
-                    message.type === 'user' 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
-                      : 'bg-gradient-to-r from-gray-700 to-gray-800 text-white'
-                  }`}>
-                    <p className="text-sm">{message.content}</p>
-                  </div>
-                  {message.options && (
-                    <div className="mt-3 space-y-2">
-                      {message.options.map((option, index) => (
-                        <button
-                          key={index}
-                          onClick={() => handleOptionClick(option)}
-                          className="block w-full text-left bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-lg hover:from-gray-500 hover:to-gray-600 transition-all duration-200 text-sm"
-                        >
-                          {option}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              
-              {isProcessing && (
-                <div className="text-center">
-                  <div className="inline-block bg-gradient-to-r from-gray-700 to-gray-800 text-white px-4 py-2 rounded-2xl">
-                    <div className="flex items-center space-x-2">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                      <span className="text-sm">Processing...</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Lead Form */}
-            {showForm && (
-              <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-2xl border border-emerald-400">
-                <h3 className="text-xl font-bold mb-4">📝 Contact Information</h3>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Name</label>
-                    <input
-                      type="text"
-                      value={leadData.name}
-                      onChange={(e) => setLeadData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      value={leadData.phone}
-                      onChange={(e) => setLeadData(prev => ({ ...prev, phone: e.target.value }))}
-                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email (Optional)</label>
-                    <input
-                      type="email"
-                      value={leadData.email}
-                      onChange={(e) => setLeadData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  <button
-                    onClick={() => handleFormSubmit(leadData)}
-                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 py-3 rounded-lg font-bold hover:from-emerald-700 hover:to-teal-800 transition-all duration-200 shadow-lg"
-                  >
-                    Submit & Get Confirmation
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Success State */}
-            {currentStep === 'success' && (
-              <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-2xl border border-green-400">
-                <h3 className="text-xl font-bold mb-4">✅ Lead Captured Successfully!</h3>
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold">{leadData.name}</div>
-                    <div className="text-sm opacity-90">Name</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold">{leadData.phone}</div>
-                    <div className="text-sm opacity-90">Phone</div>
-                  </div>
-                </div>
-                <div className="mt-4 p-4 bg-green-400 bg-opacity-30 rounded-lg border border-green-300">
-                  <div className="text-sm text-white font-medium">
-                    <strong className="text-green-200">SMS Sent:</strong> &quot;Hi {leadData.name}, thanks for reaching out to DentalCare Pro. We&apos;ll confirm shortly. Reply STOP to opt-out.&quot;
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* SMS Preview - Always Show */}
-            <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-2xl border border-emerald-400">
-              <h3 className="text-xl font-bold mb-4">📱 Instant SMS Follow-up</h3>
-              <div className="mt-4 p-4 bg-emerald-400 bg-opacity-30 rounded-lg border border-emerald-300">
-                <div className="text-sm text-white font-medium">
-                  <strong className="text-emerald-200">Sample SMS:</strong> &quot;Hi Sarah, thanks for reaching out to DentalCare Pro! We&apos;ve received your booking request for Teeth Cleaning. We&apos;ll confirm your appointment within 5-10 minutes. Reply STOP to opt-out.&quot;
-                </div>
-              </div>
-            </div>
-
-            {/* AI Analysis Preview - Always Show */}
-            <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-2xl p-6 border border-indigo-400 shadow-2xl">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">🚀 Market Impact Analysis</h3>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 text-sm font-medium">LIVE</span>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-                <div className="text-center">
-                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-purple-300 break-words">$2.1B</div>
-                  <div className="text-xs text-gray-300">Market Size</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-blue-300">7.2%</div>
-                  <div className="text-xs text-gray-300">Conversion Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-green-300">23s</div>
-                  <div className="text-xs text-gray-300">Response Time</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-yellow-300">12</div>
-                  <div className="text-xs text-gray-300">Leads/Day</div>
-                </div>
-                <div className="text-center col-span-2 md:col-span-1">
-                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-red-300 break-words">+$45K/month</div>
-                  <div className="text-xs text-gray-300">Revenue Impact</div>
-                </div>
-              </div>
-              <div className="mt-4 p-4 bg-indigo-400 bg-opacity-30 rounded-lg border border-indigo-300">
-                <div className="text-sm text-white font-medium">
-                  <strong className="text-indigo-200">AI Analysis:</strong> Our AI predicts a 7.2% conversion improvement over industry average. 
-                  Each lead captured represents $45,000 in annual revenue potential with full automation deployment.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section - Features */}
-        <div className="mt-20 grid md:grid-cols-3 gap-8">
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 shadow-2xl border border-blue-400">
-            <div className="text-3xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold text-white mb-2">60-Second Response</h3>
-            <p className="text-blue-100 font-medium">AI-powered instant replies that convert visitors into leads</p>
-          </div>
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 shadow-2xl border border-green-400">
-            <div className="text-3xl mb-4">📱</div>
-            <h3 className="text-xl font-bold text-white mb-2">Instant SMS Follow-up</h3>
-            <p className="text-green-100 font-medium">Automated SMS confirmations with business branding</p>
-          </div>
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 shadow-2xl border border-purple-400">
-            <div className="text-3xl mb-4">🎯</div>
-            <h3 className="text-xl font-bold text-white mb-2">Guaranteed ROI</h3>
-            <p className="text-purple-100 font-medium">Track leads, conversions, and revenue impact in real-time</p>
+      {/* Footer CTA */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 backdrop-blur-sm border border-purple-400/20 rounded-2xl p-8 text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+            Ready to Transform Your Business?
+          </h3>
+          <p className="text-purple-200 mb-6 max-w-2xl mx-auto">
+            Each demo showcases real AI solutions that can be implemented in days, not months. 
+            See the future of small business automation.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              🚀 Get Started Today
+            </Link>
+            <Link
+              href="/solutions"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg hover:bg-white/20 transition-all duration-200 border border-white/20"
+            >
+              📋 View All Solutions
+            </Link>
           </div>
         </div>
       </div>
-
-      {/* Floating Chat Button */}
-      {!isChatOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <button
-            onClick={() => setIsChatOpen(true)}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-200"
-          >
-            <div className="flex items-center space-x-2">
-              <span className="text-xl">💬</span>
-              <span className="text-sm font-semibold">Got a question? Get a reply in 60s</span>
-            </div>
-          </button>
-        </div>
-      )}
     </div>
   );
 } 

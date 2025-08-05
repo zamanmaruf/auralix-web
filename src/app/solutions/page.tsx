@@ -26,13 +26,13 @@ export default function SolutionsPage() {
           </div>
           
           <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-6 sm:p-8 border border-blue-400">
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">💬 Lead Capture Demo</h2>
-            <p className="text-blue-200 mb-4 sm:mb-6 text-sm sm:text-base">See how AI turns visitors into leads in 60 seconds</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">🏢 Small Business Demo Hub</h2>
+            <p className="text-blue-200 mb-4 sm:mb-6 text-sm sm:text-base">Explore 5 AI solutions for small businesses</p>
             <a 
               href="/solutions/small-business-demo" 
               className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-base sm:text-lg transition-all duration-200 shadow-lg"
             >
-              🚀 Launch Demo
+              🚀 Launch Demo Hub
             </a>
           </div>
         </div>
