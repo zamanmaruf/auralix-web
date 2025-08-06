@@ -68,6 +68,8 @@ CRITICAL RULES:
 - If they ask medical questions, provide accurate information but always recommend consulting a dentist for specific concerns
 - Once a booking is confirmed, acknowledge it and ask if they need anything else
 - Do NOT ask for more booking information after confirming an appointment
+- ALWAYS book exactly what the customer asks for - if they say "Quantum Whitening", book Quantum Whitening, not AI-Powered Cleaning
+- Pay attention to the specific service name the customer mentions and book that exact service
 
 Remember: You are a knowledgeable dental professional who can handle any dental-related conversation while also being able to book appointments efficiently.`;
 
@@ -75,21 +77,26 @@ export async function POST(request: NextRequest) {
   try {
     const apiKey = process.env.OPENAI_API_KEY;
     
+    console.log('Voice Assistant API called');
+    console.log('API Key exists:', !!apiKey);
+    console.log('API Key starts with sk-proj:', apiKey?.startsWith('sk-proj'));
+    
     // If no API key, provide intelligent fallback responses
     if (!apiKey || apiKey === 'your_openai_api_key_here') {
+      console.log('Using fallback responses - no valid API key');
       const { message } = await request.json();
       const lowerMessage = message.toLowerCase();
       
       // Provide intelligent dental responses based on common patterns
-      if (lowerMessage.includes('cleaning') || lowerMessage.includes('clean')) {
+      if (lowerMessage.includes('quantum whitening') || lowerMessage.includes('whitening') || lowerMessage.includes('white')) {
+        return NextResponse.json({ 
+          response: "Excellent! Quantum Whitening uses AI-optimized light therapy for faster, safer results. What day works best for you? I have morning and afternoon slots available." 
+        });
+      } else if (lowerMessage.includes('ai-powered cleaning') || lowerMessage.includes('cleaning') || lowerMessage.includes('clean')) {
         return NextResponse.json({ 
           response: "Great choice! Our AI-Powered Cleaning uses advanced technology to detect early signs of gum disease and cavities. When would you like to schedule it? I have slots available Monday through Friday." 
         });
-      } else if (lowerMessage.includes('whitening') || lowerMessage.includes('white')) {
-        return NextResponse.json({ 
-          response: "Excellent! Our Quantum Whitening uses AI-optimized light therapy for faster, safer results. What day works best for you? I have morning and afternoon slots available." 
-        });
-      } else if (lowerMessage.includes('checkup') || lowerMessage.includes('exam')) {
+      } else if (lowerMessage.includes('neural enhancement') || lowerMessage.includes('checkup') || lowerMessage.includes('exam')) {
         return NextResponse.json({ 
           response: "A Neural Enhancement Checkup is perfect for maintaining your oral health. Our AI can detect issues before they become problems. When would you like to come in?" 
         });
@@ -144,7 +151,10 @@ export async function POST(request: NextRequest) {
       apiKey,
     });
 
-    const { message, conversationHistory, currentStep, selectedService, selectedDate, selectedTime, customerInfo } = await request.json();
+    const requestBody = await request.json();
+    console.log('Request body:', JSON.stringify(requestBody, null, 2));
+    
+    const { message, conversationHistory, currentStep, selectedService, selectedDate, selectedTime, customerInfo } = requestBody;
 
     if (!message) {
       return NextResponse.json(
@@ -176,6 +186,7 @@ IMPORTANT: Remember the customer's name throughout the conversation. If they men
       { role: 'user' as const, content: message }
     ];
 
+    console.log('Calling OpenAI API...');
     const completion = await openai.chat.completions.create({
       model: 'gpt-4',
       messages,
@@ -184,14 +195,38 @@ IMPORTANT: Remember the customer's name throughout the conversation. If they men
     });
 
     const response = completion.choices[0]?.message?.content || 'I apologize, but I am unable to respond at the moment. Please try again.';
+    console.log('OpenAI response:', response);
 
     return NextResponse.json({ response });
   } catch (error) {
     console.error('Voice Assistant API error:', error);
     
+    // Check if it's an OpenAI API error
+    if (error instanceof Error) {
+      console.error('Error details:', error.message);
+      
+      if (error.message.includes('401') || error.message.includes('unauthorized')) {
+        return NextResponse.json(
+          { 
+            response: "I'm sorry, there was an authentication issue. Please check the API configuration." 
+          },
+          { status: 401 }
+        );
+      }
+      
+      if (error.message.includes('429') || error.message.includes('rate limit')) {
+        return NextResponse.json(
+          { 
+            response: "I'm sorry, the service is temporarily busy. Please try again in a moment." 
+          },
+          { status: 429 }
+        );
+      }
+    }
+    
     return NextResponse.json(
       { 
-        response: "I'm sorry, I'm having trouble connecting right now. Please try again." 
+        response: "I'm sorry, there was an error processing your request. Please try again." 
       },
       { status: 500 }
     );

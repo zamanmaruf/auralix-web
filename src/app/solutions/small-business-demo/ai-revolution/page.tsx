@@ -102,43 +102,45 @@ export default function AIRevolutionDemo() {
     }
   ];
 
-  const bookingSteps: BookingStep[] = [
+  const getBookingSteps = (): BookingStep[] => [
     {
       id: 1,
       title: 'Voice Recognition',
       description: 'Speak your appointment request',
-      status: 'active',
+      status: currentStep >= 1 ? 'completed' : 'pending',
       icon: '🎤'
     },
     {
       id: 2,
       title: 'Service Selection',
       description: 'Choose your AI-powered service',
-      status: 'pending',
+      status: selectedService ? 'completed' : currentStep >= 2 ? 'active' : 'pending',
       icon: '🧠'
     },
     {
       id: 3,
       title: 'Schedule Optimization',
       description: 'AI finds the perfect time for you',
-      status: 'pending',
+      status: selectedDate && selectedTime ? 'completed' : currentStep >= 3 ? 'active' : 'pending',
       icon: '📅'
     },
     {
       id: 4,
       title: 'Customer Information',
       description: 'Quick and secure data collection',
-      status: 'pending',
+      status: customerInfo.name && customerInfo.phone ? 'completed' : currentStep >= 4 ? 'active' : 'pending',
       icon: '👤'
     },
     {
       id: 5,
       title: 'Quantum Confirmation',
       description: 'AI confirms and optimizes your booking',
-      status: 'pending',
+      status: bookingConfirmed ? 'completed' : currentStep >= 5 ? 'active' : 'pending',
       icon: '✅'
     }
   ];
+
+  const bookingSteps = getBookingSteps();
 
   // Initialize speech recognition and synthesis
   useEffect(() => {
@@ -398,44 +400,52 @@ export default function AIRevolutionDemo() {
       const lowerResponse = aiResponse.toLowerCase();
       const lowerInput = input.toLowerCase();
       
-      // Extract service information if mentioned in user input
-      if (lowerInput.includes('whitening') || lowerInput.includes('white')) {
+      // Extract service information if mentioned in user input - be more precise
+      if (lowerInput.includes('quantum whitening') || lowerInput.includes('whitening') || lowerInput.includes('white')) {
         setSelectedService(services[0]);
         setCurrentStep(3);
-      } else if (lowerInput.includes('cleaning') || lowerInput.includes('clean')) {
+        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[0].name} - AI optimizing schedule...`]);
+      } else if (lowerInput.includes('ai-powered cleaning') || lowerInput.includes('cleaning') || lowerInput.includes('clean')) {
         setSelectedService(services[1]);
         setCurrentStep(3);
-      } else if (lowerInput.includes('checkup') || lowerInput.includes('exam')) {
+        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[1].name} - AI optimizing schedule...`]);
+      } else if (lowerInput.includes('neural enhancement') || lowerInput.includes('checkup') || lowerInput.includes('exam') || lowerInput.includes('neural') || lowerInput.includes('enhancement')) {
         setSelectedService(services[2]);
         setCurrentStep(3);
-      } else if (lowerInput.includes('scan') || lowerInput.includes('predictive')) {
+        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[2].name} - AI optimizing schedule...`]);
+      } else if (lowerInput.includes('predictive health scan') || lowerInput.includes('health scan') || lowerInput.includes('scan') || lowerInput.includes('predictive')) {
         setSelectedService(services[3]);
         setCurrentStep(3);
+        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[3].name} - AI optimizing schedule...`]);
       }
       
       // Extract date/time information if mentioned in user input
       if (lowerInput.includes('monday') || lowerInput.includes('10 am') || lowerInput.includes('morning')) {
         setSelectedDate('Monday, August 12th');
         setSelectedTime('10:00 AM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM']);
         if (selectedService) {
           setCurrentStep(4);
         }
       } else if (lowerInput.includes('tuesday') || lowerInput.includes('2 pm') || lowerInput.includes('afternoon')) {
         setSelectedDate('Tuesday, August 13th');
         setSelectedTime('2:00 PM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Tuesday at 2:00 PM']);
         if (selectedService) {
           setCurrentStep(4);
         }
       } else if (lowerInput.includes('wednesday') || lowerInput.includes('3 pm')) {
         setSelectedDate('Wednesday, August 14th');
         setSelectedTime('3:30 PM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Wednesday at 3:30 PM']);
         if (selectedService) {
           setCurrentStep(4);
         }
-      } else if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerInput.includes('whenever') || lowerInput.includes('when ever')) {
+      } else if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerMessage.includes('whenever') || lowerInput.includes('when ever')) {
         // Set a default time if they say "anytime"
         setSelectedDate('Monday, August 12th');
         setSelectedTime('10:00 AM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM (default time)']);
         if (selectedService) {
           setCurrentStep(4);
         }
@@ -588,8 +598,12 @@ export default function AIRevolutionDemo() {
     setIsProcessing(false);
     setAiInsights(prev => [...prev, '✅ Quantum AI confirmed your appointment!']);
     
-    // Provide a clear confirmation message
-    const confirmationMessage = `Perfect! Your appointment is confirmed for ${selectedService?.name || 'AI-Powered Cleaning'} on ${selectedDate} at ${selectedTime}. You'll receive a confirmation text shortly. Your booking has been successfully confirmed!`;
+    // Provide a clear confirmation message with exact service details
+    const serviceName = selectedService?.name || 'AI-Powered Cleaning';
+    const servicePrice = selectedService?.price || 129;
+    const serviceDuration = selectedService?.duration || 45;
+    
+    const confirmationMessage = `Perfect! Your appointment is confirmed for ${serviceName} ($${servicePrice}, ${serviceDuration} minutes) on ${selectedDate} at ${selectedTime}. You'll receive a confirmation text shortly. Your booking has been successfully confirmed!`;
     setVoiceResponse(confirmationMessage);
     speakVoicePrompt(confirmationMessage);
   };
@@ -673,6 +687,14 @@ export default function AIRevolutionDemo() {
               <div className="mt-3 p-3 bg-blue-900/30 rounded-lg">
                 <p className="text-sm text-gray-300">You said:</p>
                 <p className="text-cyan-300 font-medium">{transcript}</p>
+                {selectedService && (
+                  <div className="mt-2 p-2 bg-green-900/30 rounded border border-green-400/30">
+                    <p className="text-sm text-green-300">✅ Service: {selectedService.name}</p>
+                    {selectedDate && selectedTime && (
+                      <p className="text-sm text-green-300">📅 Time: {selectedDate} at {selectedTime}</p>
+                    )}
+                  </div>
+                )}
               </div>
             )}
             
@@ -961,7 +983,7 @@ export default function AIRevolutionDemo() {
             {/* Selected Service Info */}
             {selectedService && (
               <div className="bg-gradient-to-br from-green-900/50 to-blue-900/50 p-6 rounded-xl border border-green-400/30">
-                <h3 className="text-xl font-bold text-green-400 mb-4">Selected Service</h3>
+                <h3 className="text-xl font-bold text-green-400 mb-4">🎯 Your Booking Details</h3>
                 <div className="space-y-3">
                   <div>
                     <span className="text-gray-300">Service:</span>
@@ -986,6 +1008,18 @@ export default function AIRevolutionDemo() {
                         <span className="text-white font-bold ml-2">{selectedTime}</span>
                       </div>
                     </>
+                  )}
+                  {customerInfo.name && (
+                    <div>
+                      <span className="text-gray-300">Name:</span>
+                      <span className="text-white font-bold ml-2">{customerInfo.name}</span>
+                    </div>
+                  )}
+                  {customerInfo.phone && (
+                    <div>
+                      <span className="text-gray-300">Phone:</span>
+                      <span className="text-white font-bold ml-2">{customerInfo.phone}</span>
+                    </div>
                   )}
                 </div>
               </div>
