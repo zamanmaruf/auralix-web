@@ -539,15 +539,41 @@ export default function AIRevolutionDemo() {
       }
       
       // Extract customer information if mentioned - enhanced to remember throughout conversation
-      const nameMatch = input.match(/(?:my name is|i'm|call me|name is)\s+([a-zA-Z\s]+)/i);
+      const nameMatch = input.match(/(?:my name is|i'm|call me|name is)\s+([a-zA-Z]+(?:\s+[a-zA-Z]+)*)/i);
       const phoneMatch = input.match(/(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/);
-      const simpleNameMatch = input.match(/^([a-zA-Z\s]+)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
-      const namePhonePattern = input.match(/^([a-zA-Z\s]+)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
+      const simpleNameMatch = input.match(/^([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
+      const namePhonePattern = input.match(/^([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
       
       // Also check for just a name mentioned anywhere in the conversation (if we don't have one yet)
       const justNameMatch = input.match(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/);
       
-      if ((nameMatch && phoneMatch) || simpleNameMatch || namePhonePattern) {
+      // Special case for "My name is Maru my phone number is..." - extract just the name
+      const specialNameMatch = input.match(/(?:my name is|i'm|call me|name is)\s+([a-zA-Z]+)\s+my\s+phone/i);
+      
+      if (specialNameMatch && phoneMatch) {
+        // Handle the special case where name is followed by "my phone"
+        const customerName = specialNameMatch[1].trim();
+        const customerPhone = phoneMatch[1];
+        
+        setCustomerInfo(prev => ({ 
+          ...prev, 
+          name: customerName,
+          phone: customerPhone
+        }));
+        
+        // If we have a service selected, move to confirmation
+        if (selectedService) {
+          setCurrentStep(5);
+          processBooking();
+        } else {
+          // If no service selected, set a default and confirm
+          setSelectedService(services[1]); // Default to AI-Powered Cleaning
+          setSelectedDate('Monday, August 12th'); // Default date
+          setSelectedTime('10:00 AM'); // Default time
+          setCurrentStep(5);
+          processBooking();
+        }
+      } else if ((nameMatch && phoneMatch) || simpleNameMatch || namePhonePattern) {
         let customerName, customerPhone;
         
         if (simpleNameMatch || namePhonePattern) {
