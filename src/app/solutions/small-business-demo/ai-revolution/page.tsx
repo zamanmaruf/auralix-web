@@ -441,13 +441,100 @@ export default function AIRevolutionDemo() {
         if (selectedService) {
           setCurrentStep(4);
         }
-      } else if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerMessage.includes('whenever') || lowerInput.includes('when ever')) {
+      } else if (lowerInput.includes('3:30 pm') || lowerInput.includes('3 30 pm') || lowerInput.includes('3:30pm') || lowerInput.includes('3 30pm') || lowerInput.includes('3:30 p.m.') || lowerInput.includes('3 30 p.m.')) {
+        // Handle 3:30 PM specifically
+        if (lowerInput.includes('monday')) {
+          setSelectedDate('Monday, August 12th');
+        } else if (lowerInput.includes('tuesday')) {
+          setSelectedDate('Tuesday, August 13th');
+        } else if (lowerInput.includes('wednesday')) {
+          setSelectedDate('Wednesday, August 14th');
+        } else {
+          setSelectedDate('Monday, August 12th'); // Default to Monday
+        }
+        setSelectedTime('3:30 PM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 3:30 PM']);
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      } else if (lowerInput.includes('2:00 pm') || lowerInput.includes('2 pm') || lowerInput.includes('2:00pm') || lowerInput.includes('2pm')) {
+        // Handle 2:00 PM
+        if (lowerInput.includes('monday')) {
+          setSelectedDate('Monday, August 12th');
+        } else if (lowerInput.includes('tuesday')) {
+          setSelectedDate('Tuesday, August 13th');
+        } else if (lowerInput.includes('wednesday')) {
+          setSelectedDate('Wednesday, August 14th');
+        } else {
+          setSelectedDate('Monday, August 12th'); // Default to Monday
+        }
+        setSelectedTime('2:00 PM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 2:00 PM']);
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      } else if (lowerInput.includes('10:00 am') || lowerInput.includes('10 am') || lowerInput.includes('10:00am') || lowerInput.includes('10am')) {
+        // Handle 10:00 AM
+        if (lowerInput.includes('monday')) {
+          setSelectedDate('Monday, August 12th');
+        } else if (lowerInput.includes('tuesday')) {
+          setSelectedDate('Tuesday, August 13th');
+        } else if (lowerInput.includes('wednesday')) {
+          setSelectedDate('Wednesday, August 14th');
+        } else {
+          setSelectedDate('Monday, August 12th'); // Default to Monday
+        }
+        setSelectedTime('10:00 AM');
+        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM']);
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      } else if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerInput.includes('whenever') || lowerInput.includes('when ever')) {
         // Set a default time if they say "anytime"
         setSelectedDate('Monday, August 12th');
         setSelectedTime('10:00 AM');
         setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM (default time)']);
         if (selectedService) {
           setCurrentStep(4);
+        }
+      } else {
+        // Try to extract time using regex for any format
+        const timeMatch = input.match(/(\d{1,2}):?(\d{2})\s*(am|pm|a\.m\.|p\.m\.)/i);
+        if (timeMatch) {
+          let hour = parseInt(timeMatch[1]);
+          const minute = timeMatch[2];
+          const period = timeMatch[3].toLowerCase();
+          
+          // Convert to 24-hour format for comparison
+          if (period.includes('pm') && hour !== 12) {
+            hour += 12;
+          } else if (period.includes('am') && hour === 12) {
+            hour = 0;
+          }
+          
+          // Map to available time slots
+          let selectedTimeSlot = '';
+          if (hour === 9) selectedTimeSlot = '9:00 AM';
+          else if (hour === 10) selectedTimeSlot = '10:30 AM';
+          else if (hour === 14) selectedTimeSlot = '2:00 PM';
+          else if (hour === 15) selectedTimeSlot = '3:30 PM';
+          else if (hour === 17) selectedTimeSlot = '5:00 PM';
+          else selectedTimeSlot = '10:00 AM'; // Default
+          
+          // Determine date
+          let selectedDateSlot = 'Monday, August 12th';
+          if (lowerInput.includes('tuesday')) {
+            selectedDateSlot = 'Tuesday, August 13th';
+          } else if (lowerInput.includes('wednesday')) {
+            selectedDateSlot = 'Wednesday, August 14th';
+          }
+          
+          setSelectedDate(selectedDateSlot);
+          setSelectedTime(selectedTimeSlot);
+          setAiInsights(prev => [...prev, `📅 Appointment scheduled: ${selectedDateSlot} at ${selectedTimeSlot}`]);
+          if (selectedService) {
+            setCurrentStep(4);
+          }
         }
       }
       
