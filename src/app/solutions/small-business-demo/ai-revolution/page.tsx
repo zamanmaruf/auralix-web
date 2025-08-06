@@ -515,12 +515,13 @@ export default function AIRevolutionDemo() {
         let extractedDate = null;
         
         // Method 1: Direct time slot matching
-                 for (const [timePattern, timeSlot] of Object.entries(availableSlots)) {
-           if (lowerInput.includes(timePattern.toLowerCase())) {
-             extractedTime = timeSlot;
-             break;
-           }
-         }
+        for (const [timePattern, timeSlot] of Object.entries(availableSlots)) {
+          if (lowerInput.includes(timePattern.toLowerCase())) {
+            extractedTime = timeSlot;
+            console.log('🎯 Direct time match:', timePattern, '→', timeSlot);
+            break;
+          }
+        }
         
         // Method 2: Regex pattern matching for any time format
         if (!extractedTime) {
@@ -598,6 +599,7 @@ export default function AIRevolutionDemo() {
           extractedTime = '10:00 AM';
         }
         
+        console.log('🎯 Final extraction:', extractedDate, 'at', extractedTime);
         return { date: extractedDate, time: extractedTime };
       };
       
