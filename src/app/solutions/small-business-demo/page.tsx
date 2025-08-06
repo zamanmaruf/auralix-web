@@ -37,14 +37,14 @@ export default function SmallBusinessDemoHub() {
       href: '/solutions/small-business-demo/reviews-autopilot'
     },
     {
-      id: 'booking',
-      title: 'AI Appointment Booking',
-      subtitle: '24/7 calendar-aware booking with auto-confirm',
-      description: 'Let customers book appointments anytime with intelligent slot suggestions and automatic confirmation. Reduce no-shows with smart reminders.',
-      icon: '📅',
-      color: 'from-green-500 to-teal-600',
+      id: 'revolution',
+      title: '🚀 AI Revolution',
+      subtitle: 'Experience the future of quantum AI technology',
+      description: 'Revolutionary AI demo featuring voice commands, emotional AI, holographic interfaces, quantum predictions, and neural network visualization. The most advanced AI demo ever created.',
+      icon: '🧠',
+      color: 'from-purple-500 to-cyan-600',
       status: '✅ Live',
-      href: '/solutions/small-business-demo/appointment-booking'
+      href: '/solutions/small-business-demo/ai-revolution'
     },
     {
       id: 'ordering',
@@ -79,7 +79,7 @@ export default function SmallBusinessDemoHub() {
               🚀 Small Business AI Demo Hub
             </h1>
             <p className="text-xl sm:text-2xl text-purple-200 mb-8 max-w-4xl mx-auto">
-              Explore 5 enterprise-grade AI solutions designed specifically for small businesses
+              Explore 5 enterprise-grade AI solutions including the revolutionary AI demo
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm sm:text-base">
               <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
