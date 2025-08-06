@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { FaMicrophone, FaMicrophoneSlash, FaBrain, FaCalendar, FaCreditCard, FaCheck, FaTimes, FaRocket, FaStar, FaGem, FaPlay, FaPause, FaArrowRight, FaUser, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMicrophone, FaMicrophoneSlash, FaBrain, FaCalendar, FaCreditCard, FaCheck, FaTimes, FaRocket, FaStar, FaGem, FaPlay, FaPause, FaArrowRight, FaUser, FaClock, FaMapMarkerAlt, FaVolumeUp } from 'react-icons/fa';
 import { MdEmojiEmotions, MdPsychology, MdTrendingUp, MdSecurity, MdTouchApp, MdInfo, MdPayment, MdSchedule } from 'react-icons/md';
 import { BiBrain, BiChip, BiWifi, BiRadar } from 'react-icons/bi';
 import { GiBrain, GiCrystalBall, GiPalmTree } from 'react-icons/gi';
@@ -39,7 +39,9 @@ interface BookingStep {
 
 export default function AIRevolutionDemo() {
   const [isListening, setIsListening] = useState(false);
-  const [voiceCommand, setVoiceCommand] = useState('');
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [transcript, setTranscript] = useState('');
+  const [voiceResponse, setVoiceResponse] = useState('');
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedDate, setSelectedDate] = useState('');
@@ -49,13 +51,17 @@ export default function AIRevolutionDemo() {
     email: '',
     phone: ''
   });
+  const [conversationHistory, setConversationHistory] = useState<Array<{sender: 'user' | 'bot', text: string}>>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [aiInsights, setAiInsights] = useState<string[]>([]);
   const [quantumState, setQuantumState] = useState(0);
   const [aiConsciousness, setAiConsciousness] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const recognitionRef = useRef<any>(null);
+  const synthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const services: Service[] = [
     {
@@ -134,28 +140,67 @@ export default function AIRevolutionDemo() {
     }
   ];
 
-  // Voice Recognition
+  // Initialize speech recognition and synthesis
   useEffect(() => {
-    if (isListening) {
-      const recognition = new (window as any).webkitSpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = 'en-US';
+    // Only initialize if browser supports it
+    if (typeof window !== 'undefined' && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      try {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognitionRef.current = new SpeechRecognition();
+        recognitionRef.current.continuous = true; // Keep listening
+        recognitionRef.current.interimResults = false; // Only final results
+        recognitionRef.current.lang = 'en-US';
 
-      recognition.onresult = (event: any) => {
-        const transcript = Array.from(event.results)
-          .map((result: any) => result[0])
-          .map(result => result.transcript)
-          .join('');
-        
-        setVoiceCommand(transcript);
-        processVoiceCommand(transcript);
-      };
+        recognitionRef.current.onresult = (event: any) => {
+          let finalTranscript = '';
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+              finalTranscript += event.results[i][0].transcript;
+            }
+          }
+          if (finalTranscript) {
+            console.log('Voice input received:', finalTranscript);
+            setTranscript(finalTranscript);
+            processVoiceInput(finalTranscript);
+          }
+        };
 
-      recognition.start();
-      return () => recognition.stop();
+        recognitionRef.current.onerror = (event: any) => {
+          console.error('Speech recognition error:', event.error);
+          setIsListening(false);
+          // Restart listening after error
+          setTimeout(() => {
+            if (!isProcessing && !isSpeaking) {
+              startListening();
+            }
+          }, 2000);
+        };
+
+        recognitionRef.current.onend = () => {
+          setIsListening(false);
+          // Auto-restart if not processing or speaking
+          setTimeout(() => {
+            if (!isProcessing && !isSpeaking) {
+              startListening();
+            }
+          }, 1000);
+        };
+      } catch (error) {
+        console.error('Speech recognition initialization error:', error);
+      }
     }
-  }, [isListening]);
+
+    // Cleanup function to prevent memory leaks
+    return () => {
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.stop();
+        } catch (error) {
+          console.error('Error stopping recognition on cleanup:', error);
+        }
+      }
+    };
+  }, []);
 
   // Quantum State Animation
   useEffect(() => {
@@ -172,6 +217,18 @@ export default function AIRevolutionDemo() {
     }, 100);
     return () => clearInterval(interval);
   }, []);
+
+  // Auto-start voice recognition with welcome message
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (recognitionRef.current && !isListening && !isSpeaking && !isProcessing && !voiceResponse) {
+        setVoiceResponse("Welcome to AI Revolution! I'm Dr. AI, your intelligent dental assistant. I can answer any dental questions, explain procedures, provide oral health advice, or help you book appointments. What would you like to know about today?");
+        speakVoicePrompt("Welcome to AI Revolution! I'm Dr. AI, your intelligent dental assistant. I can answer any dental questions, explain procedures, provide oral health advice, or help you book appointments. What would you like to know about today?");
+      }
+    }, 2000); // Wait 2 seconds after component mounts
+
+    return () => clearTimeout(timer);
+  }, []); // Only run once on mount
 
   // Holographic Background
   useEffect(() => {
@@ -211,35 +268,280 @@ export default function AIRevolutionDemo() {
     animate();
   }, []);
 
-  const processVoiceCommand = (command: string) => {
-    const lowerCommand = command.toLowerCase();
+  const speakVoicePrompt = (text: string) => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
+        // Cancel any existing speech
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.9;
+        utterance.pitch = 1.1;
+        utterance.volume = 0.8;
+        
+        utterance.onstart = () => setIsSpeaking(true);
+        utterance.onend = () => {
+          console.log('Speech synthesis ended, restarting listening...');
+          setIsSpeaking(false);
+          // Restart listening after speaking
+          setTimeout(() => {
+            console.log('Starting listening after speech...');
+            startListening();
+          }, 1000);
+        };
+        
+        utterance.onerror = (event) => {
+          console.error('Speech synthesis error:', event);
+          setIsSpeaking(false);
+          // Restart listening even if speech fails
+          setTimeout(() => {
+            startListening();
+          }, 1000);
+        };
+        
+        synthesisRef.current = utterance;
+        window.speechSynthesis.speak(utterance);
+      } catch (error) {
+        console.error('Speech synthesis error:', error);
+        setIsSpeaking(false);
+        // Restart listening even if speech fails
+        setTimeout(() => {
+          if (!isProcessing) {
+            startListening();
+          }
+        }, 1000);
+      }
+    } else {
+      // Fallback if speech synthesis not available
+      setTimeout(() => {
+        startListening();
+      }, 1000);
+    }
+  };
+
+  const startListening = () => {
+    console.log('Attempting to start listening...', { isListening, hasRecognition: !!recognitionRef.current });
+    if (recognitionRef.current && !isListening) {
+      try {
+        setIsListening(true);
+        recognitionRef.current.start();
+        console.log('Listening started successfully');
+      } catch (error) {
+        console.error('Error starting speech recognition:', error);
+        setIsListening(false);
+      }
+    } else {
+      console.log('Cannot start listening:', { hasRecognition: !!recognitionRef.current, isListening });
+    }
+  };
+
+  const stopListening = () => {
+    if (recognitionRef.current && isListening) {
+      try {
+        setIsListening(false);
+        recognitionRef.current.stop();
+      } catch (error) {
+        console.error('Error stopping speech recognition:', error);
+        setIsListening(false);
+      }
+    }
+  };
+
+  const processVoiceInput = async (input: string) => {
+    console.log('Processing voice input:', input, 'Current step:', currentStep);
     
-    if (lowerCommand.includes('whitening') || lowerCommand.includes('white')) {
-      setSelectedService(services[0]);
-      setCurrentStep(2);
-      setAiInsights(prev => [...prev, '🎯 AI detected: Quantum Whitening service selected']);
-    } else if (lowerCommand.includes('cleaning') || lowerCommand.includes('clean')) {
-      setSelectedService(services[1]);
-      setCurrentStep(2);
-      setAiInsights(prev => [...prev, '🎯 AI detected: AI-Powered Cleaning service selected']);
-    } else if (lowerCommand.includes('checkup') || lowerCommand.includes('exam')) {
-      setSelectedService(services[2]);
-      setCurrentStep(2);
-      setAiInsights(prev => [...prev, '🎯 AI detected: Neural Enhancement Checkup selected']);
-    } else if (lowerCommand.includes('scan') || lowerCommand.includes('predictive')) {
-      setSelectedService(services[3]);
-      setCurrentStep(2);
-      setAiInsights(prev => [...prev, '🎯 AI detected: Predictive Health Scan selected']);
-    } else if (lowerCommand.includes('book') || lowerCommand.includes('appointment')) {
-      setAiInsights(prev => [...prev, '🎯 AI detected booking intent - optimizing schedule...']);
+    // If booking is already confirmed, don't process further booking requests
+    if (bookingConfirmed) {
+      setVoiceResponse("Your appointment has already been confirmed! Is there anything else I can help you with today?");
+      speakVoicePrompt("Your appointment has already been confirmed! Is there anything else I can help you with today?");
+      return;
+    }
+    
+    setIsProcessing(true);
+    stopListening();
+
+    try {
+      // Use the smart AI voice assistant
+      const response = await fetch('/api/voice-assistant', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: input,
+          conversationHistory,
+          currentStep,
+          selectedService,
+          selectedDate,
+          selectedTime,
+          customerInfo
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get AI response');
+      }
+
+      const data = await response.json();
+      const aiResponse = data.response;
+      
+      // Update the voice response
+      setVoiceResponse(aiResponse);
+      
+      // Add to conversation history
+      setConversationHistory(prev => [...prev, 
+        { sender: 'user', text: input },
+        { sender: 'bot', text: aiResponse }
+      ]);
+      
+      // Check if the AI response indicates we should update the booking state
+      const lowerResponse = aiResponse.toLowerCase();
+      const lowerInput = input.toLowerCase();
+      
+      // Extract service information if mentioned in user input
+      if (lowerInput.includes('whitening') || lowerInput.includes('white')) {
+        setSelectedService(services[0]);
+        setCurrentStep(3);
+      } else if (lowerInput.includes('cleaning') || lowerInput.includes('clean')) {
+        setSelectedService(services[1]);
+        setCurrentStep(3);
+      } else if (lowerInput.includes('checkup') || lowerInput.includes('exam')) {
+        setSelectedService(services[2]);
+        setCurrentStep(3);
+      } else if (lowerInput.includes('scan') || lowerInput.includes('predictive')) {
+        setSelectedService(services[3]);
+        setCurrentStep(3);
+      }
+      
+      // Extract date/time information if mentioned in user input
+      if (lowerInput.includes('monday') || lowerInput.includes('10 am') || lowerInput.includes('morning')) {
+        setSelectedDate('Monday, August 12th');
+        setSelectedTime('10:00 AM');
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      } else if (lowerInput.includes('tuesday') || lowerInput.includes('2 pm') || lowerInput.includes('afternoon')) {
+        setSelectedDate('Tuesday, August 13th');
+        setSelectedTime('2:00 PM');
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      } else if (lowerInput.includes('wednesday') || lowerInput.includes('3 pm')) {
+        setSelectedDate('Wednesday, August 14th');
+        setSelectedTime('3:30 PM');
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      } else if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerInput.includes('whenever') || lowerInput.includes('when ever')) {
+        // Set a default time if they say "anytime"
+        setSelectedDate('Monday, August 12th');
+        setSelectedTime('10:00 AM');
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      }
+      
+      // Extract customer information if mentioned - enhanced to remember throughout conversation
+      const nameMatch = input.match(/(?:my name is|i'm|call me|name is)\s+([a-zA-Z\s]+)/i);
+      const phoneMatch = input.match(/(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/);
+      const simpleNameMatch = input.match(/^([a-zA-Z\s]+)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
+      const namePhonePattern = input.match(/^([a-zA-Z\s]+)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
+      
+      // Also check for just a name mentioned anywhere in the conversation (if we don't have one yet)
+      const justNameMatch = input.match(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/);
+      
+      if ((nameMatch && phoneMatch) || simpleNameMatch || namePhonePattern) {
+        let customerName, customerPhone;
+        
+        if (simpleNameMatch || namePhonePattern) {
+          customerName = (simpleNameMatch || namePhonePattern)![1].trim();
+          customerPhone = (simpleNameMatch || namePhonePattern)![2];
+        } else {
+          customerName = nameMatch![1].trim();
+          customerPhone = phoneMatch![1];
+        }
+        
+        setCustomerInfo(prev => ({ 
+          ...prev, 
+          name: customerName,
+          phone: customerPhone
+        }));
+        
+        // If we have a service selected, move to confirmation
+        if (selectedService) {
+          setCurrentStep(5);
+          processBooking();
+        } else {
+          // If no service selected, set a default and confirm
+          setSelectedService(services[1]); // Default to AI-Powered Cleaning
+          setSelectedDate('Monday, August 12th'); // Default date
+          setSelectedTime('10:00 AM'); // Default time
+          setCurrentStep(5);
+          processBooking();
+        }
+      } else if (justNameMatch && !customerInfo.name) {
+        // If they just mention a name and we don't have one yet, remember it
+        const name = justNameMatch[1].trim();
+        setCustomerInfo(prev => ({ ...prev, name }));
+      }
+      
+      // If AI confirms booking, move to step 5
+      if (lowerResponse.includes('confirmed') || lowerResponse.includes('booked') || lowerResponse.includes('scheduled') || lowerResponse.includes('thank you') || lowerResponse.includes('appointment is confirmed') || lowerResponse.includes('booking has been successfully confirmed')) {
+        // Ensure we have default values if none set
+        if (!selectedService) {
+          setSelectedService(services[1]); // Default to AI-Powered Cleaning
+        }
+        if (!selectedDate) {
+          setSelectedDate('Monday, August 12th');
+        }
+        if (!selectedTime) {
+          setSelectedTime('10:00 AM');
+        }
+        setCurrentStep(5);
+        setBookingConfirmed(true);
+        processBooking();
+        
+        // Add a clear confirmation message to the conversation
+        setTimeout(() => {
+          const confirmationMessage = "Your booking has been successfully confirmed! Thank you for choosing our dental services.";
+          setConversationHistory(prev => [...prev, 
+            { sender: 'bot', text: confirmationMessage }
+          ]);
+          setVoiceResponse(confirmationMessage);
+          speakVoicePrompt(confirmationMessage);
+        }, 1000);
+      }
+      
+      setIsProcessing(false);
+      
+      // Speak the response immediately
+      speakVoicePrompt(aiResponse);
+    } catch (error) {
+      console.error('Error processing voice input:', error);
+      setIsProcessing(false);
+      setVoiceResponse("I'm sorry, there was an error processing your request. Please try again.");
     }
   };
 
   const toggleVoiceRecognition = () => {
-    setIsListening(!isListening);
-    if (!isListening) {
-      setAiInsights(prev => [...prev, '🎤 Voice recognition activated - AI is listening...']);
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
     }
+  };
+
+  const resetBooking = () => {
+    setCurrentStep(1);
+    setSelectedService(null);
+    setSelectedDate('');
+    setSelectedTime('');
+    setCustomerInfo({ name: '', email: '', phone: '' });
+    setBookingConfirmed(false);
+    setShowConfirmation(false);
+    setConversationHistory([]);
+    setVoiceResponse('');
+    setTranscript('');
   };
 
   const selectService = (service: Service) => {
@@ -269,21 +571,27 @@ export default function AIRevolutionDemo() {
     
     const newAppointment: Appointment = {
       id: Date.now().toString(),
-      service: selectedService!.name,
+      service: selectedService?.name || 'AI-Powered Cleaning',
       date: selectedDate,
       time: selectedTime,
-      duration: selectedService!.duration,
-      price: selectedService!.price,
+      duration: selectedService?.duration || 45,
+      price: selectedService?.price || 129,
       status: 'confirmed',
-      customerName: customerInfo.name,
-      customerEmail: customerInfo.email,
-      customerPhone: customerInfo.phone
+      customerName: customerInfo?.name || '',
+      customerEmail: customerInfo?.email || '',
+      customerPhone: customerInfo?.phone || ''
     };
     
     setAppointments(prev => [...prev, newAppointment]);
     setShowConfirmation(true);
+    setBookingConfirmed(true);
     setIsProcessing(false);
     setAiInsights(prev => [...prev, '✅ Quantum AI confirmed your appointment!']);
+    
+    // Provide a clear confirmation message
+    const confirmationMessage = `Perfect! Your appointment is confirmed for ${selectedService?.name || 'AI-Powered Cleaning'} on ${selectedDate} at ${selectedTime}. You'll receive a confirmation text shortly. Your booking has been successfully confirmed!`;
+    setVoiceResponse(confirmationMessage);
+    speakVoicePrompt(confirmationMessage);
   };
 
   const generateAvailableSlots = () => {
@@ -329,14 +637,52 @@ export default function AIRevolutionDemo() {
             🚀 AI Revolution
           </h1>
           <p className="text-2xl md:text-3xl mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-            End-to-End AI Booking System
+            Intelligent Dental AI Assistant
           </p>
           
-          {isListening && (
-            <div className="bg-purple-900/50 p-4 rounded-2xl mb-6 border border-cyan-400 animate-pulse">
-              <p className="text-lg text-cyan-300">🎤 Listening: "{voiceCommand}"</p>
+          {/* Voice Status */}
+          <div className="bg-purple-900/50 p-4 rounded-2xl mb-6 border border-cyan-400">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className={`p-2 rounded-full ${isListening ? 'bg-green-500 animate-pulse' : isSpeaking ? 'bg-blue-500' : 'bg-gray-600'}`}>
+                  {isListening ? <FaMicrophone className="text-white" /> : isSpeaking ? <FaVolumeUp className="text-white" /> : <FaMicrophoneSlash className="text-white" />}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-cyan-300">
+                    {isListening ? 'Listening...' : isSpeaking ? 'AI Speaking...' : 'Voice Assistant Ready'}
+                  </h3>
+                  <p className="text-gray-300">
+                    {isListening ? 'Speak now' : isSpeaking ? 'AI is responding' : 'Click microphone to start'}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={toggleVoiceRecognition}
+                disabled={isProcessing || isSpeaking}
+                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                  isListening 
+                    ? 'bg-red-600 hover:bg-red-500 text-white' 
+                    : 'bg-green-600 hover:bg-green-500 text-white'
+                } ${(isProcessing || isSpeaking) ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
+                {isListening ? 'Stop' : 'Start Voice'}
+              </button>
             </div>
-          )}
+            
+            {transcript && (
+              <div className="mt-3 p-3 bg-blue-900/30 rounded-lg">
+                <p className="text-sm text-gray-300">You said:</p>
+                <p className="text-cyan-300 font-medium">{transcript}</p>
+              </div>
+            )}
+            
+            {voiceResponse && (
+              <div className="mt-3 p-3 bg-green-900/30 rounded-lg">
+                <p className="text-sm text-gray-300">AI Response:</p>
+                <p className="text-green-300 font-medium">{voiceResponse}</p>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Booking Progress */}
@@ -392,17 +738,43 @@ export default function AIRevolutionDemo() {
                     <p className="text-cyan-300">"I need a checkup"</p>
                   </div>
                 </div>
-                <button
-                  onClick={toggleVoiceRecognition}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
-                    isListening 
-                      ? 'bg-red-600 hover:bg-red-500 text-white' 
-                      : 'bg-green-600 hover:bg-green-500 text-white'
-                  }`}
-                >
-                  {isListening ? <FaMicrophoneSlash /> : <FaMicrophone />}
-                  {isListening ? 'Stop Listening' : 'Start Voice Recognition'}
-                </button>
+                <div className="space-y-3">
+                  <button
+                    onClick={toggleVoiceRecognition}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
+                      isListening 
+                        ? 'bg-red-600 hover:bg-red-500 text-white' 
+                        : 'bg-green-600 hover:bg-green-500 text-white'
+                    }`}
+                  >
+                    {isListening ? <FaMicrophoneSlash /> : <FaMicrophone />}
+                    {isListening ? 'Stop Listening' : 'Start Voice Recognition'}
+                  </button>
+                  
+                  {/* Quick test buttons */}
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        setSelectedService(services[1]);
+                        setVoiceResponse("Great choice! AI-Powered Cleaning is a popular service. I have two available slots: Monday at 10 AM or Wednesday at 2 PM. Which would you prefer?");
+                        setCurrentStep(3);
+                      }}
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm"
+                    >
+                      Test: Select Cleaning
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedService(services[0]);
+                        setVoiceResponse("I understand you want Quantum Whitening. I have two available slots: Monday at 10 AM or Wednesday at 2 PM. Which would you prefer?");
+                        setCurrentStep(3);
+                      }}
+                      className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-sm"
+                    >
+                      Test: Select Whitening
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -519,6 +891,12 @@ export default function AIRevolutionDemo() {
                     <div className="text-6xl mb-4">✅</div>
                     <h4 className="text-xl font-bold text-green-400 mb-2">Booking Confirmed!</h4>
                     <p className="text-gray-300">Your AI-powered appointment is scheduled</p>
+                    <button
+                      onClick={resetBooking}
+                      className="mt-4 px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white rounded-lg font-semibold transition-all duration-300"
+                    >
+                      Book Another Appointment
+                    </button>
                   </div>
                 ) : null}
               </div>
@@ -544,6 +922,26 @@ export default function AIRevolutionDemo() {
               </div>
             </div>
 
+            {/* Conversation Memory */}
+            {conversationHistory.length > 0 && (
+              <div className="bg-black/30 p-6 rounded-2xl border border-cyan-400/30">
+                <h3 className="text-xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                  💬 Conversation Memory
+                </h3>
+                <div className="space-y-2 max-h-32 overflow-y-auto">
+                  {conversationHistory.slice(-6).map((msg, index) => (
+                    <div key={index} className={`p-2 rounded-lg text-sm ${
+                      msg.sender === 'user' 
+                        ? 'bg-blue-900/30 border border-blue-400/20 text-blue-300' 
+                        : 'bg-green-900/30 border border-green-400/20 text-green-300'
+                    }`}>
+                      <span className="font-bold">{msg.sender === 'user' ? 'You:' : 'Dr. AI:'}</span> {msg.text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Quantum Metrics */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 p-4 rounded-xl border border-cyan-400/30">
@@ -567,15 +965,15 @@ export default function AIRevolutionDemo() {
                 <div className="space-y-3">
                   <div>
                     <span className="text-gray-300">Service:</span>
-                    <span className="text-white font-bold ml-2">{selectedService.name}</span>
+                    <span className="text-white font-bold ml-2">{selectedService?.name || 'Not selected'}</span>
                   </div>
                   <div>
                     <span className="text-gray-300">Duration:</span>
-                    <span className="text-white font-bold ml-2">{selectedService.duration} minutes</span>
+                    <span className="text-white font-bold ml-2">{selectedService?.duration || 0} minutes</span>
                   </div>
                   <div>
                     <span className="text-gray-300">Price:</span>
-                    <span className="text-green-400 font-bold ml-2">${selectedService.price}</span>
+                    <span className="text-green-400 font-bold ml-2">${selectedService?.price || 0}</span>
                   </div>
                   {selectedDate && selectedTime && (
                     <>
