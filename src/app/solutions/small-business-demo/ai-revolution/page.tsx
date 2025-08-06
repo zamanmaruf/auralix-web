@@ -400,212 +400,311 @@ export default function AIRevolutionDemo() {
       const lowerResponse = aiResponse.toLowerCase();
       const lowerInput = input.toLowerCase();
       
-      // Extract service information if mentioned in user input - be more precise
-      if (lowerInput.includes('quantum whitening') || lowerInput.includes('whitening') || lowerInput.includes('white')) {
-        setSelectedService(services[0]);
+      // Process voice input intelligently
+      
+      // Intelligent service extraction - like a real front desk person
+      const extractService = () => {
+        
+        // Service patterns with priority (most specific first)
+        const servicePatterns = [
+          {
+            patterns: ['quantum whitening', 'quantum white', 'advanced whitening', 'ai whitening'],
+            service: services[0],
+            name: 'Quantum Whitening'
+          },
+          {
+            patterns: ['ai-powered cleaning', 'ai cleaning', 'smart cleaning', 'intelligent cleaning'],
+            service: services[1],
+            name: 'AI-Powered Cleaning'
+          },
+          {
+            patterns: ['neural enhancement', 'neural checkup', 'ai checkup', 'enhancement checkup'],
+            service: services[2],
+            name: 'Neural Enhancement Checkup'
+          },
+          {
+            patterns: ['predictive health scan', 'health scan', 'predictive scan', 'future scan'],
+            service: services[3],
+            name: 'Predictive Health Scan'
+          },
+          {
+            patterns: ['whitening', 'white', 'teeth whitening', 'bleaching'],
+            service: services[0],
+            name: 'Quantum Whitening'
+          },
+          {
+            patterns: ['cleaning', 'clean', 'dental cleaning', 'hygiene'],
+            service: services[1],
+            name: 'AI-Powered Cleaning'
+          },
+          {
+            patterns: ['checkup', 'exam', 'examination', 'routine'],
+            service: services[2],
+            name: 'Neural Enhancement Checkup'
+          },
+          {
+            patterns: ['scan', 'health', 'diagnostic'],
+            service: services[3],
+            name: 'Predictive Health Scan'
+          }
+        ];
+        
+        for (const servicePattern of servicePatterns) {
+          for (const pattern of servicePattern.patterns) {
+            if (lowerInput.includes(pattern)) {
+              return servicePattern.service;
+            }
+          }
+        }
+        
+        // Default to AI-Powered Cleaning if no service mentioned
+        return services[1];
+      };
+      
+      // Extract and set service
+      const selectedServiceFromInput = extractService();
+      if (selectedServiceFromInput) {
+        setSelectedService(selectedServiceFromInput);
         setCurrentStep(3);
-        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[0].name} - AI optimizing schedule...`]);
-      } else if (lowerInput.includes('ai-powered cleaning') || lowerInput.includes('cleaning') || lowerInput.includes('clean')) {
-        setSelectedService(services[1]);
-        setCurrentStep(3);
-        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[1].name} - AI optimizing schedule...`]);
-      } else if (lowerInput.includes('neural enhancement') || lowerInput.includes('checkup') || lowerInput.includes('exam') || lowerInput.includes('neural') || lowerInput.includes('enhancement')) {
-        setSelectedService(services[2]);
-        setCurrentStep(3);
-        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[2].name} - AI optimizing schedule...`]);
-      } else if (lowerInput.includes('predictive health scan') || lowerInput.includes('health scan') || lowerInput.includes('scan') || lowerInput.includes('predictive')) {
-        setSelectedService(services[3]);
-        setCurrentStep(3);
-        setAiInsights(prev => [...prev, `🧠 Service selected: ${services[3].name} - AI optimizing schedule...`]);
+        setAiInsights(prev => [...prev, `🧠 Service selected: ${selectedServiceFromInput.name} - AI optimizing schedule...`]);
       }
       
-      // Extract date/time information if mentioned in user input
-      if (lowerInput.includes('monday') || lowerInput.includes('10 am') || lowerInput.includes('morning')) {
-        setSelectedDate('Monday, August 12th');
-        setSelectedTime('10:00 AM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else if (lowerInput.includes('tuesday') || lowerInput.includes('2 pm') || lowerInput.includes('afternoon')) {
-        setSelectedDate('Tuesday, August 13th');
-        setSelectedTime('2:00 PM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Tuesday at 2:00 PM']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else if (lowerInput.includes('wednesday') || lowerInput.includes('3 pm')) {
-        setSelectedDate('Wednesday, August 14th');
-        setSelectedTime('3:30 PM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Wednesday at 3:30 PM']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else if (lowerInput.includes('3:30 pm') || lowerInput.includes('3 30 pm') || lowerInput.includes('3:30pm') || lowerInput.includes('3 30pm') || lowerInput.includes('3:30 p.m.') || lowerInput.includes('3 30 p.m.')) {
-        // Handle 3:30 PM specifically
-        if (lowerInput.includes('monday')) {
-          setSelectedDate('Monday, August 12th');
-        } else if (lowerInput.includes('tuesday')) {
-          setSelectedDate('Tuesday, August 13th');
-        } else if (lowerInput.includes('wednesday')) {
-          setSelectedDate('Wednesday, August 14th');
-        } else {
-          setSelectedDate('Monday, August 12th'); // Default to Monday
-        }
-        setSelectedTime('3:30 PM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 3:30 PM']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else if (lowerInput.includes('2:00 pm') || lowerInput.includes('2 pm') || lowerInput.includes('2:00pm') || lowerInput.includes('2pm')) {
-        // Handle 2:00 PM
-        if (lowerInput.includes('monday')) {
-          setSelectedDate('Monday, August 12th');
-        } else if (lowerInput.includes('tuesday')) {
-          setSelectedDate('Tuesday, August 13th');
-        } else if (lowerInput.includes('wednesday')) {
-          setSelectedDate('Wednesday, August 14th');
-        } else {
-          setSelectedDate('Monday, August 12th'); // Default to Monday
-        }
-        setSelectedTime('2:00 PM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 2:00 PM']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else if (lowerInput.includes('10:00 am') || lowerInput.includes('10 am') || lowerInput.includes('10:00am') || lowerInput.includes('10am')) {
-        // Handle 10:00 AM
-        if (lowerInput.includes('monday')) {
-          setSelectedDate('Monday, August 12th');
-        } else if (lowerInput.includes('tuesday')) {
-          setSelectedDate('Tuesday, August 13th');
-        } else if (lowerInput.includes('wednesday')) {
-          setSelectedDate('Wednesday, August 14th');
-        } else {
-          setSelectedDate('Monday, August 12th'); // Default to Monday
-        }
-        setSelectedTime('10:00 AM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerInput.includes('whenever') || lowerInput.includes('when ever')) {
-        // Set a default time if they say "anytime"
-        setSelectedDate('Monday, August 12th');
-        setSelectedTime('10:00 AM');
-        setAiInsights(prev => [...prev, '📅 Appointment scheduled: Monday at 10:00 AM (default time)']);
-        if (selectedService) {
-          setCurrentStep(4);
-        }
-      } else {
-        // Try to extract time using regex for any format
-        const timeMatch = input.match(/(\d{1,2}):?(\d{2})\s*(am|pm|a\.m\.|p\.m\.)/i);
-        if (timeMatch) {
-          let hour = parseInt(timeMatch[1]);
-          const minute = timeMatch[2];
-          const period = timeMatch[3].toLowerCase();
+      // Intelligent time and date extraction - like a real front desk person
+      const extractTimeAndDate = () => {
+        
+        // Available time slots
+        const availableSlots = {
+          '9:00 AM': '9:00 AM',
+          '9 AM': '9:00 AM',
+          '9am': '9:00 AM',
+          '9:00am': '9:00 AM',
+          '10:30 AM': '10:30 AM',
+          '10:30am': '10:30 AM',
+          '10:30': '10:30 AM',
+          '2:00 PM': '2:00 PM',
+          '2 PM': '2:00 PM',
+          '2pm': '2:00 PM',
+          '2:00pm': '2:00 PM',
+          '2:30 PM': '2:00 PM', // Map to closest
+          '3:30 PM': '3:30 PM',
+          '3:30pm': '3:30 PM',
+          '3:30': '3:30 PM',
+          '3 PM': '3:30 PM',
+          '3pm': '3:30 PM',
+          '5:00 PM': '5:00 PM',
+          '5 PM': '5:00 PM',
+          '5pm': '5:00 PM',
+          '5:00pm': '5:00 PM'
+        };
+        
+        // Available dates
+        const availableDates = {
+          'monday': 'Monday, August 12th',
+          'mon': 'Monday, August 12th',
+          'tuesday': 'Tuesday, August 13th',
+          'tue': 'Tuesday, August 13th',
+          'wednesday': 'Wednesday, August 14th',
+          'wed': 'Wednesday, August 14th',
+          'thursday': 'Thursday, August 15th',
+          'thu': 'Thursday, August 15th',
+          'friday': 'Friday, August 16th',
+          'fri': 'Friday, August 16th'
+        };
+        
+        let extractedTime = null;
+        let extractedDate = null;
+        
+        // Method 1: Direct time slot matching
+                 for (const [timePattern, timeSlot] of Object.entries(availableSlots)) {
+           if (lowerInput.includes(timePattern.toLowerCase())) {
+             extractedTime = timeSlot;
+             break;
+           }
+         }
+        
+        // Method 2: Regex pattern matching for any time format
+        if (!extractedTime) {
+          const timePatterns = [
+            /(\d{1,2})\s*:?\s*(\d{2})\s*(am|pm|a\.m\.|p\.m\.)/gi,
+            /(\d{1,2})\s*(am|pm|a\.m\.|p\.m\.)/gi,
+            /(\d{1,2})\s*:?\s*(\d{2})\s*(am|pm)/gi
+          ];
           
-          // Convert to 24-hour format for comparison
-          if (period.includes('pm') && hour !== 12) {
-            hour += 12;
-          } else if (period.includes('am') && hour === 12) {
-            hour = 0;
+          for (const pattern of timePatterns) {
+            const matches = input.matchAll(pattern);
+            for (const match of matches) {
+              let hour = parseInt(match[1]);
+              const minute = match[2] || '00';
+              const period = match[3]?.toLowerCase() || match[4]?.toLowerCase() || '';
+              
+              // Convert to 24-hour format
+              if (period.includes('pm') && hour !== 12) {
+                hour += 12;
+              } else if (period.includes('am') && hour === 12) {
+                hour = 0;
+              }
+              
+              // Map to closest available slot
+              if (hour >= 8 && hour <= 10) {
+                extractedTime = '9:00 AM';
+              } else if (hour >= 10 && hour <= 11) {
+                extractedTime = '10:30 AM';
+              } else if (hour >= 13 && hour <= 14) {
+                extractedTime = '2:00 PM';
+              } else if (hour >= 15 && hour <= 16) {
+                extractedTime = '3:30 PM';
+              } else if (hour >= 17 && hour <= 18) {
+                extractedTime = '5:00 PM';
+              } else {
+                extractedTime = '10:00 AM'; // Default
+              }
+              
+              break;
+            }
+            if (extractedTime) break;
           }
-          
-          // Map to available time slots
-          let selectedTimeSlot = '';
-          if (hour === 9) selectedTimeSlot = '9:00 AM';
-          else if (hour === 10) selectedTimeSlot = '10:30 AM';
-          else if (hour === 14) selectedTimeSlot = '2:00 PM';
-          else if (hour === 15) selectedTimeSlot = '3:30 PM';
-          else if (hour === 17) selectedTimeSlot = '5:00 PM';
-          else selectedTimeSlot = '10:00 AM'; // Default
-          
-          // Determine date
-          let selectedDateSlot = 'Monday, August 12th';
-          if (lowerInput.includes('tuesday')) {
-            selectedDateSlot = 'Tuesday, August 13th';
-          } else if (lowerInput.includes('wednesday')) {
-            selectedDateSlot = 'Wednesday, August 14th';
+        }
+        
+        // Method 3: Natural language time extraction
+        if (!extractedTime) {
+          if (lowerInput.includes('morning') || lowerInput.includes('early')) {
+            extractedTime = '9:00 AM';
+          } else if (lowerInput.includes('late morning') || lowerInput.includes('mid morning')) {
+            extractedTime = '10:30 AM';
+          } else if (lowerInput.includes('afternoon') || lowerInput.includes('lunch')) {
+            extractedTime = '2:00 PM';
+          } else if (lowerInput.includes('late afternoon') || lowerInput.includes('evening')) {
+            extractedTime = '3:30 PM';
+          } else if (lowerInput.includes('late') || lowerInput.includes('end of day')) {
+            extractedTime = '5:00 PM';
           }
+        }
+        
+        // Extract date
+        for (const [datePattern, dateSlot] of Object.entries(availableDates)) {
+          if (lowerInput.includes(datePattern)) {
+            extractedDate = dateSlot;
+            break;
+          }
+        }
+        
+        // Default to Monday if no date specified
+        if (!extractedDate) {
+          extractedDate = 'Monday, August 12th';
+        }
+        
+        // Handle "anytime" or "whenever"
+        if (lowerInput.includes('anytime') || lowerInput.includes('any time') || lowerInput.includes('whenever') || lowerInput.includes('when ever')) {
+          extractedTime = '10:00 AM';
+        }
+        
+        return { date: extractedDate, time: extractedTime };
+      };
+      
+      // Extract time and date
+      const { date, time } = extractTimeAndDate();
+      
+      if (date && time) {
+        setSelectedDate(date);
+        setSelectedTime(time);
+        setAiInsights(prev => [...prev, `📅 Appointment scheduled: ${date} at ${time}`]);
+        if (selectedService) {
+          setCurrentStep(4);
+        }
+      }
+      
+      // Intelligent customer information extraction - like a real front desk person
+      const extractCustomerInfo = () => {
+        
+        let extractedName = null;
+        let extractedPhone = null;
+        
+        // Phone number patterns
+        const phonePatterns = [
+          /(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/g,
+          /(\d{3}\s\d{3}\s\d{4})/g,
+          /(\d{10})/g
+        ];
+        
+        // Extract phone number
+                 for (const pattern of phonePatterns) {
+           const match = input.match(pattern);
+           if (match) {
+             extractedPhone = match[1].replace(/[-.\s]/g, '');
+             break;
+           }
+         }
+        
+        // Name extraction patterns (in order of specificity)
+        const namePatterns = [
+          // "My name is Maru my phone number is..." - stops at "my"
+          /(?:my name is|i'm|call me|name is)\s+([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s+my\s+phone/i,
+          // "My name is John Smith"
+          /(?:my name is|i'm|call me|name is)\s+([a-zA-Z]+(?:\s+[a-zA-Z]+)*)/i,
+          // "John Smith 555-123-4567"
+          /^([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i,
+          // Just a capitalized name anywhere in the text
+          /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/g
+        ];
+        
+        // Extract name
+        for (const pattern of namePatterns) {
+          const match = input.match(pattern);
+          if (match) {
+            // Clean up the name (remove extra words)
+            let name = match[1].trim();
+            
+            // If it's the special case, make sure we only get the first name
+            if (pattern.source.includes('my\\s+phone')) {
+              name = name.split(' ')[0]; // Take only first name
+            }
+            
+            // Remove common words that might be captured
+            const commonWords = ['my', 'phone', 'number', 'is', 'the', 'and', 'or', 'but'];
+            name = name.split(' ').filter(word => !commonWords.includes(word.toLowerCase())).join(' ');
+            
+                         if (name && name.length > 1) {
+               extractedName = name;
+               break;
+             }
+          }
+        }
+        
+        return { name: extractedName, phone: extractedPhone };
+      };
+      
+      // Extract customer information
+      const { name, phone } = extractCustomerInfo();
+      
+      // Process extracted customer information
+      if (name || phone) {
+                 if (name && phone) {
+           // We have both name and phone - complete booking
+           setCustomerInfo(prev => ({ 
+             ...prev, 
+             name: name,
+             phone: phone
+           }));
           
-          setSelectedDate(selectedDateSlot);
-          setSelectedTime(selectedTimeSlot);
-          setAiInsights(prev => [...prev, `📅 Appointment scheduled: ${selectedDateSlot} at ${selectedTimeSlot}`]);
+          // If we have a service selected, move to confirmation
           if (selectedService) {
-            setCurrentStep(4);
+            setCurrentStep(5);
+            processBooking();
+          } else {
+            // If no service selected, set a default and confirm
+            setSelectedService(services[1]); // Default to AI-Powered Cleaning
+            setSelectedDate('Monday, August 12th'); // Default date
+            setSelectedTime('10:00 AM'); // Default time
+            setCurrentStep(5);
+            processBooking();
           }
-        }
-      }
-      
-      // Extract customer information if mentioned - enhanced to remember throughout conversation
-      const nameMatch = input.match(/(?:my name is|i'm|call me|name is)\s+([a-zA-Z]+(?:\s+[a-zA-Z]+)*)/i);
-      const phoneMatch = input.match(/(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/);
-      const simpleNameMatch = input.match(/^([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
-      const namePhonePattern = input.match(/^([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s+(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})$/i);
-      
-      // Also check for just a name mentioned anywhere in the conversation (if we don't have one yet)
-      const justNameMatch = input.match(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/);
-      
-      // Special case for "My name is Maru my phone number is..." - extract just the name
-      const specialNameMatch = input.match(/(?:my name is|i'm|call me|name is)\s+([a-zA-Z]+)\s+my\s+phone/i);
-      
-      if (specialNameMatch && phoneMatch) {
-        // Handle the special case where name is followed by "my phone"
-        const customerName = specialNameMatch[1].trim();
-        const customerPhone = phoneMatch[1];
-        
-        setCustomerInfo(prev => ({ 
-          ...prev, 
-          name: customerName,
-          phone: customerPhone
-        }));
-        
-        // If we have a service selected, move to confirmation
-        if (selectedService) {
-          setCurrentStep(5);
-          processBooking();
-        } else {
-          // If no service selected, set a default and confirm
-          setSelectedService(services[1]); // Default to AI-Powered Cleaning
-          setSelectedDate('Monday, August 12th'); // Default date
-          setSelectedTime('10:00 AM'); // Default time
-          setCurrentStep(5);
-          processBooking();
-        }
-      } else if ((nameMatch && phoneMatch) || simpleNameMatch || namePhonePattern) {
-        let customerName, customerPhone;
-        
-        if (simpleNameMatch || namePhonePattern) {
-          customerName = (simpleNameMatch || namePhonePattern)![1].trim();
-          customerPhone = (simpleNameMatch || namePhonePattern)![2];
-        } else {
-          customerName = nameMatch![1].trim();
-          customerPhone = phoneMatch![1];
-        }
-        
-        setCustomerInfo(prev => ({ 
-          ...prev, 
-          name: customerName,
-          phone: customerPhone
-        }));
-        
-        // If we have a service selected, move to confirmation
-        if (selectedService) {
-          setCurrentStep(5);
-          processBooking();
-        } else {
-          // If no service selected, set a default and confirm
-          setSelectedService(services[1]); // Default to AI-Powered Cleaning
-          setSelectedDate('Monday, August 12th'); // Default date
-          setSelectedTime('10:00 AM'); // Default time
-          setCurrentStep(5);
-          processBooking();
-        }
-      } else if (justNameMatch && !customerInfo.name) {
-        // If they just mention a name and we don't have one yet, remember it
-        const name = justNameMatch[1].trim();
-        setCustomerInfo(prev => ({ ...prev, name }));
+                 } else if (name && !customerInfo.name) {
+           // We have a name but no phone yet
+           setCustomerInfo(prev => ({ ...prev, name }));
+         } else if (phone && !customerInfo.phone) {
+           // We have a phone but no name yet
+           setCustomerInfo(prev => ({ ...prev, phone }));
+         }
       }
       
       // If AI confirms booking, move to step 5
