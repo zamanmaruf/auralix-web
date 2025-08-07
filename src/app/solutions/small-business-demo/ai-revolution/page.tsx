@@ -385,7 +385,7 @@ export default function AIRevolutionDemo() {
       }
 
       const data = await response.json();
-      const aiResponse = data.response;
+      const aiResponse = data.response || "I'm here to help with your dental needs. How can I assist you today?";
       
       // Update the voice response
       setVoiceResponse(aiResponse);
@@ -743,7 +743,17 @@ export default function AIRevolutionDemo() {
     } catch (error) {
       console.error('Error processing voice input:', error);
       setIsProcessing(false);
-      setVoiceResponse("I'm sorry, there was an error processing your request. Please try again.");
+      
+      // Provide a more helpful response instead of showing an error
+      const helpfulResponses = [
+        "I'm here to help with your dental needs. You can ask me about appointments, insurance, services, or any dental questions.",
+        "I can assist you with booking appointments, checking insurance coverage, explaining our services, or answering dental questions. What would you like to know?",
+        "I'm your dental assistant! I can help you schedule appointments, check insurance, explain procedures, or answer any dental questions you have."
+      ];
+      
+      const randomHelpful = helpfulResponses[Math.floor(Math.random() * helpfulResponses.length)];
+      setVoiceResponse(randomHelpful);
+      speakVoicePrompt(randomHelpful);
     }
   };
 

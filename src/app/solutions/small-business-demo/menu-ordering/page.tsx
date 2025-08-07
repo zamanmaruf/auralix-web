@@ -20,6 +20,7 @@ export default function MenuOrderingDemo() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [aiSuggestion, setAiSuggestion] = useState('');
+  const [demoStep, setDemoStep] = useState('');
 
   const executiveMetrics = useMemo(() => ({
     avgOrderValue: '$24.50',
@@ -48,26 +49,56 @@ export default function MenuOrderingDemo() {
   ];
 
   const startOrderingDemo = () => {
+    console.log('🚀 Starting demo...');
     setIsLoading(true);
+    setAiSuggestion(''); // Clear any previous suggestions
+    setCart([]); // Clear cart
+    setDemoStep('Starting...');
+    
+    // Step 1: Show loading (2 seconds)
     setTimeout(() => {
+      console.log('✅ Loading complete, starting AI analysis...');
       setIsLoading(false);
       setAutomatedFlow(true);
-      // Simulate AI suggestion
+      setDemoStep('AI Analysis');
+      
+      // Step 2: Show AI thinking (1 second)
       setTimeout(() => {
-        setAiSuggestion('Based on your preference for high-protein options under $15, I recommend the Protein Bowl ($16) or Chicken Sandwich ($11) with a side of fries ($4).');
+        console.log('🤖 Showing AI thinking...');
+        setAiSuggestion('🤖 Analyzing your preferences...');
+        setDemoStep('AI Thinking');
+        
+        // Step 3: Show AI recommendation (2 seconds)
         setTimeout(() => {
-          // Add items to cart
-          const proteinBowl = menuItems.find(item => item.name === 'Protein Bowl');
-          const fries = menuItems.find(item => item.name === 'Fries');
-          if (proteinBowl && fries) {
-            setCart([
-              { ...proteinBowl, quantity: 1 },
-              { ...fries, quantity: 1 }
-            ]);
-          }
+          console.log('💡 Showing AI recommendation...');
+          setAiSuggestion('Based on your preference for high-protein options under $15, I recommend the Protein Bowl ($16) or Chicken Sandwich ($11) with a side of fries ($4).');
+          setDemoStep('AI Recommendation');
+          
+          // Step 4: Add items to cart (1.5 seconds)
+          setTimeout(() => {
+            console.log('🛒 Adding items to cart...');
+            setDemoStep('Adding to Cart');
+            const proteinBowl = menuItems.find(item => item.name === 'Protein Bowl');
+            const fries = menuItems.find(item => item.name === 'Fries');
+            if (proteinBowl && fries) {
+              setCart([
+                { ...proteinBowl, quantity: 1 },
+                { ...fries, quantity: 1 }
+              ]);
+              
+              // Step 5: Show success message (2 seconds)
+              setTimeout(() => {
+                console.log('🎉 Showing success message...');
+                setDemoStep('Success!');
+                const successMessage = '✅ Perfect! I\'ve added your recommended items to the cart. The Protein Bowl provides the protein you need, and fries make it a complete meal!';
+                setAiSuggestion(successMessage);
+                console.log('Success message set:', successMessage);
+              }, 2000);
+            }
+          }, 1500);
         }, 2000);
-      }, 2000);
-    }, 1000);
+      }, 1000);
+    }, 2000);
   };
 
   const placeOrder = () => {
@@ -101,57 +132,99 @@ export default function MenuOrderingDemo() {
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
       {/* Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/50 to-pink-900/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 to-pink-900/30 backdrop-blur-sm"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Business Impact */}
             <div className="space-y-8">
               <div className="text-center lg:text-left">
-                <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                  🍔 AI Menu & Ordering
-                </h1>
-                <p className="text-xl text-red-200 mb-6">
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg blur opacity-25 animate-pulse"></div>
+                  <h1 className="relative text-4xl lg:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
+                    🍔 AI Menu & Ordering
+                  </h1>
+                </div>
+                <p className="text-xl text-red-200 mb-6 animate-fade-in">
                   Smart suggestions and upsell automation
                 </p>
                 
                 {/* Executive Metrics */}
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                  <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-4 text-white shadow-lg border border-red-400">
-                    <div className="text-2xl font-bold">{executiveMetrics.avgOrderValue}</div>
-                    <div className="text-sm opacity-90">Avg Order Value</div>
+                  <div className="group relative bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-4 text-white shadow-lg border border-red-400 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/25">
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-red-600 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold animate-pulse">{executiveMetrics.avgOrderValue}</div>
+                      <div className="text-sm opacity-90">Avg Order Value</div>
+                    </div>
                   </div>
-                  <div className="bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl p-4 text-white shadow-lg border border-pink-400">
-                    <div className="text-2xl font-bold">{executiveMetrics.orderIncrease}</div>
-                    <div className="text-sm opacity-90">Order Increase</div>
+                  <div className="group relative bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl p-4 text-white shadow-lg border border-pink-400 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/25">
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold animate-pulse">{executiveMetrics.orderIncrease}</div>
+                      <div className="text-sm opacity-90">Order Increase</div>
+                    </div>
                   </div>
-                  <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white shadow-lg border border-orange-400">
-                    <div className="text-2xl font-bold">{executiveMetrics.upsellRate}</div>
-                    <div className="text-sm opacity-90">Upsell Rate</div>
+                  <div className="group relative bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white shadow-lg border border-orange-400 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/25">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="relative">
+                      <div className="text-2xl font-bold animate-pulse">{executiveMetrics.upsellRate}</div>
+                      <div className="text-sm opacity-90">Upsell Rate</div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Business Impact */}
-                <div className="bg-gradient-to-r from-red-900/50 to-pink-900/50 backdrop-blur-sm border border-red-400/20 rounded-2xl p-6 mb-8">
-                  <h3 className="text-xl font-bold text-white mb-4">💼 Business Impact</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-2xl font-bold text-red-400">{businessImpact.revenueIncrease}</div>
-                      <div className="text-sm text-red-200">Revenue Increase</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-pink-400">{businessImpact.costSavings}</div>
-                      <div className="text-sm text-pink-200">Cost Savings</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-orange-400">{businessImpact.customerRetention}</div>
-                      <div className="text-sm text-orange-200">Customer Retention</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-yellow-400">{businessImpact.orderAccuracy}</div>
-                      <div className="text-sm text-yellow-200">Order Accuracy</div>
+                <div className="group relative bg-gradient-to-r from-red-900/50 to-pink-900/50 backdrop-blur-sm border border-red-400/20 rounded-2xl p-6 mb-8 hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/25">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-400/10 to-pink-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative">
+                    <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                      <span className="mr-2">💼</span>
+                      Business Impact
+                      <div className="ml-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    </h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="group/item">
+                        <div className="text-2xl font-bold text-red-400 group-hover/item:scale-110 transition-transform duration-300">{businessImpact.revenueIncrease}</div>
+                        <div className="text-sm text-red-200">Revenue Increase</div>
+                      </div>
+                      <div className="group/item">
+                        <div className="text-2xl font-bold text-pink-400 group-hover/item:scale-110 transition-transform duration-300">{businessImpact.costSavings}</div>
+                        <div className="text-sm text-pink-200">Cost Savings</div>
+                      </div>
+                      <div className="group/item">
+                        <div className="text-2xl font-bold text-orange-400 group-hover/item:scale-110 transition-transform duration-300">{businessImpact.customerRetention}</div>
+                        <div className="text-sm text-orange-200">Customer Retention</div>
+                      </div>
+                      <div className="group/item">
+                        <div className="text-2xl font-bold text-yellow-400 group-hover/item:scale-110 transition-transform duration-300">{businessImpact.orderAccuracy}</div>
+                        <div className="text-sm text-yellow-200">Order Accuracy</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -161,24 +234,103 @@ export default function MenuOrderingDemo() {
                   <button 
                     onClick={startOrderingDemo}
                     disabled={isLoading}
-                    className="bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-red-600 hover:to-pink-700 transition-all duration-200 shadow-2xl transform hover:scale-105 disabled:opacity-50"
+                    className="group relative bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-red-600 hover:to-pink-700 transition-all duration-300 shadow-2xl transform hover:scale-105 disabled:opacity-50 overflow-hidden"
                   >
-                    {isLoading ? (
-                      <div className="flex items-center space-x-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                        <span>Starting Demo...</span>
-                      </div>
-                    ) : (
-                      "🚀 Start Ordering Demo"
-                    )}
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative flex items-center space-x-2">
+                      {isLoading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                          <span>Starting Demo...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="animate-bounce">🚀</span>
+                          <span>Start Ordering Demo</span>
+                        </>
+                      )}
+                    </div>
                   </button>
+                  
+                  {/* Demo Status Indicator */}
+                  {automatedFlow && (
+                    <div className="mt-4 p-3 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg border border-green-400/30">
+                      <div className="flex items-center space-x-2 text-green-400">
+                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span className="text-sm font-semibold">Demo Active - Watch the AI in action!</span>
+                      </div>
+                      {demoStep && (
+                        <div className="mt-2 text-xs text-green-300">
+                          Current step: {demoStep}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <button 
                     onClick={placeOrder}
                     disabled={isLoading}
-                    className="border-2 border-red-400 text-red-400 px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-400 hover:text-white transition-all duration-200 disabled:opacity-50"
+                    className="group relative border-2 border-red-400 text-red-400 px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-400 hover:text-white transition-all duration-300 disabled:opacity-50 overflow-hidden"
                   >
-                    🛒 Place Order
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative flex items-center space-x-2">
+                      <span className="animate-pulse">🛒</span>
+                      <span>Place Order</span>
+                    </div>
                   </button>
+                </div>
+                
+                {/* Revolutionary Systems Links */}
+                <div className="mt-6 space-y-4">
+                  <div className="text-center group">
+                    <a 
+                      href="/solutions/small-business-demo/workflow-automation"
+                      className="group relative inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-2xl transform hover:scale-105 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative flex items-center space-x-2">
+                        <span className="animate-spin">🔄</span>
+                        <span>Workflow Automation Demo</span>
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </div>
+                    </a>
+                    <p className="text-sm text-red-200 mt-2">
+                      Step-by-step demonstration of how it all works
+                    </p>
+                  </div>
+                  
+                  <div className="text-center group">
+                    <a 
+                      href="/solutions/small-business-demo/quantum-consciousness"
+                      className="group relative inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-2xl transform hover:scale-105 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative flex items-center space-x-2">
+                        <span className="animate-pulse">🧠</span>
+                        <span>Quantum Consciousness Menu</span>
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </div>
+                    </a>
+                    <p className="text-sm text-red-200 mt-2">
+                      Menu that adapts to your consciousness state
+                    </p>
+                  </div>
+                  
+                  <div className="text-center group">
+                    <a 
+                      href="/solutions/small-business-demo/neural-interface"
+                      className="group relative inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:to-cyan-700 transition-all duration-300 shadow-2xl transform hover:scale-105 overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative flex items-center space-x-2">
+                        <span className="animate-bounce">⚡</span>
+                        <span>Neural Interface Ordering</span>
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </div>
+                    </a>
+                    <p className="text-sm text-red-200 mt-2">
+                      Order with your thoughts - The future of dining
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -186,92 +338,123 @@ export default function MenuOrderingDemo() {
             {/* Right Side - Menu & AI Assistant */}
             <div className="space-y-6">
               {/* AI Assistant */}
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700">
-                <h3 className="text-xl font-bold text-white mb-4">🤖 AI Menu Assistant</h3>
-                
-                {/* Chat Messages */}
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
-                    </div>
-                    <div className="bg-gray-700 rounded-lg p-3 max-w-xs">
-                      <p className="text-sm text-white">Hi! What are you in the mood for? I can suggest based on your preferences!</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3 justify-end">
-                    <div className="bg-red-500 rounded-lg p-3 max-w-xs">
-                      <p className="text-sm text-white">I want something high-protein under $15</p>
-                    </div>
-                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm">👤</span>
-                    </div>
-                  </div>
-                  {aiSuggestion && (
-                    <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm">🤖</span>
-                      </div>
-                      <div className="bg-gray-700 rounded-lg p-3 max-w-xs">
-                        <p className="text-sm text-white">{aiSuggestion}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
+              <div className="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700 hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                    <span className="mr-2 animate-pulse">🤖</span>
+                    AI Menu Assistant
+                    <div className="ml-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  </h3>
+                  
+                                     {/* Chat Messages */}
+                   <div className="space-y-3 mb-4">
+                     <div className="flex items-start space-x-3 animate-fade-in">
+                       <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                         <span className="text-white text-sm">🤖</span>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg p-3 max-w-xs shadow-lg border border-gray-600">
+                         <p className="text-sm text-white">Hi! What are you in the mood for? I can suggest based on your preferences!</p>
+                       </div>
+                     </div>
+                     <div className="flex items-start space-x-3 justify-end animate-fade-in delay-500">
+                       <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-lg p-3 max-w-xs shadow-lg">
+                         <p className="text-sm text-white">I want something high-protein under $15</p>
+                       </div>
+                       <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
+                         <span className="text-white text-sm">👤</span>
+                       </div>
+                     </div>
+                     {aiSuggestion && (
+                       <div className="flex items-start space-x-3 animate-fade-in delay-1000">
+                         <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                           <span className="text-white text-sm">🤖</span>
+                         </div>
+                         <div className="bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg p-3 max-w-xs shadow-lg border border-gray-600">
+                           <p className="text-sm text-white">{aiSuggestion}</p>
+                           {aiSuggestion.includes('Analyzing') && (
+                             <div className="mt-2 flex space-x-1">
+                               <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                               <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                               <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                             </div>
+                           )}
+                         </div>
+                       </div>
+                     )}
+                   </div>
 
-                {/* Quick Actions */}
-                <div className="grid grid-cols-2 gap-2">
-                  <button 
-                    onClick={() => addToCart(menuItems.find(item => item.name === 'Protein Bowl')!)}
-                    className="p-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-sm transition-all"
-                  >
-                    Add Protein Bowl
-                  </button>
-                  <button 
-                    onClick={() => addToCart(menuItems.find(item => item.name === 'Fries')!)}
-                    className="p-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg text-sm transition-all"
-                  >
-                    Add Fries
-                  </button>
+                  {/* Quick Actions */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <button 
+                      onClick={() => addToCart(menuItems.find(item => item.name === 'Protein Bowl')!)}
+                      className="group/item p-2 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span className="group-hover/item:animate-pulse">➕</span>
+                        <span>Add Protein Bowl</span>
+                      </div>
+                    </button>
+                    <button 
+                      onClick={() => addToCart(menuItems.find(item => item.name === 'Fries')!)}
+                      className="group/item p-2 bg-gradient-to-r from-gray-600 to-gray-500 hover:from-gray-500 hover:to-gray-400 text-white rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <span className="group-hover/item:animate-pulse">➕</span>
+                        <span>Add Fries</span>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
 
               {/* Shopping Cart */}
-              <div className="bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl p-6 text-white shadow-2xl border border-red-400">
-                <h3 className="text-xl font-bold mb-4">🛒 Your Order</h3>
-                {cart.length > 0 ? (
-                  <>
-                    <div className="space-y-3 mb-4">
-                      {cart.map((item, index) => (
-                        <div key={index} className="flex justify-between items-center p-3 bg-white bg-opacity-20 rounded-lg">
-                          <div>
-                            <div className="font-bold">{item.name}</div>
-                            <div className="text-sm opacity-80">Qty: {item.quantity}</div>
+              <div className="group relative bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl p-6 text-white shadow-2xl border border-red-400 hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/25">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative">
+                  <h3 className="text-xl font-bold mb-4 flex items-center">
+                    <span className="mr-2 animate-pulse">🛒</span>
+                    Your Order
+                    <div className="ml-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  </h3>
+                  {cart.length > 0 ? (
+                    <>
+                      <div className="space-y-3 mb-4">
+                        {cart.map((item, index) => (
+                          <div key={index} className="group/item flex justify-between items-center p-3 bg-white bg-opacity-20 rounded-lg hover:bg-white bg-opacity-30 transition-all duration-300 hover:scale-105">
+                            <div>
+                              <div className="font-bold">{item.name}</div>
+                              <div className="text-sm opacity-80">Qty: {item.quantity}</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="font-bold group-hover/item:scale-110 transition-transform duration-300">${(item.price * item.quantity).toFixed(2)}</div>
+                              <div className="text-sm opacity-80">${item.price} each</div>
+                            </div>
                           </div>
-                          <div className="text-right">
-                            <div className="font-bold">${(item.price * item.quantity).toFixed(2)}</div>
-                            <div className="text-sm opacity-80">${item.price} each</div>
+                        ))}
+                        <div className="border-t border-white border-opacity-30 pt-3">
+                          <div className="flex justify-between font-bold">
+                            <span>Total:</span>
+                            <span className="text-2xl animate-pulse">${total.toFixed(2)}</span>
                           </div>
-                        </div>
-                      ))}
-                      <div className="border-t border-white border-opacity-30 pt-3">
-                        <div className="flex justify-between font-bold">
-                          <span>Total:</span>
-                          <span>${total.toFixed(2)}</span>
                         </div>
                       </div>
+                      <button className="group/checkout w-full bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:scale-105 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent opacity-0 group-hover/checkout:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative flex items-center justify-center space-x-2">
+                          <span className="animate-bounce">💳</span>
+                          <span>Checkout</span>
+                        </div>
+                      </button>
+                    </>
+                  ) : (
+                    <div className="text-center py-8">
+                      <div className="text-4xl mb-4 animate-bounce">🛒</div>
+                      <p className="text-white opacity-80">Your cart is empty</p>
+                      <p className="text-sm text-white opacity-60">Add items to get started</p>
                     </div>
-                    <button className="w-full bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-all duration-200 shadow-lg">
-                      Checkout
-                    </button>
-                  </>
-                ) : (
-                  <div className="text-center py-8">
-                    <div className="text-4xl mb-4">🛒</div>
-                    <p className="text-white opacity-80">Your cart is empty</p>
-                    <p className="text-sm text-white opacity-60">Add items to get started</p>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>
