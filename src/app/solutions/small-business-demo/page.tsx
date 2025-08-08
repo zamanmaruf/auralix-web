@@ -28,6 +28,16 @@ export default function SmallBusinessDemoHub() {
 
   const demos: DemoCard[] = [
     {
+      id: 'barbertech',
+      title: '💈 BarberTech Pro Platform',
+      subtitle: 'AI-Powered Booking • Inventory Management • Customer Analytics',
+      description: 'Complete barber shop management system with intelligent appointment scheduling, inventory tracking, customer relationship management, and automated marketing. Perfect for modern barbershops across Nova Scotia.',
+      icon: '💈',
+      color: 'from-orange-500 to-red-600',
+      status: '✅ Live',
+      href: '/solutions/small-business-demo/barbertech-pro'
+    },
+    {
       id: 'leads',
       title: 'Intelligent Lead Generation System',
       subtitle: 'Enterprise-grade visitor-to-lead conversion platform',
