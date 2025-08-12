@@ -248,7 +248,7 @@ export default function ContactPage() {
                   Start Free Trial
                 </a>
                 <a
-                  href="https://calendly.com/auralixai/strategy-call"
+                  href="https://calendly.com/auralixai/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full px-6 py-3 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold rounded-lg transition-all duration-200 text-center"

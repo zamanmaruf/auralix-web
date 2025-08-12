@@ -1,0 +1,282 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Multi-tenant support
+model Tenant {
+  id          String   @id @default(cuid())
+  name        String
+  domain      String   @unique
+  apiKey      String   @unique
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  users       User[]
+  conversations Conversation[]
+  analytics   Analytics[]
+  settings    TenantSettings?
+
+  @@map("tenants")
+}
+
+model TenantSettings {
+  id                String  @id @default(cuid())
+  tenantId          String  @unique
+  businessName      String
+  businessHours     Json    // Store as JSON for flexibility
+  services          Json    // Available services
+  barbers           Json    // Available barbers
+  timeSlots         Json    // Available time slots
+  pricing           Json    // Service pricing
+  notifications     Json    // Notification settings
+  integrations      Json    // Third-party integrations
+  customBranding    Json    // Custom colors, logos, etc.
+  
+  tenant            Tenant  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  @@map("tenant_settings")
+}
+
+// User management with roles
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  password    String
+  firstName   String
+  lastName    String
+  role        UserRole @default(CUSTOMER)
+  isActive    Boolean  @default(true)
+  lastLogin   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Multi-tenant support
+  tenantId    String?
+  tenant      Tenant?  @relation(fields: [tenantId], references: [id])
+
+  // Relations
+  conversations Conversation[]
+  sessions     Session[]
+  analytics    UserAnalytics[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  TENANT_ADMIN
+  STAFF
+  CUSTOMER
+}
+
+// Session management for JWT
+model Session {
+  id          String   @id @default(cuid())
+  userId      String
+  token       String   @unique
+  expiresAt   DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// Enhanced conversation management
+model Conversation {
+  id                String   @id @default(cuid())
+  sessionId         String   @unique
+  userId            String?
+  tenantId          String
+  status            ConversationStatus @default(ACTIVE)
+  intent            String?
+  confidence        Float?
+  entities          Json?    // Extracted entities
+  context           Json?    // Conversation context
+  metadata          Json?    // Additional metadata
+  processingTime    Int?     // Response time in ms
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  endedAt           DateTime?
+
+  // Relations
+  user              User?    @relation(fields: [userId], references: [id])
+  tenant            Tenant   @relation(fields: [tenantId], references: [id])
+  messages          Message[]
+  analytics         ConversationAnalytics[]
+  booking           Booking?
+
+  @@map("conversations")
+}
+
+enum ConversationStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+  ERROR
+}
+
+// Message tracking
+model Message {
+  id              String   @id @default(cuid())
+  conversationId  String
+  type            MessageType
+  content         String
+  role            MessageRole
+  metadata        Json?    // Additional message metadata
+  processingTime  Int?     // Processing time in ms
+  createdAt       DateTime @default(now())
+
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+enum MessageType {
+  TEXT
+  VOICE
+  INTENT
+  ENTITY
+  SYSTEM
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+// Analytics and monitoring
+model Analytics {
+  id              String   @id @default(cuid())
+  tenantId        String
+  type            AnalyticsType
+  data            Json     // Analytics data
+  timestamp       DateTime @default(now())
+  metadata        Json?    // Additional metadata
+
+  tenant          Tenant   @relation(fields: [tenantId], references: [id])
+
+  @@map("analytics")
+}
+
+enum AnalyticsType {
+  CONVERSATION_START
+  CONVERSATION_END
+  INTENT_RECOGNITION
+  ENTITY_EXTRACTION
+  BOOKING_COMPLETED
+  ERROR_OCCURRED
+  PERFORMANCE_METRIC
+  USER_SATISFACTION
+}
+
+model ConversationAnalytics {
+  id              String   @id @default(cuid())
+  conversationId  String
+  metric          String   // Metric name
+  value           Float    // Metric value
+  timestamp       DateTime @default(now())
+
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@map("conversation_analytics")
+}
+
+model UserAnalytics {
+  id              String   @id @default(cuid())
+  userId          String
+  metric          String   // Metric name
+  value           Float    // Metric value
+  timestamp       DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_analytics")
+}
+
+// Booking management
+model Booking {
+  id              String   @id @default(cuid())
+  conversationId  String   @unique
+  customerName    String
+  customerPhone   String
+  customerEmail   String?
+  service         String
+  barber          String
+  date            DateTime
+  time            String
+  status          BookingStatus @default(PENDING)
+  totalAmount     Float?
+  paymentStatus   PaymentStatus @default(PENDING)
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  conversation    Conversation @relation(fields: [conversationId], references: [id])
+
+  @@map("bookings")
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+// Rate limiting and security
+model RateLimit {
+  id              String   @id @default(cuid())
+  key             String   // IP, user ID, or API key
+  type            RateLimitType
+  count           Int      @default(0)
+  resetAt         DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([key, type])
+  @@map("rate_limits")
+}
+
+enum RateLimitType {
+  IP
+  USER
+  API_KEY
+  ENDPOINT
+}
+
+// Audit logging
+model AuditLog {
+  id              String   @id @default(cuid())
+  action          String
+  resource        String
+  resourceId      String?
+  userId          String?
+  tenantId        String?
+  details         Json?
+  ipAddress       String?
+  userAgent       String?
+  timestamp       DateTime @default(now())
+
+  @@map("audit_logs")
+}
