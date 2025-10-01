@@ -89,29 +89,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What We Do - Enhanced */}
+      {/* Our Ready Solutions */}
       <section className="w-full py-12 sm:py-20 px-4 bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a]">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-cyan-300 tracking-wide">ENTERPRISE SOLUTIONS</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-cyan-300 tracking-wide">OUR READY SOLUTIONS</h2>
+        <p className="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto">Production-ready AI solutions you can deploy immediately</p>
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-          <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
-            <FaRegWindowMaximize className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
-            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-2 text-center">AI-powered Website Design</div>
-            <p className="text-xs sm:text-sm text-gray-300 text-center">Enterprise-grade responsive design with advanced analytics</p>
-          </div>
-          <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
-            <PiRobotLight className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
-            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-2 text-center">Intelligent Chatbots</div>
-            <p className="text-xs sm:text-sm text-gray-300 text-center">Multi-language AI chatbots with human-like responses</p>
-          </div>
-          <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
-            <MdOutlineAnalytics className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
-            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-2 text-center">Business Intelligence</div>
-            <p className="text-xs sm:text-sm text-gray-300 text-center">Real-time analytics and predictive insights</p>
-          </div>
-          <div className="flex flex-col items-center bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
+          <div className="flex flex-col bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
             <TbSettingsAutomation className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
-            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-2 text-center">Workflow Automation</div>
-            <p className="text-xs sm:text-sm text-gray-300 text-center">End-to-end process automation and optimization</p>
+            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-3 text-center">Workflow Automation</div>
+            <p className="text-xs sm:text-sm text-gray-300 mb-4 flex-grow">Automate review requests, email/SMS follow-ups, order updates, and payment reminders. Free up your staff from busywork and focus on real customers.</p>
+            <div className="text-xs text-teal-400 font-semibold text-center">Fully Automated</div>
+          </div>
+          <div className="flex flex-col bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
+            <PiRobotLight className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
+            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-3 text-center">Voice Agents</div>
+            <p className="text-xs sm:text-sm text-gray-300 mb-4 flex-grow">AI that answers calls like a human. Takes orders, cancels orders, provides wait times, and routes calls. Perfect for restaurants, salons, and service businesses.</p>
+            <div className="text-xs text-teal-400 font-semibold text-center">Human-like AI</div>
+          </div>
+          <div className="flex flex-col bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
+            <MdOutlineAnalytics className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
+            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-3 text-center">AI Chatbots</div>
+            <p className="text-xs sm:text-sm text-gray-300 mb-4 flex-grow">Capture leads, answer FAQs, book appointments, and automate customer support. Works across websites, Instagram, Facebook, and WhatsApp.</p>
+            <div className="text-xs text-teal-400 font-semibold text-center">Multi-platform</div>
+          </div>
+          <div className="flex flex-col bg-[#11202a] bg-opacity-80 rounded-2xl p-6 sm:p-8 shadow-xl hover:scale-105 transition-transform">
+            <FaRegWindowMaximize className="text-4xl sm:text-5xl mb-4 text-cyan-400 drop-shadow-glow" />
+            <div className="font-bold text-base sm:text-lg text-cyan-200 mb-3 text-center">AI-Powered Websites</div>
+            <p className="text-xs sm:text-sm text-gray-300 mb-4 flex-grow">Modern, enterprise-grade websites with AI features integrated. Includes chatbots, automation workflows, and customer engagement tools built in from day one.</p>
+            <div className="text-xs text-teal-400 font-semibold text-center">AI-first design</div>
           </div>
         </div>
       </section>
@@ -298,11 +303,11 @@ export default function HomePage() {
                     className="w-full px-4 py-3 bg-[#333] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 text-base"
                   >
                     <option value="">Select Service</option>
-                    <option value="website-design">Website Design</option>
-                    <option value="chatbots">AI Chatbots</option>
-                    <option value="analytics">Business Intelligence</option>
-                    <option value="automation">Workflow Automation</option>
-                    <option value="consultation">Consultation</option>
+                    <option value="workflow-automation">Workflow Automation</option>
+                    <option value="voice-agents">Voice Agents</option>
+                    <option value="ai-chatbots">AI Chatbots</option>
+                    <option value="ai-websites">AI-Powered Websites</option>
+                    <option value="consultation">Free Consultation</option>
                   </select>
                 </div>
                 <div>

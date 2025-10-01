@@ -15,7 +15,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I&apos;m Auralix AI Assistant. I can help you with:\n\n• AI automation solutions\n• Pricing and packages\n• Industry-specific recommendations\n• Case studies and ROI\n• Getting started with a free consultation\n\nWhat would you like to know?",
+      text: "Hi! I&apos;m Auralix AI Assistant. We offer 4 ready-to-deploy solutions:\n\n• Workflow Automation\n• Voice Agents\n• AI Chatbots\n• AI-Powered Websites\n\nWhat would you like to know?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -89,10 +89,10 @@ export default function Chatbot() {
   };
 
   const quickReplies = [
-    "What services do you offer?",
-    "How much does it cost?",
-    "Can you help restaurants?",
-    "Show me case studies",
+    "Tell me about Workflow Automation",
+    "What are Voice Agents?",
+    "Tell me about AI Chatbots",
+    "What are AI-Powered Websites?",
     "I want a free consultation"
   ];
 

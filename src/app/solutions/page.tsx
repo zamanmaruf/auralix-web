@@ -1,377 +1,236 @@
 'use client';
-import { FaRobot, FaChartBar, FaCogs, FaCheck, FaShieldAlt } from "react-icons/fa";
-import { useState } from "react";
+import { FaRobot, FaPhone, FaComments, FaGlobe, FaCheck, FaArrowRight } from "react-icons/fa";
+import { TbSettingsAutomation } from "react-icons/tb";
 
 export default function SolutionsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const solutions = [
+    {
+      id: 'workflow-automation',
+      icon: <TbSettingsAutomation className="text-5xl sm:text-6xl text-cyan-400" />,
+      title: 'Workflow Automation',
+      subtitle: 'Automate repetitive tasks and free up your staff',
+      description: 'Automate review requests, email/SMS follow-ups, order updates, and payment reminders. Free up your staff from busywork so they can focus on real customers.',
+      features: [
+        'Review request automation',
+        'Email & SMS follow-up sequences',
+        'Automated order updates',
+        'Payment reminder workflows',
+        'Customer onboarding automation',
+        'Data entry automation',
+        'Appointment reminders',
+        'Custom workflow builder'
+      ],
+      benefits: [
+        'Save 10-15 hours per week',
+        'Never miss a follow-up',
+        'Improve customer satisfaction',
+        'Reduce manual errors'
+      ],
+      idealFor: 'Restaurants, Salons, Retail Stores, Service Businesses',
+      color: 'cyan'
+    },
+    {
+      id: 'voice-agents',
+      icon: <FaPhone className="text-5xl sm:text-6xl text-blue-400" />,
+      title: 'Voice Agents',
+      subtitle: 'AI that answers calls like a human front desk',
+      description: 'AI voice agents that answer your calls just like a human receptionist. Can take orders, cancel orders, provide wait times, and route calls without needing staff.',
+      features: [
+        'Human-like conversation',
+        'Take customer orders',
+        'Cancel or modify bookings',
+        'Provide real-time wait times',
+        'Intelligent call routing',
+        'Multi-language support',
+        '24/7 availability',
+        'Call analytics & insights'
+      ],
+      benefits: [
+        'Never miss a call',
+        'Reduce front desk workload',
+        'Handle multiple calls simultaneously',
+        'Improve customer experience'
+      ],
+      idealFor: 'Restaurants, Salons, Medical Clinics, Service Businesses',
+      color: 'blue'
+    },
+    {
+      id: 'ai-chatbots',
+      icon: <FaComments className="text-5xl sm:text-6xl text-purple-400" />,
+      title: 'AI Chatbots',
+      subtitle: 'Multi-platform customer engagement',
+      description: 'Chatbots that capture leads, answer FAQs, book appointments, and automate customer support. Works across websites, Instagram, Facebook, and WhatsApp.',
+      features: [
+        'Lead capture & qualification',
+        'FAQ automation',
+        'Appointment booking',
+        'Customer support automation',
+        'Website integration',
+        'Instagram DM automation',
+        'Facebook Messenger',
+        'WhatsApp Business API'
+      ],
+      benefits: [
+        'Capture more leads 24/7',
+        'Respond instantly to inquiries',
+        'Book appointments automatically',
+        'Reduce support tickets by 60%'
+      ],
+      idealFor: 'E-commerce, Professional Services, Agencies, Local Businesses',
+      color: 'purple'
+    },
+    {
+      id: 'ai-websites',
+      icon: <FaGlobe className="text-5xl sm:text-6xl text-teal-400" />,
+      title: 'AI-Powered Websites',
+      subtitle: 'Modern websites with AI built in from day one',
+      description: 'Enterprise-grade websites built with AI features integrated. Includes chatbots, automation workflows, and customer engagement tools built in from the start.',
+      features: [
+        'AI chatbot integrated',
+        'Automation workflows included',
+        'Customer engagement tools',
+        'Modern, responsive design',
+        'SEO optimized',
+        'Fast loading speeds',
+        'Mobile-first approach',
+        'Analytics dashboard'
+      ],
+      benefits: [
+        'Complete AI-first solution',
+        'No separate integrations needed',
+        'Professional design',
+        'Higher conversion rates'
+      ],
+      idealFor: 'All Business Types, Startups, Growing Companies',
+      color: 'teal'
+    }
+  ];
+
+  const getColorClasses = (color: string) => {
+    const colors: {[key: string]: any} = {
+      cyan: {
+        bg: 'bg-cyan-500',
+        text: 'text-cyan-400',
+        border: 'border-cyan-400',
+        hover: 'hover:bg-cyan-400'
+      },
+      blue: {
+        bg: 'bg-blue-500',
+        text: 'text-blue-400',
+        border: 'border-blue-400',
+        hover: 'hover:bg-blue-400'
+      },
+      purple: {
+        bg: 'bg-purple-500',
+        text: 'text-purple-400',
+        border: 'border-purple-400',
+        hover: 'hover:bg-purple-400'
+      },
+      teal: {
+        bg: 'bg-teal-500',
+        text: 'text-teal-400',
+        border: 'border-teal-400',
+        hover: 'hover:bg-teal-400'
+      }
+    };
+    return colors[color];
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white pb-20">
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto text-center py-12 sm:py-16 px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise AI Solutions</h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-cyan-100 mb-6 sm:mb-8">Tailored AI automation solutions for businesses of every size and industry</p>
-        
-        {/* Demo CTAs */}
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
-          <div className="bg-gradient-to-r from-purple-900 to-purple-800 rounded-2xl p-6 sm:p-8 border border-purple-400">
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">🎯 Claims Automation Demo</h2>
-            <p className="text-purple-200 mb-4 sm:mb-6 text-sm sm:text-base">Experience our AI-powered claims processing system</p>
-            <a 
-              href="/solutions/claims-automation/demo" 
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold text-base sm:text-lg transition-all duration-200 shadow-lg"
-            >
-              🚀 Launch Demo
-            </a>
-          </div>
-          
-          <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-6 sm:p-8 border border-blue-400">
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">🏢 Small Business Demo Hub</h2>
-            <p className="text-blue-200 mb-4 sm:mb-6 text-sm sm:text-base">Explore 5 AI solutions for small businesses</p>
-            <a 
-              href="/solutions/small-business-demo" 
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-base sm:text-lg transition-all duration-200 shadow-lg"
-            >
-              🚀 Launch Demo Hub
-            </a>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Our Ready Solutions</h1>
+        <p className="text-lg sm:text-xl md:text-2xl text-cyan-100 mb-6 sm:mb-8">Production-ready AI solutions you can deploy immediately</p>
+        <div className="inline-block bg-[#1a1a1a] rounded-xl p-6 mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+            {solutions.map((solution, index) => (
+              <a 
+                key={index}
+                href={`#${solution.id}`}
+                className="flex flex-col items-center gap-2 hover:scale-110 transition-transform"
+              >
+                {solution.icon}
+                <span className="text-sm font-semibold text-center">{solution.title}</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Business Size Tabs */}
-      <section className="max-w-6xl mx-auto mb-12 sm:mb-16 px-4">
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-          <button 
-            onClick={() => setSelectedCategory('small')}
-            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all ${
-              selectedCategory === 'small' 
-                ? 'bg-cyan-500 text-black' 
-                : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'
-            }`}
-          >
-            Small Business
-          </button>
-          <button 
-            onClick={() => setSelectedCategory('mid')}
-            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all ${
-              selectedCategory === 'mid' 
-                ? 'bg-cyan-500 text-black' 
-                : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'
-            }`}
-          >
-            Mid-Market
-          </button>
-          <button 
-            onClick={() => setSelectedCategory('enterprise')}
-            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all ${
-              selectedCategory === 'enterprise' 
-                ? 'bg-cyan-500 text-black' 
-                : 'bg-[#1a1a1a] text-gray-300 hover:bg-[#333]'
-            }`}
-          >
-            Enterprise
-          </button>
-        </div>
+      {/* Solutions */}
+      <section className="max-w-6xl mx-auto px-4 space-y-12 sm:space-y-16">
+        {solutions.map((solution, index) => {
+          const colors = getColorClasses(solution.color);
+          return (
+            <div 
+              key={index} 
+              id={solution.id}
+              className="bg-[#1a1a1a] rounded-2xl p-8 sm:p-12 shadow-xl scroll-mt-20"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                {/* Left Column */}
+                <div>
+                  <div className="mb-6">{solution.icon}</div>
+                  <h2 className={`text-3xl sm:text-4xl font-bold ${colors.text} mb-3`}>{solution.title}</h2>
+                  <p className="text-xl text-gray-300 mb-6">{solution.subtitle}</p>
+                  <p className="text-lg text-gray-300 mb-8 leading-relaxed">{solution.description}</p>
+                  
+                  <div className="mb-8">
+                    <h3 className="text-xl font-bold text-white mb-4">Perfect For:</h3>
+                    <p className={`${colors.text} font-semibold`}>{solution.idealFor}</p>
+                  </div>
 
-        {/* Small Business Solutions */}
-        {(selectedCategory === 'all' || selectedCategory === 'small') && (
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 mb-8">
-            <h2 className="text-3xl font-bold text-teal-400 mb-6">Small Business Solutions</h2>
-            <p className="text-lg text-gray-300 mb-8">Perfect for businesses with 1-10 employees looking to automate core operations</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaRobot className="text-4xl text-teal-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">AI Chatbot</h3>
-                <p className="text-gray-300 mb-4">Basic customer service automation with FAQ handling</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>24/7 customer support</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>FAQ automation</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Basic lead qualification</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaChartBar className="text-4xl text-teal-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Analytics Dashboard</h3>
-                <p className="text-gray-300 mb-4">Basic business intelligence and reporting</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Sales tracking</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Customer insights</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Performance metrics</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaCogs className="text-4xl text-teal-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Workflow Automation</h3>
-                <p className="text-gray-300 mb-4">Streamline repetitive tasks and processes</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Email automation</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Data entry automation</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-teal-400" />
-                    <span>Appointment scheduling</span>
-                  </li>
-                </ul>
+                  <a 
+                    href="https://calendly.com/auralixai/30min" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-3 ${colors.bg} ${colors.hover} text-white font-bold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg`}
+                  >
+                    Get Started
+                    <FaArrowRight />
+                  </a>
+                </div>
+
+                {/* Right Column */}
+                <div>
+                  <div className="mb-8">
+                    <h3 className="text-xl font-bold text-white mb-4">Features</h3>
+                    <ul className="space-y-3">
+                      {solution.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <FaCheck className={`${colors.text} mt-1 flex-shrink-0`} />
+                          <span className="text-gray-300">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className={`bg-[#11202a] rounded-xl p-6 border ${colors.border}`}>
+                    <h3 className="text-xl font-bold text-white mb-4">Key Benefits</h3>
+                    <ul className="space-y-3">
+                      {solution.benefits.map((benefit, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <div className={`w-2 h-2 ${colors.bg} rounded-full mt-2 flex-shrink-0`}></div>
+                          <span className="text-gray-300 font-semibold">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {/* Mid-Market Solutions */}
-        {(selectedCategory === 'all' || selectedCategory === 'mid') && (
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 mb-8">
-            <h2 className="text-3xl font-bold text-blue-400 mb-6">Mid-Market Solutions</h2>
-            <p className="text-lg text-gray-300 mb-8">Advanced automation for growing businesses with 10-50 employees</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaRobot className="text-4xl text-blue-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Advanced AI Chatbot</h3>
-                <p className="text-gray-300 mb-4">Intelligent customer service with natural language processing</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Multi-language support</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Complex query handling</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Integration with CRM</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaChartBar className="text-4xl text-blue-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Business Intelligence</h3>
-                <p className="text-gray-300 mb-4">Advanced analytics and predictive insights</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Predictive analytics</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Custom dashboards</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Real-time reporting</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaCogs className="text-4xl text-blue-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Process Automation</h3>
-                <p className="text-gray-300 mb-4">End-to-end workflow automation</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Multi-step workflows</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>API integrations</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-blue-400" />
-                    <span>Error handling</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Enterprise Solutions */}
-        {(selectedCategory === 'all' || selectedCategory === 'enterprise') && (
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 mb-8">
-            <h2 className="text-3xl font-bold text-purple-400 mb-6">Enterprise Solutions</h2>
-            <p className="text-lg text-gray-300 mb-8">Custom AI solutions for large organizations with complex requirements</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaRobot className="text-4xl text-purple-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Custom AI Development</h3>
-                <p className="text-gray-300 mb-4">Tailored AI models for specific business needs</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Custom model training</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Industry-specific AI</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Scalable architecture</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaChartBar className="text-4xl text-purple-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Enterprise Analytics</h3>
-                <p className="text-gray-300 mb-4">Advanced BI with machine learning insights</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>ML-powered insights</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Multi-tenant support</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Custom reporting</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaCogs className="text-4xl text-purple-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">System Integration</h3>
-                <p className="text-gray-300 mb-4">Seamless integration with existing enterprise systems</p>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>ERP integration</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>CRM connectivity</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Legacy system support</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-[#11202a] rounded-xl p-6">
-                <FaShieldAlt className="text-4xl text-purple-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Claims Automation</h3>
-                <p className="text-gray-300 mb-4">AI-powered claims processing with real-time document verification</p>
-                <ul className="space-y-2 text-sm text-gray-300 mb-4">
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Real-time document processing</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>AI fraud detection</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <FaCheck className="text-purple-400" />
-                    <span>Enterprise compliance</span>
-                  </li>
-                </ul>
-                <a 
-                  href="/solutions/claims-automation/demo" 
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold transition-all duration-200 text-sm"
-                >
-                  🚀 View Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* Feature Comparison Table */}
-      <section className="max-w-6xl mx-auto mb-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-white">Feature Comparison</h2>
-        <div className="bg-[#1a1a1a] rounded-2xl p-8 overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-[#333]">
-                <th className="text-left py-4 text-white font-semibold">Feature</th>
-                <th className="text-center py-4 text-teal-400 font-semibold">Small Business</th>
-                <th className="text-center py-4 text-blue-400 font-semibold">Mid-Market</th>
-                <th className="text-center py-4 text-purple-400 font-semibold">Enterprise</th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-300">
-              <tr className="border-b border-[#333]">
-                <td className="py-4">AI Chatbot</td>
-                <td className="text-center py-4">Basic</td>
-                <td className="text-center py-4">Advanced</td>
-                <td className="text-center py-4">Custom</td>
-              </tr>
-              <tr className="border-b border-[#333]">
-                <td className="py-4">Analytics</td>
-                <td className="text-center py-4">Basic Dashboard</td>
-                <td className="text-center py-4">Business Intelligence</td>
-                <td className="text-center py-4">ML-Powered</td>
-              </tr>
-              <tr className="border-b border-[#333]">
-                <td className="py-4">Automation</td>
-                <td className="text-center py-4">5 Processes</td>
-                <td className="text-center py-4">Unlimited</td>
-                <td className="text-center py-4">Custom Development</td>
-              </tr>
-              <tr className="border-b border-[#333]">
-                <td className="py-4">Support</td>
-                <td className="text-center py-4">Email</td>
-                <td className="text-center py-4">Priority</td>
-                <td className="text-center py-4">24/7 Dedicated</td>
-              </tr>
-              <tr className="border-b border-[#333]">
-                <td className="py-4">Security</td>
-                <td className="text-center py-4">Standard</td>
-                <td className="text-center py-4">Enhanced</td>
-                <td className="text-center py-4">SOC 2 Compliant</td>
-              </tr>
-              <tr>
-                <td className="py-4">Users</td>
-                <td className="text-center py-4">1-10</td>
-                <td className="text-center py-4">10-50</td>
-                <td className="text-center py-4">Unlimited</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          );
+        })}
       </section>
 
       {/* CTA Section */}
-      <section className="max-w-4xl mx-auto text-center px-4">
+      <section className="max-w-4xl mx-auto text-center px-4 mt-20">
         <h2 className="text-3xl font-bold text-white mb-6">Ready to Get Started?</h2>
         <p className="text-lg text-gray-300 mb-8">Choose the solution that fits your business needs and start your AI transformation journey.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/trial" className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg">
-            Start Free Trial
+          <a href="https://calendly.com/auralixai/30min" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg">
+            Book Free Consultation
           </a>
           <a href="/pricing" className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold rounded-lg transition-all duration-200">
             View Pricing

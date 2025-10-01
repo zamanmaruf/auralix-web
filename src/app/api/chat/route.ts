@@ -1,101 +1,99 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
-// Simple request validation for demo
 const ChatRequestSchema = z.object({
   message: z.string().min(1).max(1000),
-  conversationId: z.string().optional(),
-  userId: z.string().optional(),
-  context: z.object({
-    bookingStage: z.string().optional(),
-    customerName: z.string().optional(),
-    preferredService: z.string().optional(),
-    preferredBarber: z.string().optional(),
-    preferredDate: z.string().optional(),
-    preferredTime: z.string().optional(),
-    conversationHistory: z.array(z.string()).optional(),
-  }).optional(),
+  conversationHistory: z.array(z.any()).optional(),
 });
-
-// Helper function to extract details from message
-const extractDetails = (message: string) => {
-  const nameMatch = message.match(/my name is (\w+)/i);
-  const phoneMatch = message.match(/(\d{3}[-.]?\d{3}[-.]?\d{4})/);
-  
-  return {
-    customerName: nameMatch ? nameMatch[1] : '',
-    customerPhone: phoneMatch ? phoneMatch[1] : ''
-  };
-};
-
-// Helper function to format phone for speech
-const formatPhoneForSpeech = (phone: string) => {
-  return phone.replace(/\D/g, '').split('').join(' ');
-};
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { message, context } = ChatRequestSchema.parse(body);
+    const { message, conversationHistory } = ChatRequestSchema.parse(body);
     
-    console.log('Received message:', message);
-    console.log('Context:', context);
+    const apiKey = process.env.OPENAI_API_KEY;
     
-    const lowerMessage = message.toLowerCase();
-    const { customerName, customerPhone } = extractDetails(message);
-    
-    // Demo response logic
-    let demoResponse;
-    
-    if (lowerMessage.includes('yes it is') || lowerMessage.includes('yes') || lowerMessage.includes('confirm')) {
-      const name = customerName || context?.customerName || 'Mark';
-      const phone = customerPhone || context?.customerPhone || '782-882-0525';
-      const formattedPhone = formatPhoneForSpeech(phone);
-      
-      demoResponse = {
-        message: `Perfect! I've confirmed your appointment for ${name}. You'll receive a confirmation text at ${formattedPhone} shortly. Your appointment is all set!`,
-        context: {
-          bookingStage: 'confirmed',
-          customerName: name,
-          customerPhone: phone
-        }
-      };
-    } else if (lowerMessage.includes('book') || lowerMessage.includes('hair') || lowerMessage.includes('beard')) {
-      const name = customerName || context?.customerName || 'Mark';
-      const phone = customerPhone || context?.customerPhone || '782-882-0525';
-      const formattedPhone = formatPhoneForSpeech(phone);
-      
-      demoResponse = {
-        message: `Great! I have you down for a haircut and beard trim with Mike on Monday at 4 PM. I just need to confirm your phone number - is it ${formattedPhone}?`,
-        context: {
-          bookingStage: 'asking_for_confirmation',
-          customerName: name,
-          customerPhone: phone
-        }
-      };
-    } else {
-      demoResponse = {
-        message: "I'm glad to hear from you! How can I assist you today? Let me know what you need help with.",
-        context: {
-          bookingStage: 'initial',
-          customerName: customerName || '',
-          customerPhone: customerPhone || ''
-        }
-      };
+    if (!apiKey) {
+      return NextResponse.json({
+        success: false,
+        response: "I'm currently unavailable. Please contact us directly at auralixai@gmail.com or book a consultation.",
+        error: 'OpenAI API key not configured'
+      }, { status: 500 });
     }
-    
+
+    // Build conversation context
+    const messages = [
+      {
+        role: 'system',
+        content: `You are a helpful AI assistant for Auralix AI, a company that offers 4 ready-to-deploy AI solutions:
+
+1. **Workflow Automation** - Automate review requests, email/SMS follow-ups, order updates, and payment reminders. Free up staff from busywork.
+
+2. **Voice Agents** - AI that answers calls like a human receptionist. Takes orders, cancels orders, provides wait times, and routes calls. Perfect for restaurants, salons, and service businesses.
+
+3. **AI Chatbots** - Multi-platform chatbots that capture leads, answer FAQs, book appointments, and automate customer support. Works across websites, Instagram, Facebook, and WhatsApp.
+
+4. **AI-Powered Websites** - Modern, enterprise-grade websites with AI features built in from day one. Includes chatbots, automation workflows, and customer engagement tools.
+
+Your role is to:
+- Answer questions about these 4 products
+- Explain how they can help businesses
+- Be friendly, concise, and helpful
+- Encourage users to book a free consultation at https://calendly.com/auralixai/30min
+- All solutions have custom pricing based on business needs
+
+Keep responses concise (2-3 sentences max) and focused on Auralix's 4 products.`
+      }
+    ];
+
+    // Add conversation history (last 5 messages only)
+    if (conversationHistory && conversationHistory.length > 0) {
+      const recentHistory = conversationHistory.slice(-5);
+      recentHistory.forEach((msg: any) => {
+        if (msg.sender === 'user') {
+          messages.push({ role: 'user', content: msg.text });
+        } else if (msg.sender === 'bot') {
+          messages.push({ role: 'assistant', content: msg.text });
+        }
+      });
+    }
+
+    // Add current message
+    messages.push({ role: 'user', content: message });
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: messages,
+        max_tokens: 200,
+        temperature: 0.7,
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'OpenAI API error');
+    }
+
+    const aiResponse = data.choices[0].message.content;
+
     return NextResponse.json({
       success: true,
-      message: demoResponse.message,
-      context: demoResponse.context
+      response: aiResponse,
     });
     
   } catch (error) {
     console.error('Chat API error:', error);
     return NextResponse.json({
       success: false,
-      message: "I apologize, but I encountered a technical issue. Please try again or call us directly at (902) 555-0123 for immediate assistance.",
-      error: 'Internal server error'
+      response: "I apologize, but I'm having trouble connecting right now. Please contact us at auralixai@gmail.com or book a free consultation at https://calendly.com/auralixai/30min",
+      error: error instanceof Error ? error.message : 'Internal server error'
     }, { status: 500 });
   }
 }
