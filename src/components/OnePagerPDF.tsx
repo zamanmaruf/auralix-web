@@ -12,15 +12,37 @@ export default function OnePagerPDF() {
     setIsGenerating(true);
     
     try {
+      // Temporarily show the content for PDF generation
       const element = document.getElementById('one-pager-content');
-      if (!element) return;
+      if (!element) {
+        console.error('PDF content element not found');
+        alert('PDF content not found. Please refresh the page and try again.');
+        return;
+      }
+
+      console.log('PDF content element found:', element);
+
+      // Make element visible temporarily
+      const originalDisplay = element.style.display;
+      element.style.display = 'block';
+      element.style.position = 'absolute';
+      element.style.left = '-9999px';
+      element.style.top = '0';
 
       const canvas = await html2canvas(element, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        width: element.scrollWidth,
+        height: element.scrollHeight
       });
+
+      // Restore original display
+      element.style.display = originalDisplay;
+      element.style.position = '';
+      element.style.left = '';
+      element.style.top = '';
 
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
@@ -43,8 +65,10 @@ export default function OnePagerPDF() {
       }
 
       pdf.save('Auralix-AI-Restaurant-One-Pager.pdf');
+      console.log('PDF generated successfully');
     } catch (error) {
       console.error('Error generating PDF:', error);
+      alert('Error generating PDF. Please try again.');
     } finally {
       setIsGenerating(false);
     }
@@ -83,7 +107,7 @@ export default function OnePagerPDF() {
       </motion.div>
 
       {/* Hidden content for PDF generation */}
-      <div id="one-pager-content" className="hidden">
+      <div id="one-pager-content" className="absolute -left-[9999px] -top-[9999px] opacity-0 pointer-events-none">
         <div className="bg-white text-black p-8 max-w-4xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           {/* Header */}
           <div className="text-center mb-12">
