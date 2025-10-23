@@ -12,124 +12,238 @@ export default function OnePagerPDF() {
     setIsGenerating(true);
     
     try {
-      console.log('Starting PDF generation...');
+      console.log('Starting enterprise-grade PDF generation...');
       
-      // Create PDF directly with text content (more reliable)
+      // Create PDF with enterprise styling
       const pdf = new jsPDF('p', 'mm', 'a4');
       
-      // Set up fonts and colors
-      pdf.setFont('helvetica');
+      // Set up colors (matching website theme)
+      const primaryColor = [20, 184, 166]; // #14b8a6 (cyan)
+      const accentColor = [255, 122, 0]; // #FF7A00 (orange)
+      const darkBg = [10, 10, 10]; // #0a0a0a (dark)
+      const lightText = [255, 255, 255]; // white
+      const grayText = [156, 163, 175]; // gray-400
+      const darkGray = [55, 65, 81]; // gray-700
       
-      // Header
+      // Add dark background
+      pdf.setFillColor(darkBg[0], darkBg[1], darkBg[2]);
+      pdf.rect(0, 0, 210, 297, 'F');
+      
+      // Header with gradient effect
+      pdf.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.rect(0, 0, 210, 60, 'F');
+      
+      // Logo area (simulated with text)
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.setFontSize(28);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('AURALIX AI', 20, 25);
+      
+      // Tagline
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Restaurant AI Automation', 20, 35);
+      pdf.text('Halifax, Nova Scotia, Canada', 20, 45);
+      
+      // Main headline
       pdf.setFontSize(24);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(0, 0, 0);
-      pdf.text('Auralix AI', 20, 30);
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('Never Miss Another Customer Call', 20, 70);
       
       // Subtitle
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.text('AI Receptionist + Chatbot for Restaurants', 20, 85);
+      pdf.text('Increase Bookings by 40%', 20, 95);
+      
+      // Problem section with red accent
+      pdf.setFillColor(220, 38, 38, 0.1); // Red with transparency
+      pdf.rect(20, 110, 170, 40, 'F');
+      pdf.setDrawColor(220, 38, 38);
+      pdf.setLineWidth(2);
+      pdf.rect(20, 110, 170, 40);
+      
       pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Never Miss Another Customer Call', 20, 45);
-      
-      pdf.setFontSize(14);
-      pdf.setFont('helvetica', 'normal');
-      pdf.text('AI Receptionist + Chatbot for Restaurants', 20, 55);
-      pdf.text('Increase Bookings by 40%', 20, 65);
-      
-      // Problem section
-      pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(220, 38, 38); // Red color
-      pdf.text('The Problem', 20, 85);
+      pdf.setTextColor(220, 38, 38);
+      pdf.text('THE PROBLEM', 30, 125);
       
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
-      pdf.setTextColor(0, 0, 0);
-      pdf.text('Restaurants miss up to 43% of customer calls', 20, 95);
-      pdf.text('costing $27,000+ per year in lost orders.', 20, 105);
-      pdf.text('Staff are too busy during rush hours. Customers hang up.', 20, 115);
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('Restaurants miss up to 43% of customer calls', 30, 135);
+      pdf.text('costing $27,000+ per year in lost orders', 30, 145);
       
-      // Solution section
-      pdf.setFontSize(16);
+      // Solution section with green accent
+      pdf.setFillColor(34, 197, 94, 0.1); // Green with transparency
+      pdf.rect(20, 160, 170, 40, 'F');
+      pdf.setDrawColor(34, 197, 94);
+      pdf.setLineWidth(2);
+      pdf.rect(20, 160, 170, 40);
+      
+      pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(34, 197, 94); // Green color
-      pdf.text('The Auralix Solution', 20, 140);
+      pdf.setTextColor(34, 197, 94);
+      pdf.text('THE AURALIX SOLUTION', 30, 175);
       
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
-      pdf.setTextColor(0, 0, 0);
-      pdf.text('Auralix answers every call 24/7 with human-like AI voice.', 20, 150);
-      pdf.text('Our chatbot captures reservations, answers FAQs, and', 20, 160);
-      pdf.text('auto-texts customers on Instagram, Messenger, and your site.', 20, 170);
-      pdf.text('Proven to increase bookings by 40% and reduce admin time by 60%.', 20, 180);
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('Auralix answers every call 24/7 with human-like AI voice', 30, 185);
+      pdf.text('Proven to increase bookings by 40% and reduce admin time by 60%', 30, 195);
       
       // Features section
-      pdf.setFontSize(16);
+      pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Key Features', 20, 200);
+      pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.text('KEY FEATURES', 20, 220);
       
-      pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
-      pdf.text('• AI Voice Receptionist - Handles calls, takes bookings', 20, 210);
-      pdf.text('• Website & Social Chatbot - Multi-platform customer service', 20, 220);
-      pdf.text('• Workflow Automation - Review requests, payment reminders', 20, 230);
-      pdf.text('• Works 24/7 - Never miss a call or order again', 20, 240);
-      pdf.text('• Live Dashboard - Track performance and ROI daily', 20, 250);
+      // Feature boxes
+      const features = [
+        { title: 'AI Voice Receptionist', desc: 'Handles calls, takes bookings' },
+        { title: 'Website & Social Chatbot', desc: 'Multi-platform customer service' },
+        { title: 'Workflow Automation', desc: 'Review requests, payment reminders' },
+        { title: 'Works 24/7', desc: 'Never miss a call or order again' },
+        { title: 'Live Dashboard', desc: 'Track performance and ROI daily' }
+      ];
       
-      // Pricing section
-      pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('Simple Monthly Plans', 20, 270);
+      features.forEach((feature, index) => {
+        const x = 20 + (index % 2) * 95;
+        const y = 235 + Math.floor(index / 2) * 25;
+        
+        // Feature box
+        pdf.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2], 0.1);
+        pdf.rect(x, y - 15, 85, 20, 'F');
+        pdf.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+        pdf.setLineWidth(1);
+        pdf.rect(x, y - 15, 85, 20);
+        
+        // Feature text
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+        pdf.text(feature.title, x + 5, y - 5);
+        
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+        pdf.text(feature.desc, x + 5, y + 2);
+      });
       
-      pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
-      pdf.text('Starter: $99/mo - Small restaurants (Chatbot only)', 20, 280);
-      pdf.text('Standard: $199/mo - Most common (Chatbot + Voice Agent)', 20, 290);
-      pdf.text('Premium: $399/mo - Growing chains (All features + 2 locations)', 20, 300);
-      
-      // Add new page for more content
+      // Add new page
       pdf.addPage();
       
+      // Dark background for second page
+      pdf.setFillColor(darkBg[0], darkBg[1], darkBg[2]);
+      pdf.rect(0, 0, 210, 297, 'F');
+      
+      // Pricing section
+      pdf.setFontSize(20);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.text('SIMPLE MONTHLY PLANS', 20, 30);
+      
+      // Pricing cards
+      const plans = [
+        { name: 'STARTER', price: '$99/mo', desc: 'Small restaurants (Chatbot only)', color: [75, 85, 99] },
+        { name: 'STANDARD', price: '$199/mo', desc: 'Most common (Chatbot + Voice Agent)', color: primaryColor, popular: true },
+        { name: 'PREMIUM', price: '$399/mo', desc: 'Growing chains (All features + 2 locations)', color: [147, 51, 234] }
+      ];
+      
+      plans.forEach((plan, index) => {
+        const x = 20 + index * 60;
+        const y = 50;
+        
+        // Plan card
+        pdf.setFillColor(plan.color[0], plan.color[1], plan.color[2], 0.1);
+        pdf.rect(x, y, 55, 60, 'F');
+        pdf.setDrawColor(plan.color[0], plan.color[1], plan.color[2]);
+        pdf.setLineWidth(2);
+        pdf.rect(x, y, 55, 60);
+        
+        // Popular badge
+        if (plan.popular) {
+          pdf.setFillColor(accentColor[0], accentColor[1], accentColor[2]);
+          pdf.rect(x, y, 55, 8, 'F');
+          pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+          pdf.setFontSize(8);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text('MOST POPULAR', x + 15, y + 5);
+        }
+        
+        // Plan name
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(plan.color[0], plan.color[1], plan.color[2]);
+        pdf.text(plan.name, x + 5, y + 20);
+        
+        // Price
+        pdf.setFontSize(16);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+        pdf.text(plan.price, x + 5, y + 35);
+        
+        // Description
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(grayText[0], grayText[1], grayText[2]);
+        pdf.text(plan.desc, x + 5, y + 45);
+      });
+      
+      // Trial info
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(accentColor[0], accentColor[1], accentColor[2]);
+      pdf.text('14-day free trial with credit card required', 20, 130);
+      
       // Success story
+      pdf.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2], 0.1);
+      pdf.rect(20, 150, 170, 50, 'F');
+      pdf.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.setLineWidth(2);
+      pdf.rect(20, 150, 170, 50);
+      
       pdf.setFontSize(16);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Success Story: Nova Scotia Restaurant Group', 20, 30);
+      pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.text('SUCCESS STORY: NOVA SCOTIA RESTAURANT GROUP', 30, 165);
       
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
-      pdf.text('+40% Bookings    -60% Admin Time    +25% Revenue', 20, 45);
-      pdf.text('"Auralix AI answers 80% of our calls so staff can focus', 20, 55);
-      pdf.text('on food and guests." - Sarah Mitchell, Owner', 20, 65);
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('+40% Bookings    -60% Admin Time    +25% Revenue', 30, 175);
+      pdf.text('"Auralix AI answers 80% of our calls so staff can focus', 30, 185);
+      pdf.text('on food and guests." - Sarah Mitchell, Owner', 30, 195);
       
       // Contact section
-      pdf.setFontSize(16);
+      pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Ready to Stop Losing Orders to Missed Calls?', 20, 90);
+      pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.text('READY TO STOP LOSING ORDERS?', 20, 220);
       
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
-      pdf.text('Join hundreds of restaurants that have already automated', 20, 105);
-      pdf.text('their operations with Auralix AI.', 20, 115);
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('Join hundreds of restaurants that have already automated', 20, 235);
+      pdf.text('their operations with Auralix AI.', 20, 245);
       
+      // Contact info
       pdf.setFontSize(14);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Contact Information:', 20, 135);
+      pdf.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      pdf.text('CONTACT INFORMATION', 20, 265);
       
-      pdf.setFontSize(12);
+      pdf.setFontSize(11);
       pdf.setFont('helvetica', 'normal');
-      pdf.text('Email: auralixai@gmail.com', 20, 150);
-      pdf.text('Phone: +1 9024414928', 20, 160);
-      pdf.text('Website: auralixai.ca', 20, 170);
-      pdf.text('14-day free trial with credit card required', 20, 180);
-      
-      // Footer
-      pdf.setFontSize(10);
-      pdf.setFont('helvetica', 'italic');
-      pdf.text('Auralix AI Inc. | Halifax, Nova Scotia, Canada', 20, 280);
-      pdf.text('© 2025 Auralix AI | Made in Nova Scotia', 20, 290);
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('Email: auralixai@gmail.com', 20, 275);
+      pdf.text('Phone: +1 9024414928', 20, 285);
+      pdf.text('Website: auralixai.ca', 20, 295);
       
       pdf.save('Auralix-AI-Restaurant-One-Pager.pdf');
-      console.log('PDF generated successfully');
+      console.log('Enterprise-grade PDF generated successfully');
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Error generating PDF. Please try again.');
