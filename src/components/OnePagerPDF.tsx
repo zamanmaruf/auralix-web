@@ -12,132 +12,127 @@ export default function OnePagerPDF() {
     setIsGenerating(true);
     
     try {
-      // Create a temporary container for PDF generation
-      const tempContainer = document.createElement('div');
-      tempContainer.style.position = 'absolute';
-      tempContainer.style.left = '-9999px';
-      tempContainer.style.top = '0';
-      tempContainer.style.width = '210mm'; // A4 width
-      tempContainer.style.backgroundColor = '#ffffff';
-      tempContainer.style.padding = '20px';
-      tempContainer.style.fontFamily = 'Inter, sans-serif';
+      console.log('Starting PDF generation...');
       
-      // Get the content element
-      const element = document.getElementById('one-pager-content');
-      if (!element) {
-        console.error('PDF content element not found');
-        alert('PDF content not found. Please refresh the page and try again.');
-        return;
-      }
-
-      // Clone the content and add to temp container
-      const clonedContent = element.cloneNode(true) as HTMLElement;
-      clonedContent.style.display = 'block';
-      clonedContent.style.position = 'static';
-      clonedContent.style.left = '';
-      clonedContent.style.top = '';
-      clonedContent.style.opacity = '1';
-      clonedContent.style.pointerEvents = 'auto';
-      
-      tempContainer.appendChild(clonedContent);
-      document.body.appendChild(tempContainer);
-
-      console.log('Temp container created, generating canvas...');
-
-      const canvas = await html2canvas(tempContainer, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: tempContainer.scrollWidth,
-        height: tempContainer.scrollHeight,
-        logging: true
-      });
-
-      // Remove temp container
-      document.body.removeChild(tempContainer);
-
-      console.log('Canvas generated, creating PDF...');
-
-      const imgData = canvas.toDataURL('image/png');
+      // Create PDF directly with text content (more reliable)
       const pdf = new jsPDF('p', 'mm', 'a4');
       
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-
-      let position = 0;
-
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-
+      // Set up fonts and colors
+      pdf.setFont('helvetica');
+      
+      // Header
+      pdf.setFontSize(24);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(0, 0, 0);
+      pdf.text('Auralix AI', 20, 30);
+      
+      // Subtitle
+      pdf.setFontSize(18);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Never Miss Another Customer Call', 20, 45);
+      
+      pdf.setFontSize(14);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('AI Receptionist + Chatbot for Restaurants', 20, 55);
+      pdf.text('Increase Bookings by 40%', 20, 65);
+      
+      // Problem section
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(220, 38, 38); // Red color
+      pdf.text('The Problem', 20, 85);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setTextColor(0, 0, 0);
+      pdf.text('Restaurants miss up to 43% of customer calls', 20, 95);
+      pdf.text('costing $27,000+ per year in lost orders.', 20, 105);
+      pdf.text('Staff are too busy during rush hours. Customers hang up.', 20, 115);
+      
+      // Solution section
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(34, 197, 94); // Green color
+      pdf.text('The Auralix Solution', 20, 140);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setTextColor(0, 0, 0);
+      pdf.text('Auralix answers every call 24/7 with human-like AI voice.', 20, 150);
+      pdf.text('Our chatbot captures reservations, answers FAQs, and', 20, 160);
+      pdf.text('auto-texts customers on Instagram, Messenger, and your site.', 20, 170);
+      pdf.text('Proven to increase bookings by 40% and reduce admin time by 60%.', 20, 180);
+      
+      // Features section
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Key Features', 20, 200);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('• AI Voice Receptionist - Handles calls, takes bookings', 20, 210);
+      pdf.text('• Website & Social Chatbot - Multi-platform customer service', 20, 220);
+      pdf.text('• Workflow Automation - Review requests, payment reminders', 20, 230);
+      pdf.text('• Works 24/7 - Never miss a call or order again', 20, 240);
+      pdf.text('• Live Dashboard - Track performance and ROI daily', 20, 250);
+      
+      // Pricing section
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Simple Monthly Plans', 20, 270);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Starter: $99/mo - Small restaurants (Chatbot only)', 20, 280);
+      pdf.text('Standard: $199/mo - Most common (Chatbot + Voice Agent)', 20, 290);
+      pdf.text('Premium: $399/mo - Growing chains (All features + 2 locations)', 20, 300);
+      
+      // Add new page for more content
+      pdf.addPage();
+      
+      // Success story
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Success Story: Nova Scotia Restaurant Group', 20, 30);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('+40% Bookings    -60% Admin Time    +25% Revenue', 20, 45);
+      pdf.text('"Auralix AI answers 80% of our calls so staff can focus', 20, 55);
+      pdf.text('on food and guests." - Sarah Mitchell, Owner', 20, 65);
+      
+      // Contact section
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Ready to Stop Losing Orders to Missed Calls?', 20, 90);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Join hundreds of restaurants that have already automated', 20, 105);
+      pdf.text('their operations with Auralix AI.', 20, 115);
+      
+      pdf.setFontSize(14);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Contact Information:', 20, 135);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Email: auralixai@gmail.com', 20, 150);
+      pdf.text('Phone: +1 9024414928', 20, 160);
+      pdf.text('Website: auralixai.ca', 20, 170);
+      pdf.text('14-day free trial with credit card required', 20, 180);
+      
+      // Footer
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'italic');
+      pdf.text('Auralix AI Inc. | Halifax, Nova Scotia, Canada', 20, 280);
+      pdf.text('© 2025 Auralix AI | Made in Nova Scotia', 20, 290);
+      
       pdf.save('Auralix-AI-Restaurant-One-Pager.pdf');
       console.log('PDF generated successfully');
     } catch (error) {
       console.error('Error generating PDF:', error);
-      // Fallback: Create PDF programmatically
-      try {
-        console.log('Attempting fallback PDF generation...');
-        const fallbackPdf = new jsPDF('p', 'mm', 'a4');
-        
-        // Add title
-        fallbackPdf.setFontSize(24);
-        fallbackPdf.setFont('helvetica', 'bold');
-        fallbackPdf.text('Auralix AI - Restaurant Automation', 20, 30);
-        
-        // Add subtitle
-        fallbackPdf.setFontSize(16);
-        fallbackPdf.setFont('helvetica', 'normal');
-        fallbackPdf.text('Never Miss Another Customer Call', 20, 45);
-        fallbackPdf.text('AI Receptionist + Chatbot for Restaurants', 20, 55);
-        fallbackPdf.text('Increase Bookings by 40%', 20, 65);
-        
-        // Add problem section
-        fallbackPdf.setFontSize(14);
-        fallbackPdf.setFont('helvetica', 'bold');
-        fallbackPdf.text('The Problem:', 20, 85);
-        fallbackPdf.setFont('helvetica', 'normal');
-        fallbackPdf.text('Restaurants miss up to 43% of customer calls', 20, 95);
-        fallbackPdf.text('costing $27,000+ per year in lost orders.', 20, 105);
-        
-        // Add solution section
-        fallbackPdf.setFont('helvetica', 'bold');
-        fallbackPdf.text('The Auralix Solution:', 20, 125);
-        fallbackPdf.setFont('helvetica', 'normal');
-        fallbackPdf.text('Auralix answers every call 24/7 with AI voice agent.', 20, 135);
-        fallbackPdf.text('Proven to increase bookings by 40% and reduce admin time by 60%.', 20, 145);
-        
-        // Add pricing
-        fallbackPdf.setFont('helvetica', 'bold');
-        fallbackPdf.text('Simple Monthly Plans:', 20, 165);
-        fallbackPdf.setFont('helvetica', 'normal');
-        fallbackPdf.text('Starter: $99/mo - Small restaurants', 20, 175);
-        fallbackPdf.text('Standard: $199/mo - Most common', 20, 185);
-        fallbackPdf.text('Premium: $399/mo - Growing chains', 20, 195);
-        fallbackPdf.text('14-day free trial with credit card required', 20, 205);
-        
-        // Add contact
-        fallbackPdf.setFont('helvetica', 'bold');
-        fallbackPdf.text('Contact:', 20, 215);
-        fallbackPdf.setFont('helvetica', 'normal');
-        fallbackPdf.text('Email: auralixai@gmail.com', 20, 225);
-        fallbackPdf.text('Phone: +1 9024414928', 20, 235);
-        fallbackPdf.text('Website: auralixai.ca', 20, 245);
-        
-        fallbackPdf.save('Auralix-AI-Restaurant-One-Pager.pdf');
-        console.log('Fallback PDF generated successfully');
-      } catch (fallbackError) {
-        console.error('Fallback PDF generation failed:', fallbackError);
-        alert('Error generating PDF. Please try again or contact support.');
-      }
+      alert('Error generating PDF. Please try again.');
     } finally {
       setIsGenerating(false);
     }
