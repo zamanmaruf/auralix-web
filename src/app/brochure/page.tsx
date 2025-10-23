@@ -8,6 +8,7 @@ import {
   Rocket, Star, CheckCircle, Bot, Home, Utensils, ShoppingCart, Calculator,
   Brain, Settings, ArrowRight, Download, Calendar, Users, DollarSign
 } from 'lucide-react';
+import OnePagerPDF from '@/components/OnePagerPDF';
 
 const BrochurePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -495,6 +496,11 @@ const BrochurePage = () => {
             }`}
           />
         ))}
+      </div>
+
+      {/* One-Pager PDF Section */}
+      <div className="fixed bottom-20 right-4 z-50">
+        <OnePagerPDF />
       </div>
     </div>
   );
