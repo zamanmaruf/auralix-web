@@ -26,71 +26,71 @@ export default function OnePagerPDF() {
       const darkText = [0, 0, 0]; // black
       const grayText = [107, 114, 128]; // gray-500
       
-      // White background for professional one-pager
+      // Clean white background
       pdf.setFillColor(255, 255, 255);
       pdf.rect(0, 0, 210, 297, 'F');
       
-      // Header Block - ROI-driven promise
-      pdf.setFontSize(32);
+      // Header Block - Clean and professional
+      pdf.setFontSize(28);
       pdf.setFont('helvetica', 'bold');
       pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-      pdf.text('Never Miss Another Customer Call', 20, 30);
+      pdf.text('Never Miss Another Customer Call', 20, 25);
       
-      // Subheadline
-      pdf.setFontSize(18);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(electricBlue[0], electricBlue[1], electricBlue[2]);
-      pdf.text('AI Voice Agent + Chatbot for Restaurants', 20, 45);
-      
-      // Value proposition
-      pdf.setFontSize(14);
+      // Subheadline with better spacing
+      pdf.setFontSize(16);
       pdf.setFont('helvetica', 'normal');
-      pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Boost Bookings. Save Staff Time. Recover Lost Revenue.', 20, 60);
+      pdf.setTextColor(electricBlue[0], electricBlue[1], electricBlue[2]);
+      pdf.text('AI Voice Agent + Chatbot for Restaurants', 20, 40);
       
-      // Problem → Solution (Two-Column Split)
-      pdf.setFontSize(20);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-      pdf.text('What\'s the Problem?', 20, 85);
-      
-      // Problem bullets
+      // Value proposition with better typography
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('• 43% of customer calls go unanswered', 20, 100);
-      pdf.text('• $2,250+/month in missed orders', 20, 110);
-      pdf.text('• Staff too busy during peak hours', 20, 120);
-      pdf.text('• Customers hang up, or go elsewhere', 20, 130);
-      pdf.text('• Reviews suffer, retention drops', 20, 140);
+      pdf.text('Boost Bookings • Save Staff Time • Recover Lost Revenue', 20, 55);
+      
+      // Problem → Solution (Clean Two-Column Layout)
+      pdf.setFontSize(18);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
+      pdf.text('The Problem', 20, 75);
+      
+      // Problem bullets with better formatting
+      pdf.setFontSize(11);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
+      pdf.text('• 43% of customer calls go unanswered', 20, 88);
+      pdf.text('• $2,250+/month in missed orders', 20, 98);
+      pdf.text('• Staff too busy during peak hours', 20, 108);
+      pdf.text('• Customers hang up, or go elsewhere', 20, 118);
+      pdf.text('• Reviews suffer, retention drops', 20, 128);
       
       // Solution section
-      pdf.setFontSize(20);
+      pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
       pdf.setTextColor(electricBlue[0], electricBlue[1], electricBlue[2]);
-      pdf.text('How Auralix Solves It', 110, 85);
+      pdf.text('The Solution', 110, 75);
       
       // Solution bullets
-      pdf.setFontSize(12);
+      pdf.setFontSize(11);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('• AI receptionist picks up every call 24/7', 110, 100);
-      pdf.text('• Smart chatbot captures bookings on Instagram, WhatsApp, and your site', 110, 110);
-      pdf.text('• Automates confirmations, follow-ups, and review requests', 110, 120);
-      pdf.text('• Installs in 24–48 hours. No hardware needed.', 110, 130);
+      pdf.text('• AI receptionist picks up every call 24/7', 110, 88);
+      pdf.text('• Smart chatbot captures bookings on Instagram, WhatsApp, and your site', 110, 98);
+      pdf.text('• Automates confirmations, follow-ups, and review requests', 110, 108);
+      pdf.text('• Installs in 24–48 hours. No hardware needed.', 110, 118);
       
-      // Visual divider line
+      // Clean divider line
       pdf.setDrawColor(electricBlue[0], electricBlue[1], electricBlue[2]);
-      pdf.setLineWidth(2);
-      pdf.line(105, 80, 105, 150);
+      pdf.setLineWidth(1);
+      pdf.line(105, 70, 105, 135);
       
-      // Key Features (Icon + Text Grid)
+      // Key Features - Clean Grid Layout
       pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
       pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-      pdf.text('Key Features', 20, 170);
+      pdf.text('Key Features', 20, 150);
       
-      // Feature grid (3x2 layout)
+      // Feature grid (2x3 layout for better readability)
       const features = [
         { title: 'AI Voice Receptionist', desc: 'Answers calls, books tables, takes orders' },
         { title: 'Multi-Channel Chatbot', desc: 'Works on Instagram, WhatsApp, Messenger' },
@@ -101,78 +101,88 @@ export default function OnePagerPDF() {
       ];
       
       features.forEach((feature, index) => {
-        const x = 20 + (index % 3) * 60;
-        const y = 190 + Math.floor(index / 3) * 25;
+        const x = 20 + (index % 2) * 90;
+        const y = 170 + Math.floor(index / 2) * 30;
         
-        // Feature box
-        pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2], 0.05);
-        pdf.rect(x, y - 12, 55, 20, 'F');
+        // Clean feature box with subtle styling
+        pdf.setFillColor(248, 250, 252); // Very light gray background
+        pdf.rect(x, y - 10, 80, 25, 'F');
         pdf.setDrawColor(electricBlue[0], electricBlue[1], electricBlue[2]);
         pdf.setLineWidth(1);
-        pdf.rect(x, y - 12, 55, 20);
+        pdf.rect(x, y - 10, 80, 25);
         
         // Feature title
-        pdf.setFontSize(10);
+        pdf.setFontSize(11);
         pdf.setFont('helvetica', 'bold');
         pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-        pdf.text(feature.title, x + 3, y - 3);
+        pdf.text(feature.title, x + 5, y - 2);
         
         // Feature description
-        pdf.setFontSize(8);
-        pdf.setFont('helvetica', 'normal');
-        pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-        pdf.text(feature.desc, x + 3, y + 5);
-      });
-      
-      // Pricing Tiers (Simple Table)
-      pdf.setFontSize(18);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-      pdf.text('Simple Monthly Plans', 20, 250);
-      
-      // Pricing table
-      const plans = [
-        { name: 'Starter', price: '$99/mo', who: 'Small restaurants', features: 'Chatbot only' },
-        { name: 'Standard', price: '$199/mo', who: 'Single-location full AI', features: 'Voice agent + Chatbot' },
-        { name: 'Premium', price: '$399/mo+', who: 'Multi-location groups', features: 'Full suite + integrations' }
-      ];
-      
-      // Table headers
-      pdf.setFontSize(10);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-      pdf.text('Plan', 20, 265);
-      pdf.text('Price', 50, 265);
-      pdf.text('Who it\'s for', 80, 265);
-      pdf.text('Key Features', 140, 265);
-      
-      // Table rows
-      plans.forEach((plan, index) => {
-        const y = 275 + index * 15;
-        
-        // Row background
-        if (index % 2 === 0) {
-          pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2], 0.05);
-          pdf.rect(15, y - 8, 180, 12, 'F');
-        }
-        
-        // Plan data
         pdf.setFontSize(9);
         pdf.setFont('helvetica', 'normal');
         pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-        pdf.text(plan.name, 20, y);
-        pdf.text(plan.price, 50, y);
-        pdf.text(plan.who, 80, y);
-        pdf.text(plan.features, 140, y);
+        pdf.text(feature.desc, x + 5, y + 8);
+      });
+      
+      // Pricing Tiers - Clean Card Layout
+      pdf.setFontSize(18);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
+      pdf.text('Simple Monthly Plans', 20, 280);
+      
+      // Pricing cards (3-column layout)
+      const plans = [
+        { name: 'Starter', price: '$99/mo', who: 'Small restaurants', features: 'Chatbot only', color: electricBlue },
+        { name: 'Standard', price: '$199/mo', who: 'Single-location full AI', features: 'Voice agent + Chatbot', color: violet, popular: true },
+        { name: 'Premium', price: '$399/mo+', who: 'Multi-location groups', features: 'Full suite + integrations', color: electricBlue }
+      ];
+      
+      plans.forEach((plan, index) => {
+        const x = 20 + index * 60;
+        const y = 300;
+        
+        // Plan card
+        pdf.setFillColor(248, 250, 252); // Light background
+        pdf.rect(x, y, 55, 50, 'F');
+        pdf.setDrawColor(plan.color[0], plan.color[1], plan.color[2]);
+        pdf.setLineWidth(2);
+        pdf.rect(x, y, 55, 50);
+        
+        // Popular badge
+        if (plan.popular) {
+          pdf.setFillColor(violet[0], violet[1], violet[2]);
+          pdf.rect(x, y, 55, 8, 'F');
+          pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+          pdf.setFontSize(8);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text('MOST POPULAR', x + 12, y + 5);
+        }
+        
+        // Plan name
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(plan.color[0], plan.color[1], plan.color[2]);
+        pdf.text(plan.name, x + 5, y + 20);
+        
+        // Price
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
+        pdf.text(plan.price, x + 5, y + 30);
+        
+        // Description
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
+        pdf.text(plan.who, x + 5, y + 40);
       });
       
       // Pricing notes
       pdf.setFontSize(10);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('No setup fees. No contracts. Cancel anytime.', 20, 330);
-      pdf.text('14-day free trial included.', 20, 340);
-      pdf.text('Founder\'s Offer: First 100 clients get 20% off for life.', 20, 350);
+      pdf.text('No setup fees • No contracts • Cancel anytime', 20, 370);
+      pdf.text('14-day free trial included • Founder\'s Offer: First 100 clients get 20% off for life', 20, 380);
       
       // Add new page for success proof and CTA
       pdf.addPage();
@@ -181,12 +191,12 @@ export default function OnePagerPDF() {
       pdf.setFillColor(255, 255, 255);
       pdf.rect(0, 0, 210, 297, 'F');
       
-      // Success Proof / Case Study Highlight
-      pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2], 0.1);
-      pdf.rect(20, 30, 170, 60, 'F');
+      // Success Proof - Clean Highlight Box
+      pdf.setFillColor(248, 250, 252); // Light gray background
+      pdf.rect(20, 30, 170, 50, 'F');
       pdf.setDrawColor(electricBlue[0], electricBlue[1], electricBlue[2]);
       pdf.setLineWidth(2);
-      pdf.rect(20, 30, 170, 60);
+      pdf.rect(20, 30, 170, 50);
       
       pdf.setFontSize(16);
       pdf.setFont('helvetica', 'bold');
@@ -196,55 +206,51 @@ export default function OnePagerPDF() {
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('+40% increase in bookings', 30, 60);
-      pdf.text('+25% revenue growth', 30, 70);
-      pdf.text('–60% admin time', 30, 80);
+      pdf.text('+40% increase in bookings • +25% revenue growth • –60% admin time', 30, 60);
       
       pdf.setFontSize(11);
       pdf.setFont('helvetica', 'italic');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('"Auralix now answers 80% of our calls. Our staff focus on service, not phones."', 30, 90);
+      pdf.text('"Auralix now answers 80% of our calls. Our staff focus on service, not phones."', 30, 75);
       
-      // Final CTA
+      // Final CTA - Clean and Professional
       pdf.setFontSize(20);
       pdf.setFont('helvetica', 'bold');
       pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-      pdf.text('Ready to Stop Losing Bookings?', 20, 120);
+      pdf.text('Ready to Stop Losing Bookings?', 20, 100);
       
       pdf.setFontSize(14);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Try Auralix AI free for 14 days. No setup. No commitment.', 20, 140);
+      pdf.text('Try Auralix AI free for 14 days. No setup. No commitment.', 20, 120);
       
       // Contact info
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Visit: www.auralixai.ca', 20, 160);
-      pdf.text('Email: auralixai@gmail.com', 20, 170);
-      pdf.text('Phone: +1 9024414928', 20, 180);
+      pdf.text('Visit: www.auralixai.ca • Email: auralixai@gmail.com • Phone: +1 9024414928', 20, 140);
       
-      // CTA buttons (simulated)
+      // CTA buttons - Clean design
       pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2]);
-      pdf.rect(20, 200, 60, 15, 'F');
+      pdf.rect(20, 160, 70, 20, 'F');
       pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
-      pdf.setFontSize(10);
+      pdf.setFontSize(11);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Request Demo', 35, 210);
+      pdf.text('Request Demo', 45, 172);
       
       pdf.setFillColor(violet[0], violet[1], violet[2]);
-      pdf.rect(90, 200, 60, 15, 'F');
+      pdf.rect(100, 160, 70, 20, 'F');
       pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
-      pdf.setFontSize(10);
+      pdf.setFontSize(11);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Activate Free Trial', 95, 210);
+      pdf.text('Activate Free Trial', 115, 172);
       
-      // Trust badges
-      pdf.setFontSize(9);
+      // Trust badges - Clean footer
+      pdf.setFontSize(10);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(grayText[0], grayText[1], grayText[2]);
-      pdf.text('Canadian-Owned | Built for Restaurants | Live Support Included', 20, 240);
-      pdf.text('Offer Ends: After first 100 clients', 20, 250);
+      pdf.text('Canadian-Owned • Built for Restaurants • Live Support Included', 20, 200);
+      pdf.text('Offer Ends: After first 100 clients', 20, 210);
       
       pdf.save('Auralix-AI-Restaurant-One-Pager.pdf');
       console.log('Enterprise-grade PDF generated successfully');
