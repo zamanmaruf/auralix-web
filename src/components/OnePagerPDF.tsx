@@ -12,7 +12,17 @@ export default function OnePagerPDF() {
     setIsGenerating(true);
     
     try {
-      // Temporarily show the content for PDF generation
+      // Create a temporary container for PDF generation
+      const tempContainer = document.createElement('div');
+      tempContainer.style.position = 'absolute';
+      tempContainer.style.left = '-9999px';
+      tempContainer.style.top = '0';
+      tempContainer.style.width = '210mm'; // A4 width
+      tempContainer.style.backgroundColor = '#ffffff';
+      tempContainer.style.padding = '20px';
+      tempContainer.style.fontFamily = 'Inter, sans-serif';
+      
+      // Get the content element
       const element = document.getElementById('one-pager-content');
       if (!element) {
         console.error('PDF content element not found');
@@ -20,29 +30,34 @@ export default function OnePagerPDF() {
         return;
       }
 
-      console.log('PDF content element found:', element);
+      // Clone the content and add to temp container
+      const clonedContent = element.cloneNode(true) as HTMLElement;
+      clonedContent.style.display = 'block';
+      clonedContent.style.position = 'static';
+      clonedContent.style.left = '';
+      clonedContent.style.top = '';
+      clonedContent.style.opacity = '1';
+      clonedContent.style.pointerEvents = 'auto';
+      
+      tempContainer.appendChild(clonedContent);
+      document.body.appendChild(tempContainer);
 
-      // Make element visible temporarily
-      const originalDisplay = element.style.display;
-      element.style.display = 'block';
-      element.style.position = 'absolute';
-      element.style.left = '-9999px';
-      element.style.top = '0';
+      console.log('Temp container created, generating canvas...');
 
-      const canvas = await html2canvas(element, {
+      const canvas = await html2canvas(tempContainer, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        width: element.scrollWidth,
-        height: element.scrollHeight
+        width: tempContainer.scrollWidth,
+        height: tempContainer.scrollHeight,
+        logging: true
       });
 
-      // Restore original display
-      element.style.display = originalDisplay;
-      element.style.position = '';
-      element.style.left = '';
-      element.style.top = '';
+      // Remove temp container
+      document.body.removeChild(tempContainer);
+
+      console.log('Canvas generated, creating PDF...');
 
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
@@ -68,7 +83,60 @@ export default function OnePagerPDF() {
       console.log('PDF generated successfully');
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
+      // Fallback: Create PDF programmatically
+      try {
+        console.log('Attempting fallback PDF generation...');
+        const fallbackPdf = new jsPDF('p', 'mm', 'a4');
+        
+        // Add title
+        fallbackPdf.setFontSize(24);
+        fallbackPdf.setFont('helvetica', 'bold');
+        fallbackPdf.text('Auralix AI - Restaurant Automation', 20, 30);
+        
+        // Add subtitle
+        fallbackPdf.setFontSize(16);
+        fallbackPdf.setFont('helvetica', 'normal');
+        fallbackPdf.text('Never Miss Another Customer Call', 20, 45);
+        fallbackPdf.text('AI Receptionist + Chatbot for Restaurants', 20, 55);
+        fallbackPdf.text('Increase Bookings by 40%', 20, 65);
+        
+        // Add problem section
+        fallbackPdf.setFontSize(14);
+        fallbackPdf.setFont('helvetica', 'bold');
+        fallbackPdf.text('The Problem:', 20, 85);
+        fallbackPdf.setFont('helvetica', 'normal');
+        fallbackPdf.text('Restaurants miss up to 43% of customer calls', 20, 95);
+        fallbackPdf.text('costing $27,000+ per year in lost orders.', 20, 105);
+        
+        // Add solution section
+        fallbackPdf.setFont('helvetica', 'bold');
+        fallbackPdf.text('The Auralix Solution:', 20, 125);
+        fallbackPdf.setFont('helvetica', 'normal');
+        fallbackPdf.text('Auralix answers every call 24/7 with AI voice agent.', 20, 135);
+        fallbackPdf.text('Proven to increase bookings by 40% and reduce admin time by 60%.', 20, 145);
+        
+        // Add pricing
+        fallbackPdf.setFont('helvetica', 'bold');
+        fallbackPdf.text('Simple Monthly Plans:', 20, 165);
+        fallbackPdf.setFont('helvetica', 'normal');
+        fallbackPdf.text('Starter: $99/mo - Small restaurants', 20, 175);
+        fallbackPdf.text('Standard: $199/mo - Most common', 20, 185);
+        fallbackPdf.text('Premium: $399/mo - Growing chains', 20, 195);
+        
+        // Add contact
+        fallbackPdf.setFont('helvetica', 'bold');
+        fallbackPdf.text('Contact:', 20, 215);
+        fallbackPdf.setFont('helvetica', 'normal');
+        fallbackPdf.text('Email: auralixai@gmail.com', 20, 225);
+        fallbackPdf.text('Phone: +1 9024414928', 20, 235);
+        fallbackPdf.text('Website: auralixai.ca', 20, 245);
+        
+        fallbackPdf.save('Auralix-AI-Restaurant-One-Pager.pdf');
+        console.log('Fallback PDF generated successfully');
+      } catch (fallbackError) {
+        console.error('Fallback PDF generation failed:', fallbackError);
+        alert('Error generating PDF. Please try again or contact support.');
+      }
     } finally {
       setIsGenerating(false);
     }
@@ -107,7 +175,7 @@ export default function OnePagerPDF() {
       </motion.div>
 
       {/* Hidden content for PDF generation */}
-      <div id="one-pager-content" className="absolute -left-[9999px] -top-[9999px] opacity-0 pointer-events-none">
+      <div id="one-pager-content" className="hidden">
         <div className="bg-white text-black p-8 max-w-4xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           {/* Header */}
           <div className="text-center mb-12">
