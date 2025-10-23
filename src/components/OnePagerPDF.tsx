@@ -17,21 +17,21 @@ export default function OnePagerPDF() {
       // Create PDF with enterprise styling
       const pdf = new jsPDF('p', 'mm', 'a4');
       
-      // Set up futuristic deep blue colors
-      const deepBlue = [13, 17, 23]; // #0D1117 (deep blue)
-      const electricBlue = [34, 211, 238]; // #22D3EE (electric cyan)
-      const neonCyan = [6, 182, 212]; // #06B6D4 (neon cyan)
-      const brightBlue = [59, 130, 246]; // #3B82F6 (bright blue)
+      // Set up colors matching the website design
+      const deepBlue = [13, 17, 23]; // #0D1117 (deep blue background)
+      const electricCyan = [34, 211, 238]; // #22D3EE (electric cyan)
+      const tealAccent = [20, 184, 166]; // #14B8A6 (teal accent)
+      const brightOrange = [255, 122, 0]; // #FF7A00 (orange CTA)
       const lightText = [255, 255, 255]; // white
       const grayText = [156, 163, 175]; // gray-400
-      const accentOrange = [255, 122, 0]; // #FF7A00 (orange accent)
+      const darkGray = [55, 65, 81]; // gray-700
       
       // Add deep blue background
       pdf.setFillColor(deepBlue[0], deepBlue[1], deepBlue[2]);
       pdf.rect(0, 0, 210, 297, 'F');
       
-      // Header with electric blue gradient effect
-      pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2]);
+      // Header with electric cyan gradient effect (matching website)
+      pdf.setFillColor(electricCyan[0], electricCyan[1], electricCyan[2]);
       pdf.rect(0, 0, 210, 60, 'F');
       
       // Logo area (simulated with text)
@@ -46,60 +46,56 @@ export default function OnePagerPDF() {
       pdf.text('Restaurant AI Automation', 20, 35);
       pdf.text('Halifax, Nova Scotia, Canada', 20, 45);
       
-      // Main headline
+      // Main headline (matching website)
       pdf.setFontSize(24);
       pdf.setFont('helvetica', 'bold');
       pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
-      pdf.text('Never Miss Another Customer Call', 20, 70);
+      pdf.text('Never Miss Another Restaurant Call', 20, 70);
       
-      // Subtitle
+      // Subtitle (matching website copy)
+      pdf.setFontSize(14);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
+      pdf.text('Auralix AI answers every call 24/7, books tables, and', 20, 85);
+      pdf.text('captures take-out orders — even during rush hour.', 20, 95);
+      
+      // Key benefits section (matching website stats)
       pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'normal');
-      pdf.setTextColor(neonCyan[0], neonCyan[1], neonCyan[2]);
-      pdf.text('AI Receptionist + Chatbot for Restaurants', 20, 85);
-      pdf.text('Increase Bookings by 40%', 20, 95);
-      
-      // Problem section with futuristic red accent
-      pdf.setFillColor(255, 59, 48, 0.15); // Futuristic red with transparency
-      pdf.rect(20, 110, 170, 40, 'F');
-      pdf.setDrawColor(255, 59, 48);
-      pdf.setLineWidth(2);
-      pdf.rect(20, 110, 170, 40);
-      
-      pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(255, 59, 48);
-      pdf.text('THE PROBLEM', 30, 125);
+      pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
+      pdf.text('PROVEN RESULTS', 20, 115);
       
-      pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
-      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
-      pdf.text('Restaurants miss up to 43% of customer calls', 30, 135);
-      pdf.text('costing $27,000+ per year in lost orders', 30, 145);
+      // Stats in grid layout (matching website)
+      const stats = [
+        { label: '40% Increase in Bookings', color: electricCyan },
+        { label: '60% Less Admin Time', color: tealAccent },
+        { label: '25% Revenue Growth', color: brightOrange },
+        { label: 'SOC 2 & GDPR Compliant', color: electricCyan }
+      ];
       
-      // Solution section with electric blue accent
-      pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2], 0.15);
-      pdf.rect(20, 160, 170, 40, 'F');
-      pdf.setDrawColor(electricBlue[0], electricBlue[1], electricBlue[2]);
-      pdf.setLineWidth(2);
-      pdf.rect(20, 160, 170, 40);
-      
-      pdf.setFontSize(18);
-      pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(electricBlue[0], electricBlue[1], electricBlue[2]);
-      pdf.text('THE AURALIX SOLUTION', 30, 175);
-      
-      pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
-      pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
-      pdf.text('Auralix answers every call 24/7 with human-like AI voice', 30, 185);
-      pdf.text('Proven to increase bookings by 40% and reduce admin time by 60%', 30, 195);
+      stats.forEach((stat, index) => {
+        const x = 20 + (index % 2) * 95;
+        const y = 130 + Math.floor(index / 2) * 20;
+        
+        // Stat box
+        pdf.setFillColor(stat.color[0], stat.color[1], stat.color[2], 0.1);
+        pdf.rect(x, y - 10, 85, 15, 'F');
+        pdf.setDrawColor(stat.color[0], stat.color[1], stat.color[2]);
+        pdf.setLineWidth(1);
+        pdf.rect(x, y - 10, 85, 15);
+        
+        // Stat text
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(stat.color[0], stat.color[1], stat.color[2]);
+        pdf.text(stat.label, x + 5, y - 2);
+      });
       
       // Features section
       pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(neonCyan[0], neonCyan[1], neonCyan[2]);
-      pdf.text('KEY FEATURES', 20, 220);
+      pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
+      pdf.text('KEY FEATURES', 20, 200);
       
       // Feature boxes
       const features = [
@@ -114,17 +110,17 @@ export default function OnePagerPDF() {
         const x = 20 + (index % 2) * 95;
         const y = 235 + Math.floor(index / 2) * 25;
         
-        // Feature box with futuristic styling
-        pdf.setFillColor(neonCyan[0], neonCyan[1], neonCyan[2], 0.1);
+        // Feature box with electric cyan styling (matching website)
+        pdf.setFillColor(electricCyan[0], electricCyan[1], electricCyan[2], 0.1);
         pdf.rect(x, y - 15, 85, 20, 'F');
-        pdf.setDrawColor(neonCyan[0], neonCyan[1], neonCyan[2]);
+        pdf.setDrawColor(electricCyan[0], electricCyan[1], electricCyan[2]);
         pdf.setLineWidth(1);
         pdf.rect(x, y - 15, 85, 20);
         
         // Feature text
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'bold');
-        pdf.setTextColor(neonCyan[0], neonCyan[1], neonCyan[2]);
+        pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
         pdf.text(feature.title, x + 5, y - 5);
         
         pdf.setFontSize(8);
@@ -143,14 +139,14 @@ export default function OnePagerPDF() {
       // Pricing section
       pdf.setFontSize(20);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(neonCyan[0], neonCyan[1], neonCyan[2]);
+      pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
       pdf.text('SIMPLE MONTHLY PLANS', 20, 30);
       
-      // Pricing cards with futuristic colors
+      // Pricing cards with website colors
       const plans = [
         { name: 'STARTER', price: '$99/mo', desc: 'Small restaurants (Chatbot only)', color: [75, 85, 99] },
-        { name: 'STANDARD', price: '$199/mo', desc: 'Most common (Chatbot + Voice Agent)', color: electricBlue, popular: true },
-        { name: 'PREMIUM', price: '$399/mo', desc: 'Growing chains (All features + 2 locations)', color: brightBlue }
+        { name: 'STANDARD', price: '$199/mo', desc: 'Most common (Chatbot + Voice Agent)', color: electricCyan, popular: true },
+        { name: 'PREMIUM', price: '$399/mo', desc: 'Growing chains (All features + 2 locations)', color: tealAccent }
       ];
       
       plans.forEach((plan, index) => {
@@ -164,9 +160,9 @@ export default function OnePagerPDF() {
         pdf.setLineWidth(2);
         pdf.rect(x, y, 55, 60);
         
-        // Popular badge with futuristic styling
+        // Popular badge with orange styling (matching website)
         if (plan.popular) {
-          pdf.setFillColor(accentOrange[0], accentOrange[1], accentOrange[2]);
+          pdf.setFillColor(brightOrange[0], brightOrange[1], brightOrange[2]);
           pdf.rect(x, y, 55, 8, 'F');
           pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
           pdf.setFontSize(8);
@@ -193,22 +189,22 @@ export default function OnePagerPDF() {
         pdf.text(plan.desc, x + 5, y + 45);
       });
       
-      // Trial info with futuristic styling
+      // Trial info with orange styling (matching website CTA)
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(accentOrange[0], accentOrange[1], accentOrange[2]);
+      pdf.setTextColor(brightOrange[0], brightOrange[1], brightOrange[2]);
       pdf.text('14-day free trial with credit card required', 20, 130);
       
-      // Success story with electric blue styling
-      pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2], 0.1);
+      // Success story with electric cyan styling (matching website)
+      pdf.setFillColor(electricCyan[0], electricCyan[1], electricCyan[2], 0.1);
       pdf.rect(20, 150, 170, 50, 'F');
-      pdf.setDrawColor(electricBlue[0], electricBlue[1], electricBlue[2]);
+      pdf.setDrawColor(electricCyan[0], electricCyan[1], electricCyan[2]);
       pdf.setLineWidth(2);
       pdf.rect(20, 150, 170, 50);
       
       pdf.setFontSize(16);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(electricBlue[0], electricBlue[1], electricBlue[2]);
+      pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
       pdf.text('SUCCESS STORY: NOVA SCOTIA RESTAURANT GROUP', 30, 165);
       
       pdf.setFontSize(12);
@@ -221,7 +217,7 @@ export default function OnePagerPDF() {
       // Contact section
       pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(neonCyan[0], neonCyan[1], neonCyan[2]);
+      pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
       pdf.text('READY TO STOP LOSING ORDERS?', 20, 220);
       
       pdf.setFontSize(12);
@@ -233,7 +229,7 @@ export default function OnePagerPDF() {
       // Contact info
       pdf.setFontSize(14);
       pdf.setFont('helvetica', 'bold');
-      pdf.setTextColor(neonCyan[0], neonCyan[1], neonCyan[2]);
+      pdf.setTextColor(electricCyan[0], electricCyan[1], electricCyan[2]);
       pdf.text('CONTACT INFORMATION', 20, 265);
       
       pdf.setFontSize(11);
