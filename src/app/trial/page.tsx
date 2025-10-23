@@ -302,8 +302,8 @@ export default function TrialPage() {
                   },
                   {
                     icon: Shield,
-                    title: 'No Credit Card Required',
-                    description: 'Start your trial instantly without any payment information'
+                    title: 'Credit Card Required',
+                    description: 'Credit card required for trial activation and billing'
                   },
                   {
                     icon: Users,

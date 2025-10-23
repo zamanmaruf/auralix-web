@@ -122,6 +122,7 @@ export default function OnePagerPDF() {
         fallbackPdf.text('Starter: $99/mo - Small restaurants', 20, 175);
         fallbackPdf.text('Standard: $199/mo - Most common', 20, 185);
         fallbackPdf.text('Premium: $399/mo - Growing chains', 20, 195);
+        fallbackPdf.text('14-day free trial with credit card required', 20, 205);
         
         // Add contact
         fallbackPdf.setFont('helvetica', 'bold');
@@ -313,7 +314,7 @@ export default function OnePagerPDF() {
             
             <div className="mt-6 text-center">
               <p className="text-gray-700 mb-2">
-                <strong>Free Trial:</strong> 14-day full access. No credit card required.
+                <strong>Free Trial:</strong> 14-day full access with credit card required.
               </p>
               <p className="text-cyan-600 font-semibold">
                 Founder's Offer: First 100 clients get 20% off for life.

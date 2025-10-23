@@ -297,7 +297,7 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>14-day free trial with no credit card required</span>
+                      <span>14-day free trial with credit card required</span>
                     </li>
                   </ul>
                 </div>

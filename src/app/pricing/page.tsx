@@ -195,7 +195,7 @@ export default function PricingPage() {
             {[
               {
                 question: 'What\'s included in the free trial?',
-                answer: 'The 14-day free trial gives you full access to all features of your chosen plan. No credit card required, and you can cancel anytime during the trial period.'
+                answer: 'The 14-day free trial gives you full access to all features of your chosen plan. Credit card required for activation, and you can cancel anytime during the trial period.'
               },
               {
                 question: 'Can I change plans later?',
@@ -266,7 +266,7 @@ export default function PricingPage() {
               </a>
             </div>
             <p className="text-sm text-neutral-400 mt-4">
-              No credit card required • 14-day free trial • Cancel anytime
+              Credit card required • 14-day free trial • Cancel anytime
             </p>
           </motion.div>
         </div>
