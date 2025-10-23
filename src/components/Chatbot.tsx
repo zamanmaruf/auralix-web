@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { FaRobot, FaPaperPlane, FaTimes, FaSpinner } from 'react-icons/fa';
+import { Bot, Send, X, Loader2 } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -15,7 +15,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I&apos;m Auralix AI Assistant. We offer 4 ready-to-deploy solutions:\n\n• Workflow Automation\n• Voice Agents\n• AI Chatbots\n• AI-Powered Websites\n\nWhat would you like to know?",
+      text: "Hi! I'm Auralix AI Assistant, specialized in restaurant automation. We help restaurants never miss another call with our AI solutions:\n\n• AI Receptionist (Voice)\n• Website & Social Chatbot\n• Order & Review Automation\n• Restaurant Websites with AI\n\nWhat would you like to know about automating your restaurant?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -89,10 +89,10 @@ export default function Chatbot() {
   };
 
   const quickReplies = [
-    "Tell me about Workflow Automation",
-    "What are Voice Agents?",
-    "Tell me about AI Chatbots",
-    "What are AI-Powered Websites?",
+    "How does AI Receptionist work?",
+    "What's your pricing?",
+    "Tell me about the Halifax case study",
+    "Calculate my missed call cost",
     "I want a free consultation"
   ];
 
@@ -113,7 +113,7 @@ export default function Chatbot() {
         className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-cyan-400"
         aria-label="Open chat"
       >
-        <FaRobot className="text-xl sm:text-2xl" />
+        <Bot className="text-xl sm:text-2xl" />
       </button>
 
       {/* Chat Window */}
@@ -125,7 +125,7 @@ export default function Chatbot() {
             <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 sm:p-4 rounded-t-2xl">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <FaRobot className="text-xl sm:text-2xl text-white" />
+                  <Bot className="text-xl sm:text-2xl text-white" />
                   <div>
                     <h3 className="text-white font-bold text-sm sm:text-base">Auralix AI Assistant</h3>
                     <p className="text-cyan-100 text-xs sm:text-sm">Powered by AI</p>
@@ -136,7 +136,7 @@ export default function Chatbot() {
                   className="text-white hover:text-gray-200 transition-colors p-1 sm:p-2 rounded-lg hover:bg-white hover:bg-opacity-10"
                   aria-label="Close chat"
                 >
-                  <FaTimes className="text-lg sm:text-xl" />
+                  <X className="text-lg sm:text-xl" />
                 </button>
               </div>
             </div>
@@ -167,7 +167,7 @@ export default function Chatbot() {
                 <div className="flex justify-start">
                   <div className="bg-[#1a1a1a] border border-[#333] rounded-2xl px-3 sm:px-4 py-2 sm:py-3">
                     <div className="flex items-center gap-2">
-                      <FaSpinner className="animate-spin text-cyan-400 text-sm sm:text-base" />
+                      <Loader2 className="animate-spin text-cyan-400 text-sm sm:text-base" />
                       <span className="text-gray-300 text-sm sm:text-base">AI is thinking...</span>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ export default function Chatbot() {
                   className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:opacity-50 disabled:cursor-not-allowed text-white p-2 sm:p-3 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                   aria-label="Send message"
                 >
-                  <FaPaperPlane className="text-base sm:text-lg" />
+                  <Send className="text-base sm:text-lg" />
                 </button>
               </div>
             </form>

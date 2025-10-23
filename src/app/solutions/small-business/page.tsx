@@ -7,9 +7,9 @@ export default function SmallBusinessPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white">
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Small Business AI Solutions</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Affordable AI automation that grows with your business.</p>
-        <p className="text-gray-300">Perfect for businesses with 1-10 employees looking to streamline operations and boost efficiency.</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Small Restaurant AI Solutions</h1>
+        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Affordable AI automation that helps small restaurants never miss a call or order.</p>
+        <p className="text-gray-300">Perfect for small restaurants, cafés, and food service businesses with 1-10 employees looking to streamline operations.</p>
       </section>
 
       {/* Features */}
@@ -18,20 +18,20 @@ export default function SmallBusinessPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
             <FaRocket className="text-5xl mb-4 text-cyan-400" />
-            <h3 className="text-xl font-bold text-white mb-4">AI Chatbot</h3>
-            <p className="text-gray-300 mb-4">Basic AI chatbot to handle customer inquiries and support requests 24/7.</p>
+            <h3 className="text-xl font-bold text-white mb-4">AI Receptionist</h3>
+            <p className="text-gray-300 mb-4">Basic AI receptionist to handle calls, take orders, and manage reservations 24/7.</p>
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start gap-2">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Up to 1,000 conversations/month</span>
+                <span>Up to 1,000 calls/month</span>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Basic FAQ responses</span>
+                <span>Order taking & reservations</span>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Email integration</span>
+                <span>Phone system integration</span>
               </li>
             </ul>
           </div>
@@ -141,22 +141,22 @@ export default function SmallBusinessPage() {
       {/* Industries */}
       <section className="max-w-4xl mx-auto py-16 px-4">
         <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Perfect For These Industries</h2>
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">Perfect For These Restaurant Types</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <MdRestaurant className="text-4xl mb-4 text-cyan-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white mb-2">Restaurants</h3>
-              <p className="text-gray-300 text-sm">Automate order management and customer service</p>
+              <h3 className="text-lg font-bold text-white mb-2">Small Restaurants</h3>
+              <p className="text-gray-300 text-sm">Never miss a reservation or order again</p>
             </div>
             <div className="text-center">
               <MdStore className="text-4xl mb-4 text-cyan-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white mb-2">Retail Stores</h3>
-              <p className="text-gray-300 text-sm">Streamline inventory and sales tracking</p>
+              <h3 className="text-lg font-bold text-white mb-2">Cafés & Coffee Shops</h3>
+              <p className="text-gray-300 text-sm">Handle morning rush with AI order taking</p>
             </div>
             <div className="text-center">
               <MdContentCut className="text-4xl mb-4 text-cyan-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white mb-2">Salons & Spas</h3>
-              <p className="text-gray-300 text-sm">Automate booking and client management</p>
+              <h3 className="text-lg font-bold text-white mb-2">Takeout & Delivery</h3>
+              <p className="text-gray-300 text-sm">Automate high-volume order management</p>
             </div>
           </div>
         </div>
@@ -177,7 +177,7 @@ export default function SmallBusinessPage() {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                  <span>AI chatbot with 1,000 conversations/month</span>
+                  <span>AI receptionist with 1,000 calls/month</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
@@ -202,7 +202,7 @@ export default function SmallBusinessPage() {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                  <span>Additional chatbot conversations: $50/1,000</span>
+                  <span>Additional AI calls: $50/1,000</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
@@ -225,7 +225,7 @@ export default function SmallBusinessPage() {
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto py-16 px-4 text-center">
         <h2 className="text-3xl font-bold text-white mb-6">Ready to Get Started?</h2>
-        <p className="text-xl text-gray-300 mb-8">Join hundreds of small businesses that trust Auralix AI to streamline their operations.</p>
+        <p className="text-xl text-gray-300 mb-8">Join hundreds of small restaurants that trust Auralix AI to never miss a call or order.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/trial"

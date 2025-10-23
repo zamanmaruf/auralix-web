@@ -1,17 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { 
-  MdWeb, MdTrendingUp, 
-  MdBusiness, MdLocationOn, MdPhone, MdEmail, MdLanguage,
-  MdRocket, MdStars, MdVerified
-} from 'react-icons/md';
-import { 
-  FaRobot, FaHome, FaUtensils, FaShoppingCart, FaCalculator,
-  FaBrain
-} from 'react-icons/fa';
-import { TbSettingsAutomation } from 'react-icons/tb';
-import { BiTrendingUp } from 'react-icons/bi';
+  Globe, TrendingUp, 
+  Building, MapPin, Phone, Mail, Languages,
+  Rocket, Star, CheckCircle, Bot, Home, Utensils, ShoppingCart, Calculator,
+  Brain, Settings, ArrowRight, Download, Calendar, Users, DollarSign
+} from 'lucide-react';
 
 const BrochurePage = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -19,7 +15,7 @@ const BrochurePage = () => {
 
   // CTA Handler Functions
   const handleEmailClick = () => {
-    window.open('mailto:auralixai@gmail.com?subject=AI Automation Inquiry&body=Hi Auralix AI team,%0D%0A%0D%0AI am interested in learning more about your AI automation services.%0D%0A%0D%0APlease contact me with more information.%0D%0A%0D%0ABest regards,', '_blank');
+    window.open('mailto:auralixai@gmail.com?subject=Restaurant AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI am interested in learning more about your AI automation services for my restaurant.%0D%0A%0D%0APlease contact me with more information.%0D%0A%0D%0ABest regards,', '_blank');
   };
 
   const handlePhoneClick = () => {
@@ -30,44 +26,25 @@ const BrochurePage = () => {
     window.open('https://www.auralixai.ca', '_blank');
   };
 
-  const handleBookAudit = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Book Free AI Audit&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to book a free AI audit for my business.%0D%0A%0D%0APlease include:%0D%0A- Business name and industry%0D%0A- Current challenges%0D%0A- Preferred contact method%0D%0A%0D%0AThank you!', '_blank');
-  };
-
-  const handleScheduleDemo = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Schedule AI Demo&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to schedule a demo of your AI automation solutions.%0D%0A%0D%0APlease include:%0D%0A- Preferred date and time%0D%0A- Business type%0D%0A- Specific areas of interest%0D%0A%0D%0AThank you!', '_blank');
-  };
-
-  const handleGetStarted = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Get Started with AI Automation&body=Hi Auralix AI team,%0D%0A%0D%0AI am ready to get started with AI automation for my business.%0D%0A%0D%0APlease provide:%0D%0A- Next steps%0D%0A- Timeline%0D%0A- Investment required%0D%0A%0D%0AThank you!', '_blank');
-  };
-
-  const handleLearnMore = () => {
-    window.open('/solutions', '_blank');
-  };
-
-  const handleCalculateSavings = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Calculate AI Savings&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to calculate potential savings from AI automation.%0D%0A%0D%0APlease include:%0D%0A- Current business size%0D%0A- Industry%0D%0A- Monthly operational costs%0D%0A- Pain points%0D%0A%0D%0AThank you!', '_blank');
-  };
-
   const handleBookConsultation = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Book AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to book a consultation to discuss AI automation for my business.%0D%0A%0D%0APlease include:%0D%0A- Preferred consultation time%0D%0A- Business overview%0D%0A- Specific goals%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:auralixai@gmail.com?subject=Book Restaurant AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to book a consultation to discuss AI automation for my restaurant.%0D%0A%0D%0APlease include:%0D%0A- Restaurant type and size%0D%0A- Current challenges with missed calls%0D%0A- Goals for automation%0D%0A%0D%0AThank you!', '_blank');
   };
 
   const handleStartJourney = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Start AI Journey&body=Hi Auralix AI team,%0D%0A%0D%0AI am ready to start my AI automation journey with Auralix AI.%0D%0A%0D%0APlease include:%0D%0A- Business details%0D%0A- Current challenges%0D%0A- Goals and timeline%0D%0A%0D%0AThank you!', '_blank');
-  };
-
-  const handleLocalPartnership = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Local Partnership Inquiry&body=Hi Auralix AI team,%0D%0A%0D%0AI am interested in exploring a local partnership with Auralix AI.%0D%0A%0D%0APlease include:%0D%0A- Partnership type%0D%0A- Business details%0D%0A- Contact information%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:auralixai@gmail.com?subject=Start Restaurant AI Journey&body=Hi Auralix AI team,%0D%0A%0D%0AI am ready to start my restaurant AI automation journey with Auralix AI.%0D%0A%0D%0APlease include:%0D%0A- Restaurant details%0D%0A- Current challenges%0D%0A- Goals and timeline%0D%0A%0D%0AThank you!', '_blank');
   };
 
   const handleRequestQuote = () => {
-    window.open('mailto:auralixai@gmail.com?subject=Request AI Quote&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to request a quote for AI automation services.%0D%0A%0D%0APlease include:%0D%0A- Business requirements%0D%0A- Budget range%0D%0A- Timeline%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:auralixai@gmail.com?subject=Request Restaurant AI Quote&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to request a quote for restaurant AI automation services.%0D%0A%0D%0APlease include:%0D%0A- Restaurant requirements%0D%0A- Budget range%0D%0A- Timeline%0D%0A%0D%0AThank you!', '_blank');
   };
 
   const handleViewCaseStudies = () => {
-    window.open('/blog', '_blank');
+    window.open('/case-studies', '_blank');
+  };
+
+  const handleDownload = () => {
+    // In a real implementation, this would download a PDF
+    window.open('mailto:auralixai@gmail.com?subject=Request Restaurant AI Brochure PDF&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to receive the restaurant AI automation brochure PDF.%0D%0A%0D%0AThank you!', '_blank');
   };
 
   useEffect(() => {
@@ -77,22 +54,22 @@ const BrochurePage = () => {
   const testimonials = [
     {
       name: "Sarah Mitchell",
-      business: "The Coastal Kitchen",
-              quote: "Our AI chatbot handles 80% of customer inquiries automatically. We&apos;ve seen a 35% increase in online orders since implementing Auralix&apos;s solution.",
+      business: "Halifax Seafood Co.",
+      quote: "We never miss a call anymore — our bookings jumped 40%. The AI handles everything so naturally, customers can't tell the difference.",
       rating: 5,
-      avatar: "SK"
+      avatar: "SM"
     },
     {
       name: "David Chen",
-      business: "Halifax Real Estate Group",
-      quote: "The automated lead qualification system has reduced our response time from hours to minutes. Our conversion rate increased by 40% in just 3 months.",
+      business: "Nova Scotia Pizzeria",
+      quote: "The AI receptionist takes orders perfectly during our busy dinner rush. We've recovered thousands in lost revenue from missed calls.",
       rating: 5,
       avatar: "DC"
     },
     {
       name: "Maria Rodriguez",
-      business: "Atlantic Accounting Services",
-              quote: "Auralix&apos;s workflow automation saved us 15 hours per week on repetitive tasks. The ROI was immediate and the support team is exceptional.",
+      business: "Atlantic Café",
+      quote: "Auralix AI saved us 15 hours per week on phone management. The ROI was immediate and the support team is exceptional.",
       rating: 5,
       avatar: "MR"
     }
@@ -100,660 +77,427 @@ const BrochurePage = () => {
 
   const services = [
     {
-      icon: <FaBrain className="text-4xl text-cyan-400" />,
-      title: "AI-Powered Intelligence",
-      description: "Advanced neural networks that learn and adapt to your business",
-      features: ["Predictive Analytics", "Natural Language Processing", "Machine Learning"]
+      icon: <Settings className="text-4xl text-cyan-400" />,
+      title: "AI Receptionist",
+      description: "24/7 voice AI that answers calls like a real host, takes reservations, and captures orders",
+      features: ["Human-like conversation", "Reservation management", "Order taking", "Call routing"]
     },
     {
-      icon: <TbSettingsAutomation className="text-4xl text-purple-400" />,
-      title: "Hyper-Automation",
-      description: "End-to-end workflow automation with zero human intervention",
-      features: ["Process Mining", "RPA Integration", "Smart Workflows"]
+      icon: <Bot className="text-4xl text-blue-400" />,
+      title: "Website & Social Chatbot",
+      description: "Multi-platform chatbot that books tables and takes orders across your website, Instagram, and WhatsApp",
+      features: ["Table booking", "Order automation", "FAQ handling", "Multi-platform support"]
     },
     {
-      icon: <MdWeb className="text-4xl text-blue-400" />,
-      title: "Quantum Web Development",
-      description: "Next-generation websites with AI-driven optimization",
-      features: ["Real-time Optimization", "Voice Search", "Progressive Web Apps"]
+      icon: <ShoppingCart className="text-4xl text-purple-400" />,
+      title: "Order & Review Automation",
+      description: "Automatically confirm takeout orders, send follow-up texts, and collect 5-star reviews",
+      features: ["Order confirmations", "Review requests", "Follow-up sequences", "Customer satisfaction"]
     },
     {
-      icon: <MdTrendingUp className="text-4xl text-green-400" />,
-      title: "Predictive Marketing",
-      description: "AI-powered campaigns that anticipate customer behavior",
-      features: ["Behavioral Analysis", "A/B Testing AI", "Conversion Optimization"]
-    },
-    {
-      icon: <MdBusiness className="text-4xl text-orange-400" />,
-      title: "Industry-Specific AI",
-      description: "Custom neural networks for your specific business domain",
-      features: ["Domain Expertise", "Custom Training", "Specialized Models"]
+      icon: <Globe className="text-4xl text-teal-400" />,
+      title: "Restaurant Websites with AI",
+      description: "Modern designs with built-in AI chat, online ordering, and automated workflows",
+      features: ["AI chatbot included", "Online ordering", "Table booking", "SEO optimized"]
     }
   ];
 
-  const benefits = [
-    {
-      icon: <MdRocket className="text-3xl text-cyan-400" />,
-      title: "Lightning-Fast Response",
-      description: "Respond to leads in seconds, not hours",
-      metric: "99.9% Uptime"
-    },
-    {
-      icon: <BiTrendingUp className="text-3xl text-green-400" />,
-      title: "Massive Cost Reduction",
-      description: "Cut operational costs by up to 60%",
-      metric: "60% Savings"
-    },
-    {
-      icon: <MdStars className="text-3xl text-purple-400" />,
-      title: "Conversion Explosion",
-      description: "Boost customer conversions by 20-40%",
-      metric: "40% Increase"
-    },
-    {
-      icon: <MdVerified className="text-3xl text-blue-400" />,
-      title: "Enterprise-Grade Security",
-      description: "Bank-level security with SOC 2 compliance",
-      metric: "SOC 2 Type II"
-    }
+  const stats = [
+    { icon: <TrendingUp className="w-6 h-6" />, value: "40%", label: "Increase in Bookings" },
+    { icon: <Users className="w-6 h-6" />, label: "60%", value: "Less Admin Time" },
+    { icon: <DollarSign className="w-6 h-6" />, value: "25%", label: "Revenue Growth" },
+    { icon: <Star className="w-6 h-6" />, value: "4.8/5", label: "Customer Rating" }
   ];
 
-  const industrySolutions = [
-    { 
-      icon: <FaHome className="text-3xl" />, 
-      title: "Real Estate AI", 
-      color: "text-cyan-400",
-      description: "Lead qualification, market analysis, virtual tours"
-    },
-    { 
-      icon: <FaUtensils className="text-3xl" />, 
-      title: "Restaurant Intelligence", 
-      color: "text-green-400",
-      description: "Order automation, inventory management, customer insights"
-    },
-    { 
-      icon: <FaShoppingCart className="text-3xl" />, 
-      title: "Retail AI", 
-      color: "text-purple-400",
-      description: "Upsell optimization, demand forecasting, personalized recommendations"
-    },
-    { 
-      icon: <FaCalculator className="text-3xl" />, 
-      title: "Financial Automation", 
-      color: "text-orange-400",
-      description: "Invoice processing, fraud detection, financial reporting"
-    }
-  ];
-
-  const renderCoverPage = () => (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-purple-900/20 to-blue-900/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(138,43,226,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(0,123,255,0.1),transparent_50%)]"></div>
-        
-        {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
-        </div>
-        
-        {/* Floating Particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-              style={{
-                left: `${(i * 7) % 100}%`,
-                top: `${(i * 11) % 100}%`,
-                animationDelay: `${(i * 0.2)}s`,
-                animationDuration: `${2 + (i % 3)}s`
-              }}
-            ></div>
-          ))}
-        </div>
-      </div>
-
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white p-8">
-        <div className="text-center max-w-6xl mx-auto">
-          {/* Holographic Logo */}
-          <div className="mb-12 relative">
-            <div className="text-6xl font-black mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
-              AURALIX AI
-            </div>
-            <div className="text-xl text-cyan-300 font-light tracking-wider">
-              NOVA SCOTIA&apos;S AI INNOVATION HUB
-            </div>
-            <div className="absolute -top-4 -left-4 w-8 h-8 bg-cyan-400 rounded-full opacity-50 animate-ping"></div>
-            <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-purple-400 rounded-full opacity-50 animate-ping" style={{animationDelay: '0.5s'}}></div>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 md:mb-8 leading-tight">
-            <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-              AI AUTOMATION
-            </span>
-            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mt-2 md:mt-4">
-              THAT SCALES WITH YOU
-            </span>
+  const pages = [
+    // Page 1: Cover
+    <motion.div
+      key="cover"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 flex flex-col items-center justify-center text-center p-8"
+    >
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8"
+        >
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 font-heading">
+            Never Miss Another Restaurant Call
           </h1>
-          
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-300 mb-6 md:mb-8 font-light">
-            From Local Business to Enterprise
-          </h2>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-12 md:mb-16 max-w-4xl mx-auto leading-relaxed px-4">
-            Nova Scotia&apos;s First Full-Service AI Automation & Digital Transformation Company
+          <p className="text-xl md:text-2xl text-neutral-300 mb-8">
+            Auralix AI helps Canadian restaurants recover thousands in missed calls and orders every month
           </p>
+        </motion.div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16 px-4">
-            {[
-              { number: '99.9%', label: 'Uptime' },
-              { number: '60%', label: 'Cost Reduction' },
-              { number: '40%', label: 'Conversion Boost' },
-              { number: '24/7', label: 'AI Support' }
-            ].map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-400 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {stat.number}
-                </div>
-                <div className="text-gray-400 text-xs sm:text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 px-4">
-            <button 
-              onClick={handleBookAudit}
-              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border border-cyan-400/30 cursor-pointer touch-manipulation"
-            >
-              <span className="relative z-10">Book Free AI Audit</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <button 
-              onClick={handleScheduleDemo}
-              className="w-full sm:w-auto px-8 sm:px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-base sm:text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer touch-manipulation"
-            >
-              Schedule Demo
-            </button>
-          </div>
-
-          {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 text-base sm:text-lg justify-center px-4">
-            <button 
-              onClick={handleEmailClick}
-              className="flex items-center justify-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
-            >
-              <MdEmail className="text-cyan-400 text-lg sm:text-xl" />
-              <span className="text-sm sm:text-base">auralixai@gmail.com</span>
-            </button>
-            <button 
-              onClick={handlePhoneClick}
-              className="flex items-center justify-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
-            >
-              <MdPhone className="text-cyan-400 text-lg sm:text-xl" />
-              <span className="text-sm sm:text-base">7828820525</span>
-            </button>
-            <button 
-              onClick={handleWebsiteClick}
-              className="flex items-center justify-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
-            >
-              <MdLanguage className="text-cyan-400 text-lg sm:text-xl" />
-              <span className="text-sm sm:text-base">www.auralixai.ca</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderServicesPage = () => (
-    <div className="min-h-screen bg-black text-white p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            WHAT WE DO
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Auralix AI transforms Nova Scotia businesses through cutting-edge AI automation, 
-            helping them compete in the digital age with enterprise-grade solutions 
-            that scale from startup to enterprise.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4">
-          {services.map((service, index) => (
-            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-6 md:p-8 hover:border-cyan-400/40 transition-all duration-500 hover:scale-105 active:scale-95">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-                  <div className="group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white">{service.title}</h3>
-                </div>
-                <p className="text-gray-300 mb-4 md:mb-6 text-sm md:text-base">{service.description}</p>
-                
-                <div className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs md:text-sm text-cyan-300">
-                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full"></div>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-wrap justify-center gap-6 mb-12"
+        >
+          {stats.map((stat, index) => (
+            <div key={index} className="flex items-center gap-2 text-neutral-400">
+              {stat.icon}
+              <span>{stat.value} {stat.label}</span>
             </div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* AI Assistant Showcase */}
-        <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 backdrop-blur-sm rounded-3xl p-12 border border-cyan-500/20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold text-white mb-6">AI-Powered Customer Engagement</h3>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                Our intelligent chatbots handle customer inquiries 24/7, providing instant responses 
-                and seamless escalation to human agents when needed. Powered by advanced NLP and machine learning.
-              </p>
-              <div className="flex gap-4 text-sm">
-                <div className="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full border border-cyan-500/30">99.9% Uptime</div>
-                <div className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full border border-purple-500/30">Instant Response</div>
-                <div className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full border border-blue-500/30">Multi-language</div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-cyan-500 to-purple-600 rounded-2xl p-8 text-white text-center">
-              <FaRobot className="text-8xl mx-auto mb-6 text-cyan-300" />
-              <h4 className="text-2xl font-bold mb-3">AI Assistant</h4>
-              <p className="text-cyan-200">Ready to help 24/7</p>
-              <div className="mt-6 flex justify-center">
-                <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse ml-2" style={{animationDelay: '0.2s'}}></div>
-                <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse ml-2" style={{animationDelay: '0.4s'}}>                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="text-center mt-16">
-            <h3 className="text-3xl font-bold text-white mb-6">Ready to Transform Your Business?</h3>
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              <button 
-                onClick={handleGetStarted}
-                className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:scale-105 border border-cyan-400/30 cursor-pointer"
-              >
-                <span className="relative z-10">Get Started Today</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-              <button 
-                onClick={handleLearnMore}
-                className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderBenefitsPage = () => (
-    <div className="min-h-screen bg-black text-white p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            WHY IT WORKS
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Our AI solutions deliver measurable results through intelligent automation, 
-            data-driven insights, and enterprise-grade reliability.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 hover:border-cyan-400/40 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="group-hover:scale-110 transition-transform duration-300">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">{benefit.title}</h3>
-                </div>
-                <p className="text-gray-300 mb-4">{benefit.description}</p>
-                <div className="text-cyan-400 font-bold text-lg">{benefit.metric}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ROI Comparison */}
-        <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-3xl p-12 border border-cyan-500/20">
-          <h3 className="text-3xl font-bold text-white mb-8 text-center">AI Automation vs Traditional Methods</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-6 bg-red-500/20 rounded-xl border border-red-500/30">
-                <span className="font-semibold text-red-300">Traditional Response Time</span>
-                <span className="text-3xl font-bold text-red-400">2-4 hours</span>
-              </div>
-              <div className="flex items-center justify-between p-6 bg-red-500/20 rounded-xl border border-red-500/30">
-                <span className="font-semibold text-red-300">Manual Task Processing</span>
-                <span className="text-3xl font-bold text-red-400">8-10 hours/day</span>
-              </div>
-              <div className="flex items-center justify-between p-6 bg-red-500/20 rounded-xl border border-red-500/30">
-                <span className="font-semibold text-red-300">Customer Conversion Rate</span>
-                <span className="text-3xl font-bold text-red-400">5-8%</span>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-6 bg-green-500/20 rounded-xl border border-green-500/30">
-                <span className="font-semibold text-green-300">AI Response Time</span>
-                <span className="text-3xl font-bold text-green-400">Seconds</span>
-              </div>
-              <div className="flex items-center justify-between p-6 bg-green-500/20 rounded-xl border border-green-500/30">
-                <span className="font-semibold text-green-300">Automated Processing</span>
-                <span className="text-3xl font-bold text-green-400">24/7</span>
-              </div>
-              <div className="flex items-center justify-between p-6 bg-green-500/20 rounded-xl border border-green-500/30">
-                <span className="font-semibold text-green-300">Customer Conversion Rate</span>
-                <span className="text-3xl font-bold text-green-400">20-40%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <h3 className="text-3xl font-bold text-white mb-6">Ready to See the ROI?</h3>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <button 
-              onClick={handleCalculateSavings}
-              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:scale-105 border border-cyan-400/30 cursor-pointer"
-            >
-              <span className="relative z-10">Calculate Your Savings</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <button 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center"
+        >
+          <p className="text-lg text-neutral-400 mb-4">Halifax, Nova Scotia • Serving Canada Coast-to-Coast</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
               onClick={handleBookConsultation}
-              className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer"
+              className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
             >
-              Book Consultation
+              Book Free Consultation
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderLocalPage = () => (
-    <div className="min-h-screen bg-black text-white p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            LOCAL ADVANTAGE & ROI
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            We focus on Nova Scotia businesses first, understanding local challenges and 
-            delivering solutions that drive real growth in our community.
-          </p>
-        </div>
-
-        {/* ROI Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4">
-          <div className="text-center bg-gradient-to-br from-cyan-500 to-cyan-600 text-white p-6 md:p-10 rounded-2xl border border-cyan-400/30">
-            <div className="text-3xl md:text-5xl font-black mb-2 md:mb-3">60%</div>
-            <div className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Task Automation</div>
-            <p className="text-cyan-200 text-sm md:text-base">Reduce manual work by up to 60%</p>
-          </div>
-          <div className="text-center bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 md:p-10 rounded-2xl border border-purple-400/30">
-            <div className="text-3xl md:text-5xl font-black mb-2 md:mb-3">40%</div>
-            <div className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Conversion Increase</div>
-            <p className="text-purple-200 text-sm md:text-base">Boost customer conversions by 20-40%</p>
-          </div>
-          <div className="text-center bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 md:p-10 rounded-2xl border border-blue-400/30 sm:col-span-2 lg:col-span-1">
-            <div className="text-3xl md:text-5xl font-black mb-2 md:mb-3">Months</div>
-            <div className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Payback Period</div>
-            <p className="text-blue-200 text-sm md:text-base">See ROI within months, not years</p>
-          </div>
-        </div>
-
-        {/* Local Focus */}
-        <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 backdrop-blur-sm rounded-3xl p-6 md:p-12 border border-cyan-500/20 mx-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Built for Nova Scotia</h3>
-              <p className="text-gray-300 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
-                We understand local business challenges and regulations. Our solutions are 
-                designed specifically for Nova Scotia&apos;s unique market needs while maintaining 
-                enterprise-grade capabilities.
-              </p>
-              <div className="flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm">
-                <div className="bg-cyan-500/20 text-cyan-300 px-3 md:px-4 py-2 rounded-full border border-cyan-500/30">Local Support</div>
-                <div className="bg-purple-500/20 text-purple-300 px-3 md:px-4 py-2 rounded-full border border-purple-500/30">Nova Scotia Focus</div>
-                <div className="bg-blue-500/20 text-blue-300 px-3 md:px-4 py-2 rounded-full border border-blue-500/30">Community Growth</div>
-              </div>
-            </div>
-            <div className="text-center">
-              <MdLocationOn className="text-6xl md:text-8xl mx-auto mb-4 md:mb-6 text-cyan-400" />
-              <h4 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Halifax, Nova Scotia</h4>
-              <p className="text-cyan-300 text-sm md:text-base">Your local AI partner</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-                      <h3 className="text-3xl font-bold text-white mb-6">Join Nova Scotia&apos;s AI Revolution</h3>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <button 
-              onClick={handleStartJourney}
-              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:scale-105 border border-cyan-400/30 cursor-pointer"
-            >
-              <span className="relative z-10">Start Your Journey</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <button 
-              onClick={handleLocalPartnership}
-              className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer"
-            >
-              Local Partnership
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderTestimonialsPage = () => (
-    <div className="min-h-screen bg-black text-white p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            BEYOND BASIC AI & TESTIMONIALS
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Industry-specific solutions that understand your business and deliver 
-            measurable results that drive growth.
-          </p>
-        </div>
-
-        {/* Industry Solutions */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {industrySolutions.map((solution, index) => (
-            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 text-center hover:border-cyan-400/40 transition-all duration-500 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className={`mx-auto mb-6 ${solution.color} group-hover:scale-110 transition-transform duration-300`}>
-                  {solution.icon}
-                </div>
-                <h3 className="font-bold text-white text-lg mb-3">{solution.title}</h3>
-                <p className="text-gray-400 text-sm">{solution.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Testimonials */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-6 md:p-8 hover:border-cyan-400/40 transition-all duration-500 active:scale-95">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-1 mb-4 md:mb-6">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg md:text-xl">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-300 mb-4 md:mb-6 italic leading-relaxed text-sm md:text-base">&ldquo;{testimonial.quote}&rdquo;</p>
-                <div className="border-t border-gray-700 pt-4 md:pt-6">
-                  <div className="flex items-center gap-3 md:gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">
-                      {testimonial.avatar}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-white text-sm md:text-base">{testimonial.name}</div>
-                      <div className="text-xs md:text-sm text-gray-400">{testimonial.business}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Final CTA */}
-        <div className="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 backdrop-blur-sm rounded-3xl p-6 md:p-12 border border-cyan-500/20 text-center mx-4">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            YOUR COMPETITORS ARE ADOPTING AI. ARE YOU?
-          </h3>
-          <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10 text-gray-300 leading-relaxed">
-            Don&apos;t get left behind. Join the AI revolution and transform your business today.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-6 md:mb-8">
-            <button 
-              onClick={handleRequestQuote}
-              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-full text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border border-cyan-400/30 cursor-pointer touch-manipulation"
-            >
-              <span className="relative z-10">Request Quote</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <button 
+            <button
               onClick={handleViewCaseStudies}
-              className="w-full sm:w-auto px-8 sm:px-10 py-4 border-2 border-cyan-400 text-cyan-400 font-bold rounded-full text-base sm:text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 cursor-pointer touch-manipulation"
+              className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
             >
               View Case Studies
             </button>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 text-sm md:text-lg">
-            <button 
-              onClick={handleEmailClick}
-              className="flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
+        </motion.div>
+      </div>
+    </motion.div>,
+
+    // Page 2: Problem
+    <motion.div
+      key="problem"
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen bg-gradient-to-br from-red-900/20 via-neutral-900 to-neutral-800 flex items-center p-8"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading"
             >
-              <MdEmail className="text-cyan-400 text-lg md:text-xl" />
-              <span className="text-xs md:text-base">auralixai@gmail.com</span>
-            </button>
-            <button 
-              onClick={handlePhoneClick}
-              className="flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation"
+              The Hidden Cost of Missed Calls
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl text-neutral-300 mb-8"
             >
-              <MdPhone className="text-cyan-400 text-lg md:text-xl" />
-              <span className="text-xs md:text-base">7828820525</span>
-            </button>
-            <button 
-              onClick={handleWebsiteClick}
-              className="flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer touch-manipulation sm:col-span-2 lg:col-span-1"
+              Every missed call is lost revenue. During peak hours, 43% of restaurant calls go unanswered, 
+              costing the average restaurant $2,000 per month in lost orders and reservations.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="space-y-4"
             >
-              <MdLanguage className="text-cyan-400 text-lg md:text-xl" />
-              <span className="text-xs md:text-base">www.auralixai.ca</span>
-            </button>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <span className="text-neutral-300">43% of calls go unanswered during peak hours</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <span className="text-neutral-300">$2,000+ lost per month per location</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <span className="text-neutral-300">Staff overwhelmed during busy periods</span>
+              </div>
+            </motion.div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-6 text-center">
+              <div className="text-4xl font-bold text-red-400 mb-2">43%</div>
+              <div className="text-white font-semibold mb-2">Missed Calls</div>
+              <div className="text-neutral-400 text-sm">Industry average during peak hours</div>
+            </div>
+            <div className="bg-orange-500/10 border border-orange-500/30 rounded-2xl p-6 text-center">
+              <div className="text-4xl font-bold text-orange-400 mb-2">$2,000</div>
+              <div className="text-white font-semibold mb-2">Lost Monthly</div>
+              <div className="text-neutral-400 text-sm">From missed calls and orders</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </motion.div>,
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 0:
-        return renderCoverPage();
-      case 1:
-        return renderServicesPage();
-      case 2:
-        return renderBenefitsPage();
-      case 3:
-        return renderLocalPage();
-      case 4:
-        return renderTestimonialsPage();
-      default:
-        return renderCoverPage();
-    }
+    // Page 3: Solution
+    <motion.div
+      key="solution"
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen bg-gradient-to-br from-primary-900/20 via-neutral-900 to-neutral-800 flex items-center p-8"
+    >
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
+            AI Solutions That Run Your Front Desk Automatically
+          </h2>
+          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            Four powerful tools designed specifically for restaurants to never miss a call, order, or booking again.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700"
+            >
+              <div className="mb-6">
+                {service.icon}
+                <h3 className="text-2xl font-bold text-white mb-4 font-heading">{service.title}</h3>
+                <p className="text-neutral-300 mb-6">{service.description}</p>
+              </div>
+              <ul className="space-y-2">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center gap-3">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span className="text-neutral-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>,
+
+    // Page 4: Success Story
+    <motion.div
+      key="success"
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen bg-gradient-to-br from-green-900/20 via-neutral-900 to-neutral-800 flex items-center p-8"
+    >
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
+            Success Story: Halifax Restaurant Chain
+          </h2>
+          <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
+            Before Auralix, their phones went unanswered during peak hours. After implementing our AI receptionist, 
+            bookings increased 40%, admin workload dropped 60%, and monthly revenue climbed 25%.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30">
+            <blockquote className="text-2xl text-white italic mb-6">
+              "We never miss a call anymore — our bookings jumped 40%. The AI handles everything so naturally, 
+              customers can't tell the difference."
+            </blockquote>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-lg">SM</span>
+              </div>
+              <div>
+                <div className="text-white font-semibold">Sarah Mitchell</div>
+                <div className="text-neutral-400 text-sm">Owner, Halifax Seafood Co.</div>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="bg-neutral-800 rounded-xl p-6 text-center">
+              <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-green-400 mb-2">40%</div>
+              <div className="text-neutral-300 text-sm">Increase in Bookings</div>
+            </div>
+            <div className="bg-neutral-800 rounded-xl p-6 text-center">
+              <Users className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-blue-400 mb-2">60%</div>
+              <div className="text-neutral-300 text-sm">Reduction in Admin Time</div>
+            </div>
+            <div className="bg-neutral-800 rounded-xl p-6 text-center">
+              <DollarSign className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-purple-400 mb-2">25%</div>
+              <div className="text-neutral-300 text-sm">Increase in Revenue</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>,
+
+    // Page 5: Contact
+    <motion.div
+      key="contact"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 flex items-center p-8"
+    >
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
+            Ready to Stop Losing Orders to Missed Calls?
+          </h2>
+          <p className="text-xl text-neutral-300 mb-8">
+            Join hundreds of restaurants that have already automated their operations with Auralix AI.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+        >
+          <div className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700">
+            <h3 className="text-xl font-bold text-white mb-4 font-heading">Get Started Today</h3>
+            <div className="space-y-3">
+              <button
+                onClick={handleBookConsultation}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200"
+              >
+                <Calendar className="w-5 h-5" />
+                Book Free Consultation
+              </button>
+              <button
+                onClick={handleStartJourney}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+              >
+                <Rocket className="w-5 h-5" />
+                Start AI Journey
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700">
+            <h3 className="text-xl font-bold text-white mb-4 font-heading">Contact Information</h3>
+            <div className="space-y-3 text-neutral-300">
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary-400" />
+                <span>auralixai@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-primary-400" />
+                <span>+1 (782) 882-0525</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-primary-400" />
+                <span>Halifax, Nova Scotia, Canada</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+        >
+          <p className="text-sm text-neutral-400 mb-4">
+            No setup fees. Cancel anytime. Our team will activate your trial within 24 hours.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-neutral-500">
+            <span>© 2025 Auralix AI Inc.</span>
+            <span>•</span>
+            <span>Made in Nova Scotia</span>
+            <span>•</span>
+            <span>Serving Canada Coast-to-Coast</span>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  ];
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % pages.length);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + pages.length) % pages.length);
   };
 
   return (
-    <div className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Navigation */}
-      <div className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 border border-cyan-500/30">
-        <div className="flex gap-2 sm:gap-3">
-          {[0, 1, 2, 3, 4].map((index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPage(index)}
-              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 touch-manipulation ${
-                currentPage === index ? 'bg-cyan-400 scale-125' : 'bg-gray-600 hover:bg-gray-500'
-              }`}
-            />
-          ))}
+      <div className="fixed top-4 left-4 right-4 z-50 flex justify-between items-center">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 0}
+            className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200"
+          >
+            Previous
+          </button>
+          <span className="text-sm text-neutral-400">
+            {currentPage + 1} of {pages.length}
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleDownload}
+            className="px-4 py-2 bg-primary-500 hover:bg-primary-400 text-white rounded-lg transition-all duration-200 flex items-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Download PDF
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === pages.length - 1}
+            className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200"
+          >
+            Next
+          </button>
         </div>
       </div>
 
       {/* Page Content */}
       <div className="relative">
-        {renderPage()}
+        {pages[currentPage]}
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => setCurrentPage((prev) => (prev > 0 ? prev - 1 : 4))}
-        className="fixed left-4 sm:left-6 top-1/2 transform -translate-y-1/2 z-40 bg-black/80 backdrop-blur-sm rounded-full p-3 sm:p-4 border border-cyan-500/30 hover:bg-black/90 transition-all duration-300 touch-manipulation"
-      >
-        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      <button
-        onClick={() => setCurrentPage((prev) => (prev < 4 ? prev + 1 : 0))}
-        className="fixed right-4 sm:right-6 top-1/2 transform -translate-y-1/2 z-40 bg-black/80 backdrop-blur-sm rounded-full p-3 sm:p-4 border border-cyan-500/30 hover:bg-black/90 transition-all duration-300 touch-manipulation"
-      >
-        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      {/* Footer */}
-      <div className="fixed bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-sm rounded-full px-4 sm:px-6 md:px-8 py-2 sm:py-3 border border-cyan-500/30 text-xs sm:text-sm text-gray-300">
-        <div className="flex items-center gap-2 sm:gap-4 md:gap-6 flex-wrap justify-center">
-          <span className="font-bold text-cyan-400">AURALIX AI</span>
-          <span className="hidden sm:inline">•</span>
-          <span className="hidden md:inline">Nova Scotia&apos;s AI Innovation Hub</span>
-          <span className="hidden lg:inline">•</span>
-          <span className="hidden lg:inline">auralixai@gmail.com</span>
-        </div>
+      {/* Page Indicators */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {pages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              index === currentPage ? 'bg-primary-400' : 'bg-neutral-600'
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
-export default BrochurePage; 
+export default BrochurePage;

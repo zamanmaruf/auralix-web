@@ -1,254 +1,274 @@
 'use client';
-import { FaPhone, FaComments, FaGlobe, FaCheck, FaArrowRight } from "react-icons/fa";
-import { TbSettingsAutomation } from "react-icons/tb";
+
+import { motion } from 'framer-motion';
+import { Check, Star, ArrowRight, Calculator, TrendingUp, Clock, DollarSign } from 'lucide-react';
+import PricingTable from '../../components/PricingTable';
+
+const pricingPlans = [
+  {
+    name: 'Starter',
+    price: '$99',
+    period: '/month',
+    description: 'Perfect for small restaurants getting started with AI automation',
+    features: [
+      'Website chatbot only',
+      'Basic lead capture',
+      'FAQ automation',
+      'Email notifications',
+      'Basic analytics',
+      'Email support',
+      '1 restaurant location',
+      'Up to 100 conversations/month'
+    ],
+    cta: 'Start Free Trial',
+    color: 'primary' as const
+  },
+  {
+    name: 'Pro',
+    price: '$199',
+    period: '/month',
+    description: 'Most popular choice for growing restaurants',
+    features: [
+      'AI Receptionist (voice)',
+      'Website & social chatbot',
+      'Order automation',
+      'Review collection',
+      'Advanced analytics',
+      'Priority support',
+      'Up to 3 locations',
+      'Unlimited conversations',
+      'Custom integrations',
+      'Phone support'
+    ],
+    cta: 'Start Free Trial',
+    color: 'blue' as const,
+    popular: true
+  },
+  {
+    name: 'Premium',
+    price: '$399',
+    period: '/month',
+    description: 'Complete solution for multi-location restaurant chains',
+    features: [
+      'Everything in Pro',
+      'Multi-location management',
+      'Advanced reporting',
+      'Custom AI training',
+      'Dedicated account manager',
+      '24/7 phone support',
+      'Unlimited locations',
+      'White-label options',
+      'API access',
+      'Custom workflows'
+    ],
+    cta: 'Contact Sales',
+    color: 'purple' as const
+  }
+];
 
 export default function PricingPage() {
-  const products = [
-    {
-      icon: <TbSettingsAutomation className="text-4xl text-cyan-400" />,
-      title: 'Workflow Automation',
-      description: 'Automate review requests, follow-ups, order updates, and payment reminders',
-      pricing: 'Custom Pricing',
-      priceDetail: 'Based on your workflow complexity',
-      features: [
-        'Review request automation',
-        'Email & SMS follow-ups',
-        'Order update workflows',
-        'Payment reminders',
-        'Custom workflow builder',
-        'Unlimited automations',
-        'Analytics & reporting',
-        'Integration support'
-      ],
-      cta: 'Get Custom Quote',
-      color: 'cyan'
-    },
-    {
-      icon: <FaPhone className="text-4xl text-blue-400" />,
-      title: 'Voice Agents',
-      description: 'AI that answers calls like a human receptionist',
-      pricing: 'Custom Pricing',
-      priceDetail: 'Based on call volume',
-      features: [
-        'Human-like conversation',
-        'Take & cancel orders',
-        'Provide wait times',
-        'Intelligent call routing',
-        'Multi-language support',
-        '24/7 availability',
-        'Call analytics',
-        'CRM integration'
-      ],
-      cta: 'Get Custom Quote',
-      color: 'blue',
-      popular: true
-    },
-    {
-      icon: <FaComments className="text-4xl text-purple-400" />,
-      title: 'AI Chatbots',
-      description: 'Multi-platform chatbots for websites, Instagram, Facebook, and WhatsApp',
-      pricing: 'Custom Pricing',
-      priceDetail: 'Based on features & platforms',
-      features: [
-        'Lead capture automation',
-        'FAQ automation',
-        'Appointment booking',
-        'Website integration',
-        'Instagram DM automation',
-        'Facebook Messenger',
-        'WhatsApp Business',
-        '24/7 support automation'
-      ],
-      cta: 'Get Custom Quote',
-      color: 'purple'
-    },
-    {
-      icon: <FaGlobe className="text-4xl text-teal-400" />,
-      title: 'AI-Powered Websites',
-      description: 'Modern websites with AI features built in from day one',
-      pricing: 'Custom Pricing',
-      priceDetail: 'Based on complexity & features',
-      features: [
-        'AI chatbot included',
-        'Automation workflows',
-        'Customer engagement tools',
-        'Modern responsive design',
-        'SEO optimized',
-        'Fast loading speeds',
-        'Mobile-first',
-        'Analytics dashboard'
-      ],
-      cta: 'Get Custom Quote',
-      color: 'teal'
-    }
-  ];
-
-  const getColorClasses = (color: string) => {
-    const colors: {[key: string]: any} = {
-      cyan: {
-        bg: 'bg-cyan-500',
-        text: 'text-cyan-400',
-        border: 'border-cyan-400',
-        hover: 'hover:bg-cyan-400',
-        from: 'from-cyan-500',
-        to: 'to-cyan-600'
-      },
-      blue: {
-        bg: 'bg-blue-500',
-        text: 'text-blue-400',
-        border: 'border-blue-400',
-        hover: 'hover:bg-blue-400',
-        from: 'from-blue-500',
-        to: 'to-blue-600'
-      },
-      purple: {
-        bg: 'bg-purple-500',
-        text: 'text-purple-400',
-        border: 'border-purple-400',
-        hover: 'hover:bg-purple-400',
-        from: 'from-purple-500',
-        to: 'to-purple-600'
-      },
-      teal: {
-        bg: 'bg-teal-500',
-        text: 'text-teal-400',
-        border: 'border-teal-400',
-        hover: 'hover:bg-teal-400',
-        from: 'from-teal-500',
-        to: 'to-teal-600'
-      }
-    };
-    return colors[color];
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 text-white">
       {/* Hero Section */}
-      <section className="max-w-4xl mx-auto text-center py-12 sm:py-16 px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Transparent Pricing</h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-cyan-100 mb-6 sm:mb-8">Custom solutions tailored to your business needs</p>
-        <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
-          All our solutions are customized to fit your specific requirements. Get a personalized quote based on your business size, features needed, and usage volume.
-        </p>
+      <section className="py-16 sm:py-20 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
+          >
+            Simple Pricing for Restaurant AI
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
+          >
+            Choose the plan that fits your restaurant size. All plans include our 14-day free trial 
+            with no setup fees and no long-term commitments.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-4 text-sm text-neutral-400"
+          >
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-400" />
+              <span>14-Day Free Trial</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-400" />
+              <span>No Setup Fees</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-green-400" />
+              <span>Cancel Anytime</span>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Pricing Cards */}
-      <section className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 px-4 mb-16 sm:mb-20">
-        {products.map((product, index) => {
-          const colors = getColorClasses(product.color);
-          return (
-            <div 
-              key={index} 
-              className={`bg-[#11202a] rounded-2xl p-6 sm:p-8 shadow-xl border ${colors.border} relative ${product.popular ? 'transform scale-105' : ''}`}
-            >
-              {product.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-bold">
-                  MOST POPULAR
-                </div>
-              )}
-              
-              <div className="text-center mb-6">
-                <div className="mb-4 flex justify-center">{product.icon}</div>
-                <h3 className={`text-xl sm:text-2xl font-bold ${colors.text} mb-2`}>{product.title}</h3>
-                <p className="text-sm text-gray-300 mb-4">{product.description}</p>
-                <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
-                  {product.pricing}
-                </div>
-                <p className="text-xs sm:text-sm text-gray-400">{product.priceDetail}</p>
-              </div>
-              
-              <ul className="space-y-3 mb-8">
-                {product.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-gray-300">
-                    <FaCheck className={`${colors.text} mt-1 flex-shrink-0`} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <a 
-                href="https://calendly.com/auralixai/30min" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className={`w-full ${colors.bg} ${colors.hover} text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 text-center block text-sm sm:text-base`}
+      {/* Pricing Table */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <PricingTable plans={pricingPlans} showROI={true} />
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 px-4 bg-neutral-800/50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">How Our Pricing Works</h2>
+            <p className="text-lg text-neutral-300">Simple, transparent pricing with no hidden fees</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '1',
+                title: 'Start Free Trial',
+                description: 'Try any plan for 14 days with full access to all features',
+                icon: Check,
+                color: 'primary'
+              },
+              {
+                step: '2',
+                title: 'Choose Your Plan',
+                description: 'Select the plan that best fits your restaurant size and needs',
+                icon: Calculator,
+                color: 'blue'
+              },
+              {
+                step: '3',
+                title: 'Scale as You Grow',
+                description: 'Upgrade or downgrade anytime as your restaurant expands',
+                icon: TrendingUp,
+                color: 'purple'
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
               >
-                {product.cta}
-              </a>
-            </div>
-          );
-        })}
-      </section>
-
-      {/* How Pricing Works */}
-      <section className="max-w-4xl mx-auto mb-20 px-4">
-        <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-white">How Our Pricing Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="bg-cyan-500 text-black w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
-              <h3 className="text-lg font-bold text-white mb-2">Book Consultation</h3>
-              <p className="text-gray-300 text-sm">Schedule a free 30-minute consultation to discuss your needs</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
-              <h3 className="text-lg font-bold text-white mb-2">Get Custom Quote</h3>
-              <p className="text-gray-300 text-sm">Receive a tailored pricing proposal based on your requirements</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-purple-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
-              <h3 className="text-lg font-bold text-white mb-2">Launch & Scale</h3>
-              <p className="text-gray-300 text-sm">Deploy your solution and scale as your business grows</p>
-            </div>
+                <div className={`w-16 h-16 bg-${step.color}-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4`}>
+                  {step.step}
+                </div>
+                <step.icon className={`w-8 h-8 text-${step.color}-400 mx-auto mb-4`} />
+                <h3 className="text-xl font-bold text-white mb-3 font-heading">{step.title}</h3>
+                <p className="text-neutral-300">{step.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto mb-20 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 text-white">Pricing FAQs</h2>
-        <div className="space-y-6">
-          <div className="bg-[#1a1a1a] rounded-xl p-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-3">Why custom pricing?</h3>
-            <p className="text-gray-300 text-sm sm:text-base">Every business is unique. We customize our solutions to fit your specific needs, team size, and usage volume to ensure you only pay for what you need.</p>
-          </div>
-          <div className="bg-[#1a1a1a] rounded-xl p-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-3">What factors affect pricing?</h3>
-            <p className="text-gray-300 text-sm sm:text-base">Pricing depends on: number of users, features required, integration complexity, call/message volume, and level of customization needed.</p>
-          </div>
-          <div className="bg-[#1a1a1a] rounded-xl p-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-3">Are there any setup fees?</h3>
-            <p className="text-gray-300 text-sm sm:text-base">Setup and implementation fees vary based on complexity. Most standard deployments have minimal to no setup fees.</p>
-          </div>
-          <div className="bg-[#1a1a1a] rounded-xl p-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-3">Can I combine multiple solutions?</h3>
-            <p className="text-gray-300 text-sm sm:text-base">Absolutely! Many customers combine solutions (e.g., AI-Powered Website + Chatbots + Workflow Automation) for maximum impact. We offer bundle discounts.</p>
-          </div>
-          <div className="bg-[#1a1a1a] rounded-xl p-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-3">Do you offer payment plans?</h3>
-            <p className="text-gray-300 text-sm sm:text-base">Yes, we offer flexible monthly and annual payment plans. Annual plans typically include a discount.</p>
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Pricing FAQs</h2>
+            <p className="text-lg text-neutral-300">Common questions about our pricing and plans</p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {[
+              {
+                question: 'What\'s included in the free trial?',
+                answer: 'The 14-day free trial gives you full access to all features of your chosen plan. No credit card required, and you can cancel anytime during the trial period.'
+              },
+              {
+                question: 'Can I change plans later?',
+                answer: 'Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we\'ll prorate any billing differences.'
+              },
+              {
+                question: 'Are there any setup fees?',
+                answer: 'No setup fees for Starter and Pro plans. Premium plans may include custom setup depending on your specific requirements.'
+              },
+              {
+                question: 'What happens if I exceed my plan limits?',
+                answer: 'We\'ll notify you before you reach your limits and offer options to upgrade. We never cut off service unexpectedly.'
+              },
+              {
+                question: 'Do you offer discounts for annual plans?',
+                answer: 'Yes! Annual plans include a 20% discount. Contact our sales team for custom enterprise pricing for large restaurant chains.'
+              },
+              {
+                question: 'What support is included?',
+                answer: 'Starter includes email support, Pro includes priority email and phone support, and Premium includes 24/7 phone support with a dedicated account manager.'
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700"
+              >
+                <h3 className="text-lg font-bold text-white mb-3 font-heading">{faq.question}</h3>
+                <p className="text-neutral-300">{faq.answer}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="max-w-4xl mx-auto text-center px-4">
-        <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0a2a3a] rounded-2xl p-8 sm:p-12 border border-cyan-500">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
-          <p className="text-base sm:text-lg text-gray-300 mb-8">Book a free consultation to get a custom quote tailored to your needs.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://calendly.com/auralixai/30min" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200 shadow-lg"
-            >
-              Book Free Consultation
-              <FaArrowRight />
-            </a>
-            <a href="/solutions" className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold rounded-lg transition-all duration-200">
-              View Solutions
-            </a>
-          </div>
+      {/* CTA Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">
+              Ready to Transform Your Restaurant?
+            </h2>
+            <p className="text-lg text-neutral-300 mb-8">
+              Start your free trial today and see how Auralix AI can help you never miss another call or order.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/trial"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
+              >
+                Start Free Trial
+                <ArrowRight className="w-5 h-5" />
+              </a>
+              <a
+                href="/contact"
+                className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+              >
+                Contact Sales
+              </a>
+            </div>
+            <p className="text-sm text-neutral-400 mt-4">
+              No credit card required • 14-day free trial • Cancel anytime
+            </p>
+          </motion.div>
         </div>
       </section>
     </div>

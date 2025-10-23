@@ -6,9 +6,9 @@ export default function EnterprisePage() {
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white">
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Enterprise AI Solutions</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Enterprise-grade AI automation for large organizations.</p>
-        <p className="text-gray-300">Perfect for businesses with 50+ employees requiring advanced security, scalability, and customization.</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">National Chain AI Solutions</h1>
+        <p className="text-xl md:text-2xl text-cyan-100 mb-8">Enterprise-grade AI automation for national restaurant chains.</p>
+        <p className="text-gray-300">Perfect for national chains with 50+ locations requiring advanced security, scalability, and never missing a call.</p>
       </section>
 
       {/* Features */}

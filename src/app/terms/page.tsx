@@ -1,213 +1,580 @@
 'use client';
+import { motion } from 'framer-motion';
+import { FileText, Shield, CreditCard, User, AlertTriangle, CheckCircle, Clock, Building, Globe, Lock, Scale, Phone } from 'lucide-react';
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2a3a] via-[#0a2233] to-[#0a0a0a] text-white">
       {/* Hero Section */}
-      <section className="max-w-4xl mx-auto text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Terms of Service</h1>
-        <p className="text-xl md:text-2xl text-cyan-100 mb-8">The terms and conditions governing your use of Auralix AI services.</p>
-        <p className="text-gray-300">Last updated: December 2024</p>
+      <section className="max-w-6xl mx-auto text-center py-20 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center justify-center mb-6">
+            <Scale className="w-16 h-16 text-cyan-400" />
+          </div>
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-cyan-300 font-heading">Terms of Service</h1>
+          <p className="text-xl md:text-2xl text-cyan-100 mb-8 max-w-4xl mx-auto">
+            Legal terms governing your use of Auralix AI restaurant automation services.
+          </p>
+          <div className="flex items-center justify-center gap-4 text-gray-300">
+            <Clock className="w-5 h-5" />
+            <span>Last updated: January 2025</span>
+            <span>•</span>
+            <span>Effective: January 1, 2025</span>
+          </div>
+        </motion.div>
       </section>
 
       {/* Terms Content */}
-      <section className="max-w-4xl mx-auto py-16 px-4">
-        <div className="space-y-12">
+      <section className="max-w-6xl mx-auto py-16 px-4">
+        <div className="space-y-16">
           {/* Agreement */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Agreement to Terms</h2>
-            <p className="text-gray-300 mb-4">
-              By accessing and using Auralix AI&apos;s services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
-            </p>
-            <p className="text-gray-300">
-              These Terms of Service (&quot;Terms&quot;) govern your use of our AI automation services, including our website, mobile applications, and any related services (collectively, the &quot;Service&quot;).
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <FileText className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Agreement to Terms</h2>
+            </div>
+            <div className="space-y-4 text-gray-300 leading-relaxed">
+              <p>
+                These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Restaurant,&quot; &quot;you,&quot; or &quot;your&quot;) and Auralix AI Inc. (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) regarding your use of our restaurant AI automation services.
+              </p>
+              <p>
+                By accessing, using, or subscribing to our AI receptionist, chatbot, order automation, or website services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, you may not use our services.
+              </p>
+              <p>
+                These Terms apply to all restaurants, cafes, bars, and food service establishments that use our AI automation platform to enhance customer service, manage reservations, process orders, and streamline operations.
+              </p>
+            </div>
+          </motion.div>
 
           {/* Service Description */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Service Description</h2>
-            <p className="text-gray-300 mb-4">
-              Auralix AI provides enterprise-grade AI automation solutions including:
-            </p>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>AI-powered chatbots and virtual assistants</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Business intelligence and analytics dashboards</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Workflow automation and process optimization</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Website design and development services</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Consultation and implementation support</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* User Accounts */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">User Accounts</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Account Creation</h3>
-                <p className="text-gray-300">You must provide accurate and complete information when creating an account. You are responsible for maintaining the security of your account credentials.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Building className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Restaurant AI Services</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Core AI Solutions</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>AI Receptionist - 24/7 voice AI for phone calls and reservations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Website & Social Chatbot - Multi-platform customer service</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Order & Review Automation - Streamlined operations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Restaurant Websites - Modern design with AI integration</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Account Responsibilities</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-start gap-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                    <span>Maintain the confidentiality of your account information</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                    <span>Notify us immediately of any unauthorized use</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                    <span>Ensure all account activities comply with these Terms</span>
-                  </li>
-                </ul>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Support Services</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Implementation and setup assistance</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>24/7 technical support and monitoring</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Performance analytics and reporting</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Custom training and optimization</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+
+            <div className="mt-8 bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-cyan-400 mb-4">Service Availability</h3>
+              <p className="text-gray-300">
+                Our AI services are designed to operate 24/7 to ensure your restaurant never misses a call, order, or reservation. We maintain 99.9% uptime and provide real-time monitoring to ensure optimal performance for your restaurant operations.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Restaurant Accounts */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <User className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Restaurant Account Management</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Account Setup</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Provide accurate restaurant information and contact details</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Verify business registration and operating licenses</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Designate authorized users and access levels</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Configure AI settings and restaurant preferences</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Account Security</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Maintain confidentiality of login credentials</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Notify us immediately of unauthorized access</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Ensure all staff comply with these Terms</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Regularly update contact information and preferences</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Acceptable Use */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Acceptable Use Policy</h2>
-            <p className="text-gray-300 mb-4">You agree not to use the Service to:</p>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Violate any applicable laws or regulations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Infringe on intellectual property rights</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Transmit harmful, offensive, or inappropriate content</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Attempt to gain unauthorized access to our systems</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>Interfere with the proper functioning of the Service</span>
-              </li>
-            </ul>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Shield className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Restaurant Use Guidelines</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Permitted Uses</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Process customer reservations and orders</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Provide customer service and support</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Manage restaurant operations and staff</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Generate business analytics and reports</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Prohibited Uses</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                      <span>Violate Canadian laws or restaurant regulations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                      <span>Transmit harmful, offensive, or inappropriate content</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                      <span>Attempt unauthorized access to our systems</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                      <span>Interfere with service performance or availability</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-red-900/20 border border-red-500/30 rounded-xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <AlertTriangle className="w-6 h-6 text-red-400" />
+                <h3 className="text-xl font-bold text-red-400">Restaurant Industry Compliance</h3>
+              </div>
+              <p className="text-gray-300">
+                You must comply with all applicable restaurant industry regulations, food safety standards, and local business laws. Any misuse of our AI services that violates restaurant industry standards may result in immediate service termination.
+              </p>
+            </div>
+          </motion.div>
 
           {/* Payment Terms */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Payment Terms</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Billing</h3>
-                <p className="text-gray-300">Fees are billed in advance on a monthly or annual basis. All fees are non-refundable except as expressly stated in these Terms.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <CreditCard className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Restaurant Payment Terms</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Billing & Pricing</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Monthly billing in advance for all services</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Starter: $99/mo, Pro: $199/mo, Premium: $399/mo</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Founder's Special: 20% off for first 100 restaurants</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>14-day free trial with no credit card required</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Payment Methods</h3>
-                <p className="text-gray-300">We accept major credit cards and other payment methods as indicated during the checkout process. Payment information is processed securely through our payment partners.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Late Payments</h3>
-                <p className="text-gray-300">Late payments may result in service suspension or termination. We reserve the right to charge late fees and collection costs.</p>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Payment Processing</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Secure payment processing via Stripe</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Major credit cards and bank transfers accepted</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Automatic billing and invoice generation</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Canadian tax compliance and reporting</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+
+            <div className="mt-8 bg-yellow-900/20 border border-yellow-500/30 rounded-xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <AlertTriangle className="w-6 h-6 text-yellow-400" />
+                <h3 className="text-xl font-bold text-yellow-400">Late Payment Policy</h3>
+              </div>
+              <p className="text-gray-300">
+                Late payments may result in service suspension after 15 days. We reserve the right to charge late fees of 2% per month and collection costs. Service will be restored upon payment of all outstanding amounts.
+              </p>
+            </div>
+          </motion.div>
 
           {/* Intellectual Property */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Intellectual Property</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Our Rights</h3>
-                <p className="text-gray-300">The Service and its original content, features, and functionality are owned by Auralix AI and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Lock className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Intellectual Property Rights</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Auralix AI Rights</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>AI models, algorithms, and proprietary technology</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Software, interfaces, and user experience designs</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Branding, trademarks, and marketing materials</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Training data and model improvements</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Your Content</h3>
-                <p className="text-gray-300">You retain ownership of content you submit to our Service. By submitting content, you grant us a license to use, modify, and display such content in connection with providing the Service.</p>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Restaurant Content</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>You retain ownership of your restaurant data</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Menu items, pricing, and operational information</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Customer data and interaction history</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Grant us license to use data for service provision</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Privacy & Data */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Privacy & Data Protection</h2>
-            <p className="text-gray-300 mb-4">
-              Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.
-            </p>
-            <p className="text-gray-300">
-              We implement appropriate technical and organizational measures to protect your data in accordance with applicable data protection laws.
-            </p>
-          </div>
-
-          {/* Limitation of Liability */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Limitation of Liability</h2>
-            <p className="text-gray-300 mb-4">
-              To the maximum extent permitted by law, Auralix AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
-            </p>
-            <p className="text-gray-300">
-              Our total liability to you for any claims arising from these Terms or your use of the Service shall not exceed the amount you paid to us in the twelve months preceding the claim.
-            </p>
-          </div>
-
-          {/* Termination */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Termination</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Termination by You</h3>
-                <p className="text-gray-300">You may terminate your account at any time by contacting us or using the account deletion feature in your dashboard.</p>
+          {/* Data Protection */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Shield className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Data Protection & Privacy</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Privacy Compliance</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>PIPEDA compliance for Canadian restaurants</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>AES-256 encryption for all data transmission</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Secure data storage and access controls</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Regular security audits and monitoring</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Termination by Us</h3>
-                <p className="text-gray-300">We may terminate or suspend your account immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users or our business.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-cyan-400 mb-3">Effect of Termination</h3>
-                <p className="text-gray-300">Upon termination, your right to use the Service will cease immediately. We may delete your account and data in accordance with our data retention policies.</p>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Restaurant Data Rights</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Access and download your restaurant data</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Request data correction or deletion</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Control data sharing and processing</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Export data in standard formats</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Changes to Terms */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Changes to Terms</h2>
-            <p className="text-gray-300 mb-4">
-              We reserve the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on this page and updating the &quot;Last updated&quot; date.
-            </p>
-            <p className="text-gray-300">
-              Your continued use of the Service after any changes constitutes acceptance of the new Terms. If you do not agree to the new Terms, you should discontinue use of the Service.
-            </p>
-          </div>
+          {/* Liability & Termination */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <AlertTriangle className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Liability & Service Termination</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Liability Limitations</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                      <span>Service provided &quot;as is&quot; without warranties</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                      <span>Liability limited to fees paid in last 12 months</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                      <span>No liability for indirect or consequential damages</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                      <span>Restaurant responsible for backup and data security</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Service Termination</h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>30-day notice for voluntary termination</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Immediate termination for Terms violations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Data export available for 90 days post-termination</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>Refund policy as per payment terms</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-            <p className="text-gray-300 mb-4">
-              If you have any questions about these Terms of Service, please contact us:
-            </p>
-            <div className="space-y-2 text-gray-300">
-              <p><strong>Email:</strong> legal@auralixai.com</p>
-              <p><strong>Address:</strong> Halifax, Nova Scotia, Canada</p>
-              <p><strong>Phone:</strong> +1 (902) 555-0123</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Phone className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Contact Information</h2>
             </div>
-          </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Legal Questions</h3>
+                  <div className="space-y-3 text-gray-300">
+                    <p><strong>Email:</strong> auralixai@gmail.com</p>
+                    <p><strong>Phone:</strong> +1 9024414928</p>
+                    <p><strong>Response Time:</strong> Within 48 hours</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-neutral-800/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Company Information</h3>
+                  <div className="space-y-3 text-gray-300">
+                    <p><strong>Company:</strong> Auralix AI Inc.</p>
+                    <p><strong>Address:</strong> Halifax, Nova Scotia, Canada</p>
+                    <p><strong>Legal Entity:</strong> Canadian Corporation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-neutral-800/50 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-4">Terms Updates</h3>
+              <p className="text-gray-300">
+                We may update these Terms from time to time. We will notify you of any material changes by email and posting the updated Terms on this page. Your continued use of our services after changes constitutes acceptance of the new Terms.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

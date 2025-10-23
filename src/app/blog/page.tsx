@@ -191,7 +191,7 @@ export default function BlogPage() {
           <p className="text-gray-300 mb-8 text-base sm:text-lg">Book a free consultation to learn how our AI solutions can help your business.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="https://calendly.com/auralixai/30min" 
+              href="/trial" 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200"

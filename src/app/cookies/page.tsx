@@ -210,7 +210,7 @@ export default function CookiesPage() {
             <div className="space-y-2 text-gray-300">
               <p><strong>Email:</strong> privacy@auralixai.com</p>
               <p><strong>Address:</strong> Halifax, Nova Scotia, Canada</p>
-              <p><strong>Phone:</strong> +1 (902) 555-0123</p>
+              <p><strong>Phone:</strong> +1 9024414928</p>
             </div>
           </div>
         </div>
