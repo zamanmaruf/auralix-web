@@ -80,8 +80,8 @@ export default function TrialPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-white font-heading">Start Your Free Trial</h1>
-          <p className="text-xl text-neutral-300">Experience the power of AI automation for your restaurant in just 14 days</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-white font-heading">Get Started with Auralix AI</h1>
+          <p className="text-xl text-neutral-300">Experience the power of AI automation for your restaurant with professional setup</p>
         </motion.div>
 
         {/* Progress Steps */}
@@ -286,7 +286,7 @@ export default function TrialPage() {
               transition={{ duration: 0.3 }}
               className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-neutral-700"
             >
-              <h2 className="text-2xl font-bold text-white mb-6 font-heading">Your Trial Includes</h2>
+              <h2 className="text-2xl font-bold text-white mb-6 font-heading">What's Included</h2>
               
               <div className="space-y-6 mb-8">
                 {[
@@ -298,12 +298,12 @@ export default function TrialPage() {
                   {
                     icon: Headphones,
                     title: 'Dedicated Support',
-                    description: 'Email and chat support throughout your trial period'
+                    description: 'Email and chat support throughout your setup and onboarding'
                   },
                   {
                     icon: Shield,
                     title: 'Credit Card Required',
-                    description: 'Credit card required for trial activation and billing'
+                    description: 'Professional setup and configuration included'
                   },
                   {
                     icon: Users,
@@ -356,7 +356,7 @@ export default function TrialPage() {
                     className="text-center"
                   >
                     <CheckCircle className="text-green-400 text-6xl mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-white mb-2">Trial Request Submitted!</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Request Submitted!</h3>
                     <p className="text-neutral-300 mb-4">{submissionMessage}</p>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -377,7 +377,7 @@ export default function TrialPage() {
                       }}
                       className="px-8 py-3 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200"
                     >
-                      Start Another Trial
+                      Submit Another Request
                     </motion.button>
                   </motion.div>
                 ) : (
@@ -397,7 +397,7 @@ export default function TrialPage() {
                       ) : (
                         <>
                           <Calendar className="w-5 h-5" />
-                          Start Your Free Trial
+                          Get Started
                         </>
                       )}
                     </motion.button>
@@ -407,7 +407,7 @@ export default function TrialPage() {
                       </div>
                     )}
                     <p className="text-sm text-neutral-400 mt-4">
-                      By starting your trial, you agree to our Terms of Service and Privacy Policy
+                      By submitting your request, you agree to our Terms of Service and Privacy Policy
                     </p>
                   </>
                 )}

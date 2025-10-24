@@ -76,7 +76,7 @@ export default function HomePage() {
       <Hero
         title="Never miss another restaurant call."
         subtitle="Auralix AI answers every call 24/7, books tables, and captures take-out orders — even during rush hour."
-        primaryCta={{ text: "Start Free 14-Day Trial", href: "/trial" }}
+        primaryCta={{ text: "Get Started", href: "/contact" }}
         secondaryCta={{ text: "Hear Live Demo", href: "/solutions" }}
         showScrollCue={true}
       />
@@ -370,10 +370,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/trial"
+                href="/contact"
                 className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
-                Start My Free Trial Now
+                Get Started Today
               </a>
               <a
                 href="/contact"
@@ -383,7 +383,7 @@ export default function HomePage() {
               </a>
             </div>
             <p className="text-sm text-neutral-400 mt-4">
-              No setup fees. Cancel anytime. Our team will activate your trial within 24 hours.
+              Professional setup included. No contracts. Our team will contact you within 24 hours.
             </p>
           </motion.div>
         </div>

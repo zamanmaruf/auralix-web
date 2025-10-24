@@ -7,6 +7,7 @@ interface PricingPlan {
   name: string;
   price: string;
   period: string;
+  setupFee?: string;
   description: string;
   features: string[];
   cta: string;
@@ -73,7 +74,12 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
                 <div className="text-4xl font-bold text-white mb-1">
                   {plan.price}
                 </div>
-                <div className="text-neutral-400 text-sm">{plan.period}</div>
+                <div className="text-neutral-400 text-sm mb-2">{plan.period}</div>
+                {plan.setupFee && (
+                  <div className="text-neutral-400 text-sm">
+                    Setup: {plan.setupFee}
+                  </div>
+                )}
               </div>
               
               <ul className="space-y-3 mb-8">
@@ -86,7 +92,7 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
               </ul>
               
               <a 
-                href="/trial"
+                href="/contact"
                 className={`w-full ${colors.bg} ${colors.hover} text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 text-center block hover:scale-105`}
               >
                 {plan.cta}

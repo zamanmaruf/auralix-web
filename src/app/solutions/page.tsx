@@ -424,7 +424,7 @@ export default function SolutionsPage() {
               {
                 step: '1',
                 title: 'Sign Up',
-                description: 'Start your free 14-day trial with credit card required',
+                description: 'Get started with professional setup included',
                 icon: Calendar,
                 color: 'primary'
               },

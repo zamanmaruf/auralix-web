@@ -6,27 +6,10 @@ import PricingTable from '../../components/PricingTable';
 
 const pricingPlans = [
   {
-    name: 'Starter',
-    price: '$99',
-    period: '/month',
-    description: 'Perfect for small restaurants getting started with AI automation',
-    features: [
-      'Website chatbot only',
-      'Basic lead capture',
-      'FAQ automation',
-      'Email notifications',
-      'Basic analytics',
-      'Email support',
-      '1 restaurant location',
-      'Up to 100 conversations/month'
-    ],
-    cta: 'Start Free Trial',
-    color: 'primary' as const
-  },
-  {
     name: 'Pro',
     price: '$199',
     period: '/month',
+    setupFee: '$499 CAD',
     description: 'Most popular choice for growing restaurants',
     features: [
       'AI Receptionist (voice)',
@@ -40,14 +23,15 @@ const pricingPlans = [
       'Custom integrations',
       'Phone support'
     ],
-    cta: 'Start Free Trial',
+    cta: 'Get Started',
     color: 'blue' as const,
     popular: true
   },
   {
     name: 'Premium',
-    price: '$399',
+    price: '$599',
     period: '/month',
+    setupFee: '$599 CAD',
     description: 'Complete solution for multi-location restaurant chains',
     features: [
       'Everything in Pro',
@@ -86,8 +70,7 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
           >
-            Choose the plan that fits your restaurant size. All plans include our 14-day free trial 
-            with no setup fees and no long-term commitments.
+            Choose the plan that fits your restaurant size. Professional setup included with all plans.
           </motion.p>
           
           <motion.div
@@ -98,11 +81,11 @@ export default function PricingPage() {
           >
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>14-Day Free Trial</span>
+              <span>Professional Setup</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>No Setup Fees</span>
+              <span>No Contracts</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
@@ -137,17 +120,17 @@ export default function PricingPage() {
             {[
               {
                 step: '1',
-                title: 'Start Free Trial',
-                description: 'Try any plan for 14 days with full access to all features',
-                icon: Check,
-                color: 'primary'
-              },
-              {
-                step: '2',
                 title: 'Choose Your Plan',
                 description: 'Select the plan that best fits your restaurant size and needs',
                 icon: Calculator,
                 color: 'blue'
+              },
+              {
+                step: '2',
+                title: 'Professional Setup',
+                description: 'We handle the complete setup and integration for your restaurant',
+                icon: Check,
+                color: 'primary'
               },
               {
                 step: '3',
@@ -194,16 +177,16 @@ export default function PricingPage() {
           <div className="space-y-6">
             {[
               {
-                question: 'What\'s included in the free trial?',
-                answer: 'The 14-day free trial gives you full access to all features of your chosen plan. Credit card required for activation, and you can cancel anytime during the trial period.'
+                question: 'What\'s included in the setup fee?',
+                answer: 'The setup fee covers professional installation, configuration, and training for your restaurant staff. We handle all technical setup and ensure everything works perfectly before you go live.'
               },
               {
                 question: 'Can I change plans later?',
                 answer: 'Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we\'ll prorate any billing differences.'
               },
               {
-                question: 'Are there any setup fees?',
-                answer: 'No setup fees for Starter and Pro plans. Premium plans may include custom setup depending on your specific requirements.'
+                question: 'What are the setup fees?',
+                answer: 'Pro plan has a $499 CAD setup fee, and Premium plan has a $599 CAD setup fee. This covers professional installation and configuration.'
               },
               {
                 question: 'What happens if I exceed my plan limits?',
@@ -215,7 +198,7 @@ export default function PricingPage() {
               },
               {
                 question: 'What support is included?',
-                answer: 'Starter includes email support, Pro includes priority email and phone support, and Premium includes 24/7 phone support with a dedicated account manager.'
+                answer: 'Pro includes priority email and phone support, and Premium includes 24/7 phone support with a dedicated account manager.'
               }
             ].map((faq, index) => (
               <motion.div
@@ -248,14 +231,14 @@ export default function PricingPage() {
               Ready to Transform Your Restaurant?
             </h2>
             <p className="text-lg text-neutral-300 mb-8">
-              Start your free trial today and see how Auralix AI can help you never miss another call or order.
+              Get started with Auralix AI today and see how we can help you never miss another call or order.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/trial"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
-                Start Free Trial
+                Get Started
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
@@ -266,7 +249,7 @@ export default function PricingPage() {
               </a>
             </div>
             <p className="text-sm text-neutral-400 mt-4">
-              Credit card required • 14-day free trial • Cancel anytime
+              Professional setup included • No contracts • Cancel anytime
             </p>
           </motion.div>
         </div>
