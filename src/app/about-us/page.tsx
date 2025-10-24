@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, Users, TrendingUp, MapPin, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
+import { Shield, Users, TrendingUp, MapPin, Calendar, ArrowRight, CheckCircle, Phone } from 'lucide-react';
 
 export default function AboutUsPage() {
   const timeline = [
@@ -50,6 +50,25 @@ export default function AboutUsPage() {
             From small cafés to national chains, we help Canadian restaurants recover thousands 
             in missed calls and orders every month using intelligent AI automation.
           </motion.p>
+          
+          {/* Live Demo Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-8"
+          >
+            <a
+              href="tel:+16693566074"
+              className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-3 mx-auto max-w-md"
+            >
+              <Phone className="w-6 h-6" />
+              Call Live Demo: +1 669 356 6074
+            </a>
+            <p className="text-primary-200 text-lg font-semibold mt-3">
+              Experience Auralix in action—call now and test it yourself
+            </p>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}

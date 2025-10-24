@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 import Image from 'next/image';
 
 interface HeroProps {
@@ -66,20 +66,36 @@ export default function Hero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 mb-8 justify-center items-center"
+          className="flex flex-col gap-6 mb-8 justify-center items-center"
         >
-          <a 
-            href={primaryCta.href} 
-            className="px-6 sm:px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px] hover:scale-105"
+          {/* Live Demo Button - Most Prominent */}
+          <a
+            href="tel:+16693566074"
+            className="px-8 sm:px-12 py-5 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] hover:scale-105 flex items-center justify-center gap-3"
           >
-            {primaryCta.text}
+            <Phone className="w-6 h-6" />
+            Call Live Demo: +1 669 356 6074
           </a>
-          <a 
-            href={secondaryCta.href} 
-            className="px-6 sm:px-8 py-4 bg-transparent border-2 border-primary-400 hover:bg-primary-400 hover:text-black text-primary-300 font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]"
-          >
-            {secondaryCta.text}
-          </a>
+          
+          <p className="text-primary-200 text-lg font-semibold">
+            Experience Auralix in action—call now and test it yourself
+          </p>
+          
+          {/* Other CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href={primaryCta.href} 
+              className="px-6 sm:px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px] hover:scale-105"
+            >
+              {primaryCta.text}
+            </a>
+            <a 
+              href={secondaryCta.href} 
+              className="px-6 sm:px-8 py-4 bg-transparent border-2 border-primary-400 hover:bg-primary-400 hover:text-black text-primary-300 font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]"
+            >
+              {secondaryCta.text}
+            </a>
+          </div>
         </motion.div>
         
         {/* Trust Signals */}
