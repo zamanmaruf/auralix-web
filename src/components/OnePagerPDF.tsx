@@ -130,59 +130,64 @@ export default function OnePagerPDF() {
       pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
       pdf.text('Simple Monthly Plans', 20, 280);
       
-      // Pricing cards (3-column layout)
+      // Pricing cards (2-column layout)
       const plans = [
-        { name: 'Starter', price: '$99/mo', who: 'Small restaurants', features: 'Chatbot only', color: electricBlue },
-        { name: 'Standard', price: '$199/mo', who: 'Single-location full AI', features: 'Voice agent + Chatbot', color: violet, popular: true },
-        { name: 'Premium', price: '$399/mo+', who: 'Multi-location groups', features: 'Full suite + integrations', color: electricBlue }
+        { name: 'Pro', price: '$199/mo', setup: '$499 CAD', who: 'Single-location full AI', features: 'Voice agent + Chatbot', color: violet, popular: true },
+        { name: 'Premium', price: '$599/mo', setup: '$599 CAD', who: 'Multi-location groups', features: 'Full suite + integrations', color: electricBlue }
       ];
       
       plans.forEach((plan, index) => {
-        const x = 20 + index * 60;
+        const x = 20 + index * 90; // Wider spacing for 2 cards
         const y = 300;
         
         // Plan card
         pdf.setFillColor(248, 250, 252); // Light background
-        pdf.rect(x, y, 55, 50, 'F');
+        pdf.rect(x, y, 80, 60, 'F'); // Taller card for more content
         pdf.setDrawColor(plan.color[0], plan.color[1], plan.color[2]);
         pdf.setLineWidth(2);
-        pdf.rect(x, y, 55, 50);
+        pdf.rect(x, y, 80, 60);
         
         // Popular badge
         if (plan.popular) {
           pdf.setFillColor(violet[0], violet[1], violet[2]);
-          pdf.rect(x, y, 55, 8, 'F');
+          pdf.rect(x, y, 80, 8, 'F');
           pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
           pdf.setFontSize(8);
           pdf.setFont('helvetica', 'bold');
-          pdf.text('MOST POPULAR', x + 12, y + 5);
+          pdf.text('MOST POPULAR', x + 25, y + 5);
         }
         
         // Plan name
-        pdf.setFontSize(12);
+        pdf.setFontSize(14);
         pdf.setFont('helvetica', 'bold');
         pdf.setTextColor(plan.color[0], plan.color[1], plan.color[2]);
         pdf.text(plan.name, x + 5, y + 20);
         
-        // Price
-        pdf.setFontSize(14);
+        // Monthly price
+        pdf.setFontSize(16);
         pdf.setFont('helvetica', 'bold');
         pdf.setTextColor(deepNavy[0], deepNavy[1], deepNavy[2]);
-        pdf.text(plan.price, x + 5, y + 30);
+        pdf.text(plan.price, x + 5, y + 32);
         
-        // Description
-        pdf.setFontSize(8);
+        // Setup fee
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-        pdf.text(plan.who, x + 5, y + 40);
+        pdf.text(`Setup: ${plan.setup}`, x + 5, y + 42);
+        
+        // Description
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
+        pdf.text(plan.who, x + 5, y + 52);
       });
       
       // Pricing notes
       pdf.setFontSize(10);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('No setup fees • No contracts • Cancel anytime', 20, 370);
-      pdf.text('14-day free trial included • Founder\'s Offer: First 100 clients get 20% off for life', 20, 380);
+      pdf.text('Setup fees required • No contracts • Cancel anytime', 20, 370);
+      pdf.text('Founder\'s Offer: First 100 clients get 20% off for life', 20, 380);
       
       // Add new page for success proof and CTA
       pdf.addPage();
@@ -222,7 +227,7 @@ export default function OnePagerPDF() {
       pdf.setFontSize(14);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Try Auralix AI free for 14 days. No setup. No commitment.', 20, 120);
+      pdf.text('Get started with Auralix AI today. Professional setup included.', 20, 120);
       
       // Contact info
       pdf.setFontSize(12);
@@ -243,7 +248,7 @@ export default function OnePagerPDF() {
       pdf.setTextColor(lightText[0], lightText[1], lightText[2]);
       pdf.setFontSize(11);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Activate Free Trial', 115, 172);
+      pdf.text('Get Started', 120, 172);
       
       // Trust badges - Clean footer
       pdf.setFontSize(10);
