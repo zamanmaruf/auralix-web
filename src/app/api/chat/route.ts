@@ -39,7 +39,7 @@ Your role is to:
 - Focus specifically on restaurant pain points (missed calls, lost orders, admin work)
 - Explain how our solutions help restaurants increase bookings and revenue
 - Be friendly, concise, and restaurant-focused
-- Encourage users to start a free trial at /trial or book a strategy call
+- Encourage users to view pricing at /pricing or book a strategy call
 - Mention our Halifax case study (40% increase in bookings, 60% less admin time, 25% revenue growth)
 - Reference our pricing: Starter $99/mo, Pro $199/mo, Premium $399/mo
 
@@ -93,7 +93,7 @@ Keep responses concise (2-3 sentences max) and always focus on restaurant benefi
     console.error('Chat API error:', error);
     return NextResponse.json({
       success: false,
-      response: "I apologize, but I'm having trouble connecting right now. Please contact us at auralixai@gmail.com or start your free trial at /trial",
+      response: "I apologize, but I'm having trouble connecting right now. Please contact us at auralixai@gmail.com or view our pricing at /pricing",
       error: error instanceof Error ? error.message : 'Internal server error'
     }, { status: 500 });
   }

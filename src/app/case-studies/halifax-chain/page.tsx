@@ -359,10 +359,10 @@ export default function HalifaxChainCaseStudy() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/trial"
+                href="/pricing"
                 className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
-                Start Free Trial
+                Get Started
               </a>
               <a
                 href="/contact"

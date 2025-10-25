@@ -197,10 +197,10 @@ export default function IndustriesPage() {
             Get Started Today
           </a>
           <a
-            href="/trial"
+            href="/pricing"
             className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold rounded-lg transition-all duration-200"
           >
-            Start Free Trial
+            Get Started
           </a>
         </div>
       </section>

@@ -230,8 +230,8 @@ export default function BlogPost6() {
                 <h3 className="text-xl font-bold text-white">Research Solutions</h3>
               </div>
               <p className="text-gray-300">
-                Look for AI tools specifically designed for small businesses. Many offer free trials 
-                or low-cost starter plans that allow you to test before committing.
+                Look for AI tools specifically designed for small businesses. Many offer 
+                low-cost starter plans that allow you to test before committing.
               </p>
             </div>
 
@@ -267,7 +267,7 @@ export default function BlogPost6() {
                 affordable pricing models and free tiers.
               </p>
               <div className="text-sm text-gray-400">
-                <strong>Solution:</strong> Start with free trials and scale up as you see results
+                <strong>Solution:</strong> Start with low-cost plans and scale up as you see results
               </div>
             </div>
             <div className="bg-[#1a1a1a] rounded-2xl p-6">
@@ -346,10 +346,10 @@ export default function BlogPost6() {
                 Small Business Solutions
               </Link>
               <Link 
-                href="/trial" 
+                href="/pricing" 
                 className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-colors"
               >
-                Start Free Trial
+                Get Started
               </Link>
             </div>
           </div>

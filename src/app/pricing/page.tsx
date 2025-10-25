@@ -23,7 +23,7 @@ const pricingPlans = [
       'Custom integrations',
       'Phone support'
     ],
-    cta: 'Get Started',
+    cta: 'Buy Now',
     color: 'blue' as const,
     popular: true
   },
@@ -45,7 +45,7 @@ const pricingPlans = [
       'API access',
       'Custom workflows'
     ],
-    cta: 'Contact Sales',
+    cta: 'Buy Now',
     color: 'purple' as const
   }
 ];

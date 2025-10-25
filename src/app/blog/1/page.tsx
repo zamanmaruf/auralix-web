@@ -195,14 +195,14 @@ export default function BlogPost1() {
             <div className="bg-[#0a2a3a] rounded-xl p-6 mt-8">
               <h3 className="text-xl font-bold text-cyan-300 mb-3">Ready to Explore AI Automation?</h3>
               <p className="text-gray-300 mb-4">
-                Start your journey with a free trial of our AI automation platform. See how these trends
+                Start your journey with our AI automation platform. See how these trends
                 can transform your business operations.
               </p>
               <Link
-                href="/trial"
+                href="/pricing"
                 className="inline-block px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200"
               >
-                Start Free Trial
+                Get Started
               </Link>
             </div>
           </div>

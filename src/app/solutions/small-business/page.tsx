@@ -228,10 +228,10 @@ export default function SmallBusinessPage() {
         <p className="text-xl text-gray-300 mb-8">Join hundreds of small restaurants that trust Auralix AI to never miss a call or order.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="/trial"
+            href="/pricing"
             className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200"
           >
-            Start Free Trial
+            Get Started
           </a>
           <a
             href="/contact"

@@ -29,8 +29,8 @@ const pricingPlans: PricingPlan[] = [
       'Email Support',
       'Basic Analytics'
     ],
-    cta: 'Get Started',
-    href: '/contact'
+    cta: 'Buy Now',
+    href: 'https://buy.stripe.com/5kQ28rfoTcag3Ix4Rh73G00'
   },
   {
     name: 'Premium',
@@ -45,8 +45,8 @@ const pricingPlans: PricingPlan[] = [
       'Custom Integrations',
       'Dedicated Account Manager'
     ],
-    cta: 'Get Started',
-    href: '/contact',
+    cta: 'Buy Now',
+    href: 'https://buy.stripe.com/cNicN5ccH1vCa6V0B173G01',
     popular: true
   }
 ];
@@ -119,8 +119,10 @@ export default function PricingTableSimple() {
                 ))}
               </ul>
 
-              <Link
+              <a
                 href={plan.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-full block text-center py-3 px-6 rounded-lg font-semibold transition-all duration-200 ${
                   plan.popular
                     ? 'bg-primary-500 text-white hover:bg-primary-600 shadow-lg hover:shadow-xl'
@@ -128,7 +130,7 @@ export default function PricingTableSimple() {
                 }`}
               >
                 {plan.cta}
-              </Link>
+              </a>
             </motion.div>
           ))}
         </div>

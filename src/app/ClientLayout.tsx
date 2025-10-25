@@ -65,7 +65,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
             <Link href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</Link>
             <Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link>
-            <a href="/trial" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">Start Free Trial</a>
+            <a href="/pricing" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">View Pricing</a>
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -112,11 +112,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 Contact
               </Link>
               <a 
-                href="/trial" 
+                href="/pricing" 
                 className="block px-6 py-4 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold text-center mt-6"
                 onClick={closeMobileMenu}
               >
-                Start Free Trial
+                View Pricing
               </a>
             </div>
           </div>

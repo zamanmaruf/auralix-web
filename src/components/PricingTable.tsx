@@ -92,7 +92,9 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
               </ul>
               
               <a 
-                href="/contact"
+                href={plan.name === 'Pro' ? 'https://buy.stripe.com/5kQ28rfoTcag3Ix4Rh73G00' : 'https://buy.stripe.com/cNicN5ccH1vCa6V0B173G01'}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-full ${colors.bg} ${colors.hover} text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 text-center block hover:scale-105`}
               >
                 {plan.cta}

@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
             <p style="margin: 0; color: #2e7d32;">
               <strong>Ready to get started sooner?</strong> 
               <a href="https://calendly.com/auralix-ai/strategy-call" style="color: #14b8a6;">Book a strategy call</a> 
-              or <a href="/trial" style="color: #14b8a6;">start your free trial</a>.
+              or <a href="/pricing" style="color: #14b8a6;">view our pricing</a>.
             </p>
           </div>
           

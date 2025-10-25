@@ -241,10 +241,10 @@ export default function BlogPost5() {
                 Get Free ROI Analysis
               </Link>
               <Link 
-                href="/trial" 
+                href="/pricing" 
                 className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-colors"
               >
-                Start Free Trial
+                Get Started
               </Link>
             </div>
           </div>

@@ -148,10 +148,10 @@ export default function ContactPage() {
                 </p>
                 <div className="space-y-3">
                   <a
-                    href="/trial"
+                    href="/pricing"
                     className="block w-full px-6 py-3 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 text-center"
                   >
-                    Start Free Trial
+                    View Pricing
                   </a>
                   <a
                     href="https://calendly.com/auralix-ai/strategy-call"

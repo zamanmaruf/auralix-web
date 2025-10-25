@@ -163,10 +163,10 @@ export default function BlogPost2() {
                   Discover how Auralix AI can help your restaurant increase revenue and reduce operational costs through intelligent automation solutions.
                 </p>
                 <Link 
-                  href="/trial" 
+                  href="/pricing" 
                   className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-6 py-3 rounded-lg transition-all duration-200"
                 >
-                  Start Free Trial
+                  Get Started
                 </Link>
               </div>
             </div>

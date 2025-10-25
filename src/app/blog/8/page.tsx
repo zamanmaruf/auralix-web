@@ -305,10 +305,10 @@ export default function BlogPost8() {
                 Retail Solutions
               </Link>
               <Link 
-                href="/trial" 
+                href="/pricing" 
                 className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-colors"
               >
-                Start Free Trial
+                Get Started
               </Link>
             </div>
           </div>
