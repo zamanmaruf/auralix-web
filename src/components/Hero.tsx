@@ -70,30 +70,24 @@ export default function Hero({
         >
           {/* Live Demo Button - Most Prominent */}
           <a
-            href="tel:+16693566074"
+            href="tel:+14385333214"
             className="px-8 sm:px-12 py-5 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] hover:scale-105 flex items-center justify-center gap-3"
           >
             <Phone className="w-6 h-6" />
-            Call Live Demo: +1 669 356 6074
+            Call Live Demo: +1 438 533 3214
           </a>
           
           <p className="text-primary-200 text-lg font-semibold">
             Experience Auralix in action—call now and test it yourself
           </p>
           
-          {/* Other CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* Primary CTA */}
+          <div className="flex justify-center">
             <a 
               href={primaryCta.href} 
-              className="px-6 sm:px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px] hover:scale-105"
+              className="px-8 sm:px-12 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-full text-lg sm:text-xl shadow-lg transition-all duration-200 text-center min-w-[250px] hover:scale-105"
             >
               {primaryCta.text}
-            </a>
-            <a 
-              href={secondaryCta.href} 
-              className="px-6 sm:px-8 py-4 bg-transparent border-2 border-primary-400 hover:bg-primary-400 hover:text-black text-primary-300 font-bold rounded-full text-base sm:text-lg shadow-lg transition-all duration-200 text-center min-w-[200px]"
-            >
-              {secondaryCta.text}
             </a>
           </div>
         </motion.div>

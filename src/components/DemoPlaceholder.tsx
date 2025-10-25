@@ -48,11 +48,11 @@ export default function DemoPlaceholder() {
               <div className="bg-primary-50 border-2 border-primary-500 rounded-lg p-6 mb-6">
                 <div className="text-center">
                   <a
-                    href="tel:+16693566074"
+                    href="tel:+14385333214"
                     className="bg-primary-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:bg-primary-600 transition-all duration-200 flex items-center justify-center gap-3 mx-auto max-w-sm shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <Phone className="w-6 h-6" />
-                    Call Live Demo: +1 669 356 6074
+                    Call Live Demo: +1 438 533 3214
                   </a>
                   <p className="text-primary-800 font-semibold mt-3 mb-2">
                     Experience Auralix in action—call now and test it yourself
