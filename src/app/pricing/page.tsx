@@ -12,15 +12,11 @@ const pricingPlans = [
     setupFee: '$499 CAD',
     description: 'Most popular choice for growing restaurants',
     features: [
-      'AI Receptionist (voice)',
-      'Website & social chatbot',
-      'Order automation',
+      'AI voice agent',
       'Review collection',
-      'Advanced analytics',
-      'Priority support',
-      'Up to 3 locations',
       'Unlimited conversations',
-      'Custom integrations',
+      'Custom integration',
+      '1 location and 1 line',
       'Phone support'
     ],
     cta: 'Buy Now',
@@ -35,15 +31,11 @@ const pricingPlans = [
     description: 'Complete solution for multi-location restaurant chains',
     features: [
       'Everything in Pro',
-      'Multi-location management',
-      'Advanced reporting',
       'Custom AI training',
       'Dedicated account manager',
-      '24/7 phone support',
-      'Unlimited locations',
-      'White-label options',
-      'API access',
-      'Custom workflows'
+      'Phone support',
+      'Multi-location management',
+      'Up to 3 lines in total'
     ],
     cta: 'Buy Now',
     color: 'purple' as const
