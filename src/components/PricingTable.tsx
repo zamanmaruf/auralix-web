@@ -45,6 +45,7 @@ const colorClasses = {
     border: 'border-yellow-400',
     hover: 'hover:bg-yellow-400',
   },
+};
 
 export default function PricingTable({ plans, showROI = true }: PricingTableProps) {
   return (
