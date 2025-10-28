@@ -12,7 +12,7 @@ interface PricingPlan {
   features: string[];
   cta: string;
   popular?: boolean;
-  color: 'primary' | 'blue' | 'purple';
+  color: 'primary' | 'blue' | 'purple' | 'gold';
 }
 
 interface PricingTableProps {
@@ -39,13 +39,18 @@ const colorClasses = {
     border: 'border-purple-400',
     hover: 'hover:bg-purple-400',
   },
-};
+  gold: {
+    bg: 'bg-yellow-500',
+    text: 'text-yellow-400',
+    border: 'border-yellow-400',
+    hover: 'hover:bg-yellow-400',
+  },
 
 export default function PricingTable({ plans, showROI = true }: PricingTableProps) {
   return (
     <div className="w-full">
       {/* Pricing Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto">
         {plans.map((plan, index) => {
           const colors = colorClasses[plan.color];
           return (
@@ -92,9 +97,9 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
               </ul>
               
               <a 
-                href={plan.name === 'Pro' ? 'https://buy.stripe.com/5kQ28rfoTcag3Ix4Rh73G00' : 'https://buy.stripe.com/cNicN5ccH1vCa6V0B173G01'}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={plan.name === 'Pro' ? 'https://buy.stripe.com/5kQ28rfoTcag3Ix4Rh73G00' : plan.name === 'Premium' ? 'https://buy.stripe.com/cNicN5ccH1vCa6V0B173G01' : '/contact'}
+                target={plan.name === 'Enterprise' ? '_self' : '_blank'}
+                rel={plan.name === 'Enterprise' ? '' : 'noopener noreferrer'}
                 className={`w-full ${colors.bg} ${colors.hover} text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 text-center block hover:scale-105`}
               >
                 {plan.cta}

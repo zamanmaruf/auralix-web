@@ -39,8 +39,34 @@ const pricingPlans = [
     ],
     cta: 'Buy Now',
     color: 'purple' as const
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '/month',
+    setupFee: 'Custom',
+    description: 'Complete AI solution for hotels, resorts, and large hospitality groups',
+    features: [
+      'Everything in Premium',
+      'Unlimited properties',
+      'Unlimited phone lines',
+      'Multi-property management',
+      'Hotel-specific AI training',
+      'Concierge & booking automation',
+      'Room service automation',
+      'Guest experience analytics',
+      'White-label branding',
+      'API access & PMS integration',
+      '24/7 dedicated support',
+      'SLA guarantees',
+      'Custom integrations',
+      'Multi-language support',
+      'Priority feature requests'
+    ],
+    cta: 'Contact Sales',
+    color: 'gold' as const,
+    popular: false
   }
-];
 
 export default function PricingPage() {
   return (
