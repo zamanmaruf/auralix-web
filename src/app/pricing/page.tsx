@@ -67,6 +67,7 @@ const pricingPlans = [
     color: 'gold' as const,
     popular: false
   }
+];
 
 export default function PricingPage() {
   return (
