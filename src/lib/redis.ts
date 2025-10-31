@@ -11,12 +11,26 @@ class RedisManager {
       port: parseInt(process.env.REDIS_PORT || '6379'),
       password: process.env.REDIS_PASSWORD,
       db: parseInt(process.env.REDIS_DB || '0'),
-      retryDelayOnFailover: 100,
-      maxRetriesPerRequest: 3,
+      reconnectOnError: (err: Error) => {
+        const targetError = 'READONLY';
+        if (err.message.includes(targetError)) {
+          return true;
+        }
+        return false;
+      },
+      maxRetriesPerRequest: 1,
+      retryStrategy: (times: number) => {
+        if (times > 1) {
+          console.warn('⚠️ Redis unavailable, running without cache');
+          return null; // Stop retrying
+        }
+        return Math.min(times * 50, 2000);
+      },
       lazyConnect: true,
       keepAlive: 30000,
-      connectTimeout: 10000,
-      commandTimeout: 5000,
+      connectTimeout: 2000,
+      commandTimeout: 2000,
+      enableOfflineQueue: false,
     });
 
     this.setupEventHandlers();
@@ -225,5 +239,14 @@ class RedisManager {
   }
 }
 
-export const redisManager = RedisManager.getInstance();
+// Lazy initialization to prevent blocking on import
+let redisManagerInstance: ReturnType<typeof RedisManager.getInstance> | null = null;
+
+export const redisManager = (() => {
+  if (!redisManagerInstance) {
+    redisManagerInstance = RedisManager.getInstance();
+  }
+  return redisManagerInstance;
+})();
+
 export const redis = redisManager.getClient();

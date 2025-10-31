@@ -3,6 +3,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 import ClientLayout from './ClientLayout'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
+
 export const metadata: Metadata = {
   title: 'Auralix AI — AI Receptionist for Restaurants in Canada',
   description: 'Never miss a call again. Auralix AI answers restaurant phones 24/7, books tables, and captures orders — increasing bookings by 40%.',

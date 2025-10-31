@@ -78,7 +78,7 @@ export default function Hero({
           </a>
           
           <p className="text-primary-200 text-lg font-semibold">
-            Experience Auralix in action—call now and test it yourself
+            Experience our voice agent in action—call now and speak with AI
           </p>
           
           {/* Primary CTA */}
@@ -99,9 +99,9 @@ export default function Hero({
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 mt-8 opacity-80 px-4"
         >
-          <div className="text-white text-xs sm:text-sm">40% Increase in Bookings</div>
-          <div className="text-white text-xs sm:text-sm">60% Less Admin Time</div>
-          <div className="text-white text-xs sm:text-sm">25% Revenue Growth</div>
+          <div className="text-white text-xs sm:text-sm">99.9% Uptime</div>
+          <div className="text-white text-xs sm:text-sm">&lt;2s Response Time</div>
+          <div className="text-white text-xs sm:text-sm">15+ Languages</div>
           <div className="text-white text-xs sm:text-sm">SOC 2 & GDPR Compliant</div>
         </motion.div>
       </div>

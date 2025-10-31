@@ -1,67 +1,75 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Calculator, TrendingUp, Clock, DollarSign, Phone } from 'lucide-react';
+import { Check, Star, ArrowRight, Phone, TrendingUp, Clock, DollarSign, Users, Shield, Globe } from 'lucide-react';
 import PricingTable from '../../components/PricingTable';
 
 const pricingPlans = [
   {
-    name: 'Pro',
+    name: 'Starter',
     price: '$199',
     period: '/month',
-    setupFee: '$499 CAD',
-    description: 'Most popular choice for growing restaurants',
+    setupFee: '$499',
+    description: 'Perfect for small businesses getting started with voice AI',
+    callVolume: 'Up to 500 calls/month',
     features: [
-      'AI voice agent',
-      'Review collection',
-      'Unlimited conversations',
-      'Custom integration',
-      '1 location and 1 line',
-      'Phone support'
+      'Voice agent 24/7',
+      'Natural language processing',
+      'Appointment/booking management',
+      'Basic call routing',
+      'CRM integration',
+      'Email support',
+      'Single location',
+      '1 phone line'
     ],
-    cta: 'Buy Now',
+    cta: 'Get Started',
     color: 'blue' as const,
-    popular: true
+    popular: false
   },
   {
-    name: 'Premium',
-    price: '$599',
+    name: 'Professional',
+    price: '$499',
     period: '/month',
-    setupFee: '$599 CAD',
-    description: 'Complete solution for multi-location restaurant chains',
+    setupFee: '$799',
+    description: 'Ideal for growing businesses across industries',
+    callVolume: 'Up to 2,000 calls/month',
     features: [
-      'Everything in Pro',
+      'Everything in Starter',
+      'Advanced NLP capabilities',
+      'Multi-language support (5 languages)',
       'Custom AI training',
-      'Dedicated account manager',
-      'Phone support',
-      'Multi-location management',
-      'Up to 3 lines in total'
+      'Priority phone support',
+      'Multi-location support (up to 3)',
+      'Up to 3 phone lines',
+      'Advanced analytics dashboard',
+      'Custom integrations'
     ],
-    cta: 'Buy Now',
-    color: 'purple' as const
+    cta: 'Get Started',
+    color: 'purple' as const,
+    popular: true
   },
   {
     name: 'Enterprise',
     price: 'Custom',
     period: '/month',
     setupFee: 'Custom',
-    description: 'Complete AI solution for hotels, resorts, and large hospitality groups',
+    description: 'Scalable solution for large organizations and multi-location chains',
+    callVolume: 'Unlimited calls',
     features: [
-      'Everything in Premium',
-      'Unlimited properties',
+      'Everything in Professional',
       'Unlimited phone lines',
-      'Multi-property management',
-      'Hotel-specific AI training',
-      'Concierge & booking automation',
-      'Room service automation',
-      'Guest experience analytics',
-      'White-label branding',
-      'API access & PMS integration',
-      '24/7 dedicated support',
+      'Unlimited locations',
+      'Enterprise-grade security (SOC 2)',
+      'Dedicated account manager',
+      'Custom AI model training',
+      'White-label options',
+      'API access & webhooks',
+      'Multi-language support (15+ languages)',
+      '24/7 priority support',
       'SLA guarantees',
       'Custom integrations',
-      'Multi-language support',
-      'Priority feature requests'
+      'Advanced reporting & analytics',
+      'HIPAA compliance options'
     ],
     cta: 'Contact Sales',
     color: 'gold' as const,
@@ -81,7 +89,7 @@ export default function PricingPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Simple Pricing for Restaurant AI
+            Simple Pricing for Voice Agent SaaS
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +97,8 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
           >
-            Choose the plan that fits your restaurant size. Professional setup included with all plans.
+            Choose the plan that fits your business size. Professional setup included with all plans. 
+            Scales from single locations to enterprise chains.
           </motion.p>
           
           {/* Primary CTA */}
@@ -100,14 +109,14 @@ export default function PricingPage() {
             className="mb-8"
           >
             <a
-              href="/contact"
-              className="bg-accent-orange hover:bg-accent-orange/90 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-3 mx-auto max-w-md"
+              href="tel:+14385333214"
+              className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-3 mx-auto max-w-md"
             >
-              <DollarSign className="w-6 h-6" />
-              Choose Your Plan
+              <Phone className="w-6 h-6" />
+              Call Live Demo: +1 438 533 3214
             </a>
             <p className="text-primary-200 text-lg font-semibold mt-3">
-              Select the perfect plan for your restaurant and get started today
+              Experience our voice agent — call now to test it yourself
             </p>
           </motion.div>
           
@@ -115,32 +124,88 @@ export default function PricingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 text-sm text-neutral-400"
+            className="flex flex-wrap justify-center gap-6 text-sm text-neutral-400"
           >
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>Professional Setup</span>
+              <span>No setup fees on annual plans</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>No Contracts</span>
+              <span>Cancel anytime</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>Cancel Anytime</span>
+              <span>30-day money-back guarantee</span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Table */}
+      {/* Pricing Cards */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <PricingTable plans={pricingPlans} showROI={true} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan, index) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border-2 transition-all duration-300 ${
+                  plan.popular
+                    ? 'border-primary-500 scale-105 shadow-2xl'
+                    : 'border-neutral-700 hover:border-primary-500/50'
+                }`}
+              >
+                {plan.popular && (
+                  <div className="bg-primary-500 text-black text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">
+                    MOST POPULAR
+                  </div>
+                )}
+                
+                <h3 className="text-2xl font-bold text-white mb-2 font-heading">{plan.name}</h3>
+                <p className="text-neutral-400 mb-6">{plan.description}</p>
+                
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold text-white">{plan.price}</span>
+                    {plan.period && <span className="text-neutral-400">{plan.period}</span>}
+                  </div>
+                  <div className="text-sm text-neutral-400 mt-2">
+                    Setup: {plan.setupFee}
+                  </div>
+                  <div className="text-sm text-primary-400 mt-2 font-semibold">
+                    {plan.callVolume}
+                  </div>
+                </div>
+                
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-neutral-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <a
+                  href="/contact"
+                  className={`block w-full text-center py-3 rounded-lg font-bold transition-all duration-200 ${
+                    plan.popular
+                      ? 'bg-primary-500 hover:bg-primary-400 text-white'
+                      : 'bg-neutral-700 hover:bg-neutral-600 text-white'
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Industry-Specific Pricing Info */}
       <section className="py-16 px-4 bg-neutral-800/50">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -150,50 +215,50 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">How Our Pricing Works</h2>
-            <p className="text-lg text-neutral-300">Simple, transparent pricing with no hidden fees</p>
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Pricing That Scales with Your Industry</h2>
+            <p className="text-lg text-neutral-300">Our voice agent works across industries with flexible pricing</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                step: '1',
-                title: 'Choose Your Plan',
-                description: 'Select the plan that best fits your restaurant size and needs',
-                icon: Calculator,
-                color: 'blue'
+                icon: Users,
+                title: 'Dental Practices',
+                description: 'Perfect for managing patient appointments and inquiries',
+                recommended: 'Starter or Professional'
               },
               {
-                step: '2',
-                title: 'Professional Setup',
-                description: 'We handle the complete setup and integration for your restaurant',
-                icon: Check,
-                color: 'primary'
+                icon: Phone,
+                title: 'Restaurants',
+                description: 'Handle reservations and orders during peak hours',
+                recommended: 'Professional'
               },
               {
-                step: '3',
-                title: 'Scale as You Grow',
-                description: 'Upgrade or downgrade anytime as your restaurant expands',
-                icon: TrendingUp,
-                color: 'purple'
+                icon: Globe,
+                title: 'Hotel Chains',
+                description: 'Enterprise solution for multi-location operations',
+                recommended: 'Enterprise'
               }
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className={`w-16 h-16 bg-${step.color}-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4`}>
-                  {step.step}
-                </div>
-                <step.icon className={`w-8 h-8 text-${step.color}-400 mx-auto mb-4`} />
-                <h3 className="text-xl font-bold text-white mb-3 font-heading">{step.title}</h3>
-                <p className="text-neutral-300">{step.description}</p>
-              </motion.div>
-            ))}
+            ].map((industry, index) => {
+              const IndustryIcon = industry.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700"
+                >
+                  <IndustryIcon className="w-10 h-10 text-primary-400 mb-4" />
+                  <h3 className="text-xl font-bold text-white mb-2 font-heading">{industry.title}</h3>
+                  <p className="text-neutral-300 mb-4">{industry.description}</p>
+                  <div className="text-sm text-primary-400 font-semibold">
+                    Recommended: {industry.recommended}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -208,35 +273,30 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Pricing FAQs</h2>
-            <p className="text-lg text-neutral-300">Common questions about our pricing and plans</p>
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Frequently Asked Questions</h2>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                question: 'What\'s included in the setup fee?',
-                answer: 'The setup fee covers professional installation, configuration, and training for your restaurant staff. We handle all technical setup and ensure everything works perfectly before you go live.'
+                question: 'How are calls counted?',
+                answer: 'Each inbound call to your voice agent counts as one call. If a call is routed to a human agent, it still counts as one call.'
               },
               {
-                question: 'Can I change plans later?',
-                answer: 'Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we\'ll prorate any billing differences.'
+                question: 'What happens if I exceed my call limit?',
+                answer: 'We\'ll notify you when you\'re approaching your limit. You can upgrade your plan or purchase additional call credits. We never cut off service without notice.'
               },
               {
-                question: 'What are the setup fees?',
-                answer: 'Pro plan has a $499 CAD setup fee, and Premium plan has a $599 CAD setup fee. This covers professional installation and configuration.'
+                question: 'Can I switch plans?',
+                answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect on your next billing cycle.'
               },
               {
-                question: 'What happens if I exceed my plan limits?',
-                answer: 'We\'ll notify you before you reach your limits and offer options to upgrade. We never cut off service unexpectedly.'
+                question: 'Is professional setup included?',
+                answer: 'Yes, all plans include professional setup where our team configures your voice agent, integrates with your systems, and ensures everything works perfectly.'
               },
               {
-                question: 'Do you offer discounts for annual plans?',
-                answer: 'Yes! Annual plans include a 20% discount. Contact our sales team for custom enterprise pricing for large restaurant chains.'
-              },
-              {
-                question: 'What support is included?',
-                answer: 'Pro includes priority email and phone support, and Premium includes 24/7 phone support with a dedicated account manager.'
+                question: 'Do you offer multi-industry packages?',
+                answer: 'Our Enterprise plan can be customized for businesses operating across multiple industries or locations. Contact us for custom pricing.'
               }
             ].map((faq, index) => (
               <motion.div
@@ -247,7 +307,7 @@ export default function PricingPage() {
                 viewport={{ once: true }}
                 className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700"
               >
-                <h3 className="text-lg font-bold text-white mb-3 font-heading">{faq.question}</h3>
+                <h3 className="text-xl font-bold text-white mb-2 font-heading">{faq.question}</h3>
                 <p className="text-neutral-300">{faq.answer}</p>
               </motion.div>
             ))}
@@ -265,30 +325,26 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">
-              Ready to Transform Your Restaurant?
-            </h2>
-            <p className="text-lg text-neutral-300 mb-8">
-              Get started with Auralix AI today and see how we can help you never miss another call or order.
+            <h2 className="text-3xl font-bold text-white mb-6 font-heading">Ready to Get Started?</h2>
+            <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
+              Join businesses across industries that trust Auralix Voice Agent to handle their customer calls.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
                 Get Started
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="/contact"
-                className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+                href="tel:+14385333214"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
               >
-                Contact Sales
+                <Phone className="w-5 h-5" />
+                Call Demo
               </a>
             </div>
-            <p className="text-sm text-neutral-400 mt-4">
-              Professional setup included • No contracts • Cancel anytime
-            </p>
           </motion.div>
         </div>
       </section>

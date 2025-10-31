@@ -1,6 +1,28 @@
 import { db } from './database';
 import { redisManager } from './redis';
-import { AnalyticsType, ConversationStatus, MessageType, MessageRole } from '@prisma/client';
+// Enum-like constants for analytics
+const AnalyticsType = {
+  CONVERSATION_START: 'CONVERSATION_START',
+  CONVERSATION_END: 'CONVERSATION_END',
+  INTENT_RECOGNITION: 'INTENT_RECOGNITION',
+  ENTITY_EXTRACTION: 'ENTITY_EXTRACTION',
+  BOOKING_COMPLETED: 'BOOKING_COMPLETED',
+  ERROR_OCCURRED: 'ERROR_OCCURRED',
+  PERFORMANCE_METRIC: 'PERFORMANCE_METRIC',
+  USER_SATISFACTION: 'USER_SATISFACTION',
+} as const;
+
+const ConversationStatus = {
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  PENDING: 'PENDING',
+} as const;
+
+type AnalyticsType = string;
+type ConversationStatusType = string;
+type MessageType = string;
+type MessageRole = string;
 
 export interface AnalyticsEvent {
   type: AnalyticsType;
@@ -9,6 +31,9 @@ export interface AnalyticsEvent {
   metadata?: any;
   timestamp?: Date;
 }
+
+// Helper type for implicit any parameters
+type AnyFunction = (...args: any[]) => any;
 
 export interface ConversationMetrics {
   totalConversations: number;
@@ -193,15 +218,15 @@ class AnalyticsManager {
       });
 
       const totalConversations = conversations.length;
-      const activeConversations = conversations.filter(c => c.status === ConversationStatus.ACTIVE).length;
-      const completedConversations = conversations.filter(c => c.status === ConversationStatus.COMPLETED).length;
+      const activeConversations = conversations.filter((c: any) => c.status === ConversationStatusValue.ACTIVE).length;
+      const completedConversations = conversations.filter((c: any) => c.status === ConversationStatusValue.COMPLETED).length;
 
       // Calculate average response time
       const responseTimes = conversations
-        .map(c => c.processingTime)
-        .filter(time => time !== null) as number[];
+        .map((c: any) => c.processingTime)
+        .filter((time: number | null) => time !== null) as number[];
       const averageResponseTime = responseTimes.length > 0 
-        ? responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length 
+        ? responseTimes.reduce((sum: number, time: number) => sum + time, 0) / responseTimes.length 
         : 0;
 
       // Calculate success rate
@@ -224,7 +249,7 @@ class AnalyticsManager {
       });
 
       const intentRecognitionAccuracy = intentAnalytics.length > 0
-        ? intentAnalytics.reduce((sum, a) => sum + (a.data as any).confidence, 0) / intentAnalytics.length * 100
+        ? intentAnalytics.reduce((sum: number, a: any) => sum + (a.data as any).confidence, 0) / intentAnalytics.length * 100
         : 0;
 
       // Calculate entity extraction accuracy
@@ -242,7 +267,7 @@ class AnalyticsManager {
       });
 
       const entityExtractionAccuracy = entityAnalytics.length > 0
-        ? entityAnalytics.reduce((sum, a) => sum + (a.data as any).accuracy, 0) / entityAnalytics.length * 100
+        ? entityAnalytics.reduce((sum: number, a: any) => sum + (a.data as any).accuracy, 0) / entityAnalytics.length * 100
         : 0;
 
       return {
@@ -288,7 +313,7 @@ class AnalyticsManager {
       });
 
       const metrics: any = {};
-      performanceAnalytics.forEach(a => {
+      performanceAnalytics.forEach((a: any) => {
         const data = a.data as any;
         if (!metrics[data.metric]) {
           metrics[data.metric] = [];
@@ -297,7 +322,7 @@ class AnalyticsManager {
       });
 
       const calculateAverage = (values: number[]) => 
-        values.length > 0 ? values.reduce((sum, val) => sum + val, 0) / values.length : 0;
+        values.length > 0 ? values.reduce((sum: number, val: number) => sum + val, 0) / values.length : 0;
 
       return {
         apiResponseTime: calculateAverage(metrics.apiResponseTime || []),
@@ -337,15 +362,15 @@ class AnalyticsManager {
       });
 
       const totalBookings = bookings.length;
-      const completedBookings = bookings.filter(b => b.status === 'CONFIRMED' || b.status === 'COMPLETED').length;
+      const completedBookings = bookings.filter((b: any) => b.status === 'CONFIRMED' || b.status === 'COMPLETED').length;
       const bookingConversionRate = totalBookings > 0 ? (completedBookings / totalBookings) * 100 : 0;
 
       // Calculate average booking value
       const bookingValues = bookings
-        .map(b => b.totalAmount)
-        .filter(amount => amount !== null) as number[];
+        .map((b: any) => b.totalAmount)
+        .filter((amount: any) => amount !== null) as number[];
       const averageBookingValue = bookingValues.length > 0
-        ? bookingValues.reduce((sum, amount) => sum + amount, 0) / bookingValues.length
+        ? bookingValues.reduce((sum: number, amount: number) => sum + amount, 0) / bookingValues.length
         : 0;
 
       // Get customer satisfaction
@@ -363,12 +388,12 @@ class AnalyticsManager {
       });
 
       const customerSatisfaction = satisfactionAnalytics.length > 0
-        ? satisfactionAnalytics.reduce((sum, a) => sum + (a.data as any).rating, 0) / satisfactionAnalytics.length
+        ? satisfactionAnalytics.reduce((sum: number, a: any) => sum + (a.data as any).rating, 0) / satisfactionAnalytics.length
         : 0;
 
       // Get popular services
       const serviceCounts: { [key: string]: number } = {};
-      bookings.forEach(booking => {
+      bookings.forEach((booking: any) => {
         serviceCounts[booking.service] = (serviceCounts[booking.service] || 0) + 1;
       });
       const popularServices = Object.entries(serviceCounts)
@@ -378,7 +403,7 @@ class AnalyticsManager {
 
       // Get popular barbers
       const barberCounts: { [key: string]: number } = {};
-      bookings.forEach(booking => {
+      bookings.forEach((booking: any) => {
         barberCounts[booking.barber] = (barberCounts[booking.barber] || 0) + 1;
       });
       const popularBarbers = Object.entries(barberCounts)
@@ -448,9 +473,9 @@ class AnalyticsManager {
 
       const realTimeData = {
         activeConversations,
-        todayConversations: todayAnalytics.filter(a => a.type === AnalyticsType.CONVERSATION_START).length,
-        todayBookings: todayAnalytics.filter(a => a.type === AnalyticsType.BOOKING_COMPLETED).length,
-        todayErrors: todayAnalytics.filter(a => a.type === AnalyticsType.ERROR_OCCURRED).length,
+        todayConversations: todayAnalytics.filter((a: any) => a.type === AnalyticsType.CONVERSATION_START).length,
+        todayBookings: todayAnalytics.filter((a: any) => a.type === AnalyticsType.BOOKING_COMPLETED).length,
+        todayErrors: todayAnalytics.filter((a: any) => a.type === AnalyticsType.ERROR_OCCURRED).length,
         lastUpdated: new Date()
       };
 
@@ -489,7 +514,7 @@ class AnalyticsManager {
       if (format === 'csv') {
         // Convert to CSV format
         const csvHeaders = ['Type', 'Data', 'Metadata', 'Timestamp'];
-        const csvRows = analytics.map(a => [
+        const csvRows = analytics.map((a: any) => [
           a.type,
           JSON.stringify(a.data),
           JSON.stringify(a.metadata),

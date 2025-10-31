@@ -10,10 +10,10 @@ class DatabaseManager {
 
   private constructor() {
     this.prisma = global.__prisma || new PrismaClient({
-      log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+      log: process.env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
       datasources: {
         db: {
-          url: process.env.DATABASE_URL,
+          url: process.env.DATABASE_URL || 'postgresql://localhost:5432/postgres?connect_timeout=2',
         },
       },
     });
@@ -65,5 +65,22 @@ class DatabaseManager {
   }
 }
 
-export const db = DatabaseManager.getInstance().getClient();
-export const databaseManager = DatabaseManager.getInstance();
+// Lazy initialization to prevent blocking on import
+let dbInstance: ReturnType<typeof DatabaseManager.getInstance> | null = null;
+let managerInstance: ReturnType<typeof DatabaseManager.getInstance> | null = null;
+
+export const db = {
+  getInstance() {
+    if (!dbInstance) {
+      dbInstance = DatabaseManager.getInstance().getClient();
+    }
+    return dbInstance;
+  }
+}.getInstance();
+
+export const databaseManager = (() => {
+  if (!managerInstance) {
+    managerInstance = DatabaseManager.getInstance();
+  }
+  return managerInstance;
+})();

@@ -2,7 +2,15 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { db } from './database';
 import { redisManager } from './redis';
-import { UserRole } from '@prisma/client';
+// Enum-like constants for user roles
+const UserRole = {
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  TENANT_ADMIN: 'TENANT_ADMIN',
+  STAFF: 'STAFF',
+  CUSTOMER: 'CUSTOMER'
+} as const;
+
+type UserRole = string;
 
 export interface JWTPayload {
   userId: string;
@@ -73,7 +81,7 @@ class AuthManager {
           password: hashedPassword,
           firstName: userData.firstName,
           lastName: userData.lastName,
-          role: userData.role || UserRole.CUSTOMER,
+          role: userData.role || 'CUSTOMER',
           tenantId: userData.tenantId
         },
         select: {
@@ -214,8 +222,9 @@ class AuthManager {
       sessionId
     };
 
+    const expiresIn = typeof this.JWT_EXPIRES_IN === 'string' ? this.JWT_EXPIRES_IN : String(this.JWT_EXPIRES_IN);
     const token = jwt.sign(payload, this.JWT_SECRET, {
-      expiresIn: this.JWT_EXPIRES_IN
+      expiresIn
     });
 
     return { token, sessionId };
@@ -345,14 +354,14 @@ class AuthManager {
 
   // Role-based access control
   public hasPermission(userRole: UserRole, requiredRole: UserRole): boolean {
-    const roleHierarchy = {
+    const roleHierarchy: Record<string, number> = {
       [UserRole.SUPER_ADMIN]: 4,
       [UserRole.TENANT_ADMIN]: 3,
       [UserRole.STAFF]: 2,
       [UserRole.CUSTOMER]: 1
     };
 
-    return roleHierarchy[userRole] >= roleHierarchy[requiredRole];
+    return (roleHierarchy[userRole] || 0) >= (roleHierarchy[requiredRole] || 0);
   }
 
   // Check if user can access tenant
