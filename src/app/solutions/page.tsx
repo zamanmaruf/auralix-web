@@ -230,15 +230,12 @@ export default function SolutionsPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8"
           >
-            <a
-              href="tel:+14385333214"
-              className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-3 mx-auto max-w-md"
-            >
-              <Phone className="w-6 h-6" />
-              Call Live Demo: +1 438 533 3214
-            </a>
-            <p className="text-primary-200 text-lg font-semibold mt-3">
-              Experience our voice agent in action — call now and test it yourself
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl flex items-center justify-center gap-3 mx-auto max-w-md border-2 border-cyan-400/50">
+              <Phone className="w-6 h-6 animate-pulse" />
+              Talk to Auralix AI Voice Agent
+            </div>
+            <p className="text-primary-200 text-lg font-semibold mt-3 text-center">
+              Click the voice button in the bottom-right to start a live conversation. Ask about our solutions, see how we can help your business, or get pricing information.
             </p>
           </motion.div>
           

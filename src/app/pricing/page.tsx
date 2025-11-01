@@ -108,15 +108,12 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8"
           >
-            <a
-              href="tel:+14385333214"
-              className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 flex items-center justify-center gap-3 mx-auto max-w-md"
-            >
-              <Phone className="w-6 h-6" />
-              Call Live Demo: +1 438 533 3214
-            </a>
-            <p className="text-primary-200 text-lg font-semibold mt-3">
-              Experience our voice agent — call now to test it yourself
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl flex items-center justify-center gap-3 mx-auto max-w-md border-2 border-cyan-400/50">
+              <Phone className="w-6 h-6 animate-pulse" />
+              Talk to Auralix AI Voice Agent
+            </div>
+            <p className="text-primary-200 text-lg font-semibold mt-3 text-center">
+              Click the voice button in the bottom-right to speak with our AI agent. Get instant answers about pricing, features, or how we can help your business.
             </p>
           </motion.div>
           
@@ -337,13 +334,10 @@ export default function PricingPage() {
                 Get Started
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a
-                href="tel:+14385333214"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
-              >
-                <Phone className="w-5 h-5" />
-                Call Demo
-              </a>
+              <div className="inline-flex items-center gap-2 px-8 py-4 border-2 border-cyan-400 text-cyan-400 bg-gradient-to-r from-blue-600/20 to-purple-600/20 font-bold rounded-lg">
+                <Phone className="w-5 h-5 animate-pulse" />
+                Talk to AI Agent
+              </div>
             </div>
           </motion.div>
         </div>

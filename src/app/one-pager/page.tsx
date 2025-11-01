@@ -35,15 +35,12 @@ export default function OnePagerPage() {
             </p>
             
             <div className="mb-12">
-              <a
-                href="tel:+14385333214"
-                className="bg-primary-500 text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-primary-600 transition-all duration-200 flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl hover:shadow-3xl transform hover:scale-105"
-              >
-                <Phone className="w-8 h-8" />
-                Call Live Demo: +1 438 533 3214
-              </a>
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl border-2 border-cyan-400/50">
+                <Phone className="w-8 h-8 animate-pulse" />
+                Talk to Auralix AI Voice Agent
+              </div>
               <p className="text-lg text-primary-100 mt-4 max-w-2xl mx-auto">
-                Experience Auralix in action—call now and test it yourself
+                Click the voice button in the bottom-right to start a live conversation. Our AI agent can answer all your questions about Auralix.
               </p>
             </div>
 
@@ -220,15 +217,12 @@ export default function OnePagerPage() {
             </p>
             
             <div className="mb-8">
-              <a
-                href="tel:+14385333214"
-                className="bg-white text-primary-500 px-12 py-6 rounded-2xl font-bold text-2xl hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl hover:shadow-3xl transform hover:scale-105 mb-6"
-              >
-                <Phone className="w-8 h-8" />
-                Call Live Demo: +1 438 533 3214
-              </a>
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl border-2 border-cyan-400/50 mb-6">
+                <Phone className="w-8 h-8 animate-pulse" />
+                Talk to Auralix AI Voice Agent
+              </div>
               <p className="text-xl text-primary-100 mb-6 max-w-2xl mx-auto">
-                Experience Auralix in action—call now and test it yourself
+                Click the voice button in the bottom-right to start a live conversation. Our AI agent can answer all your questions about Auralix.
               </p>
             </div>
 

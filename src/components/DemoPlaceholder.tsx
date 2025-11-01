@@ -47,15 +47,12 @@ export default function DemoPlaceholder() {
               
               <div className="bg-primary-50 border-2 border-primary-500 rounded-lg p-6 mb-6">
                 <div className="text-center">
-                  <a
-                    href="tel:+14385333214"
-                    className="bg-primary-500 text-white px-8 py-4 rounded-xl font-bold text-xl hover:bg-primary-600 transition-all duration-200 flex items-center justify-center gap-3 mx-auto max-w-sm shadow-lg hover:shadow-xl transform hover:scale-105"
-                  >
-                    <Phone className="w-6 h-6" />
-                    Call Live Demo: +1 438 533 3214
-                  </a>
+                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-xl flex items-center justify-center gap-3 mx-auto max-w-sm shadow-lg border-2 border-cyan-400/50">
+                    <Phone className="w-6 h-6 animate-pulse" />
+                    Talk to Auralix AI Voice Agent
+                  </div>
                   <p className="text-primary-800 font-semibold mt-3 mb-2">
-                    Experience Auralix in action—call now and test it yourself
+                    Click the voice button in the bottom-right corner to start a live conversation with our AI agent
                   </p>
                   <p className="text-sm text-primary-700">
                     Try asking: "I'd like to make a reservation for tonight" or 

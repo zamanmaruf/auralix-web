@@ -68,17 +68,14 @@ export default function Hero({
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col gap-6 mb-8 justify-center items-center"
         >
-          {/* Live Demo Button - Most Prominent */}
-          <a
-            href="tel:+14385333214"
-            className="px-8 sm:px-12 py-5 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] hover:scale-105 flex items-center justify-center gap-3"
-          >
-            <Phone className="w-6 h-6" />
-            Call Live Demo: +1 438 533 3214
-          </a>
+          {/* Vapi Voice Assistant CTA */}
+          <div className="px-8 sm:px-12 py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] flex items-center justify-center gap-3 border-2 border-cyan-400/50">
+            <Phone className="w-6 h-6 animate-pulse" />
+            <span>Talk to Auralix AI Voice Agent</span>
+          </div>
           
-          <p className="text-primary-200 text-lg font-semibold">
-            Experience our voice agent in action—call now and speak with AI
+          <p className="text-primary-200 text-lg font-semibold text-center max-w-2xl">
+            Click the voice button in the bottom-right corner to start a live conversation with our AI agent. Ask about our solutions, pricing, or how we can help your business.
           </p>
           
           {/* Primary CTA */}
