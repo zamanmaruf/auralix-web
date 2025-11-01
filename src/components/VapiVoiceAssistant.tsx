@@ -23,33 +23,44 @@ export default function VapiVoiceAssistant() {
 
   useEffect(() => {
     if (!isInitialized && typeof window !== 'undefined') {
-      // Load Vapi widget from CDN
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js';
-      script.async = true;
-      script.defer = true;
-      script.onload = () => {
-        setIsInitialized(true);
-        // Initialize Vapi SDK after script loads
-        if (window.vapiSDK) {
-          const vapiInstance = window.vapiSDK.run({
-            apiKey: publicKey,
-            assistant: assistantId,
-            config: {},
-          });
-          (window as any).vapiInstance = vapiInstance;
-        }
-      };
-      script.onerror = () => {
-        console.error('Failed to load Vapi widget');
-      };
-      document.body.appendChild(script);
+      try {
+        // Load Vapi widget from CDN
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js';
+        script.async = true;
+        script.defer = true;
+        script.onload = () => {
+          try {
+            setIsInitialized(true);
+            // Initialize Vapi SDK after script loads
+            if (window.vapiSDK) {
+              const vapiInstance = window.vapiSDK.run({
+                apiKey: publicKey,
+                assistant: assistantId,
+                config: {},
+              });
+              (window as any).vapiInstance = vapiInstance;
+            }
+          } catch (error) {
+            console.error('Failed to initialize Vapi SDK:', error);
+            setIsInitialized(true); // Still mark as initialized to avoid retrying
+          }
+        };
+        script.onerror = () => {
+          console.error('Failed to load Vapi widget script');
+          setIsInitialized(true); // Mark as initialized anyway to avoid hanging
+        };
+        document.body.appendChild(script);
 
-      return () => {
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
-      };
+        return () => {
+          if (script.parentNode) {
+            script.parentNode.removeChild(script);
+          }
+        };
+      } catch (error) {
+        console.error('Failed to create Vapi script:', error);
+        setIsInitialized(true);
+      }
     }
   }, [isInitialized, publicKey, assistantId]);
 
