@@ -118,10 +118,14 @@ export default function VapiVoiceAssistant() {
   // Expose startCall globally so other components can trigger it
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      console.log('Exposing triggerVapiCall globally');
       (window as any).triggerVapiCall = startCall;
       
       // Listen for custom event to trigger call
-      const handleTriggerCall = () => startCall();
+      const handleTriggerCall = () => {
+        console.log('Received trigger-vapi-call event');
+        startCall();
+      };
       window.addEventListener('trigger-vapi-call', handleTriggerCall);
       
       return () => {
