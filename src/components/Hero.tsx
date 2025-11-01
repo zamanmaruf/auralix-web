@@ -71,9 +71,12 @@ export default function Hero({
           {/* Vapi Voice Assistant CTA */}
           <button
             onClick={() => {
+              console.log('🎯 [Hero CTA] Button clicked!');
               if ((window as any).triggerVapiCall) {
+                console.log('🎯 [Hero CTA] Calling triggerVapiCall()');
                 (window as any).triggerVapiCall();
               } else {
+                console.log('🎯 [Hero CTA] triggerVapiCall not found, dispatching event');
                 window.dispatchEvent(new Event('trigger-vapi-call'));
               }
             }}

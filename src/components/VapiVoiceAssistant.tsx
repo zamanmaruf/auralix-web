@@ -19,64 +19,92 @@ export default function VapiVoiceAssistant() {
   // Initialize Vapi
   useEffect(() => {
     if (!isInitialized && typeof window !== 'undefined') {
+      console.log('📞 [Vapi] Starting initialization...');
+      console.log('📞 [Vapi] Public Key:', publicKey);
+      
       try {
-        console.log('Initializing Vapi with public key:', publicKey);
-        // Initialize with just the public key
+        // Initialize with public key (API token)
         const vapi = new Vapi(publicKey);
+        console.log('📞 [Vapi] Constructor called successfully');
+        console.log('📞 [Vapi] Instance created:', vapi);
         
         // Set up event listeners
+        console.log('📞 [Vapi] Setting up event listeners...');
+        
         vapi.on('call-start', () => {
-          console.log('Call started');
+          console.log('✅ [Vapi] Event: Call started!');
           setCallStatus('in-call');
           setCallDuration(0);
         });
         
         vapi.on('call-end', () => {
-          console.log('Call ended');
+          console.log('✅ [Vapi] Event: Call ended!');
           setCallStatus('idle');
           setIsMinimized(false);
         });
         
         vapi.on('speech-start', () => {
-          console.log('Speech started');
+          console.log('📢 [Vapi] Event: Speech started');
         });
         
         vapi.on('speech-end', () => {
-          console.log('Speech ended');
+          console.log('📢 [Vapi] Event: Speech ended');
+        });
+        
+        vapi.on('call-start-progress', (event: any) => {
+          console.log('⏳ [Vapi] Call start progress:', event);
+        });
+        
+        vapi.on('call-start-success', (event: any) => {
+          console.log('✅ [Vapi] Call start success:', event);
+        });
+        
+        vapi.on('call-start-failed', (event: any) => {
+          console.error('❌ [Vapi] Call start failed:', event);
+          setCallStatus('idle');
         });
         
         vapi.on('error', (error: any) => {
-          console.error('Vapi error:', error);
+          console.error('❌ [Vapi] Error event:', error);
           setCallStatus('idle');
         });
+        
+        console.log('📞 [Vapi] Event listeners attached successfully');
         
         setVapiInstance(vapi);
         setIsInitialized(true);
         (window as any).vapiInstance = vapi;
-        console.log('Vapi initialized successfully');
+        
+        console.log('✅ [Vapi] Initialization complete!');
+        console.log('📞 [Vapi] Instance available on window.vapiInstance:', !!vapi);
       } catch (error) {
-        console.error('Failed to initialize Vapi:', error);
+        console.error('❌ [Vapi] Failed to initialize:', error);
         setIsInitialized(true); // Mark as initialized to prevent retry loops
       }
     }
   }, [isInitialized, publicKey]);
 
   const startCall = useCallback(async () => {
+    console.log('🔴 [StartCall] Button clicked, starting call...');
+    console.log('🔴 [StartCall] isInitialized:', isInitialized);
+    console.log('🔴 [StartCall] vapiInstance:', !!vapiInstance);
+    
     if (!isInitialized || !vapiInstance) {
-      console.error('Vapi not initialized yet');
+      console.error('❌ [StartCall] Vapi not initialized yet, cannot start call');
       return;
     }
 
+    console.log('🔴 [StartCall] Setting status to connecting...');
     setCallStatus('connecting');
     setIsMinimized(false);
 
     try {
-      console.log('Starting Vapi call with assistant:', assistantId);
-      // Start call with assistant ID
+      console.log('🔴 [StartCall] Calling vapiInstance.start() with assistant:', assistantId);
       await vapiInstance.start(assistantId);
+      console.log('✅ [StartCall] vapiInstance.start() completed');
       // Event listener will set status to 'in-call'
     } catch (error) {
-      console.error('Failed to start call:', error);
+      console.error('❌ [StartCall] Failed to start call:', error);
       setCallStatus('idle');
     }
   }, [isInitialized, vapiInstance, assistantId]);
@@ -84,10 +112,14 @@ export default function VapiVoiceAssistant() {
   // Expose startCall globally so other components can trigger it
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      console.log('🌐 [Global] Exposing triggerVapiCall globally');
       (window as any).triggerVapiCall = startCall;
       
       // Listen for custom event to trigger call
-      const handleTriggerCall = () => startCall();
+      const handleTriggerCall = () => {
+        console.log('🌐 [Global] Received trigger-vapi-call event');
+        startCall();
+      };
       window.addEventListener('trigger-vapi-call', handleTriggerCall);
       
       return () => {
@@ -110,11 +142,13 @@ export default function VapiVoiceAssistant() {
   }, [callStatus]);
 
   const endCall = () => {
+    console.log('🛑 [EndCall] Ending call...');
     if (vapiInstance) {
       try {
         vapiInstance.stop();
+        console.log('✅ [EndCall] Call stopped');
       } catch (error) {
-        console.error('Error stopping call:', error);
+        console.error('❌ [EndCall] Error stopping call:', error);
       }
     }
     setCallStatus('idle');
@@ -122,13 +156,15 @@ export default function VapiVoiceAssistant() {
   };
 
   const toggleMute = () => {
+    console.log('🔇 [Mute] Toggling mute, current state:', isMuted);
     if (vapiInstance && callStatus === 'in-call') {
       try {
         const newMutedState = !isMuted;
         vapiInstance.setMuted(newMutedState);
         setIsMuted(newMutedState);
+        console.log('✅ [Mute] Mute toggled to:', newMutedState);
       } catch (error) {
-        console.error('Error toggling mute:', error);
+        console.error('❌ [Mute] Error toggling mute:', error);
       }
     }
   };
