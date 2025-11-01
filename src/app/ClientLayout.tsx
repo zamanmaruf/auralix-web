@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Linkedin, Shield, Mail, Menu, X } from "lucide-react";
-import Chatbot from "../components/Chatbot";
+import VapiVoiceAssistant from "../components/VapiVoiceAssistant";
 import Logo from "../components/Logo";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -242,8 +242,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         </div>
       </footer>
       
-      {/* AI Chatbot */}
-      <Chatbot />
+      {/* AI Voice Assistant */}
+      <VapiVoiceAssistant />
     </div>
   );
 } 

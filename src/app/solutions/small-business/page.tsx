@@ -1,6 +1,5 @@
 'use client';
 import { FaRocket, FaUsers, FaChartLine, FaHeadset, FaShieldAlt, FaClock } from 'react-icons/fa';
-import { MdRestaurant, MdStore, MdContentCut } from 'react-icons/md';
 
 export default function SmallBusinessPage() {
   return (
@@ -134,30 +133,6 @@ export default function SmallBusinessPage() {
                 <span>Activity tracking</span>
               </li>
             </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries */}
-      <section className="max-w-4xl mx-auto py-16 px-4">
-        <div className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Perfect For These Restaurant Types</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <MdRestaurant className="text-4xl mb-4 text-cyan-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white mb-2">Small Restaurants</h3>
-              <p className="text-gray-300 text-sm">Never miss a reservation or order again</p>
-            </div>
-            <div className="text-center">
-              <MdStore className="text-4xl mb-4 text-cyan-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white mb-2">Cafés & Coffee Shops</h3>
-              <p className="text-gray-300 text-sm">Handle morning rush with AI order taking</p>
-            </div>
-            <div className="text-center">
-              <MdContentCut className="text-4xl mb-4 text-cyan-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white mb-2">Takeout & Delivery</h3>
-              <p className="text-gray-300 text-sm">Automate high-volume order management</p>
-            </div>
           </div>
         </div>
       </section>
