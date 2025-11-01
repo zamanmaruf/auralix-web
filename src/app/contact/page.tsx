@@ -169,7 +169,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Chatbot CTA */}
+      {/* Vapi Voice Assistant CTA */}
       <section className="py-16 px-4 bg-neutral-800/50">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -177,24 +177,37 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
+            className="bg-gradient-to-r from-blue-900/40 to-purple-900/40 backdrop-blur-sm rounded-2xl p-8 border-2 border-cyan-500/30"
           >
             <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center">
-                <MessageSquare className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                <Phone className="w-8 h-8 text-white animate-pulse" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-white font-heading">Want to see how Auralix can answer calls?</h2>
-                <p className="text-neutral-300">Try our live chatbot demo</p>
+                <p className="text-neutral-300">Try our live AI voice assistant</p>
               </div>
             </div>
             <p className="text-lg text-neutral-300 mb-6">
-              Click the chat bubble in the bottom-right corner to experience our AI assistant 
-              and see how it handles restaurant inquiries in real-time.
+              Click the voice button in the bottom-right corner to have a real conversation with our AI agent 
+              and see how it handles restaurant inquiries naturally and professionally.
             </p>
-            <div className="flex items-center justify-center gap-2 text-primary-400">
-              <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse" />
-              <span className="text-sm">Chat is online and ready to help</span>
+            <button
+              onClick={() => {
+                if ((window as any).triggerVapiCall) {
+                  (window as any).triggerVapiCall();
+                } else {
+                  window.dispatchEvent(new Event('trigger-vapi-call'));
+                }
+              }}
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 cursor-pointer flex items-center justify-center gap-3 mx-auto"
+            >
+              <Phone className="w-5 h-5 animate-pulse group-hover:rotate-12 transition-transform" />
+              Talk to Auralix AI Voice Agent
+            </button>
+            <div className="flex items-center justify-center gap-2 text-cyan-400 mt-4">
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+              <span className="text-sm">Voice AI is online and ready to help</span>
             </div>
           </motion.div>
         </div>
