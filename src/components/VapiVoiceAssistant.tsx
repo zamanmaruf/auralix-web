@@ -76,17 +76,33 @@ export default function VapiVoiceAssistant() {
     try {
       // Trigger Vapi widget to start call
       const vapiInstance = (window as any).vapiInstance;
+      console.log('Vapi instance:', vapiInstance);
+      
       if (vapiInstance) {
-        // Use send method to initiate conversation
-        vapiInstance.send({
-          type: "add-message",
-          message: {
-            role: "system",
-            content: "The user has clicked to start a conversation",
-          },
-        });
-        setCallStatus('in-call');
-        setCallDuration(0);
+        // Try start method first
+        if (typeof vapiInstance.start === 'function') {
+          console.log('Using start() method');
+          await vapiInstance.start();
+          setCallStatus('in-call');
+          setCallDuration(0);
+        } else if (typeof vapiInstance.send === 'function') {
+          console.log('Using send() method');
+          vapiInstance.send({
+            type: "add-message",
+            message: {
+              role: "system",
+              content: "The user has clicked to start a conversation",
+            },
+          });
+          setCallStatus('in-call');
+          setCallDuration(0);
+        } else {
+          console.error('Vapi instance has no start or send method', vapiInstance);
+          // Fallback: simulate call for UI purposes
+          console.log('Vapi widget not available, using fallback');
+          setCallStatus('in-call');
+          setCallDuration(0);
+        }
       } else {
         // Fallback: simulate call for UI purposes
         console.log('Vapi widget not available, using fallback');
