@@ -76,8 +76,15 @@ export default function VapiVoiceAssistant() {
     try {
       // Trigger Vapi widget to start call
       const vapiInstance = (window as any).vapiInstance;
-      if (vapiInstance && typeof vapiInstance.start === 'function') {
-        await vapiInstance.start();
+      if (vapiInstance) {
+        // Use send method to initiate conversation
+        vapiInstance.send({
+          type: "add-message",
+          message: {
+            role: "system",
+            content: "The user has clicked to start a conversation",
+          },
+        });
         setCallStatus('in-call');
         setCallDuration(0);
       } else {
