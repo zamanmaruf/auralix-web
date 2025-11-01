@@ -1,68 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Phone, ArrowRight, CheckCircle, Play, Pause, 
-  Clock, Users, TrendingUp, Shield, Star, DollarSign,
+  Phone, ArrowRight, CheckCircle, Clock, Users, TrendingUp, Shield, Star, DollarSign,
   Calendar, Headphones, Mic, Brain, Zap, Globe,
   Activity, Settings, Database, Lock, MessageCircle
 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function SolutionsPage() {
-  const [activeDemo, setActiveDemo] = useState('dental');
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const industryDemos = [
-    {
-      id: 'dental',
-      title: 'Dental Practice',
-      icon: Users,
-      color: 'blue',
-      transcript: [
-        { speaker: 'AI', message: 'Thank you for calling Bright Smile Dental. This is Auralix AI. How can I assist you today?' },
-        { speaker: 'Customer', message: 'Hi, I need to schedule a cleaning appointment.' },
-        { speaker: 'AI', message: 'I\'d be happy to help you schedule a cleaning appointment. Let me check our availability. What day works best for you?' },
-        { speaker: 'Customer', message: 'Next Tuesday morning would be perfect.' },
-        { speaker: 'AI', message: 'Great! I have availability at 10:00 AM or 11:30 AM on Tuesday. Which time do you prefer?' },
-        { speaker: 'Customer', message: '10 AM works for me.' },
-        { speaker: 'AI', message: 'Perfect! I\'ve scheduled your cleaning appointment for Tuesday at 10:00 AM. Can I get your name and phone number for the confirmation?' },
-        { speaker: 'Customer', message: 'Sure, it\'s John Smith, 555-1234.' },
-        { speaker: 'AI', message: 'Excellent! Your appointment is confirmed for Tuesday at 10:00 AM, John. We\'ll send you a confirmation text. Is there anything else I can help you with?' }
-      ]
-    },
-    {
-      id: 'restaurant',
-      title: 'Restaurant',
-      icon: Phone,
-      color: 'primary',
-      transcript: [
-        { speaker: 'AI', message: 'Thank you for calling The Harbor Restaurant. This is Auralix AI. How can I help you today?' },
-        { speaker: 'Customer', message: 'I\'d like to make a reservation for tonight at 7 PM for 4 people.' },
-        { speaker: 'AI', message: 'I\'d be happy to help with that! Let me check our availability for tonight at 7 PM for 4 people.' },
-        { speaker: 'AI', message: 'Perfect! We have a table available. Can I get your name and phone number for the reservation?' },
-        { speaker: 'Customer', message: 'Sure, it\'s Sarah Johnson, +1 555-9876.' },
-        { speaker: 'AI', message: 'Excellent! I\'ve confirmed your reservation for 4 people at 7 PM tonight under Sarah Johnson. We\'ll see you then!' }
-      ]
-    },
-    {
-      id: 'hotel',
-      title: 'Hotel Chain',
-      icon: Globe,
-      color: 'purple',
-      transcript: [
-        { speaker: 'AI', message: 'Thank you for calling Grand Hotel. This is Auralix AI. How may I assist you today?' },
-        { speaker: 'Customer', message: 'I need to book a room for this weekend.' },
-        { speaker: 'AI', message: 'I\'d be happy to help you book a room. What dates are you looking for?' },
-        { speaker: 'Customer', message: 'Friday and Saturday night, checking out Sunday.' },
-        { speaker: 'AI', message: 'Perfect! I have several room options available. Would you prefer a standard room, deluxe, or suite?' },
-        { speaker: 'Customer', message: 'Deluxe sounds good.' },
-        { speaker: 'AI', message: 'Great choice! I have a deluxe room available for Friday and Saturday nights at $199 per night. Can I get your name and contact information to complete the booking?' }
-      ]
-    }
-  ];
-
   const capabilities = [
     {
       icon: Brain,
@@ -255,8 +201,8 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Interactive Demo Section */}
-      <section className="py-16 px-4 bg-neutral-800/50">
+      {/* Vapi Voice Assistant Promotion Section */}
+      <section className="py-16 px-4 bg-gradient-to-b from-neutral-800/50 to-neutral-900/50">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -265,84 +211,101 @@ export default function SolutionsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">See It In Action</h2>
-            <p className="text-lg text-neutral-300">Experience how our voice agent works across different industries</p>
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Try Auralix AI Voice Agent</h2>
+            <p className="text-lg text-neutral-300">Ask our personal AI agent anything about how Auralix can help YOUR business</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Demo Controls */}
-            <div>
-              <div className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700">
-                <h3 className="text-xl font-bold text-white mb-6 font-heading">Try Different Industries</h3>
-                
-                <div className="space-y-4">
-                  {industryDemos.map((demo) => {
-                    const DemoIcon = demo.icon;
-                    return (
-                      <motion.button
-                        key={demo.id}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => setActiveDemo(demo.id)}
-                        className={`w-full p-4 rounded-lg text-left transition-all duration-200 ${
-                          activeDemo === demo.id 
-                            ? 'bg-primary-500 text-black' 
-                            : 'bg-neutral-700 text-white hover:bg-neutral-600'
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <DemoIcon className="w-5 h-5" />
-                          <div>
-                            <div className="font-semibold">{demo.title}</div>
-                            <div className="text-sm opacity-80">Voice Agent Demo</div>
-                          </div>
-                        </div>
-                      </motion.button>
-                    );
-                  })}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Information */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm rounded-2xl p-8 border-2 border-cyan-500/30"
+            >
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <Phone className="w-8 h-8 text-white animate-pulse" />
                 </div>
+                <h3 className="text-2xl font-bold text-white mb-4 text-center font-heading">Your Personal Auralix Agent</h3>
+                <p className="text-neutral-300 text-center mb-6">
+                  No matter what business you own, our AI voice agent can explain how Auralix solutions can help you specifically.
+                </p>
               </div>
-            </div>
 
-            {/* Demo Display */}
-            <div>
-              <div className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-white font-heading">
-                    {industryDemos.find(d => d.id === activeDemo)?.title} Call Demo
-                  </h3>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    className="w-10 h-10 bg-primary-500 text-black rounded-full flex items-center justify-center"
-                  >
-                    {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-                  </motion.button>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Ask About Solutions</h4>
+                    <p className="text-neutral-400 text-sm">"How can Auralix help my restaurant?" or "What solutions work for hotels?"</p>
+                  </div>
                 </div>
-                
-                <div className="bg-neutral-900 rounded-lg p-6 space-y-4 max-h-96 overflow-y-auto">
-                  {industryDemos.find(d => d.id === activeDemo)?.transcript.map((message, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.2 }}
-                      className={`p-3 rounded-lg ${
-                        message.speaker === 'AI' 
-                          ? 'bg-primary-500/20 text-primary-300 ml-8' 
-                          : 'bg-neutral-700 text-white mr-8'
-                      }`}
-                    >
-                      <div className="text-xs font-semibold mb-1 uppercase">
-                        {message.speaker === 'AI' ? 'Auralix Voice Agent' : 'Customer'}
-                      </div>
-                      <div>{message.message}</div>
-                    </motion.div>
-                  ))}
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Get Pricing Information</h4>
+                    <p className="text-neutral-400 text-sm">"What are your prices?" or "Do you have any current deals?"</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Understand Features</h4>
+                    <p className="text-neutral-400 text-sm">"What features are included?" or "How does the AI work?"</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">Setup & Support</h4>
+                    <p className="text-neutral-400 text-sm">"How long does setup take?" or "What kind of support do you offer?"</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Right: CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700"
+            >
+              <div className="text-center">
+                <div className="mb-8">
+                  <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mb-6 mx-auto shadow-2xl animate-pulse">
+                    <Phone className="w-12 h-12 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 font-heading">Start a Live Conversation</h3>
+                  <p className="text-lg text-neutral-300 mb-2">
+                    Click the voice button in the bottom-right corner to start talking with our AI agent right now.
+                  </p>
+                  <p className="text-neutral-400 text-sm mb-8">
+                    Natural conversation in your language. Ask anything about Auralix and how we can help your business.
+                  </p>
+                </div>
+
+                <div className="bg-cyan-950/30 border border-cyan-500/30 rounded-xl p-6 mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                  </div>
+                  <p className="text-neutral-300 italic mb-2">"The AI agent answered all my questions in perfect detail. I felt like I was talking to a real expert!"</p>
+                  <p className="text-cyan-400 text-sm font-semibold">- Restaurant Owner</p>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <p className="text-white font-bold text-lg">Ready to talk?</p>
+                  <p className="text-cyan-400 text-sm">Look for the pulsing phone icon below ⬇️</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
