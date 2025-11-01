@@ -16,27 +16,54 @@ export default function VapiVoiceAssistant() {
   const publicKey = '2f996291-e75b-44ad-b48b-1854d1ff955e';
   const assistantId = '4531b55b-3258-4bda-9a1e-98bad3048265';
 
+  // Initialize Vapi
   useEffect(() => {
     if (!isInitialized && typeof window !== 'undefined') {
       try {
-        // Initialize Vapi with NPM package
-        const vapi = new Vapi({
-          apiKey: publicKey,
-          assistantId: assistantId,
+        console.log('Initializing Vapi with public key:', publicKey);
+        // Initialize with just the public key
+        const vapi = new Vapi(publicKey);
+        
+        // Set up event listeners
+        vapi.on('call-start', () => {
+          console.log('Call started');
+          setCallStatus('in-call');
+          setCallDuration(0);
         });
+        
+        vapi.on('call-end', () => {
+          console.log('Call ended');
+          setCallStatus('idle');
+          setIsMinimized(false);
+        });
+        
+        vapi.on('speech-start', () => {
+          console.log('Speech started');
+        });
+        
+        vapi.on('speech-end', () => {
+          console.log('Speech ended');
+        });
+        
+        vapi.on('error', (error: any) => {
+          console.error('Vapi error:', error);
+          setCallStatus('idle');
+        });
+        
         setVapiInstance(vapi);
         setIsInitialized(true);
         (window as any).vapiInstance = vapi;
+        console.log('Vapi initialized successfully');
       } catch (error) {
         console.error('Failed to initialize Vapi:', error);
-        setIsInitialized(true); // Still mark as initialized to avoid retrying
+        setIsInitialized(true); // Mark as initialized to prevent retry loops
       }
     }
-  }, [isInitialized, publicKey, assistantId]);
+  }, [isInitialized, publicKey]);
 
   const startCall = useCallback(async () => {
     if (!isInitialized || !vapiInstance) {
-      console.error('Vapi not initialized');
+      console.error('Vapi not initialized yet');
       return;
     }
 
@@ -44,28 +71,23 @@ export default function VapiVoiceAssistant() {
     setIsMinimized(false);
 
     try {
-      // Start call using Vapi instance
-      console.log('Starting Vapi call');
-      await vapiInstance.start();
-      setCallStatus('in-call');
-      setCallDuration(0);
+      console.log('Starting Vapi call with assistant:', assistantId);
+      // Start call with assistant ID
+      await vapiInstance.start(assistantId);
+      // Event listener will set status to 'in-call'
     } catch (error) {
       console.error('Failed to start call:', error);
       setCallStatus('idle');
     }
-  }, [isInitialized, vapiInstance]);
+  }, [isInitialized, vapiInstance, assistantId]);
 
   // Expose startCall globally so other components can trigger it
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      console.log('Exposing triggerVapiCall globally');
       (window as any).triggerVapiCall = startCall;
       
       // Listen for custom event to trigger call
-      const handleTriggerCall = () => {
-        console.log('Received trigger-vapi-call event');
-        startCall();
-      };
+      const handleTriggerCall = () => startCall();
       window.addEventListener('trigger-vapi-call', handleTriggerCall);
       
       return () => {
@@ -73,7 +95,7 @@ export default function VapiVoiceAssistant() {
         window.removeEventListener('trigger-vapi-call', handleTriggerCall);
       };
     }
-  }, [startCall]); // Re-expose when startCall changes
+  }, [startCall]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -88,12 +110,27 @@ export default function VapiVoiceAssistant() {
   }, [callStatus]);
 
   const endCall = () => {
+    if (vapiInstance) {
+      try {
+        vapiInstance.stop();
+      } catch (error) {
+        console.error('Error stopping call:', error);
+      }
+    }
     setCallStatus('idle');
     setIsMinimized(false);
   };
 
   const toggleMute = () => {
-    setIsMuted((prev) => !prev);
+    if (vapiInstance && callStatus === 'in-call') {
+      try {
+        const newMutedState = !isMuted;
+        vapiInstance.setMuted(newMutedState);
+        setIsMuted(newMutedState);
+      } catch (error) {
+        console.error('Error toggling mute:', error);
+      }
+    }
   };
 
   const formatDuration = (seconds: number) => {
@@ -118,7 +155,7 @@ export default function VapiVoiceAssistant() {
     );
   }
 
-  // Full widget
+  // Full widget - idle state
   if (callStatus === 'idle' || callStatus === 'ended') {
     return (
       <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[60]">
@@ -223,4 +260,3 @@ export default function VapiVoiceAssistant() {
     </div>
   );
 }
-
