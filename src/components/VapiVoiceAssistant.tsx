@@ -2,13 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { Phone, PhoneOff, Volume2, VolumeX, Minimize2, X } from 'lucide-react';
-
-declare global {
-  interface Window {
-    Vapi: any;
-    vapiSDK: any;
-  }
-}
+import Vapi from '@vapi-ai/web';
 
 export default function VapiVoiceAssistant() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -17,6 +11,7 @@ export default function VapiVoiceAssistant() {
   const [callDuration, setCallDuration] = useState(0);
   const [isMinimized, setIsMinimized] = useState(false);
   const [showWidget, setShowWidget] = useState(true);
+  const [vapiInstance, setVapiInstance] = useState<any>(null);
 
   const publicKey = '2f996291-e75b-44ad-b48b-1854d1ff955e';
   const assistantId = '4531b55b-3258-4bda-9a1e-98bad3048265';
@@ -24,48 +19,23 @@ export default function VapiVoiceAssistant() {
   useEffect(() => {
     if (!isInitialized && typeof window !== 'undefined') {
       try {
-        // Load Vapi widget from CDN
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js';
-        script.async = true;
-        script.defer = true;
-        script.onload = () => {
-          try {
-            setIsInitialized(true);
-            // Initialize Vapi SDK after script loads
-            if (window.vapiSDK) {
-              const vapiInstance = window.vapiSDK.run({
-                apiKey: publicKey,
-                assistant: assistantId,
-                config: {},
-              });
-              (window as any).vapiInstance = vapiInstance;
-            }
-          } catch (error) {
-            console.error('Failed to initialize Vapi SDK:', error);
-            setIsInitialized(true); // Still mark as initialized to avoid retrying
-          }
-        };
-        script.onerror = () => {
-          console.error('Failed to load Vapi widget script');
-          setIsInitialized(true); // Mark as initialized anyway to avoid hanging
-        };
-        document.body.appendChild(script);
-
-        return () => {
-          if (script.parentNode) {
-            script.parentNode.removeChild(script);
-          }
-        };
-      } catch (error) {
-        console.error('Failed to create Vapi script:', error);
+        // Initialize Vapi with NPM package
+        const vapi = new Vapi({
+          apiKey: publicKey,
+          assistantId: assistantId,
+        });
+        setVapiInstance(vapi);
         setIsInitialized(true);
+        (window as any).vapiInstance = vapi;
+      } catch (error) {
+        console.error('Failed to initialize Vapi:', error);
+        setIsInitialized(true); // Still mark as initialized to avoid retrying
       }
     }
   }, [isInitialized, publicKey, assistantId]);
 
   const startCall = useCallback(async () => {
-    if (!isInitialized) {
+    if (!isInitialized || !vapiInstance) {
       console.error('Vapi not initialized');
       return;
     }
@@ -74,46 +44,16 @@ export default function VapiVoiceAssistant() {
     setIsMinimized(false);
 
     try {
-      // Trigger Vapi widget to start call
-      const vapiInstance = (window as any).vapiInstance;
-      console.log('Vapi instance:', vapiInstance);
-      
-      if (vapiInstance) {
-        // Try start method first
-        if (typeof vapiInstance.start === 'function') {
-          console.log('Using start() method');
-          await vapiInstance.start();
-          setCallStatus('in-call');
-          setCallDuration(0);
-        } else if (typeof vapiInstance.send === 'function') {
-          console.log('Using send() method');
-          vapiInstance.send({
-            type: "add-message",
-            message: {
-              role: "system",
-              content: "The user has clicked to start a conversation",
-            },
-          });
-          setCallStatus('in-call');
-          setCallDuration(0);
-        } else {
-          console.error('Vapi instance has no start or send method', vapiInstance);
-          // Fallback: simulate call for UI purposes
-          console.log('Vapi widget not available, using fallback');
-          setCallStatus('in-call');
-          setCallDuration(0);
-        }
-      } else {
-        // Fallback: simulate call for UI purposes
-        console.log('Vapi widget not available, using fallback');
-        setCallStatus('in-call');
-        setCallDuration(0);
-      }
+      // Start call using Vapi instance
+      console.log('Starting Vapi call');
+      await vapiInstance.start();
+      setCallStatus('in-call');
+      setCallDuration(0);
     } catch (error) {
       console.error('Failed to start call:', error);
       setCallStatus('idle');
     }
-  }, [isInitialized]);
+  }, [isInitialized, vapiInstance]);
 
   // Expose startCall globally so other components can trigger it
   useEffect(() => {
