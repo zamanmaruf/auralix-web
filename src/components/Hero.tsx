@@ -69,10 +69,19 @@ export default function Hero({
           className="flex flex-col gap-6 mb-8 justify-center items-center"
         >
           {/* Vapi Voice Assistant CTA */}
-          <div className="px-8 sm:px-12 py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] flex items-center justify-center gap-3 border-2 border-cyan-400/50">
-            <Phone className="w-6 h-6 animate-pulse" />
+          <button
+            onClick={() => {
+              if ((window as any).triggerVapiCall) {
+                (window as any).triggerVapiCall();
+              } else {
+                window.dispatchEvent(new Event('trigger-vapi-call'));
+              }
+            }}
+            className="group px-8 sm:px-12 py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] flex items-center justify-center gap-3 border-2 border-cyan-400/50 hover:scale-105 cursor-pointer"
+          >
+            <Phone className="w-6 h-6 animate-pulse group-hover:rotate-12 transition-transform" />
             <span>Talk to Auralix AI Voice Agent</span>
-          </div>
+          </button>
           
           <p className="text-primary-200 text-lg font-semibold text-center max-w-2xl">
             Click the voice button in the bottom-right corner to start a live conversation with our AI agent. Ask about our solutions, pricing, or how we can help your business.

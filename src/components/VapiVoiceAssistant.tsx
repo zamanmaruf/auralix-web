@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Phone, PhoneOff, Volume2, VolumeX, Minimize2, X } from 'lucide-react';
 
 declare global {
@@ -53,6 +53,22 @@ export default function VapiVoiceAssistant() {
     }
   }, [isInitialized, publicKey, assistantId]);
 
+  // Expose startCall globally so other components can trigger it
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).triggerVapiCall = startCall;
+      
+      // Listen for custom event to trigger call
+      const handleTriggerCall = () => startCall();
+      window.addEventListener('trigger-vapi-call', handleTriggerCall);
+      
+      return () => {
+        delete (window as any).triggerVapiCall;
+        window.removeEventListener('trigger-vapi-call', handleTriggerCall);
+      };
+    }
+  }, [isInitialized, startCall]); // Re-expose when initialized
+
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
     if (callStatus === 'in-call') {
@@ -65,7 +81,7 @@ export default function VapiVoiceAssistant() {
     };
   }, [callStatus]);
 
-  const startCall = async () => {
+  const startCall = useCallback(async () => {
     if (!isInitialized) {
       console.error('Vapi not initialized');
       return;
@@ -91,7 +107,7 @@ export default function VapiVoiceAssistant() {
       console.error('Failed to start call:', error);
       setCallStatus('idle');
     }
-  };
+  }, [isInitialized]);
 
   const endCall = () => {
     setCallStatus('idle');

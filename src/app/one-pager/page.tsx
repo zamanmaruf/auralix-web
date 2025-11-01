@@ -35,10 +35,19 @@ export default function OnePagerPage() {
             </p>
             
             <div className="mb-12">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl border-2 border-cyan-400/50">
-                <Phone className="w-8 h-8 animate-pulse" />
+              <button
+                onClick={() => {
+                  if ((window as any).triggerVapiCall) {
+                    (window as any).triggerVapiCall();
+                  } else {
+                    window.dispatchEvent(new Event('trigger-vapi-call'));
+                  }
+                }}
+                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl border-2 border-cyan-400/50 hover:scale-105 transition-all duration-200 cursor-pointer"
+              >
+                <Phone className="w-8 h-8 animate-pulse group-hover:rotate-12 transition-transform" />
                 Talk to Auralix AI Voice Agent
-              </div>
+              </button>
               <p className="text-lg text-primary-100 mt-4 max-w-2xl mx-auto">
                 Click the voice button in the bottom-right to start a live conversation. Our AI agent can answer all your questions about Auralix.
               </p>
@@ -217,10 +226,19 @@ export default function OnePagerPage() {
             </p>
             
             <div className="mb-8">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl border-2 border-cyan-400/50 mb-6">
-                <Phone className="w-8 h-8 animate-pulse" />
+              <button
+                onClick={() => {
+                  if ((window as any).triggerVapiCall) {
+                    (window as any).triggerVapiCall();
+                  } else {
+                    window.dispatchEvent(new Event('trigger-vapi-call'));
+                  }
+                }}
+                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-3 mx-auto max-w-md shadow-2xl border-2 border-cyan-400/50 mb-6 hover:scale-105 transition-all duration-200 cursor-pointer"
+              >
+                <Phone className="w-8 h-8 animate-pulse group-hover:rotate-12 transition-transform" />
                 Talk to Auralix AI Voice Agent
-              </div>
+              </button>
               <p className="text-xl text-primary-100 mb-6 max-w-2xl mx-auto">
                 Click the voice button in the bottom-right to start a live conversation. Our AI agent can answer all your questions about Auralix.
               </p>

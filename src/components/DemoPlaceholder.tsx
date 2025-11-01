@@ -47,10 +47,19 @@ export default function DemoPlaceholder() {
               
               <div className="bg-primary-50 border-2 border-primary-500 rounded-lg p-6 mb-6">
                 <div className="text-center">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-xl flex items-center justify-center gap-3 mx-auto max-w-sm shadow-lg border-2 border-cyan-400/50">
-                    <Phone className="w-6 h-6 animate-pulse" />
+                  <button
+                    onClick={() => {
+                      if ((window as any).triggerVapiCall) {
+                        (window as any).triggerVapiCall();
+                      } else {
+                        window.dispatchEvent(new Event('trigger-vapi-call'));
+                      }
+                    }}
+                    className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-bold text-xl flex items-center justify-center gap-3 mx-auto max-w-sm shadow-lg border-2 border-cyan-400/50 hover:scale-105 transition-all duration-200 cursor-pointer"
+                  >
+                    <Phone className="w-6 h-6 animate-pulse group-hover:rotate-12 transition-transform" />
                     Talk to Auralix AI Voice Agent
-                  </div>
+                  </button>
                   <p className="text-primary-800 font-semibold mt-3 mb-2">
                     Click the voice button in the bottom-right corner to start a live conversation with our AI agent
                   </p>
