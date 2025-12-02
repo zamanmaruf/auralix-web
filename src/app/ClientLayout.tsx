@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Linkedin, Shield, Mail, Menu, X } from "lucide-react";
 import VapiVoiceAssistant from "../components/VapiVoiceAssistant";
 import Logo from "../components/Logo";
+import ErrorBoundary from "../components/ErrorBoundary";
+import CookieConsent from "../components/CookieConsent";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,6 +16,23 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     console.log("ClientLayout mounted");
+    
+    // Initialize GA4 only if user has consented to cookies
+    if (typeof window !== 'undefined') {
+      const consent = localStorage.getItem('auralix_cookie_consent');
+      if (consent) {
+        try {
+          const consentData = JSON.parse(consent);
+          if (consentData.accepted) {
+            import('@/lib/ga4').then(({ initGA4 }) => {
+              initGA4();
+            });
+          }
+        } catch {
+          // Invalid consent data, don't initialize
+        }
+      }
+    }
   }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -52,27 +71,32 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   return (
     <div>
-      <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] bg-opacity-95 border-b border-[#1a1a1a] shadow-lg backdrop-blur-sm">
-        <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4 relative">
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
+      <header className="sticky top-0 z-50 w-full bg-[#0a0a0a] bg-opacity-95 border-b border-[#1a1a1a] shadow-lg backdrop-blur-sm" role="banner">
+        <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4 relative" role="navigation" aria-label="Main navigation">
           <div className="flex-1 flex items-center">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center" aria-label="Auralix AI Home">
               <Logo width={70} height={25} className="drop-shadow-glow" />
             </Link>
           </div>
           {/* Desktop Nav */}
           <div className="hidden md:flex flex-1 justify-end gap-10 text-lg items-center">
-            <Link href="/solutions" className="hover:text-cyan-400 transition-colors">Solutions</Link>
-            <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
-            <Link href="/about-us" className="hover:text-cyan-400 transition-colors">About Us</Link>
-            <Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link>
-            <a href="/pricing" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2">View Pricing</a>
+            <Link href="/solutions" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="View Solutions">Solutions</Link>
+            <Link href="/pricing" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="View Pricing">Pricing</Link>
+            <Link href="/about-us" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="About Us">About Us</Link>
+            <Link href="/contact" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="Contact Us">Contact</Link>
+            <a href="/pricing" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2" aria-label="View Pricing Plans">View Pricing</a>
           </div>
-          {/* Mobile menu button */}
+          {/* Mobile menu button - Ensure minimum touch target size (44x44px) */}
           <div className="md:hidden">
             <button 
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-white hover:text-cyan-400 p-3 rounded-lg hover:bg-[#1a1a1a] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              className="text-white hover:text-cyan-400 p-3 rounded-lg hover:bg-[#1a1a1a] transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Toggle mobile menu"
+              aria-expanded={menuOpen}
             >
               {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -122,10 +146,14 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           </div>
         )}
       </header>
-      <main className="min-h-screen">{children}</main>
+      <main id="main-content" className="min-h-screen" role="main">
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
+      </main>
       
       {/* Professional Footer */}
-      <footer className="w-full bg-[#0a0a0a] border-t border-[#222] py-12 mt-10">
+      <footer className="w-full bg-[#0a0a0a] border-t border-[#222] py-12 mt-10" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
@@ -148,12 +176,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Solutions</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Solution</h3>
               <ul className="space-y-3 text-sm text-gray-300">
-                <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors block py-1">AI Receptionist</Link></li>
-                <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors block py-1">Chatbot</Link></li>
-                <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors block py-1">Automation</Link></li>
-                <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors block py-1">Restaurant Websites</Link></li>
+                <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors block py-1">Enterprise-Grade Voice Agent</Link></li>
               </ul>
             </div>
 
@@ -179,7 +204,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                   <span className="break-all">auralixai@gmail.com</span>
                 </div>
                 <div className="text-gray-400">
-                  Halifax, Nova Scotia, Canada
+                  1800 Argyle Street, Halifax, Nova Scotia, Canada
                 </div>
               </div>
             </div>
@@ -244,6 +269,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       
       {/* AI Voice Assistant */}
       <VapiVoiceAssistant />
+      
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 } 

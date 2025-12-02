@@ -15,7 +15,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Auralix AI Assistant, specialized in restaurant automation. We help restaurants never miss another call with our AI solutions:\n\n• AI Receptionist (Voice)\n• Website & Social Chatbot\n• Order & Review Automation\n• Restaurant Websites with AI\n\nWhat would you like to know about automating your restaurant?",
+      text: "Hi! I'm Auralix AI Assistant. We provide an Enterprise-Grade Voice Agent that helps restaurants never miss another call. Our voice AI handles phone calls, appointments, and customer service 24/7.\n\nWhat would you like to know about our Enterprise-Grade Voice Agent?",
       sender: 'bot',
       timestamp: new Date()
     }

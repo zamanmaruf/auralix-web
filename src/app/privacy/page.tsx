@@ -472,7 +472,7 @@ export default function PrivacyPage() {
                   <strong>Email:</strong> auralixai@gmail.com
                 </div>
                 <div>
-                  <strong>Phone:</strong> +1 9024414928
+                  <strong>Phone:</strong> +1 (782) 882-8635
                 </div>
               </div>
             </div>
@@ -497,7 +497,7 @@ export default function PrivacyPage() {
                   <h3 className="text-xl font-bold text-white mb-4">Privacy Questions</h3>
                   <div className="space-y-3 text-gray-300">
                     <p><strong>Email:</strong> auralixai@gmail.com</p>
-                    <p><strong>Phone:</strong> +1 9024414928</p>
+                    <p><strong>Phone:</strong> +1 (782) 882-8635</p>
                     <p><strong>Response Time:</strong> Within 48 hours</p>
                   </div>
                 </div>
@@ -508,7 +508,7 @@ export default function PrivacyPage() {
                   <h3 className="text-xl font-bold text-white mb-4">Company Information</h3>
                   <div className="space-y-3 text-gray-300">
                     <p><strong>Company:</strong> Auralix AI Inc.</p>
-                    <p><strong>Address:</strong> Halifax, Nova Scotia, Canada</p>
+                    <p><strong>Address:</strong> 1800 Argyle Street, Halifax, Nova Scotia, Canada</p>
                     <p><strong>Legal Entity:</strong> Canadian Corporation</p>
                   </div>
                 </div>

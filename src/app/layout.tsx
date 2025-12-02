@@ -51,8 +51,84 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Structured Data (JSON-LD) for Organization
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Auralix AI',
+    url: 'https://auralix.ai',
+    logo: 'https://auralix.ai/auralix_logo.jpeg',
+    description: 'Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for restaurants, dental practices, and service businesses.',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1800 Argyle Street',
+      addressLocality: 'Halifax',
+      addressRegion: 'Nova Scotia',
+      addressCountry: 'CA',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-782-882-8635',
+      contactType: 'Customer Service',
+      email: 'auralixai@gmail.com',
+      areaServed: 'CA',
+      availableLanguage: ['en', 'fr'],
+    },
+    sameAs: [
+      'https://linkedin.com/company/auralix-ai',
+    ],
+  };
+
+  // LocalBusiness Schema
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Auralix AI',
+    image: 'https://auralix.ai/auralix_logo.jpeg',
+    '@id': 'https://auralix.ai',
+    url: 'https://auralix.ai',
+    telephone: '+1-782-882-8635',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1800 Argyle Street',
+      addressLocality: 'Halifax',
+      addressRegion: 'Nova Scotia',
+      postalCode: 'B3J',
+      addressCountry: 'CA',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 44.6488,
+      longitude: -63.5752,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+      ],
+      opens: '09:00',
+      closes: '18:00',
+      timeZone: 'America/Halifax',
+    },
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body>
         <ClientLayout>
           {children}

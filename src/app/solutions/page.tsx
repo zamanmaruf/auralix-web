@@ -190,7 +190,7 @@ export default function SolutionsPage() {
               Talk to Auralix AI Voice Agent
             </button>
             <p className="text-primary-200 text-lg font-semibold mt-3 text-center">
-              Click the voice button in the bottom-right to start a live conversation. Ask about our solutions, see how we can help your business, or get pricing information.
+              Click the voice button in the bottom-right to start a live conversation. Ask about our Enterprise-Grade Voice Agent, see how we can help your business, or get pricing information.
             </p>
           </motion.div>
           
@@ -239,7 +239,7 @@ export default function SolutionsPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4 text-center font-heading">Your Personal Auralix Agent</h3>
                 <p className="text-neutral-300 text-center mb-6">
-                  No matter what business you own, our AI voice agent can explain how Auralix solutions can help you specifically.
+                  No matter what business you own, our Enterprise-Grade Voice Agent can explain how Auralix can help you specifically.
                 </p>
               </div>
 
@@ -247,8 +247,8 @@ export default function SolutionsPage() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="text-white font-semibold mb-1">Ask About Solutions</h4>
-                    <p className="text-neutral-400 text-sm">"How can Auralix help my restaurant?" or "What solutions work for hotels?"</p>
+                    <h4 className="text-white font-semibold mb-1">Ask About Our Voice Agent</h4>
+                    <p className="text-neutral-400 text-sm">"How can Auralix help my restaurant?" or "What can the voice agent do for hotels?"</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -376,7 +376,7 @@ export default function SolutionsPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">Industry-Specific Applications</h2>
-            <p className="text-lg text-neutral-300">Tailored voice agent solutions for your industry</p>
+            <p className="text-lg text-neutral-300">Tailored Enterprise-Grade Voice Agent for your industry</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

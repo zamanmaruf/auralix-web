@@ -411,7 +411,7 @@ const BrochurePage = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary-400" />
-                <span>Halifax, Nova Scotia, Canada</span>
+                <span>1800 Argyle Street, Halifax, Nova Scotia, Canada</span>
               </div>
             </div>
           </div>

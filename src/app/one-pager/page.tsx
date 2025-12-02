@@ -79,7 +79,7 @@ export default function OnePagerPage() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-5 h-5" />
-                <span>+1 9024414928</span>
+                <span>+1 (782) 882-8635</span>
               </div>
             </div>
           </motion.div>
@@ -274,11 +274,11 @@ export default function OnePagerPage() {
                   marufzaman@auralixai.ca
                 </a>
                 <a
-                  href="tel:+19024414928"
+                  href="tel:+17828828635"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
                   <Phone className="w-5 h-5" />
-                  +1 9024414928
+                  +1 (782) 882-8635
                 </a>
               </div>
             </div>
@@ -298,7 +298,7 @@ export default function OnePagerPage() {
               </p>
               <div className="flex items-center gap-2 text-gray-300">
                 <MapPin className="w-4 h-4" />
-                <span>Halifax, Nova Scotia, Canada</span>
+                <span>1800 Argyle Street, Halifax, Nova Scotia, Canada</span>
               </div>
             </div>
             
@@ -313,8 +313,8 @@ export default function OnePagerPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <a href="tel:+19024414928" className="hover:text-white transition-colors">
-                    +1 9024414928
+                  <a href="tel:+17828828635" className="hover:text-white transition-colors">
+                    +1 (782) 882-8635
                   </a>
                 </div>
               </div>

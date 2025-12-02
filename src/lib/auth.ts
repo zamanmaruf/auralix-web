@@ -1,33 +1,12 @@
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcryptjs';
 import { db } from './database';
 import { redisManager } from './redis';
-// Enum-like constants for user roles
-const UserRole = {
-  SUPER_ADMIN: 'SUPER_ADMIN',
-  TENANT_ADMIN: 'TENANT_ADMIN',
-  STAFF: 'STAFF',
-  CUSTOMER: 'CUSTOMER'
-} as const;
+import { UserRole } from './types/prisma';
+import type { JWTPayload, AuthResult } from './types/auth';
+import type { PrismaUserRole } from './types/prisma';
 
-type UserRole = string;
-
-export interface JWTPayload {
-  userId: string;
-  email: string;
-  role: UserRole;
-  tenantId?: string;
-  sessionId: string;
-  iat?: number;
-  exp?: number;
-}
-
-export interface AuthResult {
-  success: boolean;
-  user?: any;
-  token?: string;
-  error?: string;
-}
+// Types are now imported from ./types/auth
 
 class AuthManager {
   private static instance: AuthManager;
@@ -81,7 +60,7 @@ class AuthManager {
           password: hashedPassword,
           firstName: userData.firstName,
           lastName: userData.lastName,
-          role: userData.role || 'CUSTOMER',
+          role: (userData.role || UserRole.CUSTOMER) as PrismaUserRole,
           tenantId: userData.tenantId
         },
         select: {
@@ -214,18 +193,18 @@ class AuthManager {
     }
 
     // Generate JWT token
+    // Note: user.role is Prisma's UserRole enum, which is compatible with our UserRole enum
     const payload: JWTPayload = {
       userId: user!.id,
       email: user!.email,
-      role: user!.role,
+      role: user!.role as UserRole,
       tenantId: user!.tenantId || undefined,
       sessionId
     };
 
-    const expiresIn = typeof this.JWT_EXPIRES_IN === 'string' ? this.JWT_EXPIRES_IN : String(this.JWT_EXPIRES_IN);
     const token = jwt.sign(payload, this.JWT_SECRET, {
-      expiresIn
-    });
+      expiresIn: this.JWT_EXPIRES_IN
+    } as jwt.SignOptions);
 
     return { token, sessionId };
   }
@@ -268,18 +247,6 @@ class AuthManager {
               domain: true
             }
           }
-        },
-        select: {
-          id: true,
-          email: true,
-          firstName: true,
-          lastName: true,
-          role: true,
-          tenantId: true,
-          isActive: true,
-          lastLogin: true,
-          createdAt: true,
-          tenant: true
         }
       });
 

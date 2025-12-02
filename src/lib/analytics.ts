@@ -1,31 +1,12 @@
 import { db } from './database';
 import { redisManager } from './redis';
-// Enum-like constants for analytics
-const AnalyticsType = {
-  CONVERSATION_START: 'CONVERSATION_START',
-  CONVERSATION_END: 'CONVERSATION_END',
-  INTENT_RECOGNITION: 'INTENT_RECOGNITION',
-  ENTITY_EXTRACTION: 'ENTITY_EXTRACTION',
-  BOOKING_COMPLETED: 'BOOKING_COMPLETED',
-  ERROR_OCCURRED: 'ERROR_OCCURRED',
-  PERFORMANCE_METRIC: 'PERFORMANCE_METRIC',
-  USER_SATISFACTION: 'USER_SATISFACTION',
-} as const;
+import { AnalyticsType, ConversationStatus } from '@prisma/client';
 
-const ConversationStatus = {
-  ACTIVE: 'ACTIVE',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED',
-  PENDING: 'PENDING',
-} as const;
-
-type AnalyticsType = string;
-type ConversationStatusType = string;
 type MessageType = string;
 type MessageRole = string;
 
 export interface AnalyticsEvent {
-  type: AnalyticsType;
+  type: AnalyticsType | string;
   tenantId: string;
   data: any;
   metadata?: any;
@@ -83,7 +64,7 @@ class AnalyticsManager {
       await db.analytics.create({
         data: {
           tenantId: event.tenantId,
-          type: event.type,
+          type: event.type as AnalyticsType,
           data: event.data,
           metadata: event.metadata,
           timestamp
@@ -129,7 +110,7 @@ class AnalyticsManager {
   }
 
   // Track conversation end
-  public async trackConversationEnd(conversationId: string, tenantId: string, status: ConversationStatus, metadata?: any): Promise<void> {
+  public async trackConversationEnd(conversationId: string, tenantId: string, status: ConversationStatus | string, metadata?: any): Promise<void> {
     await this.trackEvent({
       type: AnalyticsType.CONVERSATION_END,
       tenantId,
@@ -218,8 +199,8 @@ class AnalyticsManager {
       });
 
       const totalConversations = conversations.length;
-      const activeConversations = conversations.filter((c: any) => c.status === ConversationStatusValue.ACTIVE).length;
-      const completedConversations = conversations.filter((c: any) => c.status === ConversationStatusValue.COMPLETED).length;
+      const activeConversations = conversations.filter((c: any) => c.status === ConversationStatus.ACTIVE).length;
+      const completedConversations = conversations.filter((c: any) => c.status === ConversationStatus.COMPLETED).length;
 
       // Calculate average response time
       const responseTimes = conversations

@@ -89,7 +89,7 @@ export default function PricingPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Simple Pricing for Voice Agent SaaS
+            Enterprise-Grade Voice AI Pricing
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -97,8 +97,8 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
           >
-            Choose the plan that fits your business size. Professional setup included with all plans. 
-            Scales from single locations to enterprise chains.
+            Transparent pricing designed for businesses that demand reliability. Professional setup included with all plans. 
+            Scales seamlessly from single locations to enterprise chains.
           </motion.p>
           
           {/* Primary CTA */}
@@ -207,6 +207,89 @@ export default function PricingPage() {
                 </a>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Comparison Table */}
+      <section className="py-16 px-4 bg-neutral-900">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Compare Plans</h2>
+            <p className="text-lg text-neutral-300">See what's included in each plan</p>
+          </motion.div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-neutral-800/80 backdrop-blur-sm rounded-2xl border border-neutral-700" aria-label="Pricing comparison table">
+              <thead>
+                <tr className="border-b border-neutral-700">
+                  <th className="text-left p-4 text-white font-semibold">Features</th>
+                  <th className="text-center p-4 text-white font-semibold">Starter</th>
+                  <th className="text-center p-4 text-white font-semibold bg-primary-500/20">Professional</th>
+                  <th className="text-center p-4 text-white font-semibold">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: 'Voice agent 24/7', starter: true, professional: true, enterprise: true },
+                  { feature: 'Natural language processing', starter: true, professional: true, enterprise: true },
+                  { feature: 'Appointment/booking management', starter: true, professional: true, enterprise: true },
+                  { feature: 'Basic call routing', starter: true, professional: true, enterprise: true },
+                  { feature: 'CRM integration', starter: true, professional: true, enterprise: true },
+                  { feature: 'Email support', starter: true, professional: false, enterprise: false },
+                  { feature: 'Phone support', starter: false, professional: true, enterprise: true },
+                  { feature: 'Priority support', starter: false, professional: true, enterprise: true },
+                  { feature: 'Multi-language support', starter: false, professional: '5 languages', enterprise: '15+ languages' },
+                  { feature: 'Custom AI training', starter: false, professional: true, enterprise: true },
+                  { feature: 'Advanced analytics', starter: false, professional: true, enterprise: true },
+                  { feature: 'Multi-location support', starter: false, professional: 'Up to 3', enterprise: 'Unlimited' },
+                  { feature: 'Phone lines', starter: '1', professional: 'Up to 3', enterprise: 'Unlimited' },
+                  { feature: 'Call volume/month', starter: 'Up to 500', professional: 'Up to 2,000', enterprise: 'Unlimited' },
+                  { feature: 'SOC 2 compliance', starter: false, professional: false, enterprise: true },
+                  { feature: 'Dedicated account manager', starter: false, professional: false, enterprise: true },
+                  { feature: 'White-label options', starter: false, professional: false, enterprise: true },
+                  { feature: 'API access & webhooks', starter: false, professional: false, enterprise: true },
+                  { feature: 'HIPAA compliance', starter: false, professional: false, enterprise: 'Optional' },
+                ].map((row, index) => (
+                  <tr key={index} className="border-b border-neutral-700/50 hover:bg-neutral-700/30 transition-colors">
+                    <td className="p-4 text-neutral-300">{row.feature}</td>
+                    <td className="p-4 text-center">
+                      {row.starter === true ? (
+                        <Check className="w-5 h-5 text-success-500 mx-auto" aria-label="Included" />
+                      ) : row.starter === false ? (
+                        <span className="text-neutral-500">—</span>
+                      ) : (
+                        <span className="text-neutral-300">{row.starter}</span>
+                      )}
+                    </td>
+                    <td className="p-4 text-center bg-primary-500/10">
+                      {row.professional === true ? (
+                        <Check className="w-5 h-5 text-success-500 mx-auto" aria-label="Included" />
+                      ) : row.professional === false ? (
+                        <span className="text-neutral-500">—</span>
+                      ) : (
+                        <span className="text-neutral-300">{row.professional}</span>
+                      )}
+                    </td>
+                    <td className="p-4 text-center">
+                      {row.enterprise === true ? (
+                        <Check className="w-5 h-5 text-success-500 mx-auto" aria-label="Included" />
+                      ) : row.enterprise === false ? (
+                        <span className="text-neutral-500">—</span>
+                      ) : (
+                        <span className="text-neutral-300">{row.enterprise}</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

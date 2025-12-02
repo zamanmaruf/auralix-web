@@ -93,7 +93,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <div className="text-white font-semibold text-lg">Phone</div>
-                      <div className="text-neutral-300">+1 9024414928</div>
+                      <div className="text-neutral-300">+1 (782) 882-8635</div>
                       <div className="text-sm text-neutral-400">Mon-Fri: 9:00 AM - 6:00 PM AST</div>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <div className="text-white font-semibold text-lg">Location</div>
-                      <div className="text-neutral-300">Halifax, Nova Scotia, Canada</div>
+                      <div className="text-neutral-300">1800 Argyle Street, Halifax, Nova Scotia, Canada</div>
                       <div className="text-sm text-neutral-400">Serving restaurants coast-to-coast</div>
                     </div>
                   </div>

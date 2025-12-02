@@ -17,6 +17,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "maxNodeModuleJsDepth": 0,
     "plugins": [
       {
         "name": "next"
@@ -31,11 +33,20 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next",
+    "dist",
+    "build",
+    "coverage",
+    "*.config.js",
+    "*.config.mjs",
+    ".tsbuildinfo",
+    "**/node_modules/@prisma/client/**",
+    "**/.prisma/**"
   ]
 }

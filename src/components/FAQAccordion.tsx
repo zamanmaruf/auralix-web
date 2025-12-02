@@ -12,7 +12,7 @@ interface FAQItem {
 const faqItems: FAQItem[] = [
   {
     question: "How do I know it works?",
-    answer: "We provide a live demo line (+1 9024414928) where you can experience our AI receptionist firsthand. We also offer case studies from real restaurants showing 40% increase in bookings and 60% reduction in admin time. Our 48-hour setup guarantee means if we can't get your system working, we refund your setup fee."
+    answer: "We provide a live demo line (+1 (782) 882-8635) where you can experience our AI receptionist firsthand. We also offer case studies from real restaurants showing 40% increase in bookings and 60% reduction in admin time. Our 48-hour setup guarantee means if we can't get your system working, we refund your setup fee."
   },
   {
     question: "What's required to install?",
@@ -124,10 +124,10 @@ export default function FAQAccordion() {
                 Email Us
               </a>
               <a
-                href="tel:+19024414928"
+                href="tel:+17828828635"
                 className="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
               >
-                Call +1 9024414928
+                Call +1 (782) 882-8635
               </a>
             </div>
           </div>

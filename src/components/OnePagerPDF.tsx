@@ -233,7 +233,7 @@ export default function OnePagerPDF() {
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Visit: www.auralixai.ca • Email: auralixai@gmail.com • Phone: +1 9024414928', 20, 140);
+      pdf.text('Visit: www.auralixai.ca • Email: auralixai@gmail.com • Phone: +1 (782) 882-8635', 20, 140);
       
       // CTA buttons - Clean design
       pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2]);

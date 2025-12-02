@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Users, TrendingUp, Clock, DollarSign, CheckCircle, ArrowRight, Calculator, Brain, Mic, Zap, Globe, Shield, Activity } from 'lucide-react';
+import { Phone, Users, TrendingUp, Clock, DollarSign, CheckCircle, ArrowRight, Calculator, Brain, Mic, Zap, Globe, Shield, Activity, Star } from 'lucide-react';
 import Hero from '../components/Hero';
 import FeatureCard from '../components/FeatureCard';
 import RevenueCalculator from '../components/RevenueCalculator';
@@ -70,11 +70,119 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         title="Auralix AI Voice Agent: Built for real business calls"
-        subtitle="Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses."
-        primaryCta={{ text: "Get Started", href: "/contact" }}
-        secondaryCta={{ text: "Hear Live Demo", href: "/solutions" }}
+        subtitle="Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses."
+        primaryCta={{ text: "Schedule a Demo", href: "/contact" }}
         showScrollCue={true}
       />
+
+      {/* Customer Testimonials Section */}
+      <section id="main-content" className="py-16 sm:py-20 px-4 bg-gradient-to-b from-neutral-900 to-neutral-800">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-heading">
+              Trusted by Restaurant Owners Across Canada
+            </h2>
+            <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
+              See how Auralix AI is helping restaurants never miss a call and increase revenue
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700 hover:border-primary-500/50 transition-all duration-300"
+            >
+              <div className="mb-6">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-neutral-300 text-lg italic mb-6">
+                  "We're capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can't tell they're talking to AI. It's a no-brainer for multi-unit operators."
+                </blockquote>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-lg">MH</span>
+                </div>
+                <div>
+                  <div className="text-white font-semibold text-lg">Michael Hauke</div>
+                  <div className="text-neutral-400 text-sm">Tony Boloney's - Multi-Unit Operator</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Testimonial 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700 hover:border-primary-500/50 transition-all duration-300"
+            >
+              <div className="mb-6">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-neutral-300 text-lg italic mb-6">
+                  "I was able to leave early on Halloween because Auralix AI managed the phones. The voice agent handles everything so naturally — customers can't tell they're talking to AI. Game changer for our operations."
+                </blockquote>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-lg">CA</span>
+                </div>
+                <div>
+                  <div className="text-white font-semibold text-lg">Costa Alexandrou</div>
+                  <div className="text-neutral-400 text-sm">Nick's Place</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Testimonial 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700 hover:border-primary-500/50 transition-all duration-300"
+            >
+              <div className="mb-6">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-neutral-300 text-lg italic mb-6">
+                  "Without Auralix, we would be losing over $200k annually. The voice agent handles everything so naturally that customers can't tell they're talking to AI. It's essential for our business."
+                </blockquote>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-lg">D</span>
+                </div>
+                <div>
+                  <div className="text-white font-semibold text-lg">Dru</div>
+                  <div className="text-neutral-400 text-sm">Midland Pizza Co.</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Pain → Solution Strip */}
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-b from-neutral-900 to-neutral-800">
@@ -229,17 +337,15 @@ export default function HomePage() {
             >
               <div className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30">
                 <blockquote className="text-xl text-white italic mb-6">
-                  "We never miss a call anymore. The voice agent handles everything so naturally — 
-                  customers can't tell they're talking to AI. Our appointment bookings increased significantly, 
-                  and our staff can focus on patient care."
+                  "We're capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can't tell they're talking to AI. It's a no-brainer for multi-unit operators."
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">DR</span>
+                    <span className="text-white font-bold text-lg">MH</span>
                   </div>
                   <div>
-                    <div className="text-white font-semibold">Dr. Robert Chen</div>
-                    <div className="text-neutral-400 text-sm">Dental Practice Owner</div>
+                    <div className="text-white font-semibold">Michael Hauke</div>
+                    <div className="text-neutral-400 text-sm">Tony Boloney's - Multi-Unit Operator</div>
                   </div>
                 </div>
               </div>

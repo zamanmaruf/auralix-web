@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, Phone } from 'lucide-react';
+import { ChevronDown, Phone, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 
 interface HeroProps {
@@ -11,7 +11,7 @@ interface HeroProps {
     text: string;
     href: string;
   };
-  secondaryCta: {
+  secondaryCta?: {
     text: string;
     href: string;
   };
@@ -28,8 +28,8 @@ export default function Hero({
   showScrollCue = true
 }: HeroProps) {
   return (
-    <section className="relative h-screen flex items-center justify-center bg-black overflow-hidden">
-      {/* Background Image */}
+    <section className="relative h-screen flex items-center justify-center bg-black overflow-hidden" aria-label="Hero section">
+      {/* Background Image - Optimized */}
       <Image
         src={backgroundImage}
         alt="AI transformation background"
@@ -37,10 +37,14 @@ export default function Hero({
         style={{ objectFit: "cover" }}
         className="opacity-90"
         priority
+        quality={85}
+        sizes="100vw"
+        placeholder="blur"
+        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//Z"
       />
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
       
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4">
@@ -48,7 +52,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4 leading-tight font-heading"
+          className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white drop-shadow-2xl mb-6 leading-tight font-heading"
         >
           {title}
         </motion.h1>
@@ -57,61 +61,51 @@ export default function Hero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg sm:text-xl md:text-2xl text-primary-200 mb-6 px-4 max-w-4xl"
+          className="text-xl sm:text-2xl md:text-3xl text-primary-200 mb-8 px-4 max-w-5xl font-medium"
         >
           {subtitle}
         </motion.p>
         
+        {/* Simplified Single Primary CTA */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col gap-6 mb-8 justify-center items-center"
+          className="mb-8"
         >
-          {/* Vapi Voice Assistant CTA */}
-          <button
-            onClick={() => {
-              console.log('🎯 [Hero CTA] Button clicked!');
-              if ((window as any).triggerVapiCall) {
-                console.log('🎯 [Hero CTA] Calling triggerVapiCall()');
-                (window as any).triggerVapiCall();
-              } else {
-                console.log('🎯 [Hero CTA] triggerVapiCall not found, dispatching event');
-                window.dispatchEvent(new Event('trigger-vapi-call'));
-              }
-            }}
-            className="group px-8 sm:px-12 py-5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg sm:text-xl shadow-2xl hover:shadow-3xl transition-all duration-200 text-center min-w-[300px] flex items-center justify-center gap-3 border-2 border-cyan-400/50 hover:scale-105 cursor-pointer"
+          <a 
+            href={primaryCta.href}
+            className="inline-flex items-center gap-3 px-10 sm:px-14 py-5 sm:py-6 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-2xl text-lg sm:text-xl md:text-2xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent-orange/50"
+            aria-label={primaryCta.text}
           >
-            <Phone className="w-6 h-6 animate-pulse group-hover:rotate-12 transition-transform" />
-            <span>Talk to Auralix AI Voice Agent</span>
-          </button>
-          
-          <p className="text-primary-200 text-lg font-semibold text-center max-w-2xl">
-            Click the voice button in the bottom-right corner to start a live conversation with our AI agent. Ask about our solutions, pricing, or how we can help your business.
-          </p>
-          
-          {/* Primary CTA */}
-          <div className="flex justify-center">
-            <a 
-              href={primaryCta.href} 
-              className="px-8 sm:px-12 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-full text-lg sm:text-xl shadow-lg transition-all duration-200 text-center min-w-[250px] hover:scale-105"
-            >
-              {primaryCta.text}
-            </a>
-          </div>
+            {primaryCta.text}
+            <Phone className="w-6 h-6 sm:w-7 sm:h-7" aria-hidden="true" />
+          </a>
         </motion.div>
         
-        {/* Trust Signals */}
+        {/* Enhanced Trust Signals with Icons */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 mt-8 opacity-80 px-4"
+          className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 mt-4 px-4"
         >
-          <div className="text-white text-xs sm:text-sm">99.9% Uptime</div>
-          <div className="text-white text-xs sm:text-sm">&lt;2s Response Time</div>
-          <div className="text-white text-xs sm:text-sm">15+ Languages</div>
-          <div className="text-white text-xs sm:text-sm">SOC 2 & GDPR Compliant</div>
+          <div className="flex items-center gap-2 text-white text-sm sm:text-base bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+            <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+            <span>99.9% Uptime</span>
+          </div>
+          <div className="flex items-center gap-2 text-white text-sm sm:text-base bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+            <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+            <span>&lt;2s Response Time</span>
+          </div>
+          <div className="flex items-center gap-2 text-white text-sm sm:text-base bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+            <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+            <span>15+ Languages</span>
+          </div>
+          <div className="flex items-center gap-2 text-white text-sm sm:text-base bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+            <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+            <span>SOC 2 & GDPR Compliant</span>
+          </div>
         </motion.div>
       </div>
       
@@ -121,15 +115,18 @@ export default function Hero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+          aria-label="Scroll down"
         >
-          <motion.div
+          <motion.a
+            href="#main-content"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-white/70 hover:text-white transition-colors cursor-pointer"
+            className="text-white/70 hover:text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/50 rounded-full p-2"
+            aria-label="Scroll to main content"
           >
-            <ChevronDown className="w-6 h-6" />
-          </motion.div>
+            <ChevronDown className="w-6 h-6" aria-hidden="true" />
+          </motion.a>
         </motion.div>
       )}
     </section>

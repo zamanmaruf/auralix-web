@@ -1,16 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { CheckCircle, AlertCircle, Loader2, Save } from 'lucide-react';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Please enter a valid phone number'),
+  phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d\s\-\(\)]{9,}$/, 'Please enter a valid phone number'),
   businessName: z.string().min(2, 'Business name is required'),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
@@ -23,19 +23,50 @@ interface ContactFormProps {
   showCalendly?: boolean;
 }
 
+const FORM_STORAGE_KEY = 'auralix_contact_form_data';
+
 export default function ContactForm({ onSubmit, showCalendly = true }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
+  const [autoSaved, setAutoSaved] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
     reset,
+    watch,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: (() => {
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem(FORM_STORAGE_KEY);
+        if (saved) {
+          try {
+            return JSON.parse(saved);
+          } catch {
+            return undefined;
+          }
+        }
+      }
+      return undefined;
+    })(),
   });
+
+  // Auto-save form data to localStorage
+  const formData = watch();
+  useEffect(() => {
+    if (isDirty && typeof window !== 'undefined') {
+      const timeoutId = setTimeout(() => {
+        localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
+        setAutoSaved(true);
+        setTimeout(() => setAutoSaved(false), 2000);
+      }, 1000); // Debounce auto-save
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [formData, isDirty]);
 
   const handleFormSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -61,6 +92,11 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
           setSubmitStatus('success');
           setSubmitMessage(result.message || 'Message sent successfully!');
           reset();
+          
+          // Clear saved form data on successful submission
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem(FORM_STORAGE_KEY);
+          }
           
           // Redirect to Calendly if enabled
           if (showCalendly) {
@@ -109,34 +145,47 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
   }
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6" aria-label="Contact form">
+      {/* Auto-save indicator */}
+      {autoSaved && (
+        <div className="flex items-center gap-2 text-sm text-primary-400 bg-primary-500/10 px-4 py-2 rounded-lg border border-primary-500/20">
+          <Save className="w-4 h-4" aria-hidden="true" />
+          <span>Form auto-saved</span>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-white font-semibold mb-2">Name *</label>
+          <label htmlFor="name" className="block text-white font-semibold mb-2">Name *</label>
           <input
+            id="name"
             {...register('name')}
             className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
             placeholder="Your full name"
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'name-error' : undefined}
           />
           {errors.name && (
-            <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-              <AlertCircle className="w-4 h-4" />
+            <p id="name-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
               {errors.name.message}
             </p>
           )}
         </div>
         
         <div>
-          <label className="block text-white font-semibold mb-2">Email *</label>
+          <label htmlFor="email" className="block text-white font-semibold mb-2">Email *</label>
           <input
+            id="email"
             {...register('email')}
             type="email"
             className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
             placeholder="your@email.com"
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'email-error' : undefined}
           />
           {errors.email && (
-            <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-              <AlertCircle className="w-4 h-4" />
+            <p id="email-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
               {errors.email.message}
             </p>
           )}
@@ -145,31 +194,37 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-white font-semibold mb-2">Phone *</label>
+          <label htmlFor="phone" className="block text-white font-semibold mb-2">Phone *</label>
           <input
+            id="phone"
             {...register('phone')}
             type="tel"
             className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
             placeholder="(555) 123-4567"
+            aria-invalid={errors.phone ? 'true' : 'false'}
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
           />
           {errors.phone && (
-            <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-              <AlertCircle className="w-4 h-4" />
+            <p id="phone-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
               {errors.phone.message}
             </p>
           )}
         </div>
         
         <div>
-          <label className="block text-white font-semibold mb-2">Restaurant Name *</label>
+          <label htmlFor="businessName" className="block text-white font-semibold mb-2">Restaurant Name *</label>
           <input
+            id="businessName"
             {...register('businessName')}
             className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
             placeholder="Your restaurant name"
+            aria-invalid={errors.businessName ? 'true' : 'false'}
+            aria-describedby={errors.businessName ? 'businessName-error' : undefined}
           />
           {errors.businessName && (
-            <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-              <AlertCircle className="w-4 h-4" />
+            <p id="businessName-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
               {errors.businessName.message}
             </p>
           )}
@@ -177,37 +232,40 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
       </div>
 
       <div>
-        <label className="block text-white font-semibold mb-2">Service Interest *</label>
+        <label htmlFor="service" className="block text-white font-semibold mb-2">Service Interest *</label>
         <select
+          id="service"
           {...register('service')}
           className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+          aria-invalid={errors.service ? 'true' : 'false'}
+          aria-describedby={errors.service ? 'service-error' : undefined}
         >
           <option value="">Select Service</option>
-          <option value="ai-receptionist">AI Receptionist</option>
-          <option value="chatbot">Chatbot for Website/Social</option>
-          <option value="order-automation">Order & Review Automation</option>
-          <option value="restaurant-website">Restaurant Website with AI</option>
+          <option value="enterprise-voice-agent">Enterprise-Grade Voice Agent</option>
           <option value="consultation">Free Consultation</option>
         </select>
         {errors.service && (
-          <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-            <AlertCircle className="w-4 h-4" />
+          <p id="service-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+            <AlertCircle className="w-4 h-4" aria-hidden="true" />
             {errors.service.message}
           </p>
         )}
       </div>
 
       <div>
-        <label className="block text-white font-semibold mb-2">Message *</label>
+        <label htmlFor="message" className="block text-white font-semibold mb-2">Message *</label>
         <textarea
+          id="message"
           {...register('message')}
           rows={4}
           className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
           placeholder="Tell us about your restaurant needs..."
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'message-error' : undefined}
         />
         {errors.message && (
-          <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-            <AlertCircle className="w-4 h-4" />
+          <p id="message-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+            <AlertCircle className="w-4 h-4" aria-hidden="true" />
             {errors.message.message}
           </p>
         )}
@@ -231,7 +289,8 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full px-8 py-4 bg-primary-500 hover:bg-primary-400 disabled:bg-neutral-600 disabled:cursor-not-allowed text-white font-bold rounded-lg transition-all duration-200 shadow-lg flex items-center justify-center gap-2"
+        className="w-full px-8 py-4 bg-primary-500 hover:bg-primary-400 disabled:bg-neutral-600 disabled:cursor-not-allowed text-white font-bold rounded-lg transition-all duration-200 shadow-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-4 focus:ring-primary-400/50"
+        aria-label={isSubmitting ? 'Submitting form' : 'Submit contact form'}
       >
         {isSubmitting ? (
           <>
