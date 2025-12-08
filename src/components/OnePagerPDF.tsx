@@ -21,6 +21,7 @@ export default function OnePagerPDF() {
       const deepNavy = [15, 23, 42]; // #0F172A (deep navy)
       const electricBlue = [59, 130, 246]; // #3B82F6 (electric blue)
       const violet = [139, 92, 246]; // #8B5CF6 (violet)
+      const gold = [212, 175, 55]; // #D4AF37 (gold)
       const charcoal = [55, 65, 81]; // gray-700
       const lightText = [255, 255, 255]; // white
       const darkText = [0, 0, 0]; // black
