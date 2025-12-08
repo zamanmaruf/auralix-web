@@ -33,10 +33,10 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    let { name, email, phone, businessName, service, message } = body;
+    let { name, email, phone, businessName, country, jobRole, organizationType, service, message } = body;
 
     // Validate required fields
-    if (!name || !email || !phone || !businessName || !service || !message) {
+    if (!name || !email || !phone || !businessName || !country || !jobRole || !organizationType || !service || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -48,6 +48,9 @@ export async function POST(request: NextRequest) {
     email = sanitizeEmail(email);
     phone = sanitizePhone(phone);
     businessName = sanitizeString(businessName);
+    country = sanitizeString(country);
+    jobRole = sanitizeString(jobRole);
+    organizationType = sanitizeString(organizationType);
     service = sanitizeString(service);
     message = sanitizeText(message, 5000); // Max 5000 characters
 
@@ -100,7 +103,7 @@ export async function POST(request: NextRequest) {
 
     const emailData = await resend.emails.send({
       from: 'Auralix AI <noreply@auralix.ai>',
-      to: ['info@auralixai.ca'],
+      to: ['auralixai@gmail.com'],
       subject: `New Contact Form Submission from ${escapeHtml(businessName)}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -111,7 +114,10 @@ export async function POST(request: NextRequest) {
             <p><strong>Name:</strong> ${escapeHtml(name)}</p>
             <p><strong>Email:</strong> ${escapeHtml(email)}</p>
             <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-            <p><strong>Restaurant:</strong> ${escapeHtml(businessName)}</p>
+            <p><strong>Business Name:</strong> ${escapeHtml(businessName)}</p>
+            <p><strong>Country/Region:</strong> ${escapeHtml(country)}</p>
+            <p><strong>Job Role:</strong> ${escapeHtml(jobRole)}</p>
+            <p><strong>Organization Type:</strong> ${escapeHtml(organizationType)}</p>
             <p><strong>Service Interest:</strong> ${escapeHtml(service)}</p>
           </div>
           
@@ -145,7 +151,7 @@ export async function POST(request: NextRequest) {
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">What happens next?</h3>
             <ul>
-              <li>Our team will review your restaurant's specific needs</li>
+              <li>Our team will review your business's specific needs</li>
               <li>We'll prepare a customized solution for ${escapeHtml(businessName)}</li>
               <li>We'll schedule a strategy call to discuss your requirements</li>
               <li>You'll receive a detailed proposal within 48 hours</li>
@@ -166,7 +172,7 @@ export async function POST(request: NextRequest) {
           
           <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
           <p style="font-size: 12px; color: #666;">
-            Auralix AI - Never miss another restaurant call<br>
+            Auralix AI - Never miss another business call<br>
             1800 Argyle Street, Halifax, Nova Scotia, Canada | info@auralixai.ca
           </p>
         </div>
