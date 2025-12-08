@@ -118,7 +118,7 @@ export default function FAQAccordion() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:marufzaman@auralixai.ca"
+                href="mailto:info@auralixai.ca"
                 className="bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors duration-200"
               >
                 Email Us

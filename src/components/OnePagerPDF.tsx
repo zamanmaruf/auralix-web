@@ -235,7 +235,7 @@ export default function OnePagerPDF() {
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Visit: www.auralixai.ca • Email: info@auralixai.ca • Phone: +1 (782) 882-8635', 20, 140);
+      pdf.text('Visit: www.auralix.ai • Email: info@auralixai.ca • Phone: +1 (782) 882-8635', 20, 140);
       
       // CTA buttons - Clean design
       pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2]);
@@ -473,7 +473,7 @@ export default function OnePagerPDF() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
               <div className="flex items-center gap-2">
                 <ArrowRight className="w-5 h-5" />
-                <span>Schedule a demo at auralixai.ca</span>
+                <span>Schedule a demo at auralix.ai</span>
               </div>
               <span className="hidden md:block">or</span>
               <div className="flex items-center gap-2">

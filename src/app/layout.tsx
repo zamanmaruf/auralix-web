@@ -10,7 +10,7 @@ export const fetchCache = 'force-no-store'
 export const metadata: Metadata = {
   title: 'Auralix AI — Enterprise Voice & Automation Platform',
   description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',
-  keywords: 'AI receptionist, restaurant automation, missed calls, Halifax AI, Canadian restaurants, voice AI, chatbot, order automation',
+  keywords: 'AI receptionist, voice AI, business automation, missed calls, Halifax AI, Canadian businesses, voice agent, appointment automation, customer service AI, enterprise voice AI, dental AI, hotel automation, service business AI',
   openGraph: {
     title: 'Auralix AI — Enterprise Voice & Automation Platform',
     description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',

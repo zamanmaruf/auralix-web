@@ -16,7 +16,7 @@ const BrochurePage = () => {
 
   // CTA Handler Functions
   const handleEmailClick = () => {
-    window.open('mailto:info@auralixai.ca?subject=Restaurant AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI am interested in learning more about your AI automation services for my restaurant.%0D%0A%0D%0APlease contact me with more information.%0D%0A%0D%0ABest regards,', '_blank');
+    window.open('mailto:info@auralixai.ca?subject=Business AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI am interested in learning more about your AI automation services for my business.%0D%0A%0D%0APlease contact me with more information.%0D%0A%0D%0ABest regards,', '_blank');
   };
 
   const handlePhoneClick = () => {
@@ -24,19 +24,19 @@ const BrochurePage = () => {
   };
 
   const handleWebsiteClick = () => {
-    window.open('https://www.auralixai.ca', '_blank');
+    window.open('https://www.auralix.ai', '_blank');
   };
 
   const handleBookConsultation = () => {
-    window.open('mailto:info@auralixai.ca?subject=Book Restaurant AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to book a consultation to discuss AI automation for my restaurant.%0D%0A%0D%0APlease include:%0D%0A- Restaurant type and size%0D%0A- Current challenges with missed calls%0D%0A- Goals for automation%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:info@auralixai.ca?subject=Book Business AI Consultation&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to book a consultation to discuss AI automation for my business.%0D%0A%0D%0APlease include:%0D%0A- Business type and size%0D%0A- Current challenges with missed calls%0D%0A- Goals for automation%0D%0A%0D%0AThank you!', '_blank');
   };
 
   const handleStartJourney = () => {
-    window.open('mailto:info@auralixai.ca?subject=Start Restaurant AI Journey&body=Hi Auralix AI team,%0D%0A%0D%0AI am ready to start my restaurant AI automation journey with Auralix AI.%0D%0A%0D%0APlease include:%0D%0A- Restaurant details%0D%0A- Current challenges%0D%0A- Goals and timeline%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:info@auralixai.ca?subject=Start Business AI Journey&body=Hi Auralix AI team,%0D%0A%0D%0AI am ready to start my business AI automation journey with Auralix AI.%0D%0A%0D%0APlease include:%0D%0A- Business details%0D%0A- Current challenges%0D%0A- Goals and timeline%0D%0A%0D%0AThank you!', '_blank');
   };
 
   const handleRequestQuote = () => {
-    window.open('mailto:info@auralixai.ca?subject=Request Restaurant AI Quote&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to request a quote for restaurant AI automation services.%0D%0A%0D%0APlease include:%0D%0A- Restaurant requirements%0D%0A- Budget range%0D%0A- Timeline%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:info@auralixai.ca?subject=Request Business AI Quote&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to request a quote for business AI automation services.%0D%0A%0D%0APlease include:%0D%0A- Business requirements%0D%0A- Budget range%0D%0A- Timeline%0D%0A%0D%0AThank you!', '_blank');
   };
 
   const handleViewCaseStudies = () => {
@@ -45,7 +45,7 @@ const BrochurePage = () => {
 
   const handleDownload = () => {
     // In a real implementation, this would download a PDF
-    window.open('mailto:info@auralixai.ca?subject=Request Restaurant AI Brochure PDF&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to receive the restaurant AI automation brochure PDF.%0D%0A%0D%0AThank you!', '_blank');
+    window.open('mailto:info@auralixai.ca?subject=Request Business AI Brochure PDF&body=Hi Auralix AI team,%0D%0A%0D%0AI would like to receive the business AI automation brochure PDF.%0D%0A%0D%0AThank you!', '_blank');
   };
 
   useEffect(() => {

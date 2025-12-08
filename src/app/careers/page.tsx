@@ -245,7 +245,7 @@ export default function CareersPage() {
             Send Your Resume
           </a>
           <a
-            href="mailto:careers@auralixai.com"
+            href="mailto:careers@auralixai.ca"
             className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold rounded-lg transition-all duration-200"
           >
             Email Us

@@ -75,7 +75,7 @@ export default function OnePagerPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-300">
               <div className="flex items-center gap-2">
                 <Mail className="w-5 h-5" />
-                <span>marufzaman@auralixai.ca</span>
+                <span>info@auralixai.ca</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-5 h-5" />
@@ -267,11 +267,11 @@ export default function OnePagerPage() {
               <p className="mb-2">Questions? Contact us directly:</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <a
-                  href="mailto:marufzaman@auralixai.ca"
+                  href="mailto:info@auralixai.ca"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
                   <Mail className="w-5 h-5" />
-                  marufzaman@auralixai.ca
+                  info@auralixai.ca
                 </a>
                 <a
                   href="tel:+17828828635"
@@ -307,8 +307,8 @@ export default function OnePagerPage() {
               <div className="space-y-2 text-gray-300">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:marufzaman@auralixai.ca" className="hover:text-white transition-colors">
-                    marufzaman@auralixai.ca
+                  <a href="mailto:info@auralixai.ca" className="hover:text-white transition-colors">
+                    info@auralixai.ca
                   </a>
                 </div>
                 <div className="flex items-center gap-2">

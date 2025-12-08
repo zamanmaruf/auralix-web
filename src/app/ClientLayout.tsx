@@ -249,7 +249,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 Auralix AI Inc., Halifax, Nova Scotia, Canada (Nova Scotia corporation)
               </p>
               <div className="flex gap-4">
-                <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
+                <a href="https://linkedin.com/company/auralix-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                   <Linkedin className="text-xl" />
                 </a>
               </div>
@@ -292,7 +292,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
               <div className="flex gap-4">
-                <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
+                <a href="https://linkedin.com/company/auralix-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
                   <Linkedin className="text-xl" />
                 </a>
               </div>

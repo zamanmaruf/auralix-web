@@ -151,7 +151,7 @@ export default function DemoPlaceholder() {
                 </div>
                 <p className="text-sm text-orange-700">
                   Our technical team will guide you through the n8n integration process. 
-                  Contact us at marufzaman@auralixai.ca for assistance.
+                  Contact us at info@auralixai.ca for assistance.
                 </p>
               </div>
             </div>

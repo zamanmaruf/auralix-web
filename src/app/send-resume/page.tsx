@@ -339,7 +339,7 @@ export default function SendResumePage() {
               <h3 className="text-lg font-bold text-white mb-2">Email Application</h3>
               <p className="text-gray-300 mb-4">Send your resume directly to our HR team via email.</p>
               <a
-                href="mailto:careers@auralixai.com"
+                href="mailto:careers@auralixai.ca"
                 className="inline-block px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg transition-all duration-200"
               >
                 Email Us

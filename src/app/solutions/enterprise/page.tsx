@@ -264,7 +264,7 @@ export default function EnterprisePage() {
             Contact Enterprise Sales
           </a>
           <a
-            href="mailto:enterprise@auralixai.com"
+            href="mailto:enterprise@auralixai.ca"
             className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold rounded-lg transition-all duration-200"
           >
             Email Enterprise Team

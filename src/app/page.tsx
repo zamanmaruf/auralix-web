@@ -559,7 +559,9 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="https://calendly.com/auralixai/strategy-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
                 Book Strategy Call
