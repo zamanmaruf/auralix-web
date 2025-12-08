@@ -18,7 +18,7 @@ export default function SetupGuarantee() {
             Our Setup Guarantee
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're so confident in our setup process that we guarantee it
+            We&apos;re so confident in our setup process that we guarantee it
           </p>
         </motion.div>
 
@@ -77,7 +77,7 @@ export default function SetupGuarantee() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">
-                  Founders' Launch Special
+                  Founders&apos; Launch Special
                 </h3>
                 <p className="text-gray-600">
                   Limited time offer

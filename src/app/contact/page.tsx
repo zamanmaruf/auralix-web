@@ -16,7 +16,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Let's Automate Your Front Desk
+            Let&apos;s Automate Your Front Desk
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
           >
-            Ready to stop losing calls and opportunities? Get in touch and let's discuss how 
+            Ready to stop losing calls and opportunities? Get in touch and let&apos;s discuss how 
             Auralix AI can transform your business operations.
           </motion.p>
           
@@ -43,7 +43,7 @@ export default function ContactPage() {
               Get Started Today
             </a>
             <p className="text-primary-200 text-lg font-semibold mt-3">
-              Fill out the form below and we'll contact you within 24 hours
+              Fill out the form below and we&apos;ll contact you within 24 hours
             </p>
           </motion.div>
         </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
               <div className="bg-gradient-to-r from-accent-orange/10 to-primary-500/10 rounded-xl p-6 border border-accent-orange/30">
                 <h3 className="text-xl font-bold text-white mb-4 font-heading">Ready to Get Started?</h3>
                 <p className="text-neutral-300 mb-4">
-                  Book a free strategy call to discuss your business's specific needs and see 
+                  Book a free strategy call to discuss your business&apos;s specific needs and see 
                   how Auralix AI can help you never miss another call.
                 </p>
                 <div className="space-y-3">

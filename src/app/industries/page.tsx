@@ -213,7 +213,7 @@ export default function IndustriesPage() {
                         </svg>
                       </div>
                       <blockquote className="text-xl text-white italic mb-6 leading-relaxed">
-                        "{industry.testimonial.quote}"
+                        &quot;{industry.testimonial.quote}&quot;
                       </blockquote>
                       <div className="flex items-center gap-4">
                         <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center`}>

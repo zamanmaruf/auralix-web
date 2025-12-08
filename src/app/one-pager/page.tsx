@@ -31,7 +31,7 @@ export default function OnePagerPage() {
               Trusted by restaurants across Halifax, Toronto & Vancouver
             </p>
             <p className="text-lg text-gray-200 mb-12 max-w-3xl mx-auto">
-              Auralix instantly answers missed calls, books tables or orders, and boosts your restaurant's revenue with intelligent voice and chat automation.
+              Auralix instantly answers missed calls, books tables or orders, and boosts your restaurant&apos;s revenue with intelligent voice and chat automation.
             </p>
             
             <div className="mb-12">
@@ -120,7 +120,7 @@ export default function OnePagerPage() {
                   Nova Scotia Restaurant Chain
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  "Auralix AI answers 80% of our calls so staff can focus on food and guests."
+                  &quot;Auralix AI answers 80% of our calls so staff can focus on food and guests.&quot;
                 </p>
               </div>
               
@@ -141,7 +141,7 @@ export default function OnePagerPage() {
 
               <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
                 <p className="text-primary-800 font-semibold">
-                  "We boosted bookings 40% in 48 hours with Auralix"
+                  &quot;We boosted bookings 40% in 48 hours with Auralix&quot;
                 </p>
               </div>
             </motion.div>
@@ -168,7 +168,7 @@ export default function OnePagerPage() {
                   Customer Testimonial
                 </h4>
                 <blockquote className="text-gray-700 italic mb-4">
-                  "Auralix saved us from losing customers during rush. We booked more tables and streamlined our staff workload."
+                  &quot;Auralix saved us from losing customers during rush. We booked more tables and streamlined our staff workload.&quot;
                 </blockquote>
                 <cite className="text-sm text-gray-600">— Restaurant Owner, Halifax</cite>
               </div>

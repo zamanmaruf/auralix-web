@@ -315,8 +315,8 @@ const BrochurePage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30">
             <blockquote className="text-2xl text-white italic mb-6">
-              "We never miss a call anymore — our bookings jumped 40%. The AI handles everything so naturally, 
-              customers can't tell the difference."
+              &quot;We never miss a call anymore — our bookings jumped 40%. The AI handles everything so naturally, 
+              customers can&apos;t tell the difference.&quot;
             </blockquote>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">

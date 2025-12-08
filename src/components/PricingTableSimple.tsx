@@ -144,7 +144,7 @@ export default function PricingTableSimple() {
         >
           <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 max-w-2xl mx-auto">
             <h3 className="text-lg font-semibold text-orange-800 mb-2">
-              Founders' Launch Special
+              Founders&apos; Launch Special
             </h3>
             <p className="text-orange-700">
               First 100 clients get $499 setup fee for Pro plan. Prices increasing soon!

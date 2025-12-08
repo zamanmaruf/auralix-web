@@ -122,8 +122,8 @@ export default function CaseStudiesPage() {
                 </div>
                 
                 <blockquote className="text-lg text-neutral-300 italic mb-6">
-                  "We never miss a call anymore — our bookings jumped 40%. The AI handles everything 
-                  so naturally, customers can't tell the difference."
+                  &quot;We never miss a call anymore — our bookings jumped 40%. The AI handles everything 
+                  so naturally, customers can&apos;t tell the difference.&quot;
                 </blockquote>
                 
                 <div className="text-sm text-neutral-400 mb-6">
@@ -227,7 +227,7 @@ export default function CaseStudiesPage() {
                   </div>
 
                   <blockquote className="text-sm text-neutral-300 italic mb-4">
-                    "{study.quote}"
+                    &quot;{study.quote}&quot;
                   </blockquote>
 
                   <div className="text-xs text-neutral-400 mb-4">

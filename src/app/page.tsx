@@ -109,7 +109,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  "We're capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can't tell they're talking to AI. It's a no-brainer for multi-unit operators."
+                  &quot;We&apos;re capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-unit operators.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -118,7 +118,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Michael Hauke</div>
-                  <div className="text-neutral-400 text-sm">Tony Boloney's - Multi-Unit Operator</div>
+                  <div className="text-neutral-400 text-sm">Tony Boloney&apos;s - Multi-Unit Operator</div>
                 </div>
               </div>
             </motion.div>
@@ -138,7 +138,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  "I was able to leave early on Halloween because Auralix AI managed the phones. The voice agent handles everything so naturally — customers can't tell they're talking to AI. Game changer for our operations."
+                  &quot;I was able to leave early on Halloween because Auralix AI managed the phones. The voice agent handles everything so naturally — customers can&apos;t tell they&apos;re talking to AI. Game changer for our operations.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -167,7 +167,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  "Without Auralix, we would be losing over $200k annually. The voice agent handles everything so naturally that customers can't tell they're talking to AI. It's essential for our business."
+                  &quot;Without Auralix, we would be losing over $200k annually. The voice agent handles everything so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s essential for our business.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -337,7 +337,7 @@ export default function HomePage() {
             >
               <div className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30">
                 <blockquote className="text-xl text-white italic mb-6">
-                  "We're capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can't tell they're talking to AI. It's a no-brainer for multi-unit operators."
+                  &quot;We&apos;re capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-unit operators.&quot;
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
@@ -345,7 +345,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-white font-semibold">Michael Hauke</div>
-                    <div className="text-neutral-400 text-sm">Tony Boloney's - Multi-Unit Operator</div>
+                    <div className="text-neutral-400 text-sm">Tony Boloney&apos;s - Multi-Unit Operator</div>
                   </div>
                 </div>
               </div>

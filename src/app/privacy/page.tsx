@@ -518,7 +518,7 @@ export default function PrivacyPage() {
             <div className="mt-8 bg-neutral-800/50 rounded-xl p-6">
               <h3 className="text-xl font-bold text-white mb-4">Policy Updates</h3>
               <p className="text-gray-300">
-                We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Last updated" date. Your continued use of our services after any modifications constitutes acceptance of the updated policy.
+                We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date. Your continued use of our services after any modifications constitutes acceptance of the updated policy.
               </p>
             </div>
           </motion.div>

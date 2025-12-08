@@ -188,7 +188,7 @@ export default function RevenueCalculator({ isOpen, onClose }: RevenueCalculator
                     ${loss.monthly.toLocaleString()}/month
                   </div>
                   <div className="text-sm text-neutral-400">
-                    That's ${loss.yearly.toLocaleString()} per year you could recover!
+                    That&apos;s ${loss.yearly.toLocaleString()} per year you could recover!
                   </div>
                 </div>
               </motion.div>

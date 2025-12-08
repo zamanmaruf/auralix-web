@@ -222,7 +222,7 @@ export default function PricingPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">Compare Plans</h2>
-            <p className="text-lg text-neutral-300">See what's included in each plan</p>
+            <p className="text-lg text-neutral-300">See what&apos;s included in each plan</p>
           </motion.div>
 
           <div className="overflow-x-auto">

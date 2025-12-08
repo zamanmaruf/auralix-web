@@ -66,7 +66,7 @@ export default function AboutUsPage() {
               Learn More About Us
             </a>
             <p className="text-primary-200 text-lg font-semibold mt-3">
-              Discover our story and how we're transforming customer calls with voice AI
+              Discover our story and how we&apos;re transforming customer calls with voice AI
             </p>
           </motion.div>
           
@@ -110,7 +110,7 @@ export default function AboutUsPage() {
               </p>
               <p className="text-lg text-neutral-300 mb-6">
                 We prioritize practical deployment, measurable outcomes, and scalable architecture 
-                tailored to each industry's unique needs and workflows.
+                tailored to each industry&apos;s unique needs and workflows.
               </p>
               <div className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-primary-500/30">
                 <h3 className="text-xl font-semibold text-white mb-3 font-heading">Our Core Belief</h3>
@@ -130,7 +130,7 @@ export default function AboutUsPage() {
               <h2 className="text-3xl font-bold text-blue-400 mb-6 font-heading">Our Vision</h2>
               <p className="text-lg text-neutral-300 mb-6">
                 We are building the most trusted voice AI partner for service businesses—whether 
-                you're running a single location or scaling operations across multiple locations and regions.
+                you&apos;re running a single location or scaling operations across multiple locations and regions.
               </p>
               <div className="space-y-4">
                 {[
@@ -236,7 +236,7 @@ export default function AboutUsPage() {
               </p>
               <div className="bg-primary-500/20 rounded-lg p-4 border border-primary-500/30">
                 <p className="text-sm text-primary-300 font-semibold">
-                  "We believe every service business deserves enterprise-grade voice AI that never misses a call."
+                  &quot;We believe every service business deserves enterprise-grade voice AI that never misses a call.&quot;
                 </p>
               </div>
             </motion.div>
@@ -315,7 +315,7 @@ export default function AboutUsPage() {
               </div>
               
               <p className="text-neutral-300 mb-6 leading-relaxed">
-                Maruf combines deep expertise in machine learning, software architecture, and automation strategy to lead Auralix AI's vision and execution. As CEO, he drives end-to-end product innovation — from research to deployment — ensuring every voice AI system is practical, measurable, and scalable for real-world service business operations.
+                Maruf combines deep expertise in machine learning, software architecture, and automation strategy to lead Auralix AI&apos;s vision and execution. As CEO, he drives end-to-end product innovation — from research to deployment — ensuring every voice AI system is practical, measurable, and scalable for real-world service business operations.
               </p>
               
               <p className="text-neutral-300 mb-6 leading-relaxed">
@@ -363,7 +363,7 @@ export default function AboutUsPage() {
               </div>
               
               <p className="text-neutral-300 mb-6 leading-relaxed">
-                Fardeen leads Auralix's technical innovation and platform development. With a strong background in artificial intelligence and business systems, he architects the advanced voice AI systems and industry-specific models that power our voice agent platform.
+                Fardeen leads Auralix&apos;s technical innovation and platform development. With a strong background in artificial intelligence and business systems, he architects the advanced voice AI systems and industry-specific models that power our voice agent platform.
               </p>
               
               <p className="text-neutral-300 mb-8 leading-relaxed">
@@ -398,7 +398,7 @@ export default function AboutUsPage() {
           >
             <div className="bg-gradient-to-r from-primary-500/10 to-blue-500/10 rounded-2xl p-8 border border-primary-500/30">
               <blockquote className="text-xl md:text-2xl text-white italic mb-6 leading-relaxed">
-                "We founded Auralix AI to give every service business — from dental practices to restaurant chains to hotels — the power of enterprise-grade voice AI. Our mission is simple: no business should ever miss a call, an appointment, or an opportunity again."
+                &quot;We founded Auralix AI to give every service business — from dental practices to restaurant chains to hotels — the power of enterprise-grade voice AI. Our mission is simple: no business should ever miss a call, an appointment, or an opportunity again.&quot;
               </blockquote>
               <cite className="text-primary-400 font-semibold text-lg">
                 — Maruf & Fardeen

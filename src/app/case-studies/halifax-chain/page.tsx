@@ -183,7 +183,7 @@ export default function HalifaxChainCaseStudy() {
               <h2 className="text-3xl font-bold text-white mb-6 font-heading">The Challenge</h2>
               <p className="text-lg text-neutral-300 mb-6">
                 Halifax Seafood Co. was struggling with overwhelming call volume during peak hours. 
-                Their phone would ring constantly, but staff couldn't keep up, leading to missed 
+                Their phone would ring constantly, but staff couldn&apos;t keep up, leading to missed 
                 reservations and frustrated customers.
               </p>
               <div className="space-y-3">
@@ -234,7 +234,7 @@ export default function HalifaxChainCaseStudy() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">The Solution</h2>
-            <p className="text-lg text-neutral-300">Auralix AI's comprehensive restaurant automation suite</p>
+            <p className="text-lg text-neutral-300">Auralix AI&apos;s comprehensive restaurant automation suite</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -274,9 +274,9 @@ export default function HalifaxChainCaseStudy() {
             className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
           >
             <blockquote className="text-2xl text-white italic mb-6 text-center">
-              "We never miss a call anymore — our bookings jumped 40%. The AI handles everything 
-              so naturally, customers can't tell the difference. It's like having a perfect 
-              receptionist who never takes a break."
+              &quot;We never miss a call anymore — our bookings jumped 40%. The AI handles everything 
+              so naturally, customers can&apos;t tell the difference. It&apos;s like having a perfect 
+              receptionist who never takes a break.&quot;
             </blockquote>
             <div className="flex items-center justify-center gap-4">
               <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center">

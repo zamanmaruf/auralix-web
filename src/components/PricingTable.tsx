@@ -150,7 +150,7 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
             <div className="text-2xl font-bold text-green-400">
               Save $45,612 per year
             </div>
-            <div className="text-neutral-400 text-sm">That's 95% cost reduction</div>
+            <div className="text-neutral-400 text-sm">That&apos;s 95% cost reduction</div>
           </div>
         </motion.div>
       )}
@@ -165,7 +165,7 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
       >
         <div className="bg-gradient-to-r from-accent-orange/20 to-primary-500/20 rounded-xl p-6 border border-accent-orange/30">
           <h4 className="text-xl font-bold text-white mb-2 font-heading">
-            Founder's Special
+            Founder&apos;s Special
           </h4>
           <p className="text-neutral-300">
             First 100 restaurants get <span className="text-accent-orange font-bold">20% off for life</span>
