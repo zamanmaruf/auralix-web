@@ -235,7 +235,7 @@ export default function TermsPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span>Violate Canadian laws or restaurant regulations</span>
+                      <span>Violate applicable laws or industry regulations</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
@@ -290,10 +290,6 @@ export default function TermsPage() {
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>Current pricing is published on our website at /pricing and may change from time to time</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Professional setup with credit card required</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />

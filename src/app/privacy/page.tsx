@@ -280,7 +280,7 @@ export default function PrivacyPage() {
                 <h3 className="text-xl font-bold text-red-400">We Do NOT Sell Your Data</h3>
               </div>
               <p className="text-gray-300">
-                Auralix AI does not sell, trade, or rent your personal information to third parties for marketing purposes. Your restaurant and customer data remains confidential and is used solely to provide our AI automation services.
+                Auralix AI does not sell, trade, or rent your personal information to third parties for marketing purposes. Your business and customer data remains confidential and is used solely to provide our AI automation services.
               </p>
             </div>
 

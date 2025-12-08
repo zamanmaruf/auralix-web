@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: '/hero-ai-bg.jpg',
         width: 1200,
         height: 630,
-        alt: 'Auralix AI - Restaurant AI Automation',
+        alt: 'Auralix AI - Enterprise Voice & Automation Platform',
       },
     ],
     locale: 'en_CA',
