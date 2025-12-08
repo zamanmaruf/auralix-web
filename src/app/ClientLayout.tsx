@@ -165,7 +165,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 </div>
               </div>
               <p className="text-gray-300 mb-6 max-w-md text-xs sm:text-sm md:text-base">
-                Auralix AI — Halifax-built automation helping Canadian restaurants answer every call and grow revenue effortlessly.
+                Auralix AI — Halifax-built automation helping businesses answer every call and grow revenue effortlessly.
+              </p>
+              <p className="text-gray-400 text-xs mb-4">
+                Auralix AI Inc., Halifax, Nova Scotia, Canada (Nova Scotia corporation)
               </p>
               <div className="flex gap-4">
                 <a href="https://linkedin.com/company/auralix-ai" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
@@ -201,7 +204,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               <div className="space-y-3 text-sm text-gray-300">
                 <div className="flex items-center gap-3">
                   <Mail className="text-cyan-400 flex-shrink-0" />
-                  <span className="break-all">auralixai@gmail.com</span>
+                  <span className="break-all">info@auralixai.ca</span>
                 </div>
                 <div className="text-gray-400">
                   1800 Argyle Street, Halifax, Nova Scotia, Canada
@@ -224,7 +227,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="w-full md:w-auto">
                 <h3 className="text-lg font-semibold text-white mb-2">Stay Updated</h3>
-                <p className="text-sm text-gray-300">Get the latest restaurant automation insights and industry updates.</p>
+                <p className="text-sm text-gray-300">Get the latest business automation insights and industry updates.</p>
               </div>
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <input 

@@ -8,12 +8,12 @@ export const revalidate = 0
 export const fetchCache = 'force-no-store'
 
 export const metadata: Metadata = {
-  title: 'Auralix AI — AI Receptionist for Restaurants in Canada',
-  description: 'Never miss a call again. Auralix AI answers restaurant phones 24/7, books tables, and captures orders — increasing bookings by 40%.',
+  title: 'Auralix AI — Enterprise Voice & Automation Platform',
+  description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',
   keywords: 'AI receptionist, restaurant automation, missed calls, Halifax AI, Canadian restaurants, voice AI, chatbot, order automation',
   openGraph: {
-    title: 'Auralix AI — AI Receptionist for Restaurants in Canada',
-    description: 'Never miss a call again. Auralix AI answers restaurant phones 24/7, books tables, and captures orders — increasing bookings by 40%.',
+    title: 'Auralix AI — Enterprise Voice & Automation Platform',
+    description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',
     url: 'https://auralix.ai',
     siteName: 'Auralix AI',
     images: [
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Auralix AI — AI Receptionist for Restaurants in Canada',
-    description: 'Never miss a call again. Auralix AI answers restaurant phones 24/7, books tables, and captures orders — increasing bookings by 40%.',
+    title: 'Auralix AI — Enterprise Voice & Automation Platform',
+    description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',
     images: ['/hero-ai-bg.jpg'],
   },
   robots: {
@@ -70,7 +70,7 @@ export default function RootLayout({
       '@type': 'ContactPoint',
       telephone: '+1-782-882-8635',
       contactType: 'Customer Service',
-      email: 'auralixai@gmail.com',
+      email: 'info@auralixai.ca',
       areaServed: 'CA',
       availableLanguage: ['en', 'fr'],
     },

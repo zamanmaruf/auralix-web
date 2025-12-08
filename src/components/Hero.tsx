@@ -104,7 +104,7 @@ export default function Hero({
           </div>
           <div className="flex items-center gap-2 text-white text-sm sm:text-base bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
             <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
-            <span>SOC 2 & GDPR Compliant</span>
+            <span>SOC 2–aligned controls & GDPR-informed design</span>
           </div>
         </motion.div>
       </div>

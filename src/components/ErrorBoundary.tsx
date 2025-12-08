@@ -115,10 +115,10 @@ class ErrorBoundary extends Component<Props, State> {
                 If this problem persists, please contact us:
               </p>
               <a
-                href="mailto:auralixai@gmail.com"
+                href="mailto:info@auralixai.ca"
                 className="text-primary-400 hover:text-primary-300 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
               >
-                auralixai@gmail.com
+                info@auralixai.ca
               </a>
             </div>
           </div>

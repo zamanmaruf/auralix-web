@@ -62,7 +62,7 @@ export default function EnterprisePage() {
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-start gap-2">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
-                <span>SOC 2 Type II compliance</span>
+                <span>SOC 2–aligned security controls</span>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>

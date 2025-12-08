@@ -233,7 +233,7 @@ export default function OnePagerPDF() {
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'normal');
       pdf.setTextColor(charcoal[0], charcoal[1], charcoal[2]);
-      pdf.text('Visit: www.auralixai.ca • Email: auralixai@gmail.com • Phone: +1 (782) 882-8635', 20, 140);
+      pdf.text('Visit: www.auralixai.ca • Email: info@auralixai.ca • Phone: +1 (782) 882-8635', 20, 140);
       
       // CTA buttons - Clean design
       pdf.setFillColor(electricBlue[0], electricBlue[1], electricBlue[2]);
@@ -478,7 +478,7 @@ export default function OnePagerPDF() {
               </div>
               <span className="hidden md:block">or</span>
               <div className="flex items-center gap-2">
-                <span>email auralixai@gmail.com</span>
+                <span>email info@auralixai.ca</span>
               </div>
             </div>
             <p className="text-cyan-300 font-semibold">

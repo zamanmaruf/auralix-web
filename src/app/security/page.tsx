@@ -5,18 +5,18 @@ import { Shield, Lock, User, Database, Server, Eye, Download, CheckCircle, Award
 export default function SecurityPage() {
   const certifications = [
     {
-      name: 'SOC 2 Type II',
-      description: 'Enterprise-grade security controls and compliance',
+      name: 'SOC 2 (Type II – planned)',
+      description: 'Implementing controls aligned to SOC 2 Trust Services Criteria; formal Type II attestation on our roadmap.',
       icon: Shield,
       color: 'green',
-      status: 'Certified'
+      status: 'In Progress'
     },
     {
-      name: 'GDPR Compliant',
-      description: 'European data protection and privacy compliance',
+      name: 'GDPR',
+      description: 'GDPR-informed data protection and privacy compliance',
       icon: Globe,
       color: 'blue',
-      status: 'Certified'
+      status: 'Implemented'
     },
     {
       name: 'ISO 27001',
@@ -27,48 +27,48 @@ export default function SecurityPage() {
     },
     {
       name: 'PCI DSS',
-      description: 'Payment card industry data security standards',
+      description: 'We rely on PCI DSS–validated payment processors and follow their integration best practices.',
       icon: Lock,
       color: 'orange',
-      status: 'Certified'
+      status: 'Implemented'
     }
   ];
 
   const securityFeatures = [
     {
       icon: Shield,
-      title: 'SOC 2 Type II Compliant',
-      description: 'Our systems undergo rigorous security audits and maintain SOC 2 Type II compliance for enterprise-grade security that protects your restaurant data.',
+      title: 'SOC 2–aligned controls',
+      description: 'Our systems implement controls aligned to SOC 2 Trust Services Criteria for enterprise-grade security that protects your business data.',
       color: 'cyan'
     },
     {
       icon: Lock,
       title: 'End-to-End Encryption',
-      description: 'All restaurant data is encrypted in transit and at rest using industry-standard AES-256 encryption protocols.',
+      description: 'All data is encrypted in transit and at rest using industry-standard AES-256 encryption protocols.',
       color: 'cyan'
     },
     {
       icon: User,
       title: 'Role-Based Access Control',
-      description: 'Granular permissions ensure only authorized staff can access specific restaurant data and AI configurations.',
+      description: 'Granular permissions ensure only authorized staff can access specific business data and AI configurations.',
       color: 'cyan'
     },
     {
       icon: Database,
       title: 'Secure Data Storage',
-      description: 'Restaurant data is stored in encrypted databases with regular backups and disaster recovery protocols.',
+      description: 'Data is stored in encrypted databases with regular backups and disaster recovery protocols.',
       color: 'cyan'
     },
     {
       icon: Server,
       title: 'Infrastructure Security',
-      description: 'Our cloud infrastructure is built on secure, compliant platforms with 99.9% uptime for your restaurant operations.',
+      description: 'Our cloud infrastructure is built on secure, compliant platforms with 99.9% uptime for your business operations.',
       color: 'cyan'
     },
     {
       icon: Eye,
       title: 'Audit Logging',
-      description: 'Comprehensive logging and monitoring ensure complete visibility into all restaurant AI interactions and data access.',
+      description: 'Comprehensive logging and monitoring ensure complete visibility into all AI interactions and data access.',
       color: 'cyan'
     }
   ];
@@ -84,7 +84,7 @@ export default function SecurityPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Restaurant Data Security & Compliance
+            Data Security & Compliance
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ export default function SecurityPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-4xl mx-auto"
           >
-            Enterprise-grade security that protects your restaurant's customer data, 
+            Enterprise-grade security that protects your customers' data, 
             payment information, and operational details with industry-leading compliance standards.
           </motion.p>
           
@@ -104,11 +104,11 @@ export default function SecurityPage() {
           >
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-green-400" />
-              <span>SOC 2 Type II Certified</span>
+              <span>SOC 2–aligned controls</span>
             </div>
             <div className="flex items-center gap-2">
               <Globe className="w-4 h-4 text-blue-400" />
-              <span>GDPR Compliant</span>
+              <span>GDPR-informed data protection</span>
             </div>
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4 text-purple-400" />
@@ -129,7 +129,7 @@ export default function SecurityPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">Security Certifications</h2>
-            <p className="text-lg text-neutral-300">Industry-recognized security standards for restaurant data protection</p>
+            <p className="text-lg text-neutral-300">Industry-recognized security standards for business data protection</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -148,9 +148,11 @@ export default function SecurityPage() {
                 <h3 className="text-lg font-bold text-white mb-2 font-heading">{cert.name}</h3>
                 <p className="text-sm text-neutral-300 mb-3">{cert.description}</p>
                 <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold ${
-                  cert.status === 'Certified' 
+                  cert.status === 'Implemented' 
                     ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                    : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                    : cert.status === 'In Progress'
+                    ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                    : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
                 }`}>
                   <CheckCircle className="w-3 h-3" />
                   {cert.status}
@@ -171,8 +173,8 @@ export default function SecurityPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Restaurant Data Protection</h2>
-            <p className="text-lg text-neutral-300">Comprehensive security measures designed specifically for restaurant operations</p>
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Data Protection</h2>
+            <p className="text-lg text-neutral-300">Comprehensive security measures designed for your business operations</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -204,8 +206,8 @@ export default function SecurityPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Restaurant-Specific Protections</h2>
-            <p className="text-lg text-neutral-300">Security measures tailored for restaurant data and operations</p>
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Business-Specific Protections</h2>
+            <p className="text-lg text-neutral-300">Security measures tailored for your business data and operations</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -229,7 +231,7 @@ export default function SecurityPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-300">PCI DSS compliance for payment processing</span>
+                    <span className="text-neutral-300">PCI DSS–aware payment integrations using validated payment processors</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -268,10 +270,10 @@ export default function SecurityPage() {
               viewport={{ once: true }}
               className="bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
             >
-              <h3 className="text-2xl font-bold text-white mb-6 font-heading">Download Security Summary</h3>
+              <h3 className="text-2xl font-bold text-white mb-6 font-heading">Security Documentation</h3>
               <p className="text-neutral-300 mb-6">
-                Get our comprehensive security documentation including compliance certificates, 
-                audit reports, and restaurant-specific security measures.
+                Security overview and documentation available on request. Contact us to discuss your specific security requirements 
+                and compliance needs.
               </p>
               
               <motion.button
@@ -280,21 +282,21 @@ export default function SecurityPage() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200"
               >
                 <Download className="w-5 h-5" />
-                Download Security PDF
+                Request Security Overview
               </motion.button>
               
               <div className="mt-6 space-y-3 text-sm text-neutral-400">
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4" />
-                  <span>SOC 2 Type II Audit Report</span>
+                  <span>Security overview available on request</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4" />
-                  <span>GDPR Compliance Documentation</span>
+                  <span>Compliance documentation available</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4" />
-                  <span>Restaurant Data Protection Guide</span>
+                  <span>Data protection guide available</span>
                 </div>
               </div>
             </motion.div>
@@ -314,7 +316,7 @@ export default function SecurityPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6 font-heading">Questions About Security?</h2>
             <p className="text-lg text-neutral-300 mb-8">
-              Our security team is available to discuss your restaurant's specific security requirements 
+              Our security team is available to discuss your organization's specific security requirements 
               and compliance needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

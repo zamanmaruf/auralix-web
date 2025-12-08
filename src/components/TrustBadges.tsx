@@ -7,7 +7,7 @@ const trustSignals = [
   {
     icon: MapPin,
     text: 'Canadian-Based',
-    description: 'Proudly serving restaurants across Canada'
+    description: 'Proudly serving businesses across Canada'
   },
   {
     icon: Clock,
@@ -21,7 +21,7 @@ const trustSignals = [
   },
   {
     icon: Shield,
-    text: 'GDPR/Privacy Compliance',
+    text: 'GDPR-informed data protection',
     description: 'Your data is secure and protected'
   }
 ];
@@ -38,10 +38,10 @@ export default function TrustBadges() {
           className="text-center mb-8"
         >
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Why Restaurants Trust Auralix AI
+            Why Businesses Trust Auralix AI
           </h2>
           <p className="text-gray-600">
-            Built for Canadian restaurants, with Canadian values
+            Built for Canadian service businesses, with Canadian values
           </p>
         </motion.div>
 

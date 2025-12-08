@@ -78,7 +78,7 @@ export default function Chatbot() {
       console.error('Chat error:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: "I&apos;m sorry, I&apos;m having trouble connecting right now. Please try again or contact us directly at auralixai@gmail.com",
+        text: "I&apos;m sorry, I&apos;m having trouble connecting right now. Please try again or contact us directly at info@auralixai.ca",
         sender: 'bot',
         timestamp: new Date()
       };

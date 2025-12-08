@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     if (!apiKey) {
       return NextResponse.json({
         success: false,
-        response: "I'm currently unavailable. Please contact us directly at auralixai@gmail.com or book a consultation.",
+        response: "I'm currently unavailable. Please contact us directly at info@auralixai.ca or book a consultation.",
         error: 'OpenAI API key not configured'
       }, { status: 500 });
     }
@@ -87,7 +87,7 @@ Keep responses concise (2-3 sentences max) and always focus on restaurant benefi
     console.error('Chat API error:', error);
     return NextResponse.json({
       success: false,
-      response: "I apologize, but I'm having trouble connecting right now. Please contact us at auralixai@gmail.com or view our pricing at /pricing",
+      response: "I apologize, but I'm having trouble connecting right now. Please contact us at info@auralixai.ca or view our pricing at /pricing",
       error: error instanceof Error ? error.message : 'Internal server error'
     }, { status: 500 });
   }

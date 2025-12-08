@@ -70,7 +70,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         title="Auralix AI Voice Agent: Built for real business calls"
-        subtitle="Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses."
+        subtitle="Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses. Built on secure, cloud-native infrastructure used with Canadian financial institutions."
         primaryCta={{ text: "Schedule a Demo", href: "/contact" }}
         showScrollCue={true}
       />
@@ -86,10 +86,10 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-heading">
-              Trusted by Restaurant Owners Across Canada
+              Trusted by Business Owners Across Canada
             </h2>
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              See how Auralix AI is helping restaurants never miss a call and increase revenue
+              See how Auralix AI is helping businesses never miss a call and increase revenue
             </p>
           </motion.div>
 
@@ -323,7 +323,7 @@ export default function HomePage() {
               Trusted Across Industries
             </h2>
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              From dental practices to restaurant chains to hotels, businesses trust Auralix Voice Agent 
+              From dental practices to restaurant chains to hotels and other regulated service businesses, businesses trust Auralix Voice Agent 
               to handle their customer calls professionally and reliably.
             </p>
           </motion.div>
@@ -410,19 +410,22 @@ export default function HomePage() {
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
               Built for scale, security, and reliability — so you can focus on your business while we handle every call.
             </p>
+            <p className="text-base text-neutral-400 max-w-3xl mx-auto mt-4">
+              API-first architecture that securely integrates with banking, booking, CRM and back-office systems.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Shield,
-                title: 'SOC 2 Ready',
+                title: 'SOC 2–aligned security controls',
                 description: 'Enterprise-grade security and compliance',
                 color: 'green'
               },
               {
                 icon: CheckCircle,
-                title: 'GDPR & HIPAA Compliant',
+                title: 'Designed to support GDPR & HIPAA compliance',
                 description: 'Data protection and privacy compliance',
                 color: 'blue'
               },

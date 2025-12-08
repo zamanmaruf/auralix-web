@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
 
     const emailData = await resend.emails.send({
       from: 'Auralix AI <noreply@auralix.ai>',
-      to: ['auralixai@gmail.com'],
+      to: ['info@auralixai.ca'],
       subject: `New Contact Form Submission from ${escapeHtml(businessName)}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -167,7 +167,7 @@ export async function POST(request: NextRequest) {
           <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
           <p style="font-size: 12px; color: #666;">
             Auralix AI - Never miss another restaurant call<br>
-            1800 Argyle Street, Halifax, Nova Scotia, Canada | auralixai@gmail.com
+            1800 Argyle Street, Halifax, Nova Scotia, Canada | info@auralixai.ca
           </p>
         </div>
       `,

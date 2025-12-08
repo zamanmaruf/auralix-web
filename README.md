@@ -432,7 +432,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-For support, contact us at **auralixai@gmail.com** or visit our website.
+For support, contact us at **info@auralixai.ca** or visit our website.
 
 ---
 

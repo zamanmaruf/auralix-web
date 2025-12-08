@@ -465,11 +465,11 @@ export default function PrivacyPage() {
             <div className="mt-8 bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-6">
               <h3 className="text-xl font-bold text-cyan-400 mb-4">How to Exercise Your Rights</h3>
               <p className="text-gray-300 mb-4">
-                To exercise any of your privacy rights, contact us at auralixai@gmail.com with your request. We will respond within 30 days and may require identity verification to protect your privacy.
+                To exercise any of your privacy rights, contact us at info@auralixai.ca with your request. We will respond within 30 days and may require identity verification to protect your privacy.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
                 <div>
-                  <strong>Email:</strong> auralixai@gmail.com
+                  <strong>Email:</strong> info@auralixai.ca
                 </div>
                 <div>
                   <strong>Phone:</strong> +1 (782) 882-8635
@@ -496,7 +496,7 @@ export default function PrivacyPage() {
                 <div className="bg-neutral-800/50 rounded-xl p-6">
                   <h3 className="text-xl font-bold text-white mb-4">Privacy Questions</h3>
                   <div className="space-y-3 text-gray-300">
-                    <p><strong>Email:</strong> auralixai@gmail.com</p>
+                    <p><strong>Email:</strong> info@auralixai.ca</p>
                     <p><strong>Phone:</strong> +1 (782) 882-8635</p>
                     <p><strong>Response Time:</strong> Within 48 hours</p>
                   </div>

@@ -549,7 +549,7 @@ export default function TermsPage() {
                 <div className="bg-neutral-800/50 rounded-xl p-6">
                   <h3 className="text-xl font-bold text-white mb-4">Legal Questions</h3>
                   <div className="space-y-3 text-gray-300">
-                    <p><strong>Email:</strong> auralixai@gmail.com</p>
+                    <p><strong>Email:</strong> info@auralixai.ca</p>
                     <p><strong>Phone:</strong> +1 (782) 882-8635</p>
                     <p><strong>Response Time:</strong> Within 48 hours</p>
                   </div>

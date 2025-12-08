@@ -24,8 +24,8 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
           >
-            Ready to stop losing orders to missed calls? Get in touch and let's discuss how 
-            Auralix AI can transform your restaurant operations.
+            Ready to stop losing calls and opportunities? Get in touch and let's discuss how 
+            Auralix AI can transform your business operations.
           </motion.p>
           
           {/* Primary CTA */}
@@ -82,7 +82,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <div className="text-white font-semibold text-lg">Email</div>
-                      <div className="text-neutral-300">auralixai@gmail.com</div>
+                      <div className="text-neutral-300">info@auralixai.ca</div>
                       <div className="text-sm text-neutral-400">We respond within 24 hours</div>
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                     <div>
                       <div className="text-white font-semibold text-lg">Location</div>
                       <div className="text-neutral-300">1800 Argyle Street, Halifax, Nova Scotia, Canada</div>
-                      <div className="text-sm text-neutral-400">Serving restaurants coast-to-coast</div>
+                      <div className="text-sm text-neutral-400">Serving businesses coast-to-coast</div>
                     </div>
                   </div>
 
@@ -143,7 +143,7 @@ export default function ContactPage() {
               <div className="bg-gradient-to-r from-accent-orange/10 to-primary-500/10 rounded-xl p-6 border border-accent-orange/30">
                 <h3 className="text-xl font-bold text-white mb-4 font-heading">Ready to Get Started?</h3>
                 <p className="text-neutral-300 mb-4">
-                  Book a free strategy call to discuss your restaurant's specific needs and see 
+                  Book a free strategy call to discuss your business's specific needs and see 
                   how Auralix AI can help you never miss another call.
                 </p>
                 <div className="space-y-3">
@@ -190,7 +190,7 @@ export default function ContactPage() {
             </div>
             <p className="text-lg text-neutral-300 mb-6">
               Click the voice button in the bottom-right corner to have a real conversation with our AI agent 
-              and see how it handles restaurant inquiries naturally and professionally.
+              and see how it handles business inquiries naturally and professionally.
             </p>
             <button
               onClick={() => {

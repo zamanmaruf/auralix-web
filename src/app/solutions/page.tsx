@@ -71,8 +71,8 @@ export default function SolutionsPage() {
       description: 'Built with security and compliance at the core.',
       features: [
         'End-to-end encryption',
-        'SOC 2 Type II compliance',
-        'GDPR and HIPAA considerations',
+        'SOC 2–aligned security controls',
+        'Designed to support GDPR and HIPAA compliance',
         'Data privacy controls'
       ]
     }

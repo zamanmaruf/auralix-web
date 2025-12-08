@@ -1437,7 +1437,7 @@ export default function ClaimsDemoPage() {
         "🔔 Real-time Updates: WebSocket connections for live status",
         "📄 Certificate Engine: Automated PDF generation with digital signatures",
         "📦 Storage: AWS S3 with 99.999999999% durability",
-        "🔒 Security: SOC 2 Type II compliant data centers"
+        "🔒 Security: SOC 2–aligned security controls and secure data centers"
       ],
       metrics: {
         accuracy: "99.9%",

@@ -78,7 +78,7 @@ export default function AboutUsPage() {
           >
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-green-400" />
-              <span>SOC 2 Ready</span>
+              <span>SOC 2–aligned security controls</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-blue-400" />
@@ -140,7 +140,7 @@ export default function AboutUsPage() {
                   },
                   {
                     title: 'Multi-Industry Solutions',
-                    description: 'Tailored voice agents for dental practices, restaurants, hotels, and service businesses across industries.'
+                    description: 'Tailored voice agents for dental practices, restaurants, hotels, and other regulated service businesses across industries.'
                   },
                   {
                     title: 'Scalable Intelligence',
@@ -172,7 +172,7 @@ export default function AboutUsPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">Our Journey</h2>
-            <p className="text-lg text-neutral-300">From Halifax startup to Canada-wide restaurant AI leader</p>
+            <p className="text-lg text-neutral-300">From Halifax startup to Canada-wide AI automation partner for service businesses</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -258,10 +258,14 @@ export default function AboutUsPage() {
                 worked closely with them to understand their specific pain points, customer interaction patterns, 
                 and operational needs.
               </p>
+              <p className="text-neutral-300 mb-4">
+                Under the hood, the Auralix platform is an API-driven orchestration layer that securely connects phone, web, payments and back-office systems.
+              </p>
               <div className="space-y-3">
                 {[
                   'Industry-specific voice AI training',
                   'Scalable cloud architecture',
+                  'API-driven orchestration layer',
                   'Practical implementation and support'
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -314,8 +318,12 @@ export default function AboutUsPage() {
                 Maruf combines deep expertise in machine learning, software architecture, and automation strategy to lead Auralix AI's vision and execution. As CEO, he drives end-to-end product innovation — from research to deployment — ensuring every voice AI system is practical, measurable, and scalable for real-world service business operations.
               </p>
               
-              <p className="text-neutral-300 mb-8 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed">
                 He also oversees partnerships, GTM strategy, and long-term product direction, shaping Auralix into the most trusted voice AI brand for service businesses.
+              </p>
+              
+              <p className="text-neutral-300 mb-8 leading-relaxed italic border-l-4 border-primary-500/50 pl-4">
+                Before Auralix, Maruf worked in data and controls at a major Canadian bank, giving him firsthand experience with financial-grade security, compliance, and audit requirements. Auralix has since worked with Canadian financial institutions to design secure, API-driven automation workflows.
               </p>
               
               <div className="space-y-3">
