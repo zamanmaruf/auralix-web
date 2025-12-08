@@ -12,6 +12,9 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d\s\-\(\)]{9,}$/, 'Please enter a valid phone number'),
   businessName: z.string().min(2, 'Business name is required'),
+  country: z.string().min(1, 'Country/Region is required'),
+  jobRole: z.string().min(1, 'Job role is required'),
+  organizationType: z.string().min(1, 'Organization type is required'),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
@@ -101,7 +104,7 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
           // Redirect to Calendly if enabled
           if (showCalendly) {
             setTimeout(() => {
-              window.open('https://calendly.com/auralix-ai/strategy-call', '_blank');
+              window.open('https://calendly.com/auralixai/strategy-call', '_blank');
             }, 2000);
           }
         } else {
@@ -213,12 +216,12 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
         </div>
         
         <div>
-          <label htmlFor="businessName" className="block text-white font-semibold mb-2">Restaurant Name *</label>
+          <label htmlFor="businessName" className="block text-white font-semibold mb-2">Business Name *</label>
           <input
             id="businessName"
             {...register('businessName')}
             className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-            placeholder="Your restaurant name"
+            placeholder="Your business name"
             aria-invalid={errors.businessName ? 'true' : 'false'}
             aria-describedby={errors.businessName ? 'businessName-error' : undefined}
           />
@@ -229,6 +232,75 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
             </p>
           )}
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="country" className="block text-white font-semibold mb-2">Country/Region *</label>
+          <input
+            id="country"
+            {...register('country')}
+            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+            placeholder="Canada"
+            aria-invalid={errors.country ? 'true' : 'false'}
+            aria-describedby={errors.country ? 'country-error' : undefined}
+          />
+          {errors.country && (
+            <p id="country-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
+              {errors.country.message}
+            </p>
+          )}
+        </div>
+        
+        <div>
+          <label htmlFor="jobRole" className="block text-white font-semibold mb-2">Job Role *</label>
+          <select
+            id="jobRole"
+            {...register('jobRole')}
+            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+            aria-invalid={errors.jobRole ? 'true' : 'false'}
+            aria-describedby={errors.jobRole ? 'jobRole-error' : undefined}
+          >
+            <option value="">Select Job Role</option>
+            <option value="owner">Owner</option>
+            <option value="ops">Operations</option>
+            <option value="it">IT</option>
+            <option value="compliance">Compliance</option>
+            <option value="other">Other</option>
+          </select>
+          {errors.jobRole && (
+            <p id="jobRole-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
+              {errors.jobRole.message}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="organizationType" className="block text-white font-semibold mb-2">What best describes your organization? *</label>
+        <select
+          id="organizationType"
+          {...register('organizationType')}
+          className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+          aria-invalid={errors.organizationType ? 'true' : 'false'}
+          aria-describedby={errors.organizationType ? 'organizationType-error' : undefined}
+        >
+          <option value="">Select Organization Type</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="dental">Dental</option>
+          <option value="hotel">Hotel</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="financial-institution">Financial Institution</option>
+          <option value="other">Other</option>
+        </select>
+        {errors.organizationType && (
+          <p id="organizationType-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+            <AlertCircle className="w-4 h-4" aria-hidden="true" />
+            {errors.organizationType.message}
+          </p>
+        )}
       </div>
 
       <div>
@@ -253,13 +325,13 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-white font-semibold mb-2">Message *</label>
+        <label htmlFor="message" className="block text-white font-semibold mb-2">How can we help? *</label>
         <textarea
           id="message"
           {...register('message')}
           rows={4}
           className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-          placeholder="Tell us about your restaurant needs..."
+          placeholder="Tell us about your business needs..."
           aria-invalid={errors.message ? 'true' : 'false'}
           aria-describedby={errors.message ? 'message-error' : undefined}
         />

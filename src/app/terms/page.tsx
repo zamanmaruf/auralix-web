@@ -17,7 +17,7 @@ export default function TermsPage() {
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-cyan-300 font-heading">Terms of Service</h1>
           <p className="text-xl md:text-2xl text-cyan-100 mb-8 max-w-4xl mx-auto">
-            Legal terms governing your use of Auralix AI restaurant automation services.
+            Legal terms governing your use of Auralix AI voice automation services.
           </p>
           <div className="flex items-center justify-center gap-4 text-gray-300">
             <Clock className="w-5 h-5" />
@@ -45,13 +45,13 @@ export default function TermsPage() {
             </div>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
-                These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Restaurant,&quot; &quot;you,&quot; or &quot;your&quot;) and Auralix AI Inc. (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) regarding your use of our restaurant AI automation services.
+                These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Business,&quot; &quot;Customer,&quot; &quot;you,&quot; or &quot;your&quot;) and Auralix AI Inc. (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) regarding your use of our voice automation services.
               </p>
               <p>
                 By accessing, using, or subscribing to our AI receptionist, chatbot, order automation, or website services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, you may not use our services.
               </p>
               <p>
-                These Terms apply to all restaurants, cafes, bars, and food service establishments that use our AI automation platform to enhance customer service, manage reservations, process orders, and streamline operations.
+                These Terms apply to all service businesses, including but not limited to restaurants, dental practices, hotels, and other service-based organizations that use our AI automation platform to enhance customer service, manage appointments, process orders, and streamline operations.
               </p>
             </div>
           </motion.div>
@@ -66,7 +66,7 @@ export default function TermsPage() {
           >
             <div className="flex items-center gap-4 mb-8">
               <Building className="w-8 h-8 text-cyan-400" />
-              <h2 className="text-3xl font-bold text-white font-heading">Restaurant AI Services</h2>
+              <h2 className="text-3xl font-bold text-white font-heading">Voice Automation Services</h2>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -88,7 +88,7 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Restaurant Websites - Modern design with AI integration</span>
+                      <span>Business Websites - Modern design with AI integration</span>
                     </li>
                   </ul>
                 </div>
@@ -122,7 +122,7 @@ export default function TermsPage() {
             <div className="mt-8 bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-6">
               <h3 className="text-xl font-bold text-cyan-400 mb-4">Service Availability</h3>
               <p className="text-gray-300">
-                Our AI services are designed to operate 24/7 to ensure your restaurant never misses a call, order, or reservation. We maintain 99.9% uptime and provide real-time monitoring to ensure optimal performance for your restaurant operations.
+                Our AI services are designed to operate 24/7 to ensure your business never misses a call, appointment, or order. We maintain 99.9% uptime and provide real-time monitoring to ensure optimal performance for your business operations.
               </p>
             </div>
           </motion.div>
@@ -137,7 +137,7 @@ export default function TermsPage() {
           >
             <div className="flex items-center gap-4 mb-8">
               <User className="w-8 h-8 text-cyan-400" />
-              <h2 className="text-3xl font-bold text-white font-heading">Restaurant Account Management</h2>
+              <h2 className="text-3xl font-bold text-white font-heading">Account Management</h2>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -147,7 +147,7 @@ export default function TermsPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Provide accurate restaurant information and contact details</span>
+                      <span>Provide accurate business information and contact details</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -159,7 +159,7 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Configure AI settings and restaurant preferences</span>
+                      <span>Configure AI settings and business preferences</span>
                     </li>
                   </ul>
                 </div>
@@ -201,7 +201,7 @@ export default function TermsPage() {
           >
             <div className="flex items-center gap-4 mb-8">
               <Shield className="w-8 h-8 text-cyan-400" />
-              <h2 className="text-3xl font-bold text-white font-heading">Restaurant Use Guidelines</h2>
+              <h2 className="text-3xl font-bold text-white font-heading">Use Guidelines</h2>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -211,7 +211,7 @@ export default function TermsPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Process customer reservations and orders</span>
+                      <span>Process customer appointments, reservations, and orders</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -219,7 +219,7 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Manage restaurant operations and staff</span>
+                      <span>Manage business operations and staff</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -257,10 +257,10 @@ export default function TermsPage() {
             <div className="mt-8 bg-red-900/20 border border-red-500/30 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <AlertTriangle className="w-6 h-6 text-red-400" />
-                <h3 className="text-xl font-bold text-red-400">Restaurant Industry Compliance</h3>
+                <h3 className="text-xl font-bold text-red-400">Industry Compliance</h3>
               </div>
               <p className="text-gray-300">
-                You must comply with all applicable restaurant industry regulations, food safety standards, and local business laws. Any misuse of our AI services that violates restaurant industry standards may result in immediate service termination.
+                You must comply with all applicable industry regulations, safety standards, and local business laws. Any misuse of our AI services that violates industry standards may result in immediate service termination.
               </p>
             </div>
           </motion.div>
@@ -275,7 +275,7 @@ export default function TermsPage() {
           >
             <div className="flex items-center gap-4 mb-8">
               <CreditCard className="w-8 h-8 text-cyan-400" />
-              <h2 className="text-3xl font-bold text-white font-heading">Restaurant Payment Terms</h2>
+              <h2 className="text-3xl font-bold text-white font-heading">Payment Terms</h2>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -289,11 +289,11 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Starter: $99/mo, Pro: $199/mo, Premium: $399/mo</span>
+                      <span>Current pricing is published on our website at /pricing and may change from time to time</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Founder's Special: 20% off for first 100 restaurants</span>
+                      <span>Professional setup with credit card required</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -379,15 +379,15 @@ export default function TermsPage() {
 
               <div className="space-y-6">
                 <div className="bg-neutral-800/50 rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-4">Restaurant Content</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Business Content</h3>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>You retain ownership of your restaurant data</span>
+                      <span>You retain ownership of your business data</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Menu items, pricing, and operational information</span>
+                      <span>Service offerings, pricing, and operational information</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -423,7 +423,7 @@ export default function TermsPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>PIPEDA compliance for Canadian restaurants</span>
+                      <span>PIPEDA compliance for Canadian businesses</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -443,11 +443,11 @@ export default function TermsPage() {
 
               <div className="space-y-6">
                 <div className="bg-neutral-800/50 rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-4">Restaurant Data Rights</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Data Rights</h3>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Access and download your restaurant data</span>
+                      <span>Access and download your business data</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -499,7 +499,7 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
-                      <span>Restaurant responsible for backup and data security</span>
+                      <span>Business responsible for backup and data security</span>
                     </li>
                   </ul>
                 </div>

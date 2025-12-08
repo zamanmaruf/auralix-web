@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-cyan-300 font-heading">Privacy Policy</h1>
           <p className="text-xl md:text-2xl text-cyan-100 mb-8 max-w-4xl mx-auto">
-            Comprehensive data protection for Canadian restaurants using Auralix AI automation services.
+            Comprehensive data protection for Canadian businesses using Auralix AI automation services.
           </p>
           <div className="flex items-center justify-center gap-4 text-gray-300">
             <Clock className="w-5 h-5" />
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             </div>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
-                Auralix AI Inc. (&quot;we,&quot; &quot;our,&quot; &quot;us,&quot; or &quot;Company&quot;) is a Halifax-based artificial intelligence company specializing in restaurant automation solutions. We are committed to protecting the privacy and security of personal information collected from Canadian restaurants and their customers.
+                Auralix AI Inc. (&quot;we,&quot; &quot;our,&quot; &quot;us,&quot; or &quot;Company&quot;) is a Halifax-based artificial intelligence company specializing in voice automation solutions for service businesses (including restaurants, dental practices, hotels, and other service-heavy organizations). We are committed to protecting the privacy and security of personal information collected from Canadian businesses and their customers.
               </p>
               <p>
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI receptionist, chatbot, order automation, and website services. It applies to all information collected through our website, mobile applications, and AI services.
@@ -75,12 +75,12 @@ export default function PrivacyPage() {
                 <div className="bg-neutral-800/50 rounded-xl p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <Building className="w-6 h-6 text-cyan-400" />
-                    <h3 className="text-xl font-bold text-white">Restaurant Business Information</h3>
+                    <h3 className="text-xl font-bold text-white">Business Information</h3>
                   </div>
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Restaurant name, address, phone number, and business registration details</span>
+                      <span>Business name, address, phone number, and business registration details</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Menu items, pricing, and operational hours</span>
+                      <span>Service offerings, pricing, and operational hours</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -243,7 +243,7 @@ export default function PrivacyPage() {
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Regulatory Compliance</h4>
                   <ul className="space-y-2 text-gray-300">
                     <li>• Comply with Canadian privacy laws (PIPEDA)</li>
-                    <li>• Meet restaurant industry regulations</li>
+                    <li>• Meet industry regulations</li>
                     <li>• Respond to legal requests and court orders</li>
                     <li>• Maintain audit trails and records</li>
                   </ul>

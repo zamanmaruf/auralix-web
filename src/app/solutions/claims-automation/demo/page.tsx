@@ -2206,7 +2206,7 @@ export default function ClaimsDemoPage() {
                       <li>• Real-time risk assessment (&lt;500ms)</li>
                       <li>• Improved customer satisfaction (instant updates)</li>
                       <li>• Cost-effective operations (60% cost reduction)</li>
-                      <li>• Enterprise-grade security (SOC 2 compliant)</li>
+                      <li>• Enterprise-grade security (SOC 2–aligned)</li>
                     </ul>
                     <ul className="space-y-2 text-gray-300">
                       <li>• Scalable to 10,000+ claims per day</li>

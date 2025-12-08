@@ -464,6 +464,82 @@ export default function AboutUsPage() {
         </div>
       </section>
 
+      {/* Working with Financial Institutions */}
+      <section className="py-16 px-4 bg-neutral-800/50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Working with Financial Institutions</h2>
+            <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
+              Auralix has experience designing automation workflows with Canadian financial institutions and understands 
+              the security, compliance, and risk management requirements of regulated industries.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-4 font-heading">Our Experience</h3>
+                <ul className="space-y-3">
+                  {[
+                    'Designed automation workflows with Canadian financial institutions',
+                    'Experience aligning with bank security and compliance processes',
+                    'Understanding of OSFI guidelines and third-party risk requirements',
+                    'Familiarity with vendor due-diligence and risk assessment processes'
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-neutral-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-4 font-heading">Our Commitment</h3>
+                <ul className="space-y-3">
+                  {[
+                    'Willingness to support risk assessments and audits',
+                    'Transparent security and compliance documentation',
+                    'Alignment with financial-grade security standards',
+                    'Ongoing support for vendor due-diligence requirements'
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-neutral-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="mt-8 pt-8 border-t border-primary-500/30">
+              <p className="text-neutral-300 mb-4">
+                This experience addresses the operational, financial, and information-security factors that banks 
+                and regulators evaluate when assessing third-party vendors, ensuring Auralix can meet the 
+                requirements of financial institution partnerships.
+              </p>
+              <a
+                href="/for-financial-institutions"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200"
+              >
+                Learn More About Our Financial Institution Solutions
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">

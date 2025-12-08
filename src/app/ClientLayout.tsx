@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Linkedin, Shield, Mail, Menu, X } from "lucide-react";
+import { Linkedin, Shield, Mail, Menu, X, ChevronDown } from "lucide-react";
 import VapiVoiceAssistant from "../components/VapiVoiceAssistant";
 import Logo from "../components/Logo";
 import ErrorBoundary from "../components/ErrorBoundary";
@@ -10,6 +10,7 @@ import CookieConsent from "../components/CookieConsent";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [subscriptionMessage, setSubscriptionMessage] = useState('');
@@ -83,12 +84,59 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </Link>
           </div>
           {/* Desktop Nav */}
-          <div className="hidden md:flex flex-1 justify-end gap-10 text-lg items-center">
+          <div className="hidden md:flex flex-1 justify-end gap-8 text-lg items-center">
             <Link href="/solutions" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="View Solutions">Solutions</Link>
             <Link href="/pricing" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="View Pricing">Pricing</Link>
-            <Link href="/about-us" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="About Us">About Us</Link>
+            
+            {/* Resources Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setResourcesDropdownOpen(true)}
+              onMouseLeave={() => setResourcesDropdownOpen(false)}
+            >
+              <button
+                className="flex items-center gap-1 hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2"
+                aria-label="Resources"
+                aria-expanded={resourcesDropdownOpen}
+              >
+                Resources
+                <ChevronDown className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {resourcesDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg shadow-xl py-2 z-50">
+                  <Link
+                    href="/case-studies"
+                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    Case Studies
+                  </Link>
+                  <Link
+                    href="/for-financial-institutions"
+                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    For Financial Institutions
+                  </Link>
+                  <Link
+                    href="/about-us"
+                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    About Us
+                  </Link>
+                  <Link
+                    href="/security"
+                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
+                    onClick={() => setResourcesDropdownOpen(false)}
+                  >
+                    Security
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link href="/contact" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="Contact Us">Contact</Link>
-            <a href="/pricing" className="ml-2 px-5 py-2 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2" aria-label="View Pricing Plans">View Pricing</a>
           </div>
           {/* Mobile menu button - Ensure minimum touch target size (44x44px) */}
           <div className="md:hidden">
@@ -121,13 +169,50 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               >
                 Pricing
               </Link>
-              <Link 
-                href="/about-us" 
-                className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
-                onClick={closeMobileMenu}
-              >
-                About Us
-              </Link>
+              
+              {/* Resources Section */}
+              <div>
+                <button
+                  onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
+                  className="flex items-center justify-between w-full text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                >
+                  Resources
+                  <ChevronDown className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {resourcesDropdownOpen && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    <Link
+                      href="/case-studies"
+                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
+                      onClick={closeMobileMenu}
+                    >
+                      Case Studies
+                    </Link>
+                    <Link
+                      href="/for-financial-institutions"
+                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
+                      onClick={closeMobileMenu}
+                    >
+                      For Financial Institutions
+                    </Link>
+                    <Link
+                      href="/about-us"
+                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
+                      onClick={closeMobileMenu}
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      href="/security"
+                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
+                      onClick={closeMobileMenu}
+                    >
+                      Security
+                    </Link>
+                  </div>
+                )}
+              </div>
+
               <Link 
                 href="/contact" 
                 className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
@@ -135,13 +220,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               >
                 Contact
               </Link>
-              <a 
-                href="/pricing" 
-                className="block px-6 py-4 border-2 border-cyan-400 text-cyan-300 rounded-lg hover:bg-cyan-400 hover:text-black transition-all font-semibold text-center mt-6"
-                onClick={closeMobileMenu}
-              >
-                View Pricing
-              </a>
             </div>
           </div>
         )}
@@ -185,14 +263,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Resources */}
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
               <ul className="space-y-3 text-sm text-gray-300">
-                <li><Link href="/about-us" className="hover:text-cyan-400 transition-colors block py-1">About Us</Link></li>
-                <li><Link href="/blog" className="hover:text-cyan-400 transition-colors block py-1">Case Studies</Link></li>
+                <li><Link href="/case-studies" className="hover:text-cyan-400 transition-colors block py-1">Case Studies</Link></li>
+                <li><Link href="/for-financial-institutions" className="hover:text-cyan-400 transition-colors block py-1">For Financial Institutions</Link></li>
                 <li><Link href="/security" className="hover:text-cyan-400 transition-colors block py-1">Security</Link></li>
-                <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors block py-1">Privacy</Link></li>
               </ul>
             </div>
           </div>

@@ -407,7 +407,7 @@ const BrochurePage = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary-400" />
-                <span>+1 (782) 882-0525</span>
+                <span>+1 (782) 882-8635</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary-400" />
@@ -424,7 +424,7 @@ const BrochurePage = () => {
           className="text-center"
         >
           <p className="text-sm text-neutral-400 mb-4">
-            No setup fees. Cancel anytime. Our team will activate your trial within 24 hours.
+            No setup fees. Cancel anytime.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-neutral-500">
             <span>© 2025 Auralix AI Inc.</span>

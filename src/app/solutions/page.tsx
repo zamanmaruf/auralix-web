@@ -51,7 +51,9 @@ export default function SolutionsPage() {
         'Appointment booking systems',
         'Customer databases',
         'POS and payment systems',
-        'Email and SMS automation'
+        'Email and SMS automation',
+        'Banking and contact-center systems',
+        'Core banking and CRM integration'
       ]
     },
     {
@@ -117,6 +119,19 @@ export default function SolutionsPage() {
         'Cancellation and modification',
         'Loyalty program support'
       ]
+    },
+    {
+      industry: 'Financial Institutions & Partners',
+      icon: Shield,
+      color: 'green',
+      useCases: [
+        'IVR replacement or augmentation with natural language',
+        'Balance, branch, and card FAQ handling',
+        'Secure call logging and routing into existing contact center platforms',
+        'Non-advisory investment or savings FAQs',
+        'White-label voice agent for partner channels',
+        'Integration with core banking and CRM systems'
+      ]
     }
   ];
 
@@ -166,7 +181,8 @@ export default function SolutionsPage() {
             className="text-xl text-neutral-300 mb-8 max-w-4xl mx-auto"
           >
             Transform your phone calls with enterprise-grade voice AI that handles appointments, inquiries, 
-            and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses.
+            and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses. 
+            API-first architecture integrates seamlessly with banking, booking, and contact-center systems.
           </motion.p>
           
           {/* Primary CTA */}
@@ -426,7 +442,11 @@ export default function SolutionsPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">Built on Advanced Technology</h2>
-            <p className="text-lg text-neutral-300">Enterprise-grade infrastructure powering intelligent conversations</p>
+            <p className="text-lg text-neutral-300 mb-2">Enterprise-grade infrastructure powering intelligent conversations</p>
+            <p className="text-base text-neutral-400 max-w-3xl mx-auto">
+              For technical reviewers: REST APIs, webhooks, and event streams enable seamless integration. 
+              Can be deployed in single-tenant VPCs for enterprise customers requiring enhanced isolation and control.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -540,8 +560,14 @@ export default function SolutionsPage() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                href="/pricing"
+                href="/contact"
                 className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+              >
+                Book Technical Review
+              </Link>
+              <Link
+                href="/pricing"
+                className="px-8 py-4 border-2 border-neutral-600 text-neutral-300 hover:bg-neutral-700 hover:text-white font-bold rounded-lg transition-all duration-200"
               >
                 View Pricing
               </Link>

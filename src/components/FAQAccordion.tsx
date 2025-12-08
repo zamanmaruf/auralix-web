@@ -24,7 +24,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: "How does the pricing work?",
-    answer: "We have two simple plans: Pro ($199/month + $499 setup) for single locations, and Premium ($599/month + $599 setup) for multi-location chains. The setup fee covers professional installation, configuration, staff training, and 48-hour monitoring. Monthly fees include ongoing support, updates, and maintenance. No hidden costs or surprise charges."
+    answer: "We offer flexible pricing plans starting at $199/month. Current pricing is published on our website at /pricing and may change from time to time. The setup fee covers professional installation, configuration, staff training, and 48-hour monitoring. Monthly fees include ongoing support, updates, and maintenance. No hidden costs or surprise charges."
   }
 ];
 

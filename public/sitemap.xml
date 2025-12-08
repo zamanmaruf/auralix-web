@@ -55,10 +55,10 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://auralix.ai/blog</loc>
+    <loc>https://auralix.ai/for-financial-institutions</loc>
     <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://auralix.ai/one-pager</loc>

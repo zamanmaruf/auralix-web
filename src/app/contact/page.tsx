@@ -126,10 +126,10 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-white mb-4 font-heading">Why Choose Auralix AI?</h3>
                 <div className="space-y-3">
                   {[
-                    'Built specifically for Canadian restaurants',
-                    'Proven track record with local restaurants',
+                    'Built for service businesses across Canada (dental, restaurants, hotels, and other service-driven businesses)',
+                    'Proven track record with service businesses',
                     'Personalized service and ongoing support',
-                    'Flexible solutions that scale with your restaurant',
+                    'Flexible solutions that scale with your business',
                     'Made in Halifax, serving Canada coast-to-coast'
                   ].map((benefit, index) => (
                     <div key={index} className="flex items-start gap-3">
@@ -146,6 +146,14 @@ export default function ContactPage() {
                   Book a free strategy call to discuss your business&apos;s specific needs and see 
                   how Auralix AI can help you never miss another call.
                 </p>
+                <div className="bg-neutral-800/50 rounded-lg p-4 mb-4 border border-neutral-700">
+                  <p className="text-sm text-neutral-300 mb-2">
+                    <strong className="text-white">We typically respond within 24 hours.</strong>
+                  </p>
+                  <p className="text-sm text-neutral-300">
+                    <strong className="text-white">For financial institutions and partners:</strong> We can sign NDAs and provide security documentation.
+                  </p>
+                </div>
                 <div className="space-y-3">
                   <a
                     href="/pricing"
@@ -154,7 +162,7 @@ export default function ContactPage() {
                     View Pricing
                   </a>
                   <a
-                    href="https://calendly.com/auralix-ai/strategy-call"
+                    href="https://calendly.com/auralixai/strategy-call"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full px-6 py-3 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200 text-center flex items-center justify-center gap-2"

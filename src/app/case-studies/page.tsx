@@ -71,16 +71,24 @@ export default function CaseStudiesPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Restaurant Success Stories
+            Success Stories
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
+            className="text-xl text-neutral-300 mb-4 max-w-3xl mx-auto"
           >
-            See how Canadian restaurants are using Auralix AI to never miss a call, 
-            increase bookings, and grow revenue.
+            See how Canadian businesses use Auralix AI to never miss a call and grow revenue.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-base text-neutral-400 mb-8 max-w-3xl mx-auto"
+          >
+            We started with restaurants and have expanded to dental clinics, hotels, and other service businesses. 
+            Here&apos;s how businesses are using Auralix Voice Agent to capture more revenue and cut admin time.
           </motion.p>
         </div>
       </section>
@@ -173,7 +181,10 @@ export default function CaseStudiesPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">All Success Stories</h2>
-            <p className="text-lg text-neutral-300">Real results from real restaurants across Canada</p>
+            <p className="text-lg text-neutral-300">Real results from businesses across Canada</p>
+            <p className="text-base text-neutral-400 mt-4 max-w-3xl mx-auto">
+              We began with restaurants, and now apply the same voice AI stack to other service businesses and regulated industries.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -263,7 +274,7 @@ export default function CaseStudiesPage() {
               Ready to Write Your Success Story?
             </h2>
             <p className="text-lg text-neutral-300 mb-8">
-              Join these restaurants and start your AI transformation journey today.
+              Join these businesses and start your AI transformation journey today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

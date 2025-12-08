@@ -75,6 +75,8 @@ export default function Hero({
         >
           <a 
             href={primaryCta.href}
+            target={primaryCta.href.startsWith('http') ? '_blank' : undefined}
+            rel={primaryCta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="inline-flex items-center gap-3 px-10 sm:px-14 py-5 sm:py-6 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-2xl text-lg sm:text-xl md:text-2xl shadow-2xl hover:shadow-3xl transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent-orange/50"
             aria-label={primaryCta.text}
           >

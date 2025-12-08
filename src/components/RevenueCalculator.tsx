@@ -194,13 +194,16 @@ export default function RevenueCalculator({ isOpen, onClose }: RevenueCalculator
               </motion.div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
+                <motion.a
+                  href="https://calendly.com/auralixai/strategy-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex-1 px-6 py-3 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200"
+                  className="flex-1 px-6 py-3 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 text-center"
                 >
-                  Start Free Trial
-                </motion.button>
+                  Schedule a Demo
+                </motion.a>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

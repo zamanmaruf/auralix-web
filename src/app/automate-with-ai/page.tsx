@@ -173,12 +173,12 @@ export default function AutomateWithAIPage() {
             Ready to Automate Your Business?
           </h2>
           <a
-            href="/trial"
+            href="https://calendly.com/auralixai/strategy-call"
             target="_blank"
             rel="noopener noreferrer"
             className="px-10 py-4 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-full text-lg shadow-lg transition-all duration-200 mr-4 inline-block text-center"
           >
-            Book a Free Automation Strategy Call
+            Schedule a Demo
           </a>
         </section>
 

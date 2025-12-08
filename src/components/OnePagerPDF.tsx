@@ -132,8 +132,9 @@ export default function OnePagerPDF() {
       
       // Pricing cards (2-column layout)
       const plans = [
-        { name: 'Pro', price: '$199/mo', setup: '$499 CAD', who: 'Single-location full AI', features: 'Voice agent + Chatbot', color: violet, popular: true },
-        { name: 'Premium', price: '$599/mo', setup: '$599 CAD', who: 'Multi-location groups', features: 'Full suite + integrations', color: electricBlue }
+        { name: 'Starter', price: '$199/mo', setup: '$499 CAD', who: 'Small businesses', features: 'Voice agent + Basic features', color: violet, popular: false },
+        { name: 'Professional', price: '$499/mo', setup: '$799 CAD', who: 'Growing businesses', features: 'Advanced features + Multi-location', color: electricBlue, popular: true },
+        { name: 'Enterprise', price: 'Custom', setup: 'Custom', who: 'Large organizations', features: 'Full suite + Custom solutions', color: gold, popular: false }
       ];
       
       plans.forEach((plan, index) => {
@@ -437,9 +438,6 @@ export default function OnePagerPDF() {
             </div>
             
             <div className="mt-6 text-center">
-              <p className="text-gray-700 mb-2">
-                <strong>Free Trial:</strong> 14-day full access with credit card required.
-              </p>
               <p className="text-cyan-600 font-semibold">
                 Founder's Offer: First 100 clients get 20% off for life.
               </p>
@@ -474,7 +472,7 @@ export default function OnePagerPDF() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
               <div className="flex items-center gap-2">
                 <ArrowRight className="w-5 h-5" />
-                <span>Book your free trial at auralixai.ca</span>
+                <span>Schedule a demo at auralixai.ca</span>
               </div>
               <span className="hidden md:block">or</span>
               <div className="flex items-center gap-2">

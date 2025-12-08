@@ -249,7 +249,7 @@ export default function SecurityPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-300">Multi-location access controls for restaurant chains</span>
+                    <span className="text-neutral-300">Multi-location access controls for multi-location businesses</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -276,14 +276,15 @@ export default function SecurityPage() {
                 and compliance needs.
               </p>
               
-              <motion.button
+              <motion.a
+                href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200"
               >
                 <Download className="w-5 h-5" />
                 Request Security Overview
-              </motion.button>
+              </motion.a>
               
               <div className="mt-6 space-y-3 text-sm text-neutral-400">
                 <div className="flex items-center gap-2">
@@ -304,6 +305,87 @@ export default function SecurityPage() {
         </div>
       </section>
 
+      {/* Vendor Due-Diligence Pack */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Vendor Due-Diligence Pack</h2>
+            <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
+              For financial institutions and enterprise customers, we can provide comprehensive documentation 
+              to support your vendor due-diligence and risk assessment processes.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-4 font-heading">Available Documentation</h3>
+                <ul className="space-y-3">
+                  {[
+                    'Security overview and architecture diagrams',
+                    'Data-flow diagrams and system integration maps',
+                    'Standard responses for information-security questionnaires',
+                    'Business continuity and disaster recovery documentation',
+                    'Data processing agreements (DPA) templates',
+                    'Sub-processor lists and data residency information'
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-neutral-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-4 font-heading">Due-Diligence Support</h3>
+                <ul className="space-y-3">
+                  {[
+                    'Information security assessments and questionnaires',
+                    'Operational risk reviews and documentation',
+                    'Financial stability and business continuity information',
+                    'Regulatory compliance verification (PIPEDA, GDPR, etc.)',
+                    'Data residency and sovereignty documentation',
+                    'Custom security questionnaires and audit support'
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-neutral-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="mt-8 pt-8 border-t border-primary-500/30">
+              <p className="text-neutral-300 mb-4">
+                This documentation supports the operational, financial, and information-security factors 
+                that financial institutions evaluate during third-party risk assessments, in alignment 
+                with OSFI guidelines and bank vendor due-diligence processes.
+              </p>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200"
+              >
+                Request Vendor Due-Diligence Pack
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -320,20 +402,24 @@ export default function SecurityPage() {
               and compliance needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
+              <motion.a
+                href="https://calendly.com/auralixai/strategy-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200"
               >
                 Schedule Security Review
-              </motion.button>
-              <motion.button
+              </motion.a>
+              <motion.a
+                href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
               >
                 Contact Security Team
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         </div>

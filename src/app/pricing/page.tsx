@@ -195,6 +195,14 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 
+                {plan.name === 'Enterprise' && (
+                  <div className="mb-6 p-4 bg-primary-500/10 border border-primary-500/30 rounded-lg">
+                    <p className="text-sm text-neutral-300">
+                      <strong className="text-white">For enterprise & financial institutions:</strong> Includes security & compliance review support (SOC 2–aligned controls, vendor due-diligence documentation, DPA templates).
+                    </p>
+                  </div>
+                )}
+                
                 <a
                   href="/contact"
                   className={`block w-full text-center py-3 rounded-lg font-bold transition-all duration-200 ${

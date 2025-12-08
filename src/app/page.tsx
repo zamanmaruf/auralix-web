@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Phone, Users, TrendingUp, Clock, DollarSign, CheckCircle, ArrowRight, Calculator, Brain, Mic, Zap, Globe, Shield, Activity, Star } from 'lucide-react';
 import Hero from '../components/Hero';
 import FeatureCard from '../components/FeatureCard';
@@ -59,7 +60,8 @@ export default function HomePage() {
         'Conversion rate tracking',
         'CRM and system integration',
         'Customer satisfaction metrics',
-        'Custom reporting dashboards'
+        'Custom reporting dashboards',
+        'Full call transcripts and interaction logs for audit and quality review'
       ],
       color: 'teal' as const
     }
@@ -70,8 +72,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         title="Auralix AI Voice Agent: Built for real business calls"
-        subtitle="Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses. Built on secure, cloud-native infrastructure used with Canadian financial institutions."
-        primaryCta={{ text: "Schedule a Demo", href: "/contact" }}
+        subtitle="Enterprise-grade voice AI that handles calls, appointments, and customer service 24/7. Built for service businesses on secure infrastructure trusted by Canadian financial institutions."
+        primaryCta={{ text: "Schedule a Demo", href: "https://calendly.com/auralixai/strategy-call" }}
         showScrollCue={true}
       />
 
@@ -184,6 +186,25 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Social Proof Strip */}
+      <section className="py-8 px-4 bg-neutral-900 border-y border-neutral-800">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <p className="text-sm text-neutral-400 mb-4">Trusted by businesses across Canada</p>
+            {/* Placeholder for client logos - can be added when available */}
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              <div className="text-neutral-500 text-sm">Client logos coming soon</div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Pain → Solution Strip */}
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-b from-neutral-900 to-neutral-800">
         <div className="max-w-6xl mx-auto">
@@ -273,7 +294,7 @@ export default function HomePage() {
             </h2>
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
               One powerful voice agent solution that handles appointments, inquiries, and customer service across industries.
-              Never miss a call, booking, or customer interaction again.
+              From dental and clinics to restaurants, hotels, and other service businesses — never miss a call, booking, or customer interaction again.
             </p>
           </motion.div>
 
@@ -327,6 +348,52 @@ export default function HomePage() {
               to handle their customer calls professionally and reliably.
             </p>
           </motion.div>
+
+          {/* Industry Tiles */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                title: 'Dental Practices',
+                description: 'Appointment scheduling and patient inquiries',
+                icon: Users,
+                color: 'blue'
+              },
+              {
+                title: 'Restaurants',
+                description: 'Reservations and order management',
+                icon: Phone,
+                color: 'primary'
+              },
+              {
+                title: 'Hotels',
+                description: 'Room bookings and guest services',
+                icon: Globe,
+                color: 'purple'
+              },
+              {
+                title: 'Financial Institutions & Enterprise Partners',
+                description: 'Secure orchestration layer that plugs into existing contact center, core banking, or CRM systems with API-first design',
+                icon: Shield,
+                color: 'green'
+              }
+            ].map((industry, index) => {
+              const IndustryIcon = industry.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700 hover:border-primary-500/50 transition-all duration-300"
+                >
+                  <IndustryIcon className={`w-10 h-10 text-${industry.color}-400 mb-4`} />
+                  <h3 className="text-lg font-bold text-white mb-2 font-heading">{industry.title}</h3>
+                  <p className="text-neutral-300 text-sm">{industry.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -456,6 +523,22 @@ export default function HomePage() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Link
+              href="/security"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+            >
+              View Security & Compliance
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -479,14 +562,20 @@ export default function HomePage() {
                 href="/contact"
                 className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
-                Get Started Today
-              </a>
-              <a
-                href="/contact"
-                className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
-              >
                 Book Strategy Call
               </a>
+              <button
+                onClick={() => {
+                  if ((window as any).triggerVapiCall) {
+                    (window as any).triggerVapiCall();
+                  } else {
+                    window.dispatchEvent(new Event('trigger-vapi-call'));
+                  }
+                }}
+                className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+              >
+                Talk to the AI Agent
+              </button>
             </div>
             <p className="text-sm text-neutral-400 mt-4">
               Professional setup included. No contracts. Our team will contact you within 24 hours.
