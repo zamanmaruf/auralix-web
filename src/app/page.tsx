@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Michael Hauke</div>
-                  <div className="text-neutral-400 text-sm">Halifax HVAC Services - Multi-Location Operator</div>
+                  <div className="text-neutral-400 text-sm">Multi-Location Operator</div>
                 </div>
               </div>
             </motion.div>
@@ -149,7 +149,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Costa Alexandrou</div>
-                  <div className="text-neutral-400 text-sm">Nova Scotia Plumbing Co.</div>
+                  <div className="text-neutral-400 text-sm">Business Owner</div>
                 </div>
               </div>
             </motion.div>
@@ -178,7 +178,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Dru</div>
-                  <div className="text-neutral-400 text-sm">Toronto Electrical Services</div>
+                  <div className="text-neutral-400 text-sm">Business Owner</div>
                 </div>
               </div>
             </motion.div>
