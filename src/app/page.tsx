@@ -111,7 +111,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  &quot;We&apos;re capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-unit operators.&quot;
+                  &quot;We&apos;re capturing an extra 40% more service calls. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-location HVAC businesses.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Michael Hauke</div>
-                  <div className="text-neutral-400 text-sm">Tony Boloney&apos;s - Multi-Unit Operator</div>
+                  <div className="text-neutral-400 text-sm">Halifax HVAC Services - Multi-Location Operator</div>
                 </div>
               </div>
             </motion.div>
@@ -140,7 +140,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  &quot;I was able to leave early on Halloween because Auralix AI managed the phones. The voice agent handles everything so naturally — customers can&apos;t tell they&apos;re talking to AI. Game changer for our operations.&quot;
+                  &quot;I can focus on service calls because Auralix AI manages the phones. The voice agent handles everything so naturally — customers can&apos;t tell they&apos;re talking to AI. Game changer for our operations.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -149,7 +149,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Costa Alexandrou</div>
-                  <div className="text-neutral-400 text-sm">Nick's Place</div>
+                  <div className="text-neutral-400 text-sm">Nova Scotia Plumbing Co.</div>
                 </div>
               </div>
             </motion.div>
@@ -169,7 +169,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  &quot;Without Auralix, we would be losing over $200k annually. The voice agent handles everything so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s essential for our business.&quot;
+                  &quot;Without Auralix, we would be losing over $200k annually in missed service calls. The voice agent handles everything so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s essential for our business.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -178,7 +178,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">Dru</div>
-                  <div className="text-neutral-400 text-sm">Midland Pizza Co.</div>
+                  <div className="text-neutral-400 text-sm">Toronto Electrical Services</div>
                 </div>
               </div>
             </motion.div>
