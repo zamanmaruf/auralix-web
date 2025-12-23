@@ -253,30 +253,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
           </div>
 
-          {/* Contact & Social */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pt-8 border-t border-[#333]">
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
-              <div className="space-y-3 text-sm text-gray-300">
-                <div className="flex items-center gap-3">
-                  <Mail className="text-cyan-400 flex-shrink-0" />
-                  <span className="break-all">info@auralixai.ca</span>
-                </div>
-                <div className="text-gray-400">
-                  1800 Argyle Street, Halifax, Nova Scotia, Canada
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
-              <div className="flex gap-4">
-                <a href="https://linkedin.com/company/auralix-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors p-2 rounded-lg hover:bg-[#1a1a1a]">
-                  <Linkedin className="text-xl" />
-                </a>
-              </div>
-            </div>
-          </div>
 
           {/* Newsletter Signup */}
           <div className="bg-[#1a1a1a] rounded-lg p-6 mb-8">
