@@ -251,7 +251,7 @@ export default function PricingPage() {
                   { feature: 'Appointment/booking management', starter: true, professional: true, enterprise: true },
                   { feature: 'Basic call routing', starter: true, professional: true, enterprise: true },
                   { feature: 'CRM integration', starter: true, professional: true, enterprise: true },
-                  { feature: 'Email support', starter: true, professional: false, enterprise: false },
+                  { feature: 'Email support', starter: true, professional: 'Phone only', enterprise: false },
                   { feature: 'Phone support', starter: false, professional: true, enterprise: true },
                   { feature: 'Priority support', starter: false, professional: true, enterprise: true },
                   { feature: 'Multi-language support', starter: false, professional: '5 languages', enterprise: '15+ languages' },

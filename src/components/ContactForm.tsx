@@ -279,21 +279,42 @@ export default function ContactForm({ onSubmit, showCalendly = true, hideTrade =
         </div>
       )}
 
-      <div>
-        <label htmlFor="bookingSoftware" className="block text-white font-semibold mb-2">What booking software do you use? (Optional)</label>
-        <select
-          id="bookingSoftware"
-          {...register('bookingSoftware')}
-          className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-        >
-          <option value="">Select Software</option>
-          <option value="servicetitan">ServiceTitan</option>
-          <option value="jobber">Jobber</option>
-          <option value="housecallpro">Housecall Pro</option>
-          <option value="other">Other</option>
-          <option value="none">None</option>
-        </select>
-      </div>
+      {!hideTrade ? (
+        <div>
+          <label htmlFor="bookingSoftware" className="block text-white font-semibold mb-2">What booking software do you use? (Optional)</label>
+          <select
+            id="bookingSoftware"
+            {...register('bookingSoftware')}
+            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+          >
+            <option value="">Select Software</option>
+            <option value="servicetitan">ServiceTitan</option>
+            <option value="jobber">Jobber</option>
+            <option value="housecallpro">Housecall Pro</option>
+            <option value="other">Other</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+      ) : (
+        <div>
+          <label htmlFor="bookingSoftware" className="block text-white font-semibold mb-2">What contact center platform do you use? (Optional)</label>
+          <select
+            id="bookingSoftware"
+            {...register('bookingSoftware')}
+            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+          >
+            <option value="">Select Platform</option>
+            <option value="genesys">Genesys</option>
+            <option value="five9">Five9</option>
+            <option value="nice">NICE</option>
+            <option value="avaya">Avaya</option>
+            <option value="cisco">Cisco</option>
+            <option value="twilio">Twilio</option>
+            <option value="other">Other</option>
+            <option value="none">None / Building</option>
+          </select>
+        </div>
+      )}
 
       <div>
         <label htmlFor="callVolume" className="block text-white font-semibold mb-2">Approximate monthly call volume (Optional)</label>
