@@ -300,13 +300,13 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <a
-              href="/solutions"
+            <Link
+              href="/how-it-works"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
             >
               Explore Voice Agent Capabilities
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
