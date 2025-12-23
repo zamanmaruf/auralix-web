@@ -71,9 +71,9 @@ export default function HomePage() {
     <div className="relative min-h-screen">
       {/* Hero Section */}
       <Hero
-        title="Auralix AI Voice Agent: Built for real business calls"
-        subtitle="Enterprise-grade voice AI that handles calls, appointments, and customer service 24/7. Built for service businesses on secure infrastructure trusted by Canadian financial institutions."
-        primaryCta={{ text: "Schedule a Demo", href: "https://calendly.com/auralixai/strategy-call" }}
+        title="Never Miss Another Service Call"
+        subtitle="AI Receptionist for HVAC, Plumbing & Electrical. Answers calls 24/7, books jobs, and captures every lead — increasing booked jobs by 35%+."
+        primaryCta={{ text: "Free Consultation", href: "https://calendly.com/auralixai/strategy-call" }}
         showScrollCue={true}
       />
 
