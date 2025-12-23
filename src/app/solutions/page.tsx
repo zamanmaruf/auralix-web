@@ -82,55 +82,42 @@ export default function SolutionsPage() {
 
   const useCases = [
     {
-      industry: 'Dental Practices',
+      industry: 'HVAC',
       icon: Users,
       color: 'blue',
       useCases: [
-        'Appointment scheduling and rescheduling',
-        'Patient inquiry handling',
-        'Insurance verification assistance',
-        'Emergency call routing',
-        'Treatment reminders and follow-ups',
-        'Office hours and location information'
+        'After-hours emergency call handling',
+        'Service appointment scheduling',
+        'Maintenance reminder calls',
+        'Emergency triage and escalation',
+        'Lead qualification and capture',
+        'Service area verification'
       ]
     },
     {
-      industry: 'Restaurants',
+      industry: 'Plumbing',
       icon: Phone,
       color: 'primary',
       useCases: [
-        'Reservation management',
-        'Order taking and confirmation',
-        'Wait time information',
-        'Menu inquiries and recommendations',
-        'Special event bookings',
-        'Cancellation handling'
+        '24/7 emergency call answering',
+        'Job booking and scheduling',
+        'Urgency detection and routing',
+        'Service address collection',
+        'Preferred time slot booking',
+        'SMS confirmations and reminders'
       ]
     },
     {
-      industry: 'Hotel Chains',
+      industry: 'Electrical',
       icon: Globe,
       color: 'purple',
       useCases: [
-        'Room booking and reservations',
-        'Check-in and check-out inquiries',
-        'Guest services and concierge',
-        'Amenity information',
-        'Cancellation and modification',
-        'Loyalty program support'
-      ]
-    },
-    {
-      industry: 'Financial Institutions & Partners',
-      icon: Shield,
-      color: 'green',
-      useCases: [
-        'IVR replacement or augmentation with natural language',
-        'Balance, branch, and card FAQ handling',
-        'Secure call logging and routing into existing contact center platforms',
-        'Non-advisory investment or savings FAQs',
-        'White-label voice agent for partner channels',
-        'Integration with core banking and CRM systems'
+        'Emergency call handling',
+        'Service appointment booking',
+        'Issue type qualification',
+        'Equipment details capture',
+        'Multi-location routing',
+        'CRM integration and job creation'
       ]
     }
   ];
@@ -172,7 +159,7 @@ export default function SolutionsPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Auralix AI Voice Agent: Built for real business calls
+            AI Receptionist Built for Home Services
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -181,8 +168,8 @@ export default function SolutionsPage() {
             className="text-xl text-neutral-300 mb-8 max-w-4xl mx-auto"
           >
             Transform your phone calls with enterprise-grade voice AI that handles appointments, inquiries, 
-            and customer service 24/7. Built for dental practices, restaurants, hotel chains, and service businesses. 
-            API-first architecture integrates seamlessly with banking, booking, and contact-center systems.
+            and customer service 24/7. Built specifically for HVAC, plumbing, and electrical contractors. 
+            API-first architecture integrates seamlessly with ServiceTitan, Jobber, Housecall Pro, and other home services tools.
           </motion.p>
           
           {/* Primary CTA */}
@@ -391,8 +378,8 @@ export default function SolutionsPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Industry-Specific Applications</h2>
-            <p className="text-lg text-neutral-300">Tailored Enterprise-Grade Voice Agent for your industry</p>
+            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Home Services Applications</h2>
+            <p className="text-lg text-neutral-300">Tailored Enterprise-Grade Voice Agent for HVAC, plumbing, and electrical contractors</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -548,7 +535,7 @@ export default function SolutionsPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6 font-heading">Ready to Transform Your Phone Calls?</h2>
             <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
-              Join businesses across industries that trust Auralix AI to handle their customer calls intelligently, 
+              Join home services businesses that trust Auralix AI to handle their customer calls intelligently, 
               professionally, and reliably 24/7.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

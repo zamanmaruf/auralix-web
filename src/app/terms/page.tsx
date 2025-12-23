@@ -51,7 +51,7 @@ export default function TermsPage() {
                 By accessing, using, or subscribing to our AI receptionist, chatbot, order automation, or website services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, you may not use our services.
               </p>
               <p>
-                These Terms apply to all service businesses, including but not limited to restaurants, dental practices, hotels, and other service-based organizations that use our AI automation platform to enhance customer service, manage appointments, process orders, and streamline operations.
+                These Terms apply to all home services businesses, including but not limited to HVAC, plumbing, electrical contractors, and other service-based organizations that use our AI automation platform to enhance customer service, manage appointments, book jobs, and streamline operations.
               </p>
             </div>
           </motion.div>
@@ -76,7 +76,7 @@ export default function TermsPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>AI Receptionist - 24/7 voice AI for phone calls and reservations</span>
+                      <span>AI Receptionist - 24/7 voice AI for phone calls and job bookings</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -84,11 +84,11 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Order & Review Automation - Streamlined operations</span>
+                      <span>CRM Integration - ServiceTitan, Jobber, Housecall Pro, and more</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Business Websites - Modern design with AI integration</span>
+                      <span>SMS Confirmations & Reminders - Automated customer communications</span>
                     </li>
                   </ul>
                 </div>
@@ -211,7 +211,7 @@ export default function TermsPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Process customer appointments, reservations, and orders</span>
+                      <span>Process customer appointments, job bookings, and service requests</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />

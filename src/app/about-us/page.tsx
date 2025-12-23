@@ -14,8 +14,8 @@ export default function AboutUsPage() {
     },
     {
       year: '2025',
-      title: 'Multi-Industry Success',
-      description: 'Proven results across dental practices, restaurants, and hotels - transforming customer calls with voice AI',
+      title: 'Home Services Focus',
+      description: 'Proven results across HVAC, plumbing, and electrical contractors - transforming customer calls with voice AI',
       icon: TrendingUp,
       color: 'green'
     },
@@ -39,7 +39,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 font-heading"
           >
-            Democratizing Enterprise-Grade Voice AI
+            Building the Best AI Receptionist for Home Services in Canada
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-4xl mx-auto"
           >
-            From dental practices to restaurant chains to hotels, we help service businesses across industries 
+            We&apos;re building the best AI receptionist for home services in Canada. We help HVAC, plumbing, and electrical contractors 
             never miss a call, improve customer experience, and scale operations with powerful voice AI technology.
           </motion.p>
           
@@ -82,11 +82,11 @@ export default function AboutUsPage() {
             </div>
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-blue-400" />
-              <span>100+ Businesses Served</span>
+              <span>Serving Home Services Businesses</span>
             </div>
             <div className="flex items-center gap-2">
               <TrendingUp className="w-4 h-4 text-purple-400" />
-              <span>97% Success Rate</span>
+              <span>Proven Results</span>
             </div>
           </motion.div>
         </div>
@@ -104,13 +104,12 @@ export default function AboutUsPage() {
             >
               <h2 className="text-3xl font-bold text-primary-400 mb-6 font-heading">Our Mission</h2>
               <p className="text-lg text-neutral-300 mb-6">
-                We democratize enterprise-grade voice AI by designing powerful voice agents that help 
-                service businesses across industries—from dental practices to restaurant chains to hotels—
-                handle customer calls professionally, efficiently, and reliably 24/7.
+                We&apos;re building the best AI receptionist for home services in Canada. We design powerful voice agents that help 
+                HVAC, plumbing, and electrical contractors handle customer calls professionally, efficiently, and reliably 24/7.
               </p>
               <p className="text-lg text-neutral-300 mb-6">
                 We prioritize practical deployment, measurable outcomes, and scalable architecture 
-                tailored to each industry&apos;s unique needs and workflows.
+                tailored to home services businesses&apos; unique needs and workflows.
               </p>
               <div className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-primary-500/30">
                 <h3 className="text-xl font-semibold text-white mb-3 font-heading">Our Core Belief</h3>
@@ -139,8 +138,8 @@ export default function AboutUsPage() {
                     description: 'Advanced natural language processing, real-time speech recognition, and intelligent call routing that scales with your business.'
                   },
                   {
-                    title: 'Multi-Industry Solutions',
-                    description: 'Tailored voice agents for dental practices, restaurants, hotels, and other regulated service businesses across industries.'
+                    title: 'Home Services Focus',
+                    description: 'Tailored voice agents for HVAC, plumbing, electrical, and other home services contractors.'
                   },
                   {
                     title: 'Scalable Intelligence',
@@ -225,13 +224,13 @@ export default function AboutUsPage() {
             >
               <h3 className="text-2xl font-bold text-primary-400 mb-4 font-heading">The Problem We Solved</h3>
               <p className="text-neutral-300 mb-4">
-                We noticed that service businesses across industries—dental practices, restaurants, hotels—were 
+                We noticed that home services businesses—HVAC, plumbing, electrical contractors—were 
                 struggling with missed calls during peak hours, manual appointment scheduling, inefficient customer 
                 service, and lost revenue from unanswered phones.
               </p>
               <p className="text-neutral-300 mb-4">
                 But existing voice AI solutions were either too expensive, too complex, or too generic 
-                for specific industry needs. They needed voice AI that was accessible, practical, and 
+                for home services needs. They needed voice AI that was accessible, practical, and 
                 designed for their unique operational requirements and customer interactions.
               </p>
               <div className="bg-primary-500/20 rounded-lg p-4 border border-primary-500/30">
@@ -254,7 +253,7 @@ export default function AboutUsPage() {
                 that could be customized for different industries and business sizes.
               </p>
               <p className="text-neutral-300 mb-4">
-                We started with service businesses in Nova Scotia—dental practices, restaurants, hotels—and 
+                We started with home services businesses in Nova Scotia—HVAC, plumbing, electrical contractors—and 
                 worked closely with them to understand their specific pain points, customer interaction patterns, 
                 and operational needs.
               </p>
@@ -398,7 +397,7 @@ export default function AboutUsPage() {
           >
             <div className="bg-gradient-to-r from-primary-500/10 to-blue-500/10 rounded-2xl p-8 border border-primary-500/30">
               <blockquote className="text-xl md:text-2xl text-white italic mb-6 leading-relaxed">
-                &quot;We founded Auralix AI to give every service business — from dental practices to restaurant chains to hotels — the power of enterprise-grade voice AI. Our mission is simple: no business should ever miss a call, an appointment, or an opportunity again.&quot;
+                &quot;We founded Auralix AI to give every home services business — HVAC, plumbing, electrical contractors — the power of enterprise-grade voice AI. Our mission is simple: no business should ever miss a call, an appointment, or an opportunity again.&quot;
               </blockquote>
               <cite className="text-primary-400 font-semibold text-lg">
                 — Maruf & Fardeen
@@ -434,8 +433,8 @@ export default function AboutUsPage() {
               },
               {
                 icon: Users,
-                title: 'Industry-Focused',
-                description: 'Every voice agent is designed around the specific needs and workflows of your industry.',
+                title: 'Home Services Focused',
+                description: 'Every voice agent is designed around the specific needs and workflows of HVAC, plumbing, and electrical contractors.',
                 color: 'blue'
               },
               {
@@ -552,7 +551,7 @@ export default function AboutUsPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6 font-heading">Ready to Transform Your Phone Calls?</h2>
             <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
-              Join businesses across industries that have already transformed their customer calls with Auralix Voice Agent. 
+              Join home services businesses that have already transformed their customer calls with Auralix Voice Agent. 
               Start your journey toward intelligent voice automation today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

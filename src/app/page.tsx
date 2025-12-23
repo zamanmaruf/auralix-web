@@ -72,7 +72,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         title="Never Miss Another Service Call"
-        subtitle="AI Receptionist for HVAC, Plumbing & Electrical. Answers calls 24/7, books jobs, and captures every lead — increasing booked jobs by 35%+."
+        subtitle="AI Receptionist for HVAC, Plumbing & Electrical. Answers calls 24/7, books jobs, and captures every lead — capture more leads from missed calls."
         primaryCta={{ text: "Free Consultation", href: "https://calendly.com/auralixai/strategy-call" }}
         showScrollCue={true}
       />
@@ -214,7 +214,18 @@ export default function HomePage() {
             >
               <div className="text-4xl font-bold text-red-400 mb-2">27%</div>
               <div className="text-white font-semibold mb-2">of calls go unanswered</div>
-              <div className="text-neutral-400 text-sm">Home services average (Invoca)</div>
+              <div className="text-neutral-400 text-sm">
+                Home services average (
+                <a 
+                  href="https://www.invoca.com/blog/missed-calls-cost-home-services-businesses" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-400 hover:text-primary-300 underline"
+                >
+                  Invoca
+                </a>
+                )
+              </div>
             </motion.div>
 
             <motion.div
@@ -342,7 +353,7 @@ export default function HomePage() {
               },
               {
                 icon: CheckCircle,
-                title: 'Designed to support GDPR & HIPAA compliance',
+                title: 'PIPEDA-first privacy (Canada) + GDPR-informed practices',
                 description: 'Data protection and privacy compliance',
                 color: 'blue'
               },
@@ -424,9 +435,10 @@ export default function HomePage() {
                     window.dispatchEvent(new Event('trigger-vapi-call'));
                   }
                 }}
-                className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+                className="px-8 py-4 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2"
               >
-                Talk to the AI Agent
+                <Phone className="w-5 h-5" />
+                Call the Demo Line Now
               </button>
             </div>
             <p className="text-sm text-neutral-400 mt-4">

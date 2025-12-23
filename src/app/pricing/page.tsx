@@ -133,11 +133,11 @@ export default function PricingPage() {
           >
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>No setup fees on annual plans</span>
+              <span>One-time setup fee (waived on annual prepay)</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
-              <span>Cancel anytime</span>
+              <span>Month-to-month with 30-day notice</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-green-400" />
@@ -178,7 +178,7 @@ export default function PricingPage() {
                     {plan.period && <span className="text-neutral-400">{plan.period}</span>}
                   </div>
                   <div className="text-sm text-neutral-400 mt-2">
-                    Setup: {plan.setupFee}
+                    One-time setup: {plan.setupFee} {plan.setupFee !== 'Custom' && '(waived on annual prepay)'}
                   </div>
                   <div className="text-sm text-primary-400 mt-2 font-semibold">
                     {plan.callVolume}
@@ -319,19 +319,27 @@ export default function PricingPage() {
             {[
               {
                 question: 'How are calls counted?',
-                answer: 'Each inbound call to your voice agent counts as one call. If a call is routed to a human agent, it still counts as one call.'
+                answer: 'Each inbound call to your voice agent counts as one call, regardless of duration. If a call is routed to a human agent, it still counts as one call. Spam calls under 10 seconds don\'t count toward usage. Transfers count as part of the same call.'
               },
               {
                 question: 'What happens if I exceed my call limit?',
-                answer: 'We\'ll notify you when you\'re approaching your limit. You can upgrade your plan or purchase additional call credits. We never cut off service without notice.'
+                answer: 'We\'ll notify you when you\'re approaching your limit. You can upgrade your plan or purchase additional call credits at $2 per call. We never cut off service without notice.'
+              },
+              {
+                question: 'What about SMS usage?',
+                answer: 'SMS confirmations and reminders are included in all plans. Overage SMS charges apply at $0.05 per message beyond included limits.'
               },
               {
                 question: 'Can I switch plans?',
-                answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect on your next billing cycle.'
+                answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect on your next billing cycle. Downgrades require 30-day notice.'
               },
               {
-                question: 'Is professional setup included?',
-                answer: 'Yes, all plans include professional setup where our team configures your voice agent, integrates with your systems, and ensures everything works perfectly.'
+                question: 'What is included in professional setup?',
+                answer: 'Professional setup includes: configuring your voice agent with business details, services, and pricing; CRM integration (ServiceTitan, Jobber, Housecall Pro, or Zapier); testing call flows; and team training. Setup typically takes 48-72 hours.'
+              },
+              {
+                question: 'What is the cancellation policy?',
+                answer: 'You can cancel your subscription with 30-day written notice. Monthly subscription fees are prorated. Setup fees are non-refundable. See our Terms of Service for full details.'
               },
               {
                 question: 'Do you offer multi-location packages?',

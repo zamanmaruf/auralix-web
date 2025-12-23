@@ -98,17 +98,17 @@ export default function HowItWorksPage() {
   const integrations = [
     {
       name: 'ServiceTitan',
-      description: 'Native API integration. Jobs created automatically in ServiceTitan.',
+      description: 'Integrates via API/Zapier/webhooks. Native connectors available for select systems. Jobs created automatically in ServiceTitan.',
       method: 'API'
     },
     {
       name: 'Jobber',
-      description: 'Seamless integration via API. Appointments sync in real-time.',
+      description: 'Integrates via API/Zapier/webhooks. Native connectors available for select systems. Appointments sync in real-time.',
       method: 'API'
     },
     {
       name: 'Housecall Pro',
-      description: 'Full integration via API. Leads and jobs created automatically.',
+      description: 'Integrates via API/Zapier/webhooks. Native connectors available for select systems. Leads and jobs created automatically.',
       method: 'API'
     },
     {

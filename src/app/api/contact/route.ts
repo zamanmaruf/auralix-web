@@ -33,12 +33,12 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    let { name, email, phone, businessName, country, jobRole, organizationType, service, message } = body;
+    let { name, email, phone, businessName, cityProvince, trade, bookingSoftware, callVolume, message } = body;
 
     // Validate required fields
-    if (!name || !email || !phone || !businessName || !country || !jobRole || !organizationType || !service || !message) {
+    if (!name || !email || !phone || !businessName || !cityProvince || !trade) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'Required fields: name, email, phone, business name, city/province, and trade' },
         { status: 400 }
       );
     }
@@ -48,11 +48,11 @@ export async function POST(request: NextRequest) {
     email = sanitizeEmail(email);
     phone = sanitizePhone(phone);
     businessName = sanitizeString(businessName);
-    country = sanitizeString(country);
-    jobRole = sanitizeString(jobRole);
-    organizationType = sanitizeString(organizationType);
-    service = sanitizeString(service);
-    message = sanitizeText(message, 5000); // Max 5000 characters
+    cityProvince = sanitizeString(cityProvince);
+    trade = sanitizeString(trade);
+    bookingSoftware = bookingSoftware ? sanitizeString(bookingSoftware) : '';
+    callVolume = callVolume ? sanitizeString(callVolume) : '';
+    message = message ? sanitizeText(message, 5000) : ''; // Max 5000 characters, optional
 
     // Check for dangerous content
     if (containsDangerousContent(name) || containsDangerousContent(businessName) || containsDangerousContent(message)) {
@@ -115,16 +115,18 @@ export async function POST(request: NextRequest) {
             <p><strong>Email:</strong> ${escapeHtml(email)}</p>
             <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
             <p><strong>Business Name:</strong> ${escapeHtml(businessName)}</p>
-            <p><strong>Country/Region:</strong> ${escapeHtml(country)}</p>
-            <p><strong>Job Role:</strong> ${escapeHtml(jobRole)}</p>
-            <p><strong>Organization Type:</strong> ${escapeHtml(organizationType)}</p>
-            <p><strong>Service Interest:</strong> ${escapeHtml(service)}</p>
+            <p><strong>City/Province:</strong> ${escapeHtml(cityProvince)}</p>
+            <p><strong>Trade:</strong> ${escapeHtml(trade)}</p>
+            ${bookingSoftware ? `<p><strong>Booking Software:</strong> ${escapeHtml(bookingSoftware)}</p>` : ''}
+            ${callVolume ? `<p><strong>Call Volume:</strong> ${escapeHtml(callVolume)}</p>` : ''}
           </div>
           
+          ${message ? `
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Message</h3>
             <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
           </div>
+          ` : ''}
           
           <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 0; color: #1976d2;">

@@ -12,11 +12,11 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d\s\-\(\)]{9,}$/, 'Please enter a valid phone number'),
   businessName: z.string().min(2, 'Business name is required'),
-  country: z.string().min(1, 'Country/Region is required'),
-  jobRole: z.string().min(1, 'Job role is required'),
-  organizationType: z.string().min(1, 'Organization type is required'),
-  service: z.string().min(1, 'Please select a service'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  cityProvince: z.string().min(1, 'City/Province is required'),
+  trade: z.string().min(1, 'Trade is required'),
+  bookingSoftware: z.string().optional(),
+  callVolume: z.string().optional(),
+  message: z.string().min(10, 'Message must be at least 10 characters').optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -234,99 +234,79 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="country" className="block text-white font-semibold mb-2">Country/Region *</label>
-          <input
-            id="country"
-            {...register('country')}
-            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-            placeholder="Canada"
-            aria-invalid={errors.country ? 'true' : 'false'}
-            aria-describedby={errors.country ? 'country-error' : undefined}
-          />
-          {errors.country && (
-            <p id="country-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
-              <AlertCircle className="w-4 h-4" aria-hidden="true" />
-              {errors.country.message}
-            </p>
-          )}
-        </div>
-        
-        <div>
-          <label htmlFor="jobRole" className="block text-white font-semibold mb-2">Job Role *</label>
-          <select
-            id="jobRole"
-            {...register('jobRole')}
-            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-            aria-invalid={errors.jobRole ? 'true' : 'false'}
-            aria-describedby={errors.jobRole ? 'jobRole-error' : undefined}
-          >
-            <option value="">Select Job Role</option>
-            <option value="owner">Owner</option>
-            <option value="ops">Operations</option>
-            <option value="it">IT</option>
-            <option value="compliance">Compliance</option>
-            <option value="other">Other</option>
-          </select>
-          {errors.jobRole && (
-            <p id="jobRole-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
-              <AlertCircle className="w-4 h-4" aria-hidden="true" />
-              {errors.jobRole.message}
-            </p>
-          )}
-        </div>
+      <div>
+        <label htmlFor="cityProvince" className="block text-white font-semibold mb-2">City/Province *</label>
+        <input
+          id="cityProvince"
+          {...register('cityProvince')}
+          className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+          placeholder="Halifax, NS"
+          aria-invalid={errors.cityProvince ? 'true' : 'false'}
+          aria-describedby={errors.cityProvince ? 'cityProvince-error' : undefined}
+        />
+        {errors.cityProvince && (
+          <p id="cityProvince-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+            <AlertCircle className="w-4 h-4" aria-hidden="true" />
+            {errors.cityProvince.message}
+          </p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="organizationType" className="block text-white font-semibold mb-2">What best describes your organization? *</label>
+        <label htmlFor="trade" className="block text-white font-semibold mb-2">Trade *</label>
         <select
-          id="organizationType"
-          {...register('organizationType')}
+          id="trade"
+          {...register('trade')}
           className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-          aria-invalid={errors.organizationType ? 'true' : 'false'}
-          aria-describedby={errors.organizationType ? 'organizationType-error' : undefined}
+          aria-invalid={errors.trade ? 'true' : 'false'}
+          aria-describedby={errors.trade ? 'trade-error' : undefined}
         >
-          <option value="">Select Organization Type</option>
+          <option value="">Select Trade</option>
           <option value="hvac">HVAC</option>
           <option value="plumbing">Plumbing</option>
           <option value="electrical">Electrical</option>
-          <option value="home-services-general">Home Services (General)</option>
-          <option value="healthcare">Healthcare</option>
-          <option value="financial-institution">Financial Institution</option>
           <option value="other">Other</option>
         </select>
-        {errors.organizationType && (
-          <p id="organizationType-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+        {errors.trade && (
+          <p id="trade-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
             <AlertCircle className="w-4 h-4" aria-hidden="true" />
-            {errors.organizationType.message}
+            {errors.trade.message}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="service" className="block text-white font-semibold mb-2">Service Interest *</label>
+        <label htmlFor="bookingSoftware" className="block text-white font-semibold mb-2">What booking software do you use? (Optional)</label>
         <select
-          id="service"
-          {...register('service')}
+          id="bookingSoftware"
+          {...register('bookingSoftware')}
           className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-          aria-invalid={errors.service ? 'true' : 'false'}
-          aria-describedby={errors.service ? 'service-error' : undefined}
         >
-          <option value="">Select Service</option>
-          <option value="enterprise-voice-agent">Enterprise-Grade Voice Agent</option>
-          <option value="consultation">Free Consultation</option>
+          <option value="">Select Software</option>
+          <option value="servicetitan">ServiceTitan</option>
+          <option value="jobber">Jobber</option>
+          <option value="housecallpro">Housecall Pro</option>
+          <option value="other">Other</option>
+          <option value="none">None</option>
         </select>
-        {errors.service && (
-          <p id="service-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
-            <AlertCircle className="w-4 h-4" aria-hidden="true" />
-            {errors.service.message}
-          </p>
-        )}
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-white font-semibold mb-2">How can we help? *</label>
+        <label htmlFor="callVolume" className="block text-white font-semibold mb-2">Approximate monthly call volume (Optional)</label>
+        <select
+          id="callVolume"
+          {...register('callVolume')}
+          className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+        >
+          <option value="">Select Volume</option>
+          <option value="0-300">0-300 calls/month</option>
+          <option value="300-1000">300-1,000 calls/month</option>
+          <option value="1000+">1,000+ calls/month</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="message" className="block text-white font-semibold mb-2">How can we help? (Optional)</label>
         <textarea
           id="message"
           {...register('message')}
