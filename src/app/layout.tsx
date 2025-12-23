@@ -10,7 +10,7 @@ export const fetchCache = 'force-no-store'
 export const metadata: Metadata = {
   title: 'Auralix AI — Enterprise Voice & Automation Platform',
   description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',
-  keywords: 'AI receptionist, voice AI, business automation, missed calls, Halifax AI, Canadian businesses, voice agent, appointment automation, customer service AI, enterprise voice AI, dental AI, hotel automation, service business AI',
+  keywords: 'AI receptionist, voice AI, business automation, missed calls, Halifax AI, Canadian businesses, voice agent, appointment automation, customer service AI, enterprise voice AI, HVAC AI, plumbing AI, electrical AI, home services automation',
   openGraph: {
     title: 'Auralix AI — Enterprise Voice & Automation Platform',
     description: 'Never miss a call again. Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for service businesses.',
@@ -58,7 +58,7 @@ export default function RootLayout({
     name: 'Auralix AI',
     url: 'https://auralix.ai',
     logo: 'https://auralix.ai/auralix_logo.jpeg',
-    description: 'Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for restaurants, dental practices, and service businesses.',
+    description: 'Enterprise-grade voice AI that handles phone calls, appointments, and customer service 24/7 for HVAC, plumbing, electrical, and home services businesses.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '1800 Argyle Street',

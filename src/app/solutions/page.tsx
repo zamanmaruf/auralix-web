@@ -251,7 +251,7 @@ export default function SolutionsPage() {
                   <CheckCircle className="w-6 h-6 text-cyan-400 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="text-white font-semibold mb-1">Ask About Our Voice Agent</h4>
-                    <p className="text-neutral-400 text-sm">"How can Auralix help my restaurant?" or "What can the voice agent do for hotels?"</p>
+                    <p className="text-neutral-400 text-sm">"How can Auralix help my HVAC business?" or "What can the voice agent do for plumbing contractors?"</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -309,7 +309,7 @@ export default function SolutionsPage() {
                     <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                   </div>
                   <p className="text-neutral-300 italic mb-2">"The AI agent answered all my questions in perfect detail. I felt like I was talking to a real expert!"</p>
-                  <p className="text-cyan-400 text-sm font-semibold">- Restaurant Owner</p>
+                  <p className="text-cyan-400 text-sm font-semibold">- HVAC Business Owner</p>
                 </div>
 
                 <div className="flex flex-col gap-3">

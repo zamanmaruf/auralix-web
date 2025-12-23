@@ -127,7 +127,7 @@ export default function TermsPage() {
             </div>
           </motion.div>
 
-          {/* Restaurant Accounts */}
+          {/* Account Management */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

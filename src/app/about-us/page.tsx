@@ -22,7 +22,7 @@ export default function AboutUsPage() {
     {
       year: '2025+',
       title: 'Expanding Horizons',
-      description: 'Scaling voice agent technology to serve businesses across industries and regions',
+      description: 'Scaling voice agent technology to serve home services businesses across Canada',
       icon: MapPin,
       color: 'blue'
     }
@@ -209,8 +209,8 @@ export default function AboutUsPage() {
             <h2 className="text-3xl font-bold text-orange-400 mb-4 font-heading">The Auralix Story</h2>
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
               Founded in Nova Scotia by Computer Science graduates, Auralix AI was born from a simple 
-              but urgent observation: while large enterprises were rapidly adopting voice AI, service businesses 
-              across industries were losing thousands in missed calls and appointments.
+              but urgent observation: while large enterprises were rapidly adopting voice AI, home services businesses 
+              were losing thousands in missed calls and appointments.
             </p>
           </motion.div>
           
@@ -366,7 +366,7 @@ export default function AboutUsPage() {
               </p>
               
               <p className="text-neutral-300 mb-8 leading-relaxed">
-                He ensures our voice AI solutions deliver measurable efficiency and operational intelligence for service businesses across industries.
+                He ensures our voice AI solutions deliver measurable efficiency and operational intelligence for home services businesses.
               </p>
               
               <div className="space-y-3">
