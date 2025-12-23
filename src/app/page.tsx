@@ -186,25 +186,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Social Proof Strip */}
-      <section className="py-8 px-4 bg-neutral-900 border-y border-neutral-800">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <p className="text-sm text-neutral-400 mb-4">Trusted by businesses across Canada</p>
-            {/* Placeholder for client logos - can be added when available */}
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-neutral-500 text-sm">Client logos coming soon</div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Pain → Solution Strip */}
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-b from-neutral-900 to-neutral-800">
         <div className="max-w-6xl mx-auto">
