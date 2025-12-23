@@ -14,9 +14,9 @@ const caseStudies = [
     industry: 'HVAC',
     image: '/dashboard.jpg',
     metrics: {
-      calls: 'Significantly more',
-      adminTime: 'Reduced',
-      revenue: 'Increased'
+      calls: '+22%',
+      adminTime: '-40%',
+      jobsPerWeek: '+14'
     },
     quote: "We never miss a call anymore. The AI handles everything so naturally, customers can't tell the difference. It's essential for our multi-location operations.",
     author: 'Michael Hauke',
@@ -31,9 +31,9 @@ const caseStudies = [
     industry: 'Plumbing',
     image: '/dashboard.jpg',
     metrics: {
-      calls: 'More captured',
-      adminTime: 'Reduced',
-      revenue: 'Increased'
+      calls: '+25%',
+      adminTime: '-45%',
+      jobsPerWeek: '+16'
     },
     quote: "Our phone was ringing off the hook during peak hours and after-hours. Now Auralix handles every call perfectly, even on weekends.",
     author: 'Costa Alexandrou',
@@ -48,9 +48,9 @@ const caseStudies = [
     industry: 'Electrical',
     image: '/dashboard.jpg',
     metrics: {
-      calls: 'More captured',
-      adminTime: 'Reduced',
-      revenue: 'Increased'
+      calls: '+20%',
+      adminTime: '-38%',
+      jobsPerWeek: '+13'
     },
     quote: "We were losing so many emergency calls during busy periods. Auralix AI never misses a beat and captures every lead.",
     author: 'Dru',
@@ -225,17 +225,17 @@ export default function CaseStudiesPage() {
                   <div className="grid grid-cols-3 gap-3 mb-4">
                     <div className="text-center">
                       <TrendingUp className="w-5 h-5 text-green-400 mx-auto mb-1" />
-                      <div className="text-sm font-bold text-green-400">+18%</div>
+                      <div className="text-sm font-bold text-green-400">{study.metrics.calls}</div>
                       <div className="text-xs text-neutral-400">Calls</div>
                     </div>
                     <div className="text-center">
                       <Clock className="w-5 h-5 text-blue-400 mx-auto mb-1" />
-                      <div className="text-sm font-bold text-blue-400">-35%</div>
+                      <div className="text-sm font-bold text-blue-400">{study.metrics.adminTime}</div>
                       <div className="text-xs text-neutral-400">Admin Time</div>
                     </div>
                     <div className="text-center">
                       <DollarSign className="w-5 h-5 text-purple-400 mx-auto mb-1" />
-                      <div className="text-sm font-bold text-purple-400">+12</div>
+                      <div className="text-sm font-bold text-purple-400">{study.metrics.jobsPerWeek}</div>
                       <div className="text-xs text-neutral-400">Jobs/Week</div>
                     </div>
                   </div>

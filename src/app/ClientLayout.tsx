@@ -140,7 +140,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                     className="block px-4 py-2 text-sm text-neutral-400 hover:bg-[#1a1a1a] hover:text-cyan-400 transition-colors"
                     onClick={() => setDropdownOpen(false)}
                   >
-                    Enterprise
+                    Financial Institutions
                   </Link>
                 </div>
               )}
@@ -206,7 +206,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 className="block text-sm py-3 text-neutral-400 hover:text-cyan-400 transition-colors border-b border-[#333]"
                 onClick={closeMobileMenu}
               >
-                Enterprise
+                Financial Institutions
               </Link>
 
               <Link 

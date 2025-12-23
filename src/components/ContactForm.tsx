@@ -7,28 +7,30 @@ import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { CheckCircle, AlertCircle, Loader2, Save } from 'lucide-react';
 
-const contactSchema = z.object({
+const createContactSchema = (hideTrade: boolean = false) => z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d\s\-\(\)]{9,}$/, 'Please enter a valid phone number'),
   businessName: z.string().min(2, 'Business name is required'),
   cityProvince: z.string().min(1, 'City/Province is required'),
-  trade: z.string().min(1, 'Trade is required'),
+  trade: hideTrade ? z.string().optional() : z.string().min(1, 'Trade is required'),
   bookingSoftware: z.string().optional(),
   callVolume: z.string().optional(),
   message: z.string().min(10, 'Message must be at least 10 characters').optional(),
 });
 
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = z.infer<ReturnType<typeof createContactSchema>>;
 
 interface ContactFormProps {
   onSubmit?: (data: ContactFormData) => Promise<void>;
   showCalendly?: boolean;
+  hideTrade?: boolean;
 }
 
 const FORM_STORAGE_KEY = 'auralix_contact_form_data';
 
-export default function ContactForm({ onSubmit, showCalendly = true }: ContactFormProps) {
+export default function ContactForm({ onSubmit, showCalendly = true, hideTrade = false }: ContactFormProps) {
+  const contactSchema = createContactSchema(hideTrade);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
@@ -252,28 +254,30 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
         )}
       </div>
 
-      <div>
-        <label htmlFor="trade" className="block text-white font-semibold mb-2">Trade *</label>
-        <select
-          id="trade"
-          {...register('trade')}
-          className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-          aria-invalid={errors.trade ? 'true' : 'false'}
-          aria-describedby={errors.trade ? 'trade-error' : undefined}
-        >
-          <option value="">Select Trade</option>
-          <option value="hvac">HVAC</option>
-          <option value="plumbing">Plumbing</option>
-          <option value="electrical">Electrical</option>
-          <option value="other">Other</option>
-        </select>
-        {errors.trade && (
-          <p id="trade-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
-            <AlertCircle className="w-4 h-4" aria-hidden="true" />
-            {errors.trade.message}
-          </p>
-        )}
-      </div>
+      {!hideTrade && (
+        <div>
+          <label htmlFor="trade" className="block text-white font-semibold mb-2">Trade *</label>
+          <select
+            id="trade"
+            {...register('trade')}
+            className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+            aria-invalid={errors.trade ? 'true' : 'false'}
+            aria-describedby={errors.trade ? 'trade-error' : undefined}
+          >
+            <option value="">Select Trade</option>
+            <option value="hvac">HVAC</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="other">Other</option>
+          </select>
+          {errors.trade && (
+            <p id="trade-error" className="text-error-500 text-sm mt-1 flex items-center gap-1" role="alert">
+              <AlertCircle className="w-4 h-4" aria-hidden="true" />
+              {errors.trade.message}
+            </p>
+          )}
+        </div>
+      )}
 
       <div>
         <label htmlFor="bookingSoftware" className="block text-white font-semibold mb-2">What booking software do you use? (Optional)</label>

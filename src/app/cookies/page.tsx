@@ -7,7 +7,7 @@ export default function CookiesPage() {
       <section className="max-w-4xl mx-auto text-center py-16 px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-cyan-300">Cookie Policy</h1>
         <p className="text-xl md:text-2xl text-cyan-100 mb-8">How we use cookies and similar technologies to enhance your experience.</p>
-        <p className="text-gray-300">Last updated: December 2024</p>
+        <p className="text-gray-300">Last updated: January 2025</p>
       </section>
 
       {/* Cookie Content */}

@@ -380,7 +380,7 @@ export default function FinancialInstitutionsPage() {
             viewport={{ once: true }}
             className="bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-700"
           >
-            <ContactForm showCalendly={false} />
+            <ContactForm showCalendly={false} hideTrade={true} />
           </motion.div>
         </div>
       </section>
