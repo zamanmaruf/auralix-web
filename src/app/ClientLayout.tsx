@@ -230,9 +230,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <footer className="w-full bg-[#0a0a0a] border-t border-[#222] py-12 mt-10" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
+          <div className="mb-8">
             {/* Company Info */}
-            <div className="col-span-1 sm:col-span-2">
+            <div>
               <div className="mb-6">
                 <div className="w-56 h-20 sm:w-64 sm:h-24">
                   <Logo width={256} height={96} className="drop-shadow-glow w-full h-full object-contain" />
@@ -251,23 +251,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Solution</h3>
-              <ul className="space-y-3 text-sm text-gray-300">
-                <li><Link href="/solutions" className="hover:text-cyan-400 transition-colors block py-1">Enterprise-Grade Voice Agent</Link></li>
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
-              <ul className="space-y-3 text-sm text-gray-300">
-                <li><Link href="/case-studies" className="hover:text-cyan-400 transition-colors block py-1">Case Studies</Link></li>
-                <li><Link href="/for-financial-institutions" className="hover:text-cyan-400 transition-colors block py-1">For Financial Institutions</Link></li>
-                <li><Link href="/security" className="hover:text-cyan-400 transition-colors block py-1">Security</Link></li>
-              </ul>
-            </div>
           </div>
 
           {/* Contact & Social */}
