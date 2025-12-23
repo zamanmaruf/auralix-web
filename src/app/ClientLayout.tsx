@@ -166,11 +166,18 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-[#1a1a1a] shadow-lg">
             <div className="px-6 py-8 space-y-6">
               <Link 
-                href="/solutions" 
+                href="/home-services" 
                 className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
                 onClick={closeMobileMenu}
               >
-                Solutions
+                For Home Services
+              </Link>
+              <Link 
+                href="/how-it-works" 
+                className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                onClick={closeMobileMenu}
+              >
+                How It Works
               </Link>
               <Link 
                 href="/pricing" 
@@ -180,48 +187,27 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 Pricing
               </Link>
               
-              {/* Resources Section */}
-              <div>
-                <button
-                  onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
-                  className="flex items-center justify-between w-full text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
-                >
-                  Resources
-                  <ChevronDown className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {resourcesDropdownOpen && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    <Link
-                      href="/case-studies"
-                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
-                      onClick={closeMobileMenu}
-                    >
-                      Case Studies
-                    </Link>
-                    <Link
-                      href="/for-financial-institutions"
-                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
-                      onClick={closeMobileMenu}
-                    >
-                      For Financial Institutions
-                    </Link>
-                    <Link
-                      href="/about-us"
-                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
-                      onClick={closeMobileMenu}
-                    >
-                      About Us
-                    </Link>
-                    <Link
-                      href="/security"
-                      className="block text-base py-2 text-gray-400 hover:text-cyan-400 transition-colors"
-                      onClick={closeMobileMenu}
-                    >
-                      Security
-                    </Link>
-                  </div>
-                )}
-              </div>
+              <Link 
+                href="/case-studies" 
+                className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                onClick={closeMobileMenu}
+              >
+                Case Studies
+              </Link>
+              <Link 
+                href="/security" 
+                className="block text-lg py-3 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                onClick={closeMobileMenu}
+              >
+                Security
+              </Link>
+              <Link 
+                href="/for-financial-institutions" 
+                className="block text-sm py-3 text-neutral-400 hover:text-cyan-400 transition-colors border-b border-[#333]"
+                onClick={closeMobileMenu}
+              >
+                Enterprise
+              </Link>
 
               <Link 
                 href="/contact" 
