@@ -203,7 +203,9 @@ export default function PricingPage() {
                 )}
                 
                 <a
-                  href="/contact"
+                  href="https://calendly.com/auralixai/strategy-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`block w-full text-center py-3 rounded-lg font-bold transition-all duration-200 ${
                     plan.popular
                       ? 'bg-primary-500 hover:bg-primary-400 text-white'
