@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Linkedin, Shield, Mail, Menu, X, ChevronDown } from "lucide-react";
 import VapiVoiceAssistant from "../components/VapiVoiceAssistant";
 import Logo from "../components/Logo";
@@ -10,7 +10,8 @@ import CookieConsent from "../components/CookieConsent";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [email, setEmail] = useState('');
   const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [subscriptionMessage, setSubscriptionMessage] = useState('');
@@ -35,6 +36,23 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       }
     }
   }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,53 +102,45 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </Link>
           </div>
           {/* Desktop Nav */}
-          <div className="hidden md:flex flex-1 justify-end gap-8 text-lg items-center">
-            <Link href="/solutions" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="View Solutions">Solutions</Link>
+          <div className="hidden md:flex flex-1 justify-end gap-6 text-lg items-center">
+            <Link href="/home-services" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="For Home Services">For Home Services</Link>
+            <Link href="/how-it-works" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="How It Works">How It Works</Link>
             <Link href="/pricing" className="hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2" aria-label="View Pricing">Pricing</Link>
             
-            {/* Resources Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setResourcesDropdownOpen(true)}
-              onMouseLeave={() => setResourcesDropdownOpen(false)}
-            >
+            {/* More Dropdown */}
+            <div className="relative" ref={dropdownRef}>
               <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center gap-1 hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 rounded px-2"
-                aria-label="Resources"
-                aria-expanded={resourcesDropdownOpen}
+                aria-label="More options"
+                aria-expanded={dropdownOpen}
               >
-                Resources
-                <ChevronDown className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
+                More
+                <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-              {resourcesDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg shadow-xl py-2 z-50">
+              
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg shadow-xl py-2 z-50">
                   <Link
                     href="/case-studies"
-                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
-                    onClick={() => setResourcesDropdownOpen(false)}
+                    className="block px-4 py-2 text-sm hover:bg-[#1a1a1a] hover:text-cyan-400 transition-colors"
+                    onClick={() => setDropdownOpen(false)}
                   >
                     Case Studies
                   </Link>
                   <Link
-                    href="/for-financial-institutions"
-                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
-                    onClick={() => setResourcesDropdownOpen(false)}
-                  >
-                    For Financial Institutions
-                  </Link>
-                  <Link
-                    href="/about-us"
-                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
-                    onClick={() => setResourcesDropdownOpen(false)}
-                  >
-                    About Us
-                  </Link>
-                  <Link
                     href="/security"
-                    className="block px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-[#1a1a1a] transition-colors"
-                    onClick={() => setResourcesDropdownOpen(false)}
+                    className="block px-4 py-2 text-sm hover:bg-[#1a1a1a] hover:text-cyan-400 transition-colors"
+                    onClick={() => setDropdownOpen(false)}
                   >
                     Security
+                  </Link>
+                  <Link
+                    href="/for-financial-institutions"
+                    className="block px-4 py-2 text-sm text-neutral-400 hover:bg-[#1a1a1a] hover:text-cyan-400 transition-colors"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Enterprise
                   </Link>
                 </div>
               )}
