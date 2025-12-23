@@ -3,8 +3,8 @@ import React from 'react'
 
 export const metadata: Metadata = {
   title: 'Pricing - Auralix AI Voice Agent | Simple, Transparent Pricing',
-  description: 'Simple pricing for enterprise-grade voice AI. Choose from Starter ($199/mo), Professional ($499/mo), or Enterprise plans. Professional setup included. No contracts.',
-  keywords: 'voice AI pricing, AI receptionist pricing, restaurant AI cost, voice agent pricing, AI phone system pricing',
+  description: 'Simple pricing for enterprise-grade voice AI. Choose from After Hours ($399/mo), Overflow + After Hours ($799/mo), or Dispatcher ($1,299/mo) plans. White-glove setup included on annual plans. No contracts.',
+  keywords: 'voice AI pricing, AI receptionist pricing, HVAC AI cost, plumbing AI pricing, electrical AI pricing, home services voice agent pricing, AI phone system pricing',
   openGraph: {
     title: 'Pricing - Auralix AI Voice Agent',
     description: 'Simple pricing for enterprise-grade voice AI. Professional setup included with all plans.',
@@ -50,18 +50,27 @@ export default function PricingLayout({
     offers: [
       {
         '@type': 'Offer',
-        name: 'Starter Plan',
-        price: '199',
-        priceCurrency: 'USD',
+        name: 'After Hours Plan',
+        price: '399',
+        priceCurrency: 'CAD',
         priceValidUntil: '2025-12-31',
         availability: 'https://schema.org/InStock',
         url: 'https://auralix.ai/pricing',
       },
       {
         '@type': 'Offer',
-        name: 'Professional Plan',
-        price: '499',
-        priceCurrency: 'USD',
+        name: 'Overflow + After Hours Plan',
+        price: '799',
+        priceCurrency: 'CAD',
+        priceValidUntil: '2025-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://auralix.ai/pricing',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Dispatcher Plan',
+        price: '1299',
+        priceCurrency: 'CAD',
         priceValidUntil: '2025-12-31',
         availability: 'https://schema.org/InStock',
         url: 'https://auralix.ai/pricing',

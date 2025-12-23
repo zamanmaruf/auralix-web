@@ -88,19 +88,19 @@ export default function SetupGuarantee() {
             <div className="space-y-4">
               <div className="bg-white rounded-lg p-4 border border-orange-200">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-gray-900">First 100 Clients</span>
-                  <span className="text-2xl font-bold text-orange-600">$499</span>
+                  <span className="font-semibold text-gray-900">After Hours Plan</span>
+                  <span className="text-2xl font-bold text-orange-600">$699</span>
                 </div>
-                <p className="text-sm text-gray-600 mt-1">Setup fee for Pro plan</p>
+                <p className="text-sm text-gray-600 mt-1">Setup fee (one-time)</p>
               </div>
               
               <div className="bg-orange-500 text-white rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Clock className="w-5 h-5" />
-                  <span className="font-semibold">Prices Increasing Soon!</span>
+                  <span className="font-semibold">Professional Setup Included</span>
                 </div>
                 <p className="text-sm opacity-90">
-                  Regular setup fee: $599 CAD. Lock in founder pricing today.
+                  All plans include professional setup and configuration. No contracts, cancel anytime.
                 </p>
               </div>
             </div>

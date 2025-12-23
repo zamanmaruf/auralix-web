@@ -116,6 +116,25 @@ export const trackConversion = {
       event_label: 'Voice AI',
     });
   },
+  clickToCall: (phoneNumber: string, location: string) => {
+    trackEvent('click_to_call', {
+      event_category: 'conversion',
+      event_label: phoneNumber,
+      location,
+    });
+  },
+  calendlyBooked: () => {
+    trackEvent('calendly_booked', {
+      event_category: 'conversion',
+      event_label: 'Calendly Booking',
+    });
+  },
+  demoCallCompleted: () => {
+    trackEvent('demo_call_completed', {
+      event_category: 'conversion',
+      event_label: 'Demo Call',
+    });
+  },
 };
 
 /**

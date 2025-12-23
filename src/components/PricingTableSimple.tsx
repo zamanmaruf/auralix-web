@@ -17,36 +17,43 @@ interface PricingPlan {
 
 const pricingPlans: PricingPlan[] = [
   {
-    name: 'Pro',
-    price: '$199',
-    setupFee: '$499 CAD',
-    description: 'Perfect for growing restaurants',
+    name: 'After Hours',
+    price: '$399',
+    setupFee: '$699 CAD',
+    description: 'Perfect for after-hours and weekend coverage',
     features: [
-      'AI Voice Receptionist',
-      'Website & Social Chatbot',
-      'Order & Review Automation',
-      '48-Hour Setup',
-      'Email Support',
-      'Basic Analytics'
+      'After-hours + weekends coverage',
+      'Lead capture and qualification',
+      'SMS confirmations',
+      'Basic booking and scheduling',
+      'CRM integration',
+      'Email support',
+      'Single location',
+      '1 phone line',
+      '300 calls/month included'
     ],
-    cta: 'Buy Now',
-    href: 'https://buy.stripe.com/5kQ28rfoTcag3Ix4Rh73G00'
+    cta: 'Get Started',
+    href: 'https://calendly.com/auralixai/strategy-call'
   },
   {
-    name: 'Premium',
-    price: '$599',
-    setupFee: '$599 CAD',
-    description: 'For multi-location chains',
+    name: 'Overflow + After Hours',
+    price: '$799',
+    setupFee: '$999 CAD',
+    description: 'Ideal for businesses needing overflow coverage during peak hours',
     features: [
-      'All Pro Features',
-      'Multi-Location Support',
-      'Priority Support',
-      'Advanced Analytics Dashboard',
-      'Custom Integrations',
-      'Dedicated Account Manager'
+      'Everything in After Hours',
+      'Business hours overflow coverage',
+      'Call routing rules',
+      'Deeper lead qualification',
+      'Integrations (ServiceTitan, Jobber, etc.)',
+      'Advanced reporting',
+      'Priority phone support',
+      'Multi-location support (up to 3)',
+      'Up to 3 phone lines',
+      '1,000 calls/month included'
     ],
-    cta: 'Buy Now',
-    href: 'https://buy.stripe.com/cNicN5ccH1vCa6V0B173G01',
+    cta: 'Get Started',
+    href: 'https://calendly.com/auralixai/strategy-call',
     popular: true
   }
 ];
@@ -147,7 +154,7 @@ export default function PricingTableSimple() {
               Founders&apos; Launch Special
             </h3>
             <p className="text-orange-700">
-              First 100 clients get $499 setup fee for Pro plan. Prices increasing soon!
+              Professional setup included with all plans. No contracts, cancel anytime.
             </p>
           </div>
         </motion.div>

@@ -11,16 +11,18 @@ interface RevenueCalculatorProps {
 
 export default function RevenueCalculator({ isOpen, onClose }: RevenueCalculatorProps) {
   const [formData, setFormData] = useState({
-    dailyCalls: 50,
-    missedCallRate: 43,
-    averageOrderValue: 45,
-    monthlyDays: 30
+    monthlyAdSpend: 2000,
+    avgTicket: 500,
+    closeRate: 25,
+    missedCallRate: 27
   });
 
   const calculateLoss = () => {
-    const dailyMissedCalls = (formData.dailyCalls * formData.missedCallRate) / 100;
-    const dailyLoss = dailyMissedCalls * formData.averageOrderValue;
-    const monthlyLoss = dailyLoss * formData.monthlyDays;
+    // Calculate leads from ad spend (assuming $50 per lead)
+    const totalLeads = formData.monthlyAdSpend / 50;
+    const missedLeads = (totalLeads * formData.missedCallRate) / 100;
+    const monthlyLoss = missedLeads * formData.avgTicket * (formData.closeRate / 100);
+    const dailyLoss = monthlyLoss / 30;
     const yearlyLoss = monthlyLoss * 12;
     
     return {
@@ -76,18 +78,42 @@ export default function RevenueCalculator({ isOpen, onClose }: RevenueCalculator
 
             <div className="space-y-6">
               <div className="bg-neutral-800/50 rounded-xl p-6 border border-neutral-700">
-                <h3 className="text-lg font-semibold text-white mb-4">Restaurant Details</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Business Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-neutral-300 mb-2">
-                      Daily Phone Calls
+                      Monthly Ad Spend ($)
                     </label>
                     <input
                       type="number"
-                      value={formData.dailyCalls}
-                      onChange={(e) => handleInputChange('dailyCalls', e.target.value)}
+                      value={formData.monthlyAdSpend}
+                      onChange={(e) => handleInputChange('monthlyAdSpend', e.target.value)}
                       className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-                      placeholder="50"
+                      placeholder="2000"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-300 mb-2">
+                      Average Ticket ($)
+                    </label>
+                    <input
+                      type="number"
+                      value={formData.avgTicket}
+                      onChange={(e) => handleInputChange('avgTicket', e.target.value)}
+                      className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+                      placeholder="500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-300 mb-2">
+                      Close Rate (%)
+                    </label>
+                    <input
+                      type="number"
+                      value={formData.closeRate}
+                      onChange={(e) => handleInputChange('closeRate', e.target.value)}
+                      className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
+                      placeholder="25"
                     />
                   </div>
                   <div>
@@ -99,31 +125,7 @@ export default function RevenueCalculator({ isOpen, onClose }: RevenueCalculator
                       value={formData.missedCallRate}
                       onChange={(e) => handleInputChange('missedCallRate', e.target.value)}
                       className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-                      placeholder="43"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-neutral-300 mb-2">
-                      Average Order Value ($)
-                    </label>
-                    <input
-                      type="number"
-                      value={formData.averageOrderValue}
-                      onChange={(e) => handleInputChange('averageOrderValue', e.target.value)}
-                      className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-                      placeholder="45"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-neutral-300 mb-2">
-                      Operating Days/Month
-                    </label>
-                    <input
-                      type="number"
-                      value={formData.monthlyDays}
-                      onChange={(e) => handleInputChange('monthlyDays', e.target.value)}
-                      className="w-full px-4 py-3 bg-neutral-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 border border-neutral-600"
-                      placeholder="30"
+                      placeholder="27"
                     />
                   </div>
                 </div>
@@ -172,11 +174,11 @@ export default function RevenueCalculator({ isOpen, onClose }: RevenueCalculator
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-neutral-300">Capture every order and reservation</span>
+                    <span className="text-neutral-300">Capture every lead and book every job</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-neutral-300">Recover your lost revenue</span>
+                    <span className="text-neutral-300">Protect your ad spend ROI</span>
                   </div>
                 </div>
                 <div className="mt-4 p-4 bg-primary-500/10 rounded-lg border border-primary-500/30">

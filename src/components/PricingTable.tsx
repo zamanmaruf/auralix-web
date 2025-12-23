@@ -168,7 +168,7 @@ export default function PricingTable({ plans, showROI = true }: PricingTableProp
             Founder&apos;s Special
           </h4>
           <p className="text-neutral-300">
-            First 100 restaurants get <span className="text-accent-orange font-bold">20% off for life</span>
+            White-glove setup included on annual plans
           </p>
         </div>
       </motion.div>

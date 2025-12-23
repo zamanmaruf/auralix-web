@@ -18,7 +18,7 @@ export default function DemoPlaceholder() {
             See Auralix AI in Action
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Experience how our AI receptionist handles your restaurant's calls
+            Experience how our AI receptionist handles your service calls
           </p>
         </motion.div>
 
@@ -64,8 +64,8 @@ export default function DemoPlaceholder() {
                     Click the voice button in the bottom-right corner to start a live conversation with our AI agent
                   </p>
                   <p className="text-sm text-primary-700">
-                    Try asking: "I'd like to make a reservation for tonight" or 
-                    "What are your specials today?"
+                    Try asking: "I need AC repair" or 
+                    "Can you schedule a service call?"
                   </p>
                 </div>
               </div>
@@ -76,9 +76,9 @@ export default function DemoPlaceholder() {
                 </h4>
                 <ul className="space-y-2 text-sm text-primary-700">
                   <li>• Natural conversation flow</li>
-                  <li>• Instant reservation booking</li>
-                  <li>• Menu and hours information</li>
-                  <li>• Seamless handoff to staff when needed</li>
+                  <li>• Instant service call booking</li>
+                  <li>• Service and availability information</li>
+                  <li>• Seamless handoff to dispatcher when needed</li>
                 </ul>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function DemoPlaceholder() {
                   <li>1. Configure your n8n voice agent workflow</li>
                   <li>2. Get your webhook URL or widget embed code</li>
                   <li>3. Contact our team for integration assistance</li>
-                  <li>4. Test the connection in your restaurant</li>
+                  <li>4. Test the connection in your business</li>
                 </ol>
               </div>
 

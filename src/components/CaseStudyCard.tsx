@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 interface CaseStudyCardProps {
   title: string;
-  restaurant: string;
+  business: string;
   location: string;
   image: string;
   metrics: {
@@ -22,7 +22,7 @@ interface CaseStudyCardProps {
 
 export default function CaseStudyCard({
   title,
-  restaurant,
+  business,
   location,
   image,
   metrics,
@@ -43,13 +43,13 @@ export default function CaseStudyCard({
       <div className="relative h-48 sm:h-64">
         <Image
           src={image}
-          alt={`${restaurant} restaurant`}
+          alt={`${business} business`}
           fill
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-4 left-4 text-white">
-          <h3 className="text-xl font-bold font-heading">{restaurant}</h3>
+          <h3 className="text-xl font-bold font-heading">{business}</h3>
           <p className="text-sm text-neutral-200">{location}</p>
         </div>
       </div>

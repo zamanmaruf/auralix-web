@@ -22,8 +22,49 @@ export default function VapiVoiceAssistant() {
       console.log('📞 [Vapi] Starting initialization...');
       console.log('📞 [Vapi] Public Key:', publicKey);
       
+      // Add global error handler to catch Krisp errors
+      const originalErrorHandler = window.onerror;
+      const originalUnhandledRejection = window.onunhandledrejection;
+      
+      // Cleanup function to restore original handlers
+      const cleanup = () => {
+        window.onerror = originalErrorHandler;
+        window.onunhandledrejection = originalUnhandledRejection;
+      };
+      
+      window.onerror = (message, source, lineno, colno, error) => {
+        // Suppress Krisp-related errors
+        if (error?.name === 'KrispInitError' || 
+            (typeof message === 'string' && message.includes('Krisp')) ||
+            (error?.message && error.message.includes('Krisp'))) {
+          console.warn('⚠️ [Vapi] Suppressed Krisp error (non-critical):', message);
+          return true; // Prevent default error handling
+        }
+        // Call original handler for other errors
+        if (originalErrorHandler) {
+          return originalErrorHandler(message, source, lineno, colno, error);
+        }
+        return false;
+      };
+      
+      window.onunhandledrejection = (event) => {
+        // Suppress Krisp-related promise rejections
+        const error = event.reason;
+        if (error?.name === 'KrispInitError' || 
+            (error?.message && error.message.includes('Krisp'))) {
+          console.warn('⚠️ [Vapi] Suppressed Krisp promise rejection (non-critical):', error);
+          event.preventDefault(); // Prevent unhandled rejection
+          return;
+        }
+        // Call original handler for other rejections
+        if (originalUnhandledRejection) {
+          originalUnhandledRejection.call(window, event);
+        }
+      };
+      
       try {
         // Initialize with public key (API token)
+        // Note: Krisp errors are caught and handled gracefully via global handlers
         const vapi = new Vapi(publicKey);
         console.log('📞 [Vapi] Constructor called successfully');
         console.log('📞 [Vapi] Instance created:', vapi);
@@ -66,6 +107,11 @@ export default function VapiVoiceAssistant() {
         
         vapi.on('error', (error: any) => {
           console.error('❌ [Vapi] Error event:', error);
+          // Ignore Krisp-related errors as they don't affect functionality
+          if (error?.message?.includes('Krisp') || error?.name === 'KrispInitError') {
+            console.warn('⚠️ [Vapi] Krisp filter error (non-critical):', error);
+            return; // Don't change status for Krisp errors
+          }
           setCallStatus('idle');
         });
         
@@ -77,10 +123,20 @@ export default function VapiVoiceAssistant() {
         
         console.log('✅ [Vapi] Initialization complete!');
         console.log('📞 [Vapi] Instance available on window.vapiInstance:', !!vapi);
-      } catch (error) {
+        
+        // Restore original error handlers after successful initialization
+        cleanup();
+      } catch (error: any) {
+        // Handle initialization errors
         console.error('❌ [Vapi] Failed to initialize:', error);
         setIsInitialized(true); // Mark as initialized to prevent retry loops
+        
+        // Restore original error handlers
+        cleanup();
       }
+      
+      // Return cleanup function
+      return cleanup;
     }
   }, [isInitialized, publicKey]);
 

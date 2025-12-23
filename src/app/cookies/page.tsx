@@ -210,7 +210,7 @@ export default function CookiesPage() {
             <div className="space-y-2 text-gray-300">
               <p><strong>Email:</strong> info@auralixai.ca</p>
               <p><strong>Address:</strong> 1800 Argyle Street, Halifax, Nova Scotia, Canada</p>
-              <p><strong>Phone:</strong> +1 (782) 882-8635</p>
+              <p><strong>Contact:</strong> <a href="https://calendly.com/auralixai/strategy-call" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:underline">Book a free consultation</a></p>
             </div>
           </div>
         </div>

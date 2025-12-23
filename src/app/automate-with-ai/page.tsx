@@ -145,8 +145,8 @@ export default function AutomateWithAIPage() {
           <h2 className="text-2xl font-bold text-orange-400 mb-8">Industries We Serve</h2>
           <div className="flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center bg-[#222] rounded-xl px-6 py-4 text-white w-40">
-              <MdRestaurant className="text-3xl mb-2 text-orange-300" />
-              Restaurants
+              <MdLocalHospital className="text-3xl mb-2 text-orange-300" />
+              HVAC
             </div>
             <div className="flex flex-col items-center bg-[#222] rounded-xl px-6 py-4 text-white w-40">
               <MdContentCut className="text-3xl mb-2 text-orange-300" />
