@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { 
   Phone, Clock, CheckCircle, Zap, MessageSquare, TrendingUp, 
-  Calendar, Shield, ArrowRight, Users, Settings, BarChart, FileText
+  Calendar, Shield, ArrowRight, Users, Settings, BarChart
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -115,7 +115,7 @@ export default function HomeServicesPage() {
               }}
               className="px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105 inline-flex items-center justify-center gap-2"
             >
-              Demo Call
+              Start Demo Call
             </button>
             <Link
               href="/pricing"
@@ -124,6 +124,10 @@ export default function HomeServicesPage() {
               View Pricing
             </Link>
           </motion.div>
+          <p className="text-sm text-neutral-400 mt-4 max-w-2xl mx-auto">
+            <strong>Note:</strong> Demo calls may be recorded for quality and training purposes. By starting a demo call, you consent to recording. 
+            See our <Link href="/privacy" className="text-primary-400 hover:text-primary-300 underline">Privacy Policy</Link> for details.
+          </p>
         </div>
       </section>
 
@@ -224,44 +228,6 @@ export default function HomeServicesPage() {
         </div>
       </section>
 
-      {/* Demo Pack Download */}
-      <section className="py-16 px-4 bg-gradient-to-b from-neutral-800 to-neutral-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-cyan-500/30"
-          >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Free Download: Trades Missed-Call Playbook</h2>
-            <p className="text-lg text-neutral-300 mb-6 max-w-2xl mx-auto">
-              Get our comprehensive guide to reducing missed calls, including common call flows, booking rules, escalation logic, and ROI calculator.
-            </p>
-            <a
-              href="/downloads/trades-missed-call-playbook.pdf"
-              download
-              onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'file_download', {
-                    event_category: 'engagement',
-                    event_label: 'Trades Missed-Call Playbook',
-                    location: 'home_services',
-                  });
-                }
-              }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
-            >
-              <FileText className="w-5 h-5" />
-              Download Free Playbook
-            </a>
-            <p className="text-sm text-neutral-400 mt-4">
-              No email required. Instant download.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -274,7 +240,7 @@ export default function HomeServicesPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6 font-heading">Ready to Stop Losing Calls?</h2>
             <p className="text-lg text-neutral-300 mb-8">
-              Try our demo call to experience how Auralix AI handles calls and captures leads.
+              Click below to start a demo call and experience how Auralix AI handles calls and captures leads.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -287,7 +253,7 @@ export default function HomeServicesPage() {
                 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
-                Demo Call
+                Start Demo Call
                 <ArrowRight className="w-5 h-5" />
               </button>
               <Link
@@ -297,6 +263,10 @@ export default function HomeServicesPage() {
                 View Pricing
               </Link>
             </div>
+            <p className="text-sm text-neutral-400 mt-4 max-w-2xl mx-auto">
+              <strong>Note:</strong> Demo calls may be recorded for quality and training purposes. By starting a demo call, you consent to recording. 
+              See our <Link href="/privacy" className="text-primary-400 hover:text-primary-300 underline">Privacy Policy</Link> for details.
+            </p>
           </motion.div>
         </div>
       </section>

@@ -111,7 +111,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  &quot;We&apos;re capturing an extra 40% more service calls. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-location HVAC businesses.&quot;
+                  &quot;We&apos;re capturing significantly more service calls. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-location HVAC businesses.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -169,7 +169,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <blockquote className="text-neutral-300 text-lg italic mb-6">
-                  &quot;Without Auralix, we would be losing over $200k annually in missed service calls. The voice agent handles everything so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s essential for our business.&quot;
+                  &quot;Without Auralix, we would be losing substantial revenue annually in missed service calls. The voice agent handles everything so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s essential for our business.&quot;
                 </blockquote>
               </div>
               <div className="flex items-center gap-4">
@@ -200,7 +200,7 @@ export default function HomePage() {
               The Hidden Cost of Missed Calls
             </h2>
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              Every missed call is lost revenue. Service businesses across industries lose thousands monthly from unanswered phones during peak hours.
+              Every missed call is lost revenue. Home services businesses lose thousands monthly from unanswered phones during peak hours.
             </p>
           </motion.div>
 
@@ -212,9 +212,9 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="bg-red-500/10 border border-red-500/30 rounded-2xl p-8 text-center"
             >
-              <div className="text-4xl font-bold text-red-400 mb-2">40%+</div>
+              <div className="text-4xl font-bold text-red-400 mb-2">27%</div>
               <div className="text-white font-semibold mb-2">of calls go unanswered</div>
-              <div className="text-neutral-400 text-sm">Industry average during peak hours</div>
+              <div className="text-neutral-400 text-sm">Home services average (Invoca)</div>
             </motion.div>
 
             <motion.div
@@ -274,8 +274,8 @@ export default function HomePage() {
               The Voice Agent That Transforms Your Phone Calls
             </h2>
             <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              One powerful voice agent solution that handles appointments, inquiries, and customer service across industries.
-              From dental and clinics to restaurants, hotels, and other service businesses — never miss a call, booking, or customer interaction again.
+              One powerful voice agent solution built specifically for home services businesses. 
+              Handles appointments, inquiries, and customer service for HVAC, plumbing, and electrical contractors — never miss a call, booking, or customer interaction again.
             </p>
           </motion.div>
 
@@ -307,137 +307,6 @@ export default function HomePage() {
               Explore Voice Agent Capabilities
               <ArrowRight className="w-5 h-5" />
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Multi-Industry Case Study */}
-      <section className="py-16 sm:py-20 px-4 bg-neutral-900">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-heading">
-              Trusted Across Industries
-            </h2>
-            <p className="text-lg text-neutral-300 max-w-3xl mx-auto">
-              From dental practices to restaurant chains to hotels and other regulated service businesses, businesses trust Auralix Voice Agent 
-              to handle their customer calls professionally and reliably.
-            </p>
-          </motion.div>
-
-          {/* Industry Tiles */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              {
-                title: 'Dental Practices',
-                description: 'Appointment scheduling and patient inquiries',
-                icon: Users,
-                color: 'blue'
-              },
-              {
-                title: 'Restaurants',
-                description: 'Reservations and order management',
-                icon: Phone,
-                color: 'primary'
-              },
-              {
-                title: 'Hotels',
-                description: 'Room bookings and guest services',
-                icon: Globe,
-                color: 'purple'
-              },
-              {
-                title: 'Financial Institutions & Enterprise Partners',
-                description: 'Secure orchestration layer that plugs into existing contact center, core banking, or CRM systems with API-first design',
-                icon: Shield,
-                color: 'green'
-              }
-            ].map((industry, index) => {
-              const IndustryIcon = industry.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700 hover:border-primary-500/50 transition-all duration-300"
-                >
-                  <IndustryIcon className={`w-10 h-10 text-${industry.color}-400 mb-4`} />
-                  <h3 className="text-lg font-bold text-white mb-2 font-heading">{industry.title}</h3>
-                  <p className="text-neutral-300 text-sm">{industry.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-gradient-to-r from-primary-500/20 to-blue-500/20 rounded-2xl p-8 border border-primary-500/30">
-                <blockquote className="text-xl text-white italic mb-6">
-                  &quot;We&apos;re capturing an extra 75-100 orders per month per store. Auralix AI handles our phone calls so naturally that customers can&apos;t tell they&apos;re talking to AI. It&apos;s a no-brainer for multi-unit operators.&quot;
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">MH</span>
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold">Michael Hauke</div>
-                    <div className="text-neutral-400 text-sm">Tony Boloney&apos;s - Multi-Unit Operator</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6"
-            >
-              <div className="bg-neutral-800 rounded-xl p-6 text-center">
-                <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-green-400 mb-2">35%+</div>
-                <div className="text-neutral-300 text-sm">Increase in Bookings</div>
-              </div>
-              <div className="bg-neutral-800 rounded-xl p-6 text-center">
-                <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-blue-400 mb-2">50%+</div>
-                <div className="text-neutral-300 text-sm">Reduction in Admin Time</div>
-              </div>
-              <div className="bg-neutral-800 rounded-xl p-6 text-center">
-                <DollarSign className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-purple-400 mb-2">99.9%</div>
-                <div className="text-neutral-300 text-sm">Uptime Guarantee</div>
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <a
-              href="/case-studies"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
-            >
-              View Case Studies
-              <ArrowRight className="w-5 h-5" />
-            </a>
           </motion.div>
         </div>
       </section>
@@ -536,7 +405,7 @@ export default function HomePage() {
               Ready to Transform Your Phone Calls?
             </h2>
             <p className="text-lg text-neutral-300 mb-8">
-              Join businesses across industries that trust Auralix Voice Agent to handle their customer calls intelligently, professionally, and reliably 24/7.
+              Join home services businesses that trust Auralix Voice Agent to handle their customer calls intelligently, professionally, and reliably 24/7.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

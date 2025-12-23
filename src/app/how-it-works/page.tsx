@@ -359,7 +359,7 @@ export default function HowItWorksPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6 font-heading">Ready to See It in Action?</h2>
             <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
-              Try our demo call to experience how Auralix AI handles calls and captures leads.
+              Click below to start a demo call and experience how Auralix AI handles calls and captures leads.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -388,12 +388,16 @@ export default function HowItWorksPage() {
                     window.dispatchEvent(new Event('trigger-vapi-call'));
                   }
                 }}
-                className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
               >
-                Demo Call
-                <ArrowRight className="w-5 h-5 inline-block ml-2" />
+                Start Demo Call
+                <ArrowRight className="w-5 h-5" />
               </button>
             </div>
+            <p className="text-sm text-neutral-400 mt-4 max-w-2xl mx-auto">
+              <strong>Note:</strong> Demo calls may be recorded for quality and training purposes. By starting a demo call, you consent to recording. 
+              See our <Link href="/privacy" className="text-primary-400 hover:text-primary-300 underline">Privacy Policy</Link> for details.
+            </p>
           </motion.div>
         </div>
       </section>

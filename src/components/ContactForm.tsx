@@ -288,9 +288,10 @@ export default function ContactForm({ onSubmit, showCalendly = true }: ContactFo
           aria-describedby={errors.organizationType ? 'organizationType-error' : undefined}
         >
           <option value="">Select Organization Type</option>
-          <option value="restaurant">Restaurant</option>
-          <option value="dental">Dental</option>
-          <option value="hotel">Hotel</option>
+          <option value="hvac">HVAC</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="electrical">Electrical</option>
+          <option value="home-services-general">Home Services (General)</option>
           <option value="healthcare">Healthcare</option>
           <option value="financial-institution">Financial Institution</option>
           <option value="other">Other</option>

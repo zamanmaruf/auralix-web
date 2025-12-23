@@ -7,54 +7,54 @@ import Image from 'next/image';
 
 const caseStudies = [
   {
-    id: 'halifax-chain',
-    title: 'Halifax Restaurant Chain Boosts Bookings by 40%',
-    restaurant: 'Halifax Seafood Co.',
+    id: 'halifax-hvac',
+    title: 'Multi-Location HVAC Company Captures More Service Calls',
+    business: 'Halifax HVAC Services',
     location: 'Halifax, Nova Scotia',
-    industry: 'Seafood Restaurant',
+    industry: 'HVAC',
     image: '/dashboard.jpg',
     metrics: {
-      bookings: '+40%',
-      adminTime: '-60%',
-      revenue: '+25%'
+      calls: 'Significantly more',
+      adminTime: 'Reduced',
+      revenue: 'Increased'
     },
-    quote: "We never miss a call anymore — our bookings jumped 40%. The AI handles everything so naturally, customers can't tell the difference.",
-    author: 'Sarah Mitchell',
-    role: 'Owner, Halifax Seafood Co.',
+    quote: "We never miss a call anymore. The AI handles everything so naturally, customers can't tell the difference. It's essential for our multi-location operations.",
+    author: 'Michael Hauke',
+    role: 'Multi-Location Operator',
     featured: true
   },
   {
-    id: 'calgary-pizzeria',
-    title: 'Calgary Pizzeria Automates Order Taking',
-    restaurant: 'Mountain View Pizzeria',
+    id: 'calgary-plumbing',
+    title: 'Plumbing Business Automates After-Hours Calls',
+    business: 'Calgary Plumbing Co.',
     location: 'Calgary, Alberta',
-    industry: 'Pizzeria',
+    industry: 'Plumbing',
     image: '/dashboard.jpg',
     metrics: {
-      bookings: '+35%',
-      adminTime: '-50%',
-      revenue: '+30%'
+      calls: 'More captured',
+      adminTime: 'Reduced',
+      revenue: 'Increased'
     },
-    quote: "Our phone was ringing off the hook during dinner rush. Now Auralix handles every call perfectly.",
-    author: 'Marco Rossi',
-    role: 'Manager, Mountain View Pizzeria',
+    quote: "Our phone was ringing off the hook during peak hours and after-hours. Now Auralix handles every call perfectly, even on weekends.",
+    author: 'Costa Alexandrou',
+    role: 'Business Owner',
     featured: false
   },
   {
-    id: 'toronto-cafe',
-    title: 'Toronto Café Captures More Orders',
-    restaurant: 'Downtown Coffee Co.',
+    id: 'toronto-electrical',
+    title: 'Electrical Contractor Captures Emergency Calls',
+    business: 'Toronto Electrical Services',
     location: 'Toronto, Ontario',
-    industry: 'Coffee Shop',
+    industry: 'Electrical',
     image: '/dashboard.jpg',
     metrics: {
-      bookings: '+28%',
-      adminTime: '-45%',
-      revenue: '+22%'
+      calls: 'More captured',
+      adminTime: 'Reduced',
+      revenue: 'Increased'
     },
-    quote: "We were losing so many orders during busy mornings. Auralix AI never misses a beat.",
-    author: 'Jennifer Chen',
-    role: 'Owner, Downtown Coffee Co.',
+    quote: "We were losing so many emergency calls during busy periods. Auralix AI never misses a beat and captures every lead.",
+    author: 'Dru',
+    role: 'Business Owner',
     featured: false
   }
 ];
@@ -87,8 +87,8 @@ export default function CaseStudiesPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base text-neutral-400 mb-8 max-w-3xl mx-auto"
           >
-            We started with restaurants and have expanded to dental clinics, hotels, and other service businesses. 
-            Here&apos;s how businesses are using Auralix Voice Agent to capture more revenue and cut admin time.
+            See how home services businesses (HVAC, plumbing, and electrical contractors) are using Auralix Voice Agent 
+            to capture more revenue, never miss a call, and cut admin time.
           </motion.p>
         </div>
       </section>
@@ -118,10 +118,10 @@ export default function CaseStudiesPage() {
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">HS</span>
+                    <span className="text-white font-bold text-xl">MH</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white font-heading">Halifax Seafood Co.</h3>
+                    <h3 className="text-2xl font-bold text-white font-heading">Halifax HVAC Services</h3>
                     <div className="flex items-center gap-2 text-neutral-400">
                       <MapPin className="w-4 h-4" />
                       <span>Halifax, Nova Scotia</span>
@@ -130,17 +130,17 @@ export default function CaseStudiesPage() {
                 </div>
                 
                 <blockquote className="text-lg text-neutral-300 italic mb-6">
-                  &quot;We never miss a call anymore — our bookings jumped 40%. The AI handles everything 
-                  so naturally, customers can&apos;t tell the difference.&quot;
+                  &quot;We never miss a call anymore. The AI handles everything so naturally, customers can&apos;t tell the difference. 
+                  It&apos;s essential for our multi-location operations.&quot;
                 </blockquote>
                 
                 <div className="text-sm text-neutral-400 mb-6">
-                  <div className="font-semibold text-white">Sarah Mitchell</div>
-                  <div>Owner, Halifax Seafood Co.</div>
+                  <div className="font-semibold text-white">Michael Hauke</div>
+                  <div>Multi-Location Operator</div>
                 </div>
                 
                 <Link
-                  href="/case-studies/halifax-chain"
+                  href="/case-studies/halifax-hvac"
                   className="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-400 text-white font-bold px-6 py-3 rounded-lg transition-all duration-200 hover:scale-105"
                 >
                   Read Full Case Study
@@ -151,17 +151,17 @@ export default function CaseStudiesPage() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-neutral-800 rounded-xl p-4 text-center">
                   <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-green-400">40%</div>
-                  <div className="text-xs text-neutral-400">Bookings</div>
+                  <div className="text-2xl font-bold text-green-400">More</div>
+                  <div className="text-xs text-neutral-400">Calls Captured</div>
                 </div>
                 <div className="bg-neutral-800 rounded-xl p-4 text-center">
                   <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-blue-400">60%</div>
+                  <div className="text-2xl font-bold text-blue-400">Less</div>
                   <div className="text-xs text-neutral-400">Admin Time</div>
                 </div>
                 <div className="bg-neutral-800 rounded-xl p-4 text-center">
                   <DollarSign className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-purple-400">25%</div>
+                  <div className="text-2xl font-bold text-purple-400">More</div>
                   <div className="text-xs text-neutral-400">Revenue</div>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function CaseStudiesPage() {
             <h2 className="text-3xl font-bold text-white mb-4 font-heading">All Success Stories</h2>
             <p className="text-lg text-neutral-300">Real results from businesses across Canada</p>
             <p className="text-base text-neutral-400 mt-4 max-w-3xl mx-auto">
-              We began with restaurants, and now apply the same voice AI stack to other service businesses and regulated industries.
+              These home services businesses are using Auralix Voice Agent to capture every call, book more jobs, and reduce administrative overhead.
             </p>
           </motion.div>
 
@@ -200,13 +200,13 @@ export default function CaseStudiesPage() {
                 <div className="relative h-48">
                   <Image
                     src={study.image}
-                    alt={`${study.restaurant} restaurant`}
+                    alt={`${study.business} ${study.industry} business`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg font-bold font-heading">{study.restaurant}</h3>
+                    <h3 className="text-lg font-bold font-heading">{study.business}</h3>
                     <div className="flex items-center gap-1 text-sm text-neutral-200">
                       <MapPin className="w-3 h-3" />
                       <span>{study.location}</span>
@@ -222,8 +222,8 @@ export default function CaseStudiesPage() {
                   <div className="grid grid-cols-3 gap-3 mb-4">
                     <div className="text-center">
                       <TrendingUp className="w-5 h-5 text-green-400 mx-auto mb-1" />
-                      <div className="text-sm font-bold text-green-400">{study.metrics.bookings}</div>
-                      <div className="text-xs text-neutral-400">Bookings</div>
+                      <div className="text-sm font-bold text-green-400">{study.metrics.calls}</div>
+                      <div className="text-xs text-neutral-400">Calls</div>
                     </div>
                     <div className="text-center">
                       <Clock className="w-5 h-5 text-blue-400 mx-auto mb-1" />
@@ -284,7 +284,9 @@ export default function CaseStudiesPage() {
                 Get Started
               </a>
               <a
-                href="/contact"
+                href="https://calendly.com/auralixai/strategy-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-black font-bold rounded-lg transition-all duration-200"
               >
                 Book Strategy Call

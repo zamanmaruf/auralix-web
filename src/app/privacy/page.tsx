@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Shield, Eye, Database, User, Lock, Globe, FileText, AlertTriangle, CheckCircle, Clock, Building } from 'lucide-react';
+import { Shield, Eye, Database, User, Lock, Globe, FileText, AlertTriangle, CheckCircle, Clock, Building, Phone } from 'lucide-react';
 
 export default function PrivacyPage() {
   return (
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             </div>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
-                Auralix AI Inc. (&quot;we,&quot; &quot;our,&quot; &quot;us,&quot; or &quot;Company&quot;) is a Halifax-based artificial intelligence company specializing in voice automation solutions for service businesses (including restaurants, dental practices, hotels, and other service-heavy organizations). We are committed to protecting the privacy and security of personal information collected from Canadian businesses and their customers.
+                Auralix AI Inc. (&quot;we,&quot; &quot;our,&quot; &quot;us,&quot; or &quot;Company&quot;) is a Halifax-based artificial intelligence company specializing in voice automation solutions for home services businesses (including HVAC, plumbing, electrical, and other service-heavy organizations). We are committed to protecting the privacy and security of personal information collected from Canadian businesses and their customers.
               </p>
               <p>
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI receptionist, chatbot, order automation, and website services. It applies to all information collected through our website, mobile applications, and AI services.
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Restaurant Information */}
+              {/* Business Information */}
               <div className="space-y-6">
                 <div className="bg-neutral-800/50 rounded-xl p-6">
                   <div className="flex items-center gap-3 mb-4">
@@ -112,11 +112,11 @@ export default function PrivacyPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Customer names, phone numbers, and email addresses from reservations</span>
+                      <span>Customer names, phone numbers, and email addresses from service requests</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Order history, preferences, and dietary restrictions</span>
+                      <span>Service address, issue type, equipment details, and emergency flags</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -125,6 +125,10 @@ export default function PrivacyPage() {
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>Chat conversations and chatbot interactions</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>SMS content and confirmations</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -187,7 +191,7 @@ export default function PrivacyPage() {
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span>Process reservations, orders, and customer requests through AI</span>
+                      <span>Process service requests, bookings, and customer inquiries through AI</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -475,6 +479,76 @@ export default function PrivacyPage() {
                   <strong>Phone:</strong> +1 (782) 882-8635
                 </div>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Call Recording Notice & Consent */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Phone className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">Call Recording Notice & Consent</h2>
+            </div>
+            
+            <div className="space-y-4 text-gray-300 leading-relaxed">
+              <p>
+                Auralix AI records voice calls for quality assurance, training, and service improvement purposes. In compliance with 
+                Canadian privacy regulations (PIPEDA) and guidance from the Office of the Privacy Commissioner of Canada, we obtain 
+                meaningful consent for call recording.
+              </p>
+              
+              <div className="bg-neutral-800/50 rounded-xl p-6 mt-6">
+                <h3 className="text-xl font-bold text-white mb-4">How We Obtain Consent</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>At call start:</strong> Our AI voice agent clearly states that the call may be recorded for quality and training purposes</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Explicit consent:</strong> The AI asks for consent: &quot;Do you consent to being recorded?&quot;</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Call continuation:</strong> If consent is not provided, the call can still proceed but recording will be disabled</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Purpose disclosure:</strong> We clearly explain that recordings are used for quality assurance, training, and service improvement</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-6 mt-6">
+                <h3 className="text-xl font-bold text-cyan-400 mb-4">Your Rights Regarding Call Recordings</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>You can request access to your call recordings</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>You can request deletion of your call recordings (subject to legal retention requirements)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>Recordings are retained in accordance with our data retention policy and legal obligations</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>Recordings are stored securely and accessed only by authorized personnel for the stated purposes</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="mt-6">
+                For more information about call recording practices or to exercise your rights, contact us at info@auralixai.ca.
+              </p>
             </div>
           </motion.div>
 

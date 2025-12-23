@@ -126,7 +126,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-white mb-4 font-heading">Why Choose Auralix AI?</h3>
                 <div className="space-y-3">
                   {[
-                    'Built for service businesses across Canada (dental, restaurants, hotels, and other service-driven businesses)',
+                    'Built for home services businesses across Canada (HVAC, plumbing, electrical, and other service-driven businesses)',
                     'Proven track record with service businesses',
                     'Personalized service and ongoing support',
                     'Flexible solutions that scale with your business',

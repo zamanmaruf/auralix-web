@@ -6,17 +6,17 @@ import PricingTable from '../../components/PricingTable';
 
 const pricingPlans = [
   {
-    name: 'Starter',
-    price: '$199',
+    name: 'After Hours',
+    price: '$399',
     period: '/month',
-    setupFee: '$499',
-    description: 'Perfect for small businesses getting started with voice AI',
-    callVolume: 'Up to 500 calls/month',
+    setupFee: '$699',
+    description: 'Perfect for after-hours and weekend coverage for home services businesses',
+    callVolume: 'Up to 300 calls/month',
     features: [
-      'Voice agent 24/7',
-      'Natural language processing',
-      'Appointment/booking management',
-      'Basic call routing',
+      'After-hours + weekends coverage',
+      'Lead capture and qualification',
+      'SMS confirmations',
+      'Basic booking and scheduling',
       'CRM integration',
       'Email support',
       'Single location',
@@ -27,36 +27,36 @@ const pricingPlans = [
     popular: false
   },
   {
-    name: 'Professional',
-    price: '$499',
+    name: 'Overflow + After Hours',
+    price: '$799',
     period: '/month',
-    setupFee: '$799',
-    description: 'Ideal for growing businesses across industries',
-    callVolume: 'Up to 2,000 calls/month',
+    setupFee: '$999',
+    description: 'Ideal for home services businesses needing overflow coverage during peak hours',
+    callVolume: 'Up to 1,000 calls/month',
     features: [
-      'Everything in Starter',
-      'Advanced NLP capabilities',
-      'Multi-language support (5 languages)',
-      'Custom AI training',
+      'Everything in After Hours',
+      'Business hours overflow coverage',
+      'Call routing rules',
+      'Deeper lead qualification',
+      'Integrations (ServiceTitan, Jobber, etc.)',
+      'Advanced reporting',
       'Priority phone support',
       'Multi-location support (up to 3)',
-      'Up to 3 phone lines',
-      'Advanced analytics dashboard',
-      'Custom integrations'
+      'Up to 3 phone lines'
     ],
     cta: 'Get Started',
     color: 'purple' as const,
     popular: true
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
+    name: 'Dispatcher Pro',
+    price: '$1,499',
     period: '/month',
     setupFee: 'Custom',
-    description: 'Scalable solution for large organizations and multi-location chains',
+    description: 'Scalable solution for large home services organizations and multi-location chains',
     callVolume: 'Unlimited calls',
     features: [
-      'Everything in Professional',
+      'Everything in Overflow + After Hours',
       'Unlimited phone lines',
       'Unlimited locations',
       'Enterprise-grade security (SOC 2–aligned)',
@@ -68,8 +68,7 @@ const pricingPlans = [
       '24/7 priority support',
       'SLA guarantees',
       'Custom integrations',
-      'Advanced reporting & analytics',
-      'HIPAA compliance options'
+      'Advanced reporting & analytics'
     ],
     cta: 'Contact Sales',
     color: 'gold' as const,
@@ -97,8 +96,8 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-neutral-300 mb-8 max-w-3xl mx-auto"
           >
-            Transparent pricing designed for businesses that demand reliability. Professional setup included with all plans. 
-            Scales seamlessly from single locations to enterprise chains.
+            Transparent pricing designed for home services businesses that demand reliability. Professional setup included with all plans. 
+            Scales seamlessly from single locations to multi-location operations.
           </motion.p>
           
           {/* Primary CTA */}
@@ -195,7 +194,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 
-                {plan.name === 'Enterprise' && (
+                {plan.name === 'Dispatcher Pro' && (
                   <div className="mb-6 p-4 bg-primary-500/10 border border-primary-500/30 rounded-lg">
                     <p className="text-sm text-neutral-300">
                       <strong className="text-white">For enterprise & financial institutions:</strong> Includes security & compliance review support (SOC 2–aligned controls, vendor due-diligence documentation, DPA templates).
@@ -238,9 +237,9 @@ export default function PricingPage() {
               <thead>
                 <tr className="border-b border-neutral-700">
                   <th className="text-left p-4 text-white font-semibold">Features</th>
-                  <th className="text-center p-4 text-white font-semibold">Starter</th>
-                  <th className="text-center p-4 text-white font-semibold bg-primary-500/20">Professional</th>
-                  <th className="text-center p-4 text-white font-semibold">Enterprise</th>
+                  <th className="text-center p-4 text-white font-semibold">After Hours</th>
+                  <th className="text-center p-4 text-white font-semibold bg-primary-500/20">Overflow + After Hours</th>
+                  <th className="text-center p-4 text-white font-semibold">Dispatcher Pro</th>
                 </tr>
               </thead>
               <tbody>
@@ -258,12 +257,11 @@ export default function PricingPage() {
                   { feature: 'Advanced analytics', starter: false, professional: true, enterprise: true },
                   { feature: 'Multi-location support', starter: false, professional: 'Up to 3', enterprise: 'Unlimited' },
                   { feature: 'Phone lines', starter: '1', professional: 'Up to 3', enterprise: 'Unlimited' },
-                  { feature: 'Call volume/month', starter: 'Up to 500', professional: 'Up to 2,000', enterprise: 'Unlimited' },
+                  { feature: 'Call volume/month', starter: 'Up to 300', professional: 'Up to 1,000', enterprise: 'Unlimited' },
                   { feature: 'SOC 2–aligned security controls', starter: false, professional: false, enterprise: true },
                   { feature: 'Dedicated account manager', starter: false, professional: false, enterprise: true },
                   { feature: 'White-label options', starter: false, professional: false, enterprise: true },
                   { feature: 'API access & webhooks', starter: false, professional: false, enterprise: true },
-                  { feature: 'HIPAA compliance', starter: false, professional: false, enterprise: 'Optional' },
                 ].map((row, index) => (
                   <tr key={index} className="border-b border-neutral-700/50 hover:bg-neutral-700/30 transition-colors">
                     <td className="p-4 text-neutral-300">{row.feature}</td>
@@ -302,64 +300,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Industry-Specific Pricing Info */}
-      <section className="py-16 px-4 bg-neutral-800/50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-white mb-4 font-heading">Pricing That Scales with Your Industry</h2>
-            <p className="text-lg text-neutral-300">Our voice agent works across industries with flexible pricing</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Users,
-                title: 'Dental Practices',
-                description: 'Perfect for managing patient appointments and inquiries',
-                recommended: 'Starter or Professional'
-              },
-              {
-                icon: Phone,
-                title: 'Restaurants',
-                description: 'Handle reservations and orders during peak hours',
-                recommended: 'Professional'
-              },
-              {
-                icon: Globe,
-                title: 'Hotel Chains',
-                description: 'Enterprise solution for multi-location operations',
-                recommended: 'Enterprise'
-              }
-            ].map((industry, index) => {
-              const IndustryIcon = industry.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-neutral-800/80 backdrop-blur-sm rounded-xl p-6 border border-neutral-700"
-                >
-                  <IndustryIcon className="w-10 h-10 text-primary-400 mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2 font-heading">{industry.title}</h3>
-                  <p className="text-neutral-300 mb-4">{industry.description}</p>
-                  <div className="text-sm text-primary-400 font-semibold">
-                    Recommended: {industry.recommended}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -392,8 +332,8 @@ export default function PricingPage() {
                 answer: 'Yes, all plans include professional setup where our team configures your voice agent, integrates with your systems, and ensures everything works perfectly.'
               },
               {
-                question: 'Do you offer multi-industry packages?',
-                answer: 'Our Enterprise plan can be customized for businesses operating across multiple industries or locations. Contact us for custom pricing.'
+                question: 'Do you offer multi-location packages?',
+                answer: 'Our Dispatcher Pro plan can be customized for businesses operating across multiple locations. Contact us for custom pricing.'
               }
             ].map((faq, index) => (
               <motion.div
@@ -424,11 +364,13 @@ export default function PricingPage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6 font-heading">Ready to Get Started?</h2>
             <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
-              Join businesses across industries that trust Auralix Voice Agent to handle their customer calls.
+              Join home services businesses that trust Auralix Voice Agent to handle their customer calls.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="https://calendly.com/auralixai/strategy-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-400 text-white font-bold rounded-lg transition-all duration-200 hover:scale-105"
               >
                 Get Started

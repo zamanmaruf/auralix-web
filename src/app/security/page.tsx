@@ -196,7 +196,7 @@ export default function SecurityPage() {
         </div>
       </section>
 
-      {/* Restaurant-Specific Security */}
+      {/* Business-Specific Security */}
       <section className="py-16 px-4 bg-neutral-800/50">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -227,7 +227,7 @@ export default function SecurityPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-300">Secure handling of reservation and order data</span>
+                    <span className="text-neutral-300">Secure handling of service requests and booking data</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -257,7 +257,7 @@ export default function SecurityPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-300">Automated backup of restaurant configurations</span>
+                    <span className="text-neutral-300">Automated backup of business configurations</span>
                   </li>
                 </ul>
               </div>

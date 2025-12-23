@@ -527,6 +527,57 @@ export default function TermsPage() {
             </div>
           </motion.div>
 
+          {/* 30-Day Money-Back Guarantee */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-2xl border border-neutral-700"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <CheckCircle className="w-8 h-8 text-cyan-400" />
+              <h2 className="text-3xl font-bold text-white font-heading">30-Day Money-Back Guarantee</h2>
+            </div>
+            
+            <div className="space-y-4 text-gray-300 leading-relaxed">
+              <p>
+                We stand behind our voice automation services. If you are not satisfied with Auralix AI within the first 30 days of service, 
+                you may request a full refund of your monthly subscription fee.
+              </p>
+              
+              <div className="bg-neutral-800/50 rounded-xl p-6 mt-6">
+                <h3 className="text-xl font-bold text-white mb-4">Guarantee Conditions</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Eligibility:</strong> Available for new customers within the first 30 days of service activation</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>What&apos;s refundable:</strong> Monthly subscription fees paid during the guarantee period</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>What&apos;s not refundable:</strong> One-time setup fees, professional services, or usage-based charges (e.g., overage calls, SMS)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Request process:</strong> Contact us at info@auralixai.ca with your refund request. We will process refunds within 10 business days</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Service usage:</strong> Refund eligibility is not affected by normal service usage during the guarantee period</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="mt-6">
+                This guarantee applies to monthly subscription plans only. Annual plans and custom enterprise agreements may have different refund terms as specified in your service agreement.
+              </p>
+            </div>
+          </motion.div>
+
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
