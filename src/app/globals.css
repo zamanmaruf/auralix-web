@@ -96,6 +96,14 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --primary: 20 184 166; /* #14b8a6 */
+  --primary-foreground: 255 255 255;
+  --accent: 255 122 0; /* #FF7A00 */
+  --accent-foreground: 255 255 255;
+  --muted: 30 30 30;
+  --muted-foreground: 163 163 163;
+  --border: 55 55 55;
+  --ring: 20 184 166;
 }
 
 @theme inline {
@@ -107,9 +115,56 @@
 
 body {
   background: var(--background);
+  background-image: url('/background-auralix.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
+
+/* Ensure content sections have proper backgrounds for readability - lighter overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.2);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Main background utility class for sections */
+.bg-section-main {
+  background-image: url('/background-auralix.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.bg-section-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.2);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-section-main > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* Accessibility: Focus indicators for keyboard navigation */
 *:focus-visible {
@@ -156,4 +211,15 @@ body {
 
 .drop-shadow-glow-lg {
   filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.7));
+}
+
+/* Background image utility classes */
+.bg-section {
+  background-color: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.bg-section-light {
+  background-color: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(8px);
 }

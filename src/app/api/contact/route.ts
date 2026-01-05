@@ -33,12 +33,19 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    let { name, email, phone, businessName, cityProvince, trade, bookingSoftware, callVolume, message } = body;
+    let { name, email, phone, company, industry, monthlyCallVolume, currentTools, message, plan, subject } = body;
+    
+    // Support legacy field names for backward compatibility
+    const businessName = company || body.businessName;
+    const cityProvince = body.cityProvince || '';
+    const trade = industry || body.trade || '';
+    const bookingSoftware = currentTools || body.bookingSoftware || '';
+    const callVolume = monthlyCallVolume || body.callVolume || '';
 
     // Validate required fields
-    if (!name || !email || !phone || !businessName || !cityProvince || !trade) {
+    if (!name || !email || !phone || !company) {
       return NextResponse.json(
-        { error: 'Required fields: name, email, phone, business name, city/province, and trade' },
+        { error: 'Required fields: name, email, phone, and company' },
         { status: 400 }
       );
     }
@@ -47,19 +54,60 @@ export async function POST(request: NextRequest) {
     name = sanitizeString(name);
     email = sanitizeEmail(email);
     phone = sanitizePhone(phone);
-    businessName = sanitizeString(businessName);
-    cityProvince = sanitizeString(cityProvince);
-    trade = sanitizeString(trade);
-    bookingSoftware = bookingSoftware ? sanitizeString(bookingSoftware) : '';
-    callVolume = callVolume ? sanitizeString(callVolume) : '';
-    message = message ? sanitizeText(message, 5000) : ''; // Max 5000 characters, optional
+    const companyName = sanitizeString(company || businessName);
+    const industryName = sanitizeString(industry || trade);
+    const tools = bookingSoftware ? sanitizeString(bookingSoftware) : '';
+    const volume = callVolume ? sanitizeString(callVolume) : '';
+    const messageText = message ? sanitizeText(message, 5000) : ''; // Max 5000 characters, optional
+    const planName = plan ? sanitizeString(plan) : '';
+    const subjectText = subject ? sanitizeString(subject) : 'Contact Form Submission';
 
     // Check for dangerous content
-    if (containsDangerousContent(name) || containsDangerousContent(businessName) || containsDangerousContent(message)) {
+    if (containsDangerousContent(name) || containsDangerousContent(companyName) || containsDangerousContent(messageText)) {
       return NextResponse.json(
         { error: 'Invalid content detected. Please check your input.' },
         { status: 400 }
       );
+    }
+
+    // Log submission to console and store in JSON file (for development/staging)
+    const submissionData = {
+      timestamp: new Date().toISOString(),
+      name,
+      email,
+      phone,
+      company: companyName,
+      industry: industryName,
+      monthlyCallVolume: volume,
+      currentTools: tools,
+      message: messageText,
+      plan: planName,
+      subject: subjectText,
+      ip: clientIP,
+    };
+
+    console.log('[Contact Form Submission]', JSON.stringify(submissionData, null, 2));
+
+    // Store in JSON file (optional - for local development)
+    if (process.env.NODE_ENV === 'development') {
+      try {
+        const fs = await import('fs/promises');
+        const path = await import('path');
+        const submissionsPath = path.join(process.cwd(), 'data', 'submissions.json');
+        let submissions = [];
+        try {
+          const existing = await fs.readFile(submissionsPath, 'utf-8');
+          submissions = JSON.parse(existing);
+        } catch {
+          // File doesn't exist, create directory
+          await fs.mkdir(path.dirname(submissionsPath), { recursive: true });
+        }
+        submissions.push(submissionData);
+        await fs.writeFile(submissionsPath, JSON.stringify(submissions, null, 2));
+      } catch (error) {
+        console.error('Failed to save submission to file:', error);
+        // Continue even if file write fails
+      }
     }
 
     // Validate email format
@@ -104,7 +152,7 @@ export async function POST(request: NextRequest) {
     const emailData = await resend.emails.send({
       from: 'Auralix AI <noreply@auralix.ai>',
       to: ['auralixai@gmail.com'],
-      subject: `New Contact Form Submission from ${escapeHtml(businessName)}`,
+      subject: subjectText !== 'Contact Form Submission' ? subjectText : `New Contact Form Submission from ${escapeHtml(companyName)}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #14b8a6;">New Contact Form Submission</h2>
@@ -114,17 +162,17 @@ export async function POST(request: NextRequest) {
             <p><strong>Name:</strong> ${escapeHtml(name)}</p>
             <p><strong>Email:</strong> ${escapeHtml(email)}</p>
             <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-            <p><strong>Business Name:</strong> ${escapeHtml(businessName)}</p>
-            <p><strong>City/Province:</strong> ${escapeHtml(cityProvince)}</p>
-            <p><strong>Trade:</strong> ${escapeHtml(trade)}</p>
-            ${bookingSoftware ? `<p><strong>Booking Software:</strong> ${escapeHtml(bookingSoftware)}</p>` : ''}
-            ${callVolume ? `<p><strong>Call Volume:</strong> ${escapeHtml(callVolume)}</p>` : ''}
+            <p><strong>Company:</strong> ${escapeHtml(companyName)}</p>
+            ${industryName ? `<p><strong>Industry:</strong> ${escapeHtml(industryName)}</p>` : ''}
+            ${volume ? `<p><strong>Monthly Call Volume:</strong> ${escapeHtml(volume)}</p>` : ''}
+            ${tools ? `<p><strong>Current Tools:</strong> ${escapeHtml(tools)}</p>` : ''}
+            ${planName ? `<p><strong>Interested Plan:</strong> ${escapeHtml(planName)}</p>` : ''}
           </div>
           
-          ${message ? `
+          ${messageText ? `
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Message</h3>
-            <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
+            <p style="white-space: pre-wrap;">${escapeHtml(messageText)}</p>
           </div>
           ` : ''}
           
@@ -148,13 +196,13 @@ export async function POST(request: NextRequest) {
           
           <p>Hi ${escapeHtml(name)},</p>
           
-          <p>Thank you for your interest in Auralix AI for ${escapeHtml(businessName)}. We've received your message and will get back to you within 24 hours.</p>
+          <p>Thank you for your interest in Auralix AI${companyName ? ` for ${escapeHtml(companyName)}` : ''}. We've received your message and will get back to you within 24 hours.</p>
           
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">What happens next?</h3>
             <ul>
               <li>Our team will review your business's specific needs</li>
-              <li>We'll prepare a customized solution for ${escapeHtml(businessName)}</li>
+              ${companyName ? `<li>We'll prepare a customized solution for ${escapeHtml(companyName)}</li>` : '<li>We\'ll prepare a customized solution for your business</li>'}
               <li>We'll schedule a strategy call to discuss your requirements</li>
               <li>You'll receive a detailed proposal within 48 hours</li>
             </ul>

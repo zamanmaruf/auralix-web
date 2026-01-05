@@ -102,7 +102,7 @@ const integrations = [
 
 export default function IntegrationsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 text-white">
+    <div className="min-h-screen text-white">
       {/* Hero Section */}
       <section className="py-16 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
@@ -164,7 +164,7 @@ export default function IntegrationsPage() {
       </section>
 
       {/* Integration Details */}
-      <section className="py-16 px-4 bg-neutral-800/50">
+      <section className="py-16 px-4 bg-section-main bg-neutral-800/60 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -336,7 +336,7 @@ export default function IntegrationsPage() {
       </section>
 
       {/* Setup Process */}
-      <section className="py-16 px-4 bg-neutral-800/50">
+      <section className="py-16 px-4 bg-section-main bg-neutral-800/60 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
